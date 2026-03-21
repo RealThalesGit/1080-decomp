@@ -1,7 +1,8 @@
 baserom.z64
 tenshoe.z64
 build/
-tools/
+tools/ido*
+tools/gcc*
 *.o
 *.d
 assets/uso_data.bin

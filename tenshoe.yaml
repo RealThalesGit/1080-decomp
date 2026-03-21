@@ -1,0 +1,60 @@
+name: 1080 Snowboarding (USA)
+sha1: 79cd1166c365e5809dec9b62e6d40d6032d5db3a
+options:
+  basename: tenshoe
+  target_path: baserom.z64
+  base_path: .
+  platform: n64
+  compiler: GCC
+
+  # Section alignment - avoid phantom padding
+  ld_align_section_vram_end: False
+  ld_align_segment_vram_end: False
+  subalign: null
+
+  section_order: [".text", ".rodata", ".data", ".bss"]
+
+  symbol_addrs_path: symbol_addrs.txt
+  undefined_syms_auto_path: undefined_syms_auto.txt
+  undefined_funcs_auto_path: undefined_funcs_auto.txt
+
+  asm_path: asm
+  src_path: src
+  build_path: build
+  asset_path: assets
+
+  find_file_boundaries: True
+  use_legacy_include_asm: False
+
+segments:
+  # ROM header
+  - [0x0, bin, header]
+
+  # IPL3 boot code (CIC-6105)
+  - [0x40, bin, ipl3]
+
+  # Boot stub (loaded by IPL3 to 0x80100000, jumps to kernel at 0x80000000)
+  # CIC-6105 loads 1MB from ROM 0x1000 to 0x80100000
+  # The stub clears BSS and jumps to 0x80000460
+
+  # Kernel / resident code (always loaded at VRAM 0x80000000)
+  # Contains libultra, USO loader, audio, and core game systems
+  # .text: ROM 0x1000 - 0xAE60 (132 functions, ~40K)
+  # .rodata: ROM 0xAE60 - ~0xAFD0 (strings: USO loader messages, format strings)
+  # .data: ROM 0xAFD0 - 0xBBC0 (libultra data, VI modes, audio data)
+  # .bss: VRAM 0x8000ABC0 - 0x800155C0 (680K, not in ROM)
+  - name: kernel
+    type: code
+    start: 0x1000
+    vram: 0x80000000
+    subsegments:
+      - [0x1000, asm, kernel]        # .text + .rodata + .data (all in one for now)
+
+  # USO modules and asset data (loaded dynamically via DMA)
+  # The game uses USO (Universal Shared Objects) - a relocatable
+  # module system. Each USO has its own .text/.rodata/.data sections,
+  # compressed and loaded on demand. Individual USO boundaries TBD.
+  - [0xBBC0, bin, uso_data]
+
+  # ROM end
+  - [0x1000000]

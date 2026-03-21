@@ -1,0 +1,7 @@
+baserom.z64
+tenshoe.z64
+build/
+tools/
+*.o
+*.d
+assets/uso_data.bin

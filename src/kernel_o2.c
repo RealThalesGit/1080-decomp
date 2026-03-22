@@ -63,7 +63,26 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80000688);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", uso_file_open);
 
+/* uso_skip_to_end: reads USO section headers until End (type 11) */
+/* NON_MATCHING: beq operand order (cosmetic, $s2/$t6 swap in 2 instructions) */
+#ifdef NON_MATCHING
+s32 uso_skip_to_end(FileState* file) {
+    s32 pad;
+    u32 header[3];
+    s32 pad2;
+    do {
+        if (func_800009D8(header, 12, 1, file) < 0) {
+            return D_80013004;
+        }
+        if (header[0] != 8) {
+            file->position += header[1];
+        }
+    } while (header[0] != 11);
+    return 0;
+}
+#else
 INCLUDE_ASM("asm/nonmatchings/kernel", uso_skip_to_end);
+#endif
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800007C4);
 

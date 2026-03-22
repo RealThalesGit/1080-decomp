@@ -1,0 +1,38 @@
+{
+  "function_name": "func_80001414",
+  "asm_text": "\nnonmatching func_80001414, 0x4C\n\nglabel func_80001414\n    /* 2414 80001414 27BDFFE8 */  addiu      $sp, $sp, -0x18\n    /* 2418 80001418 00803825 */  or         $a3, $a0, $zero\n    /* 241C 8000141C AFA5001C */  sw         $a1, 0x1C($sp)\n    /* 2420 80001420 00A02025 */  or         $a0, $a1, $zero\n    /* 2424 80001424 AFBF0014 */  sw         $ra, 0x14($sp)\n    /* 2428 80001428 AFA60020 */  sw         $a2, 0x20($sp)\n    /* 242C 8000142C 00C02825 */  or         $a1, $a2, $zero\n    /* 2430 80001430 0C000276 */  jal        func_800009D8\n    /* 2434 80001434 24060001 */   addiu     $a2, $zero, 0x1\n    /* 2438 80001438 04410004 */  bgez       $v0, .L8000144C\n    /* 243C 8000143C 00401825 */   or        $v1, $v0, $zero\n    /* 2440 80001440 3C028001 */  lui        $v0, %hi(D_80013004)\n    /* 2444 80001444 10000002 */  b          .L80001450\n    /* 2448 80001448 8C423004 */   lw        $v0, %lo(D_80013004)($v0)\n  .L8000144C:\n    /* 244C 8000144C 00601025 */  or         $v0, $v1, $zero\n  .L80001450:\n    /* 2450 80001450 8FBF0014 */  lw         $ra, 0x14($sp)\n    /* 2454 80001454 27BD0018 */  addiu      $sp, $sp, 0x18\n    /* 2458 80001458 03E00008 */  jr         $ra\n    /* 245C 8000145C 00000000 */   nop\nendlabel func_80001414\n",
+  "m2c_output": "s32 func_800009D8(?, ?, ?, s32);                    /* extern */\nextern s32 D_80013004;\n\ns32 func_80001414(s32 arg0, ? arg1, ? arg2) {\n    s32 temp_v0;\n\n    temp_v0 = func_800009D8(arg1, arg2, 1, arg0);\n    if (temp_v0 < 0) {\n        return D_80013004;\n    }\n    return temp_v0;\n}\n",
+  "attempts": [
+    {
+      "c_code": "s32 func_80001414(FileState* file, void* buf, s32 size) {\n    s32 result;\n    result = func_800009D8(buf, size, 1, file);\n    if (result < 0) {\n        return D_80013004;\n    }\n    return result;\n}",
+      "matched": true,
+      "diff_count": 0,
+      "diff_details": [],
+      "compiler_flags": "",
+      "notes": "flags: -O2 -g2"
+    }
+  ],
+  "final_c": "s32 func_80001414(FileState* file, void* buf, s32 size) {\n    s32 result;\n    result = func_800009D8(buf, size, 1, file);\n    if (result < 0) {\n        return D_80013004;\n    }\n    return result;\n}",
+  "matched": true,
+  "instruction_count": 19,
+  "has_branches": true,
+  "has_calls": true,
+  "timestamp": 1774148886.2443357,
+  "game": "glover",
+  "compiler": "gcc_2.7.2_kmc",
+  "compiler_flags": "-O2 -g2",
+  "nearby_decompiled": [
+    "func_80000E58",
+    "func_800010CC",
+    "func_800017B4",
+    "func_800018A8",
+    "func_80005894"
+  ],
+  "called_functions": [
+    "func_800009D8"
+  ],
+  "referenced_data": [
+    "D_80013004"
+  ],
+  "segment": "kernel"
+}

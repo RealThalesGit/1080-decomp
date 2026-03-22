@@ -101,7 +101,14 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80000D2C);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80000DEC);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80000E58);
+typedef void (*FuncPtr2)(void*, void*);
+extern FuncPtr2 D_80012C44;
+extern s32 D_8000A32C;
+extern s32 D_8000A340;
+
+void func_80000E58(void) {
+    D_80012C44(&D_8000A32C, &D_8000A340);
+}
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80000E8C);
 
@@ -126,7 +133,15 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_800012BC);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80001348);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80001414);
+/* uso_read: read size bytes from file into buf, return bytes read or error */
+s32 func_80001414(FileState* file, void* buf, s32 size) {
+    s32 result;
+    result = func_800009D8(buf, size, 1, file);
+    if (result < 0) {
+        return D_80013004;
+    }
+    return result;
+}
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80001460);
 

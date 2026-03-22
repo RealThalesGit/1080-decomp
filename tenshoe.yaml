@@ -7,7 +7,6 @@ options:
   platform: n64
   compiler: GCC
 
-  # Section alignment - avoid phantom padding
   ld_align_section_vram_end: False
   ld_align_segment_vram_end: False
   subalign: null
@@ -27,16 +26,9 @@ options:
   use_legacy_include_asm: False
 
 segments:
-  # ROM header
   - [0x0, bin, header]
-
-  # IPL3 boot code (CIC-6105)
   - [0x40, bin, ipl3]
 
-  # Kernel / resident code (always loaded at VRAM 0x80000000)
-  # Contains libultra, USO loader, audio, and core game systems
-  # 108 functions, ~43K code + data
-  # BSS: VRAM 0x8000ABC0 - 0x800155C0 (680K, not in ROM)
   - name: kernel
     type: code
     start: 0x1000
@@ -46,28 +38,9 @@ segments:
       - [0xAE60, .rodata, kernel]
       - [0xAFD0, .data, kernel]
 
-  # mainuso filesystem: compressed USO data modules + assets
-  # Contains: audio_bank, audio_seq, audio_wave, snowboard models,
-  # character models, textures (Yay0 compressed), game logic metadata
-  # All data-only (no executable code) except bg*tex which are Yay0 textures
   - [0xBBC0, bin, mainuso_data]
-
-  # rom filesystem metadata
   - [0xD9FDB0, bin, rom_fs]
-
-  # bootup.uso: main game engine (Giles Goddard's libgdl)
-  # 302 functions, 84K .text, 196K data, 807 debug strings
-  # C++ code: SnowBoarder, CollShape, PolyShape, GfxLib, SkinMgr, etc.
   - [0xD9FE28, bin, bootup_uso]
-
-  # Game support libraries: libultra + libc + libgdl support code
-  # 1,371 functions, 480K code (mixed IDO + GCC compiled)
-  # No debug strings (stripped production code)
   - [0xDE50D4, bin, game_libs]
-
-  # Data/assets region: structured data tables, lookup tables
-  # 1.7MB of non-code data
   - [0xE5D0D4, bin, game_data]
-
-  # ROM end
   - [0x1000000]

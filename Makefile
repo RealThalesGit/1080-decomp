@@ -26,6 +26,9 @@ CFLAGS   := -G 0 -non_shared -Xcpluscomm -Wab,-r4300_mul
 CPPFLAGS := -I include -I src
 LDFLAGS  := -T $(LD_SCRIPT) -T undefined_syms_auto.txt -Map build/$(TARGET).map --no-check-sections
 
+# Per-file optimization overrides
+build/src/kernel_o1.c.o: OPT_FLAGS := -O1
+
 # Collect source files
 C_FILES   := $(shell find src -name '*.c' -type f 2>/dev/null)
 ASM_FILES := $(shell find asm -maxdepth 1 -name '*.s' -type f 2>/dev/null)
@@ -47,9 +50,7 @@ $(ROM): $(ELF)
 $(ELF): $(O_FILES) $(LD_SCRIPT)
 	$(LD) $(LDFLAGS) -o $@
 
-# C source -- two-phase asm-processor pattern (like SSSV)
-# Phase 1: strip GLOBAL_ASM/INCLUDE_ASM blocks, output clean C
-# Phase 2: compile with IDO, then patch asm back into .o
+# C source -- two-phase asm-processor pattern
 build/src/%.c.o: src/%.c
 	@mkdir -p $(dir $@) build/$(<D)
 	$(ASM_PROC) $(OPT_FLAGS) $< > build/$<
@@ -57,7 +58,7 @@ build/src/%.c.o: src/%.c
 	$(ASM_PROC) $(OPT_FLAGS) $< --post-process $@ \
 		--assembler "$(AS) $(ASFLAGS)" --asm-prelude $(ASM_PRELUDE)
 
-# Standalone assembly (functions too small for asm-processor)
+# Standalone assembly
 build/asm/%.s.o: asm/%.s
 	@mkdir -p $(dir $@)
 	$(AS) $(ASFLAGS) -o $@ $<
@@ -75,7 +76,7 @@ verify: $(ROM)
 expected:
 	$(RM) -r expected
 	mkdir -p expected/src
-	cp build/src/kernel.c.o expected/src/
+	cp build/src/*.o expected/src/
 
 clean:
 	rm -rf build $(ROM)

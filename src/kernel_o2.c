@@ -23,7 +23,19 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80000000);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800000B0);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80000118);
+/* Boot init */
+extern s32 func_80002890(s32);
+extern void func_8000A0E0(void);
+extern void func_80005350(s32, s32);
+extern void func_80005400(s32, s32);
+
+void func_80000118(s32 a0, s32 a1) {
+    s32 saved = func_80002890(1);
+    func_8000A0E0();
+    func_80005350(a0, a1);
+    func_80005400(a0, a1);
+    func_80002890(saved);
+}
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80000168);
 
@@ -195,8 +207,6 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_800047E4);
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800048E8);
 
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80004AC0);
-
 
 
 
@@ -348,7 +358,26 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_800091F0);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800091FC);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_800092B0);
+/* rmon execute */
+extern s32 func_80008430(s32);
+extern void func_80009148(s32);
+extern void func_80009030(s32, s32);
+extern void func_80008498(void);
+extern s32 func_80006A98(s32);
+extern void func_800091F0(s32);
+
+s32 func_800092B0(s32 a0) {
+    s32 result;
+    if (func_80008430(a0) != 0) {
+        return 0;
+    }
+    func_80009148(0);
+    func_80009030(0x2B, a0);
+    func_80008498();
+    result = func_80006A98(0x04000000);
+    func_800091F0(0);
+    return result;
+}
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80009314);
 

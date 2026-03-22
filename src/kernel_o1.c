@@ -316,3 +316,14 @@ void __osResetGlobalIntMask(s32 arg0, s32 arg1) {
         } while (func_8000A090(arg0, arg1) != 0);
     }
 }
+
+/* osPiRawReadIo */
+extern s32 func_800056C0(void);
+
+s32 func_80004AC0(s32 devAddr, s32* data) {
+    if (func_800056C0() != 0) {
+        return -1;
+    }
+    *data = *(volatile s32*)(0xA0000000 | devAddr);
+    return 0;
+}

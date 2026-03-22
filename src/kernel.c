@@ -42,7 +42,32 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80000688);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", uso_file_open);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", uso_skip_to_end);
+typedef struct {
+    s32 field_0;
+    s32 position;
+} FileState;
+
+extern s32 D_80013004;
+extern s32 func_800009D8(u32* dst, s32 size, s32 count, FileState* file);
+
+s32 uso_skip_to_end(FileState* file) {
+    s32 pad;
+    u32 header[3];
+    s32 pad2;
+
+    do {
+        if (func_800009D8(header, 12, 1, file) < 0) {
+            return D_80013004;
+        }
+
+        if (header[0] != 8) {
+            file->position += header[1];
+        }
+
+    } while (header[0] != 11);
+
+    return 0;
+}
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800007C4);
 
@@ -334,7 +359,12 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80005800);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80005850);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80005894);
+extern s32 __osPiAccessQueue;
+extern s32 func_80005DC0(s32*, s32, s32);
+
+void func_80005894(void) {
+    func_80005DC0(&__osPiAccessQueue, 0, 0);
+}
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800058C0);
 

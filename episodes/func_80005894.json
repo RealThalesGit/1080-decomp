@@ -1,0 +1,33 @@
+{
+  "function_name": "func_80005894",
+  "asm_text": "\nnonmatching func_80005894, 0x2C\n\nglabel func_80005894\n    /* 6894 80005894 27BDFFE8 */  addiu      $sp, $sp, -0x18\n    /* 6898 80005898 AFBF0014 */  sw         $ra, 0x14($sp)\n    /* 689C 8000589C 3C048002 */  lui        $a0, %hi(__osPiAccessQueue)\n    /* 68A0 800058A0 2484B638 */  addiu      $a0, $a0, %lo(__osPiAccessQueue)\n    /* 68A4 800058A4 00002825 */  or         $a1, $zero, $zero\n    /* 68A8 800058A8 0C001770 */  jal        func_80005DC0\n    /* 68AC 800058AC 00003025 */   or        $a2, $zero, $zero\n    /* 68B0 800058B0 8FBF0014 */  lw         $ra, 0x14($sp)\n    /* 68B4 800058B4 27BD0018 */  addiu      $sp, $sp, 0x18\n    /* 68B8 800058B8 03E00008 */  jr         $ra\n    /* 68BC 800058BC 00000000 */   nop\nendlabel func_80005894\n",
+  "m2c_output": "? func_80005DC0(? *, ?, ?);                         /* extern */\nextern ? __osPiAccessQueue;\n\nvoid func_80005894(void) {\n    func_80005DC0(&__osPiAccessQueue, 0, 0);\n}\n",
+  "attempts": [
+    {
+      "c_code": "extern s32 __osPiAccessQueue;\nextern s32 func_80005DC0(s32*, s32, s32);\n\nvoid func_80005894(void) {\n    func_80005DC0(&__osPiAccessQueue, 0, 0);\n}",
+      "matched": true,
+      "diff_count": 0,
+      "diff_details": [],
+      "compiler_flags": "",
+      "notes": "flags: -O2 -g2"
+    }
+  ],
+  "final_c": "extern s32 __osPiAccessQueue;\nextern s32 func_80005DC0(s32*, s32, s32);\n\nvoid func_80005894(void) {\n    func_80005DC0(&__osPiAccessQueue, 0, 0);\n}",
+  "matched": true,
+  "instruction_count": 11,
+  "has_branches": false,
+  "has_calls": true,
+  "timestamp": 1774148352.7907321,
+  "game": "glover",
+  "compiler": "gcc_2.7.2_kmc",
+  "compiler_flags": "-O2 -g2",
+  "nearby_decompiled": [
+    "func_800017B4",
+    "func_800018A8"
+  ],
+  "called_functions": [
+    "func_80005DC0"
+  ],
+  "referenced_data": [],
+  "segment": "kernel"
+}

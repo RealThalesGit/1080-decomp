@@ -104,7 +104,7 @@ glabel func_80000118
     /* 1130 80000130 0C002838 */  jal        func_8000A0E0
     /* 1134 80000134 AFA2001C */   sw        $v0, 0x1C($sp)
     /* 1138 80000138 8FA40020 */  lw         $a0, 0x20($sp)
-    /* 113C 8000013C 0C0014D4 */  jal        osInvalICache
+    /* 113C 8000013C 0C0014D4 */  jal        func_80005350
     /* 1140 80000140 8FA50024 */   lw        $a1, 0x24($sp)
     /* 1144 80000144 8FA40020 */  lw         $a0, 0x20($sp)
     /* 1148 80000148 0C001500 */  jal        func_80005400
@@ -348,7 +348,7 @@ glabel func_800003A8
   .L800003FC:
     /* 13FC 800003FC 8FA50024 */  lw         $a1, 0x24($sp)
     /* 1400 80000400 8FA60020 */  lw         $a2, 0x20($sp)
-    /* 1404 80000404 0C001294 */  jal        osPiRawStartDma
+    /* 1404 80000404 0C001294 */  jal        func_80004A50
     /* 1408 80000408 8FA70028 */   lw        $a3, 0x28($sp)
     /* 140C 8000040C 0C001990 */  jal        func_80006640
     /* 1410 80000410 00000000 */   nop
@@ -366,7 +366,7 @@ glabel func_800003A8
     /* 1438 80000438 24040001 */   addiu     $a0, $zero, 0x1
     /* 143C 8000043C 00408025 */  or         $s0, $v0, $zero
     /* 1440 80000440 8FA40020 */  lw         $a0, 0x20($sp)
-    /* 1444 80000444 0C0014D4 */  jal        osInvalICache
+    /* 1444 80000444 0C0014D4 */  jal        func_80005350
     /* 1448 80000448 8FA50028 */   lw        $a1, 0x28($sp)
     /* 144C 8000044C 8FA40020 */  lw         $a0, 0x20($sp)
     /* 1450 80000450 0C001500 */  jal        func_80005400
@@ -408,7 +408,7 @@ glabel func_80000480
     /* 14B4 800004B4 AC8F0018 */   sw        $t7, 0x18($a0)
 endlabel func_80000480
 
-nonmatching func_800004B8, 0x58
+nonmatching func_800004B8, 0x60
 
 glabel func_800004B8
     /* 14B8 800004B8 27BDFFD8 */  addiu      $sp, $sp, -0x28
@@ -434,15 +434,10 @@ glabel func_800004B8
     /* 1504 80000504 11C00019 */  beqz       $t6, .L8000056C
     /* 1508 80000508 00108080 */   sll       $s0, $s0, 2
     /* 150C 8000050C 00507821 */  addu       $t7, $v0, $s0
-endlabel func_800004B8
-
-nonmatching __dummy, 0x8
-
-glabel __dummy
     /* 1510 80000510 8DE40000 */  lw         $a0, 0x0($t7)
   .L80000514:
     /* 1514 80000514 0C00015A */  jal        func_80000568
-endlabel __dummy
+endlabel func_800004B8
 
 nonmatching func_80000518, 0x50
 
@@ -595,9 +590,9 @@ glabel func_80000688
     /* 1694 80000694 AC8F0004 */   sw        $t7, 0x4($a0)
 endlabel func_80000688
 
-nonmatching func_80000698, 0x9C
+nonmatching uso_file_open, 0x9C
 
-glabel func_80000698
+glabel uso_file_open
     /* 1698 80000698 27BDFFD8 */  addiu      $sp, $sp, -0x28
     /* 169C 8000069C AFBF0014 */  sw         $ra, 0x14($sp)
     /* 16A0 800006A0 AFA40028 */  sw         $a0, 0x28($sp)
@@ -641,11 +636,11 @@ glabel func_80000698
     /* 1728 80000728 27BD0028 */  addiu      $sp, $sp, 0x28
     /* 172C 8000072C 03E00008 */  jr         $ra
     /* 1730 80000730 00000000 */   nop
-endlabel func_80000698
+endlabel uso_file_open
 
-nonmatching func_80000734, 0x90
+nonmatching uso_skip_to_end, 0x90
 
-glabel func_80000734
+glabel uso_skip_to_end
     /* 1734 80000734 27BDFFC0 */  addiu      $sp, $sp, -0x40
     /* 1738 80000738 AFB30020 */  sw         $s3, 0x20($sp)
     /* 173C 8000073C AFB2001C */  sw         $s2, 0x1C($sp)
@@ -686,7 +681,7 @@ glabel func_80000734
     /* 17B8 800007B8 8FB30020 */  lw         $s3, 0x20($sp)
     /* 17BC 800007BC 03E00008 */  jr         $ra
     /* 17C0 800007C0 27BD0040 */   addiu     $sp, $sp, 0x40
-endlabel func_80000734
+endlabel uso_skip_to_end
 
 nonmatching func_800007C4, 0x10
 
@@ -749,13 +744,13 @@ glabel func_8000085C
     /* 1870 80000870 AFB50028 */  sw         $s5, 0x28($sp)
 endlabel func_8000085C
 
-nonmatching osViExtendVStart, 0xC
+nonmatching func_80000874, 0xC
 
-glabel osViExtendVStart
+glabel func_80000874
     /* 1874 80000874 AFB00014 */  sw         $s0, 0x14($sp)
     /* 1878 80000878 3C118001 */  lui        $s1, (0x80010000 >> 16)
     /* 187C 8000087C 3C128001 */  lui        $s2, (0x80010000 >> 16)
-endlabel osViExtendVStart
+endlabel func_80000874
 
 nonmatching func_80000880, 0x38
 
@@ -841,9 +836,9 @@ glabel func_800008F0
     /* 1988 80000988 26312D60 */  addiu      $s1, $s1, %lo(D_80012D60)
 endlabel func_800008F0
 
-nonmatching alHeapCheck, 0x4C
+nonmatching func_8000098C, 0x4C
 
-glabel alHeapCheck
+glabel func_8000098C
     /* 198C 8000098C 8E300000 */  lw         $s0, 0x0($s1)
   .L80000990:
     /* 1990 80000990 12000006 */  beqz       $s0, .L800009AC
@@ -867,7 +862,7 @@ glabel alHeapCheck
   .L800009D0:
     /* 19D0 800009D0 8FBF0024 */  lw         $ra, 0x24($sp)
     /* 19D4 800009D4 8FB00014 */  lw         $s0, 0x14($sp)
-endlabel alHeapCheck
+endlabel func_8000098C
 
 nonmatching func_800009D8, 0x14
 
@@ -1005,7 +1000,7 @@ glabel func_80000B34
     /* 1B7C 80000B7C 00623023 */  subu       $a2, $v1, $v0
     /* 1B80 80000B80 00A6C823 */  subu       $t9, $a1, $a2
     /* 1B84 80000B84 ACF90004 */  sw         $t9, 0x4($a3)
-    /* 1B88 80000B88 0C000263 */  jal        alHeapCheck
+    /* 1B88 80000B88 0C000263 */  jal        func_8000098C
     /* 1B8C 80000B8C ACE30000 */   sw        $v1, 0x0($a3)
     /* 1B90 80000B90 3C108001 */  lui        $s0, %hi(D_80012D60)
     /* 1B94 80000B94 3C118001 */  lui        $s1, %hi(D_80012F7C)
@@ -1212,7 +1207,7 @@ glabel func_80000DEC
     /* 1E18 80000E18 5440FFEF */  bnel       $v0, $zero, .L80000DD8
     /* 1E1C 80000E1C 8FAA003C */   lw        $t2, 0x3C($sp)
   .L80000E20:
-    /* 1E20 80000E20 0C000263 */  jal        alHeapCheck
+    /* 1E20 80000E20 0C000263 */  jal        func_8000098C
     /* 1E24 80000E24 02002025 */   or        $a0, $s0, $zero
     /* 1E28 80000E28 8E6B0014 */  lw         $t3, 0x14($s3)
     /* 1E2C 80000E2C 26730014 */  addiu      $s3, $s3, 0x14
@@ -1505,9 +1500,9 @@ glabel func_80001184
     /* 21CC 800011CC 00000000 */   nop
 endlabel func_80001184
 
-nonmatching func_800011D0, 0xDC
+nonmatching uso_find_file, 0xDC
 
-glabel func_800011D0
+glabel uso_find_file
     /* 21D0 800011D0 27BDFFA0 */  addiu      $sp, $sp, -0x60
     /* 21D4 800011D4 AFB30020 */  sw         $s3, 0x20($sp)
     /* 21D8 800011D8 AFB00014 */  sw         $s0, 0x14($sp)
@@ -1570,7 +1565,7 @@ glabel func_800011D0
     /* 22A0 800012A0 8FB30020 */  lw         $s3, 0x20($sp)
     /* 22A4 800012A4 03E00008 */  jr         $ra
     /* 22A8 800012A8 27BD0060 */   addiu     $sp, $sp, 0x60
-endlabel func_800011D0
+endlabel uso_find_file
 
 nonmatching func_800012AC, 0x10
 
@@ -1752,7 +1747,7 @@ glabel func_8000149C
     /* 24A4 800014A4 00000000 */   nop
 endlabel func_8000149C
 
-nonmatching func_800014A8, 0x18
+nonmatching func_800014A8, 0xDC
 
 glabel func_800014A8
     /* 24A8 800014A8 27BDFF68 */  addiu      $sp, $sp, -0x98
@@ -1761,19 +1756,9 @@ glabel func_800014A8
     /* 24B4 800014B4 8ED6A2E0 */  lw         $s6, %lo(__additional_scanline)($s6)
     /* 24B8 800014B8 AFBF0034 */  sw         $ra, 0x34($sp)
     /* 24BC 800014BC AFB5002C */  sw         $s5, 0x2C($sp)
-endlabel func_800014A8
-
-nonmatching alSynFreeFX, 0xC
-
-glabel alSynFreeFX
     /* 24C0 800014C0 AFB40028 */  sw         $s4, 0x28($sp)
     /* 24C4 800014C4 AFB30024 */  sw         $s3, 0x24($sp)
     /* 24C8 800014C8 AFB20020 */  sw         $s2, 0x20($sp)
-endlabel alSynFreeFX
-
-nonmatching osSyncPrintf, 0xB8
-
-glabel osSyncPrintf
     /* 24CC 800014CC AFB1001C */  sw         $s1, 0x1C($sp)
     /* 24D0 800014D0 AFB00018 */  sw         $s0, 0x18($sp)
     /* 24D4 800014D4 8ECE0000 */  lw         $t6, 0x0($s6)
@@ -1825,7 +1810,7 @@ glabel osSyncPrintf
     /* 2578 80001578 8FB20020 */  lw         $s2, 0x20($sp)
     /* 257C 8000157C 8FB30024 */  lw         $s3, 0x24($sp)
     /* 2580 80001580 8FB40028 */  lw         $s4, 0x28($sp)
-endlabel osSyncPrintf
+endlabel func_800014A8
 
 nonmatching func_80001584, 0x10
 
@@ -1849,7 +1834,7 @@ glabel func_80001594
     /* 25B0 800015B0 25CE30A0 */  addiu      $t6, $t6, %lo(D_800130A0)
     /* 25B4 800015B4 3C018001 */  lui        $at, %hi(D_8001309C)
     /* 25B8 800015B8 AC2E309C */  sw         $t6, %lo(D_8001309C)($at)
-    /* 25BC 800015BC 0C00021D */  jal        osViExtendVStart
+    /* 25BC 800015BC 0C00021D */  jal        func_80000874
     /* 25C0 800015C0 8FA40020 */   lw        $a0, 0x20($sp)
     /* 25C4 800015C4 3C078001 */  lui        $a3, %hi(D_80012BC0)
     /* 25C8 800015C8 24E72BC0 */  addiu      $a3, $a3, %lo(D_80012BC0)
@@ -1872,31 +1857,31 @@ glabel func_800015D0
     /* 25F8 800015F8 3C0E8000 */  lui        $t6, %hi(D_80001258)
     /* 25FC 800015FC 3C0F8000 */  lui        $t7, %hi(D_8000128C)
     /* 2600 80001600 3C188000 */  lui        $t8, %hi(func_80001584)
-    /* 2604 80001604 3C198000 */  lui        $t9, %hi(osSyncPrintf + 0x1C)
+    /* 2604 80001604 3C198000 */  lui        $t9, %hi(func_800014A8 + 0x40)
     /* 2608 80001608 258C1088 */  addiu      $t4, $t4, %lo(func_80001088)
     /* 260C 8000160C 25AD112C */  addiu      $t5, $t5, %lo(func_800010E8 + 0x44)
     /* 2610 80001610 25CE1258 */  addiu      $t6, $t6, %lo(D_80001258)
     /* 2614 80001614 25EF128C */  addiu      $t7, $t7, %lo(D_8000128C)
     /* 2618 80001618 27181584 */  addiu      $t8, $t8, %lo(func_80001584)
-    /* 261C 8000161C 273914E8 */  addiu      $t9, $t9, %lo(osSyncPrintf + 0x1C)
+    /* 261C 8000161C 273914E8 */  addiu      $t9, $t9, %lo(func_800014A8 + 0x40)
     /* 2620 80001620 ACEC0064 */  sw         $t4, 0x64($a3)
     /* 2624 80001624 ACED0068 */  sw         $t5, 0x68($a3)
-    /* 2628 80001628 3C048000 */  lui        $a0, %hi(osSyncPrintf)
+    /* 2628 80001628 3C048000 */  lui        $a0, %hi(func_800014A8 + 0x24)
     /* 262C 8000162C ACEE006C */  sw         $t6, 0x6C($a3)
     /* 2630 80001630 ACEF0070 */  sw         $t7, 0x70($a3)
     /* 2634 80001634 ACF80074 */  sw         $t8, 0x74($a3)
     /* 2638 80001638 ACF90078 */  sw         $t9, 0x78($a3)
-    /* 263C 8000163C 248414CC */  addiu      $a0, $a0, %lo(osSyncPrintf)
+    /* 263C 8000163C 248414CC */  addiu      $a0, $a0, %lo(func_800014A8 + 0x24)
     /* 2640 80001640 3C0C8000 */  lui        $t4, %hi(D_80000BD4)
     /* 2644 80001644 3C0D8000 */  lui        $t5, %hi(D_800016BC)
     /* 2648 80001648 3C0E8000 */  lui        $t6, %hi(D_80001814)
-    /* 264C 8000164C 3C0F8000 */  lui        $t7, %hi(n_alSynFreeFX)
+    /* 264C 8000164C 3C0F8000 */  lui        $t7, %hi(D_80001894)
     /* 2650 80001650 3C188000 */  lui        $t8, %hi(D_80001870)
     /* 2654 80001654 3C198000 */  lui        $t9, %hi(D_80001748)
     /* 2658 80001658 258C0BD4 */  addiu      $t4, $t4, %lo(D_80000BD4)
     /* 265C 8000165C 25AD16BC */  addiu      $t5, $t5, %lo(D_800016BC)
     /* 2660 80001660 25CE1814 */  addiu      $t6, $t6, %lo(D_80001814)
-    /* 2664 80001664 25EF1894 */  addiu      $t7, $t7, %lo(n_alSynFreeFX)
+    /* 2664 80001664 25EF1894 */  addiu      $t7, $t7, %lo(D_80001894)
     /* 2668 80001668 27181870 */  addiu      $t8, $t8, %lo(D_80001870)
     /* 266C 8000166C 27391748 */  addiu      $t9, $t9, %lo(D_80001748)
     /* 2670 80001670 3C068000 */  lui        $a2, %hi(func_80000480 + 0x30)
@@ -1911,14 +1896,14 @@ glabel func_800015D0
     /* 2694 80001694 24C604B0 */  addiu      $a2, $a2, %lo(func_80000480 + 0x30)
     /* 2698 80001698 3C0C8000 */  lui        $t4, %hi(.L80000C5C)
     /* 269C 8000169C ACE4008C */  sw         $a0, 0x8C($a3)
-    /* 26A0 800016A0 3C0D8000 */  lui        $t5, %hi(alSynFreeFX)
+    /* 26A0 800016A0 3C0D8000 */  lui        $t5, %hi(func_800014A8 + 0x18)
     /* 26A4 800016A4 3C0E8000 */  lui        $t6, %hi(.L800007A8)
     /* 26A8 800016A8 3C0F8000 */  lui        $t7, %hi(D_800016AC)
   alabel D_800016AC
     /* 26AC 800016AC 3C188000 */  lui        $t8, %hi(D_80001860)
     /* 26B0 800016B0 3C198000 */  lui        $t9, %hi(D_8000189C)
     /* 26B4 800016B4 258C0C5C */  addiu      $t4, $t4, %lo(.L80000C5C)
-    /* 26B8 800016B8 25AD14C0 */  addiu      $t5, $t5, %lo(alSynFreeFX)
+    /* 26B8 800016B8 25AD14C0 */  addiu      $t5, $t5, %lo(func_800014A8 + 0x18)
   alabel D_800016BC
     /* 26BC 800016BC 25CE07A8 */  addiu      $t6, $t6, %lo(.L800007A8)
     /* 26C0 800016C0 25EF16AC */  addiu      $t7, $t7, %lo(D_800016AC)
@@ -1996,7 +1981,7 @@ glabel func_800017B4
     /* 27B8 800017B8 00000000 */   nop
 endlabel func_800017B4
 
-nonmatching func_800017BC, 0xD8
+nonmatching func_800017BC, 0xEC
 
 glabel func_800017BC
     /* 27BC 800017BC 3C0E8001 */  lui        $t6, %hi(D_80013138)
@@ -2063,19 +2048,15 @@ glabel func_800017BC
     /* 2888 80001888 24190001 */   addiu     $t9, $zero, 0x1
     /* 288C 8000188C A079026C */  sb         $t9, 0x26C($v1)
     /* 2890 80001890 03E00008 */  jr         $ra
-endlabel func_800017BC
-
-nonmatching n_alSynFreeFX, 0x14
-
-glabel n_alSynFreeFX
-    /* 2894 80001894 246201D4 */  addiu      $v0, $v1, 0x1D4
+  alabel D_80001894
+    /* 2894 80001894 246201D4 */   addiu     $v0, $v1, 0x1D4
   .L80001898:
     /* 2898 80001898 24630270 */  addiu      $v1, $v1, 0x270
   alabel D_8000189C
     /* 289C 8000189C 5462FFE7 */  bnel       $v1, $v0, .L8000183C
     /* 28A0 800018A0 906A0098 */   lbu       $t2, 0x98($v1)
     /* 28A4 800018A4 00001025 */  or         $v0, $zero, $zero
-endlabel n_alSynFreeFX
+endlabel func_800017BC
 
 nonmatching func_800018A8, 0x8
 
@@ -3054,7 +3035,7 @@ glabel func_80002530
     /* 3530 80002530 27BDFFA0 */  addiu      $sp, $sp, -0x60
     /* 3534 80002534 AFBF001C */  sw         $ra, 0x1C($sp)
     /* 3538 80002538 AFB00018 */  sw         $s0, 0x18($sp)
-    /* 353C 8000253C 0C000C78 */  jal        __osGetSR
+    /* 353C 8000253C 0C000C78 */  jal        func_800031E0
     /* 3540 80002540 AFA00058 */   sw        $zero, 0x58($sp)
     /* 3544 80002544 00408025 */  or         $s0, $v0, $zero
     /* 3548 80002548 3C012000 */  lui        $at, (0x20000000 >> 16)
@@ -3065,14 +3046,14 @@ glabel func_80002530
     /* 355C 8000255C 34840800 */   ori       $a0, $a0, (0x1000800 & 0xFFFF)
     /* 3560 80002560 3C041FC0 */  lui        $a0, (0x1FC007FC >> 16)
     /* 3564 80002564 348407FC */  ori        $a0, $a0, (0x1FC007FC & 0xFFFF)
-    /* 3568 80002568 0C0013B0 */  jal        __osSpRawReadIo
+    /* 3568 80002568 0C0013B0 */  jal        func_80004EC0
     /* 356C 8000256C 27A5005C */   addiu     $a1, $sp, 0x5C
     /* 3570 80002570 10400007 */  beqz       $v0, .L80002590
     /* 3574 80002574 00000000 */   nop
   .L80002578:
     /* 3578 80002578 3C041FC0 */  lui        $a0, (0x1FC007FC >> 16)
     /* 357C 8000257C 348407FC */  ori        $a0, $a0, (0x1FC007FC & 0xFFFF)
-    /* 3580 80002580 0C0013B0 */  jal        __osSpRawReadIo
+    /* 3580 80002580 0C0013B0 */  jal        func_80004EC0
     /* 3584 80002584 27A5005C */   addiu     $a1, $sp, 0x5C
     /* 3588 80002588 1440FFFB */  bnez       $v0, .L80002578
     /* 358C 8000258C 00000000 */   nop
@@ -3081,7 +3062,7 @@ glabel func_80002530
     /* 3594 80002594 3C041FC0 */  lui        $a0, (0x1FC007FC >> 16)
     /* 3598 80002598 348407FC */  ori        $a0, $a0, (0x1FC007FC & 0xFFFF)
     /* 359C 8000259C 34AE0008 */  ori        $t6, $a1, 0x8
-    /* 35A0 800025A0 0C002810 */  jal        __osSpRawWriteIo
+    /* 35A0 800025A0 0C002810 */  jal        func_8000A040
 endlabel func_80002530
 
 nonmatching func_800025A4, 0xAC
@@ -3095,35 +3076,35 @@ glabel func_800025A4
     /* 35B4 800025B4 3C041FC0 */  lui        $a0, (0x1FC007FC >> 16)
     /* 35B8 800025B8 348407FC */  ori        $a0, $a0, (0x1FC007FC & 0xFFFF)
     /* 35BC 800025BC 34AF0008 */  ori        $t7, $a1, 0x8
-    /* 35C0 800025C0 0C002810 */  jal        __osSpRawWriteIo
+    /* 35C0 800025C0 0C002810 */  jal        func_8000A040
     /* 35C4 800025C4 01E02825 */   or        $a1, $t7, $zero
     /* 35C8 800025C8 1440FFF9 */  bnez       $v0, .L800025B0
     /* 35CC 800025CC 00000000 */   nop
   .L800025D0:
-    /* 35D0 800025D0 3C198000 */  lui        $t9, %hi(__osExceptionPreamble)
-    /* 35D4 800025D4 27393270 */  addiu      $t9, $t9, %lo(__osExceptionPreamble)
+    /* 35D0 800025D0 3C198000 */  lui        $t9, %hi(D_80003270)
+    /* 35D4 800025D4 27393270 */  addiu      $t9, $t9, %lo(D_80003270)
     /* 35D8 800025D8 8F210000 */  lw         $at, 0x0($t9)
     /* 35DC 800025DC 3C188000 */  lui        $t8, %hi(func_80000000)
-    /* 35E0 800025E0 3C0C8000 */  lui        $t4, %hi(__osExceptionPreamble)
+    /* 35E0 800025E0 3C0C8000 */  lui        $t4, %hi(D_80003270)
     /* 35E4 800025E4 AF010000 */  sw         $at, %lo(func_80000000)($t8)
     /* 35E8 800025E8 8F2A0004 */  lw         $t2, 0x4($t9)
-    /* 35EC 800025EC 258C3270 */  addiu      $t4, $t4, %lo(__osExceptionPreamble)
+    /* 35EC 800025EC 258C3270 */  addiu      $t4, $t4, %lo(D_80003270)
     /* 35F0 800025F0 3C0B8000 */  lui        $t3, (0x80000080 >> 16)
     /* 35F4 800025F4 AF0A0004 */  sw         $t2, %lo(func_80000000 + 0x4)($t8)
     /* 35F8 800025F8 8F210008 */  lw         $at, 0x8($t9)
     /* 35FC 800025FC 356B0080 */  ori        $t3, $t3, (0x80000080 & 0xFFFF)
-    /* 3600 80002600 3C088000 */  lui        $t0, %hi(__osExceptionPreamble)
+    /* 3600 80002600 3C088000 */  lui        $t0, %hi(D_80003270)
     /* 3604 80002604 AF010008 */  sw         $at, %lo(func_80000000 + 0x8)($t8)
     /* 3608 80002608 8F2A000C */  lw         $t2, 0xC($t9)
-    /* 360C 8000260C 25083270 */  addiu      $t0, $t0, %lo(__osExceptionPreamble)
+    /* 360C 8000260C 25083270 */  addiu      $t0, $t0, %lo(D_80003270)
     /* 3610 80002610 3C098000 */  lui        $t1, (0x80000100 >> 16)
     /* 3614 80002614 AF0A000C */  sw         $t2, %lo(func_80000000 + 0xC)($t8)
     /* 3618 80002618 8D810000 */  lw         $at, 0x0($t4)
     /* 361C 8000261C 35290100 */  ori        $t1, $t1, (0x80000100 & 0xFFFF)
-    /* 3620 80002620 3C0D8000 */  lui        $t5, %hi(__osExceptionPreamble)
+    /* 3620 80002620 3C0D8000 */  lui        $t5, %hi(D_80003270)
     /* 3624 80002624 AD610000 */  sw         $at, 0x0($t3)
     /* 3628 80002628 8D8F0004 */  lw         $t7, 0x4($t4)
-    /* 362C 8000262C 25AD3270 */  addiu      $t5, $t5, %lo(__osExceptionPreamble)
+    /* 362C 8000262C 25AD3270 */  addiu      $t5, $t5, %lo(D_80003270)
     /* 3630 80002630 3C0E8000 */  lui        $t6, (0x80000180 >> 16)
     /* 3634 80002634 AD6F0004 */  sw         $t7, 0x4($t3)
     /* 3638 80002638 8D810008 */  lw         $at, 0x8($t4)
@@ -3156,7 +3137,7 @@ glabel func_80002650
     /* 3690 80002690 0C000C7C */  jal        func_800031F0
     /* 3694 80002694 ADCF000C */   sw        $t7, 0xC($t6)
     /* 3698 80002698 3C048000 */  lui        $a0, (0x80000000 >> 16)
-    /* 369C 8000269C 0C0014D4 */  jal        osInvalICache
+    /* 369C 8000269C 0C0014D4 */  jal        func_80005350
     /* 36A0 800026A0 24050190 */   addiu     $a1, $zero, 0x190
     /* 36A4 800026A4 0C00277C */  jal        func_80009DF0
     /* 36A8 800026A8 00000000 */   nop
@@ -3179,14 +3160,14 @@ glabel func_80002650
     /* 36E8 800026E8 8CA5A3D4 */  lw         $a1, %lo(D_8000A3D4)($a1)
     /* 36EC 800026EC 8C84A3D0 */  lw         $a0, %lo(D_8000A3D0)($a0)
     /* 36F0 800026F0 24060000 */  addiu      $a2, $zero, 0x0
-    /* 36F4 800026F4 0C000BDE */  jal        __ll_mul
+    /* 36F4 800026F4 0C000BDE */  jal        func_80002F78
     /* 36F8 800026F8 24070003 */   addiu     $a3, $zero, 0x3
     /* 36FC 800026FC AFA20020 */  sw         $v0, 0x20($sp)
     /* 3700 80002700 AFA30024 */  sw         $v1, 0x24($sp)
     /* 3704 80002704 8FA50024 */  lw         $a1, 0x24($sp)
     /* 3708 80002708 8FA40020 */  lw         $a0, 0x20($sp)
     /* 370C 8000270C 24060000 */  addiu      $a2, $zero, 0x0
-    /* 3710 80002710 0C000B9E */  jal        __ull_div
+    /* 3710 80002710 0C000B9E */  jal        func_80002E78
     /* 3714 80002714 24070004 */   addiu     $a3, $zero, 0x4
     /* 3718 80002718 3C0A8000 */  lui        $t2, %hi(osResetType)
     /* 371C 8000271C 8D4A030C */  lw         $t2, %lo(osResetType)($t2)
@@ -3196,7 +3177,7 @@ glabel func_80002650
     /* 372C 8000272C AC23A3D4 */   sw        $v1, %lo(D_8000A3D4)($at)
     /* 3730 80002730 3C048000 */  lui        $a0, %hi(osAppNMIBuffer)
     /* 3734 80002734 2484031C */  addiu      $a0, $a0, %lo(osAppNMIBuffer)
-    /* 3738 80002738 0C000C34 */  jal        _bzero
+    /* 3738 80002738 0C000C34 */  jal        func_800030D0
     /* 373C 8000273C 24050040 */   addiu     $a1, $zero, 0x40
   .L80002740:
     /* 3740 80002740 3C0C8000 */  lui        $t4, %hi(osTvType)
@@ -3298,7 +3279,7 @@ glabel func_800027E0
     /* 388C 8000288C AFAF0048 */  sw         $t7, 0x48($sp)
 endlabel func_800027E0
 
-nonmatching func_80002890, 0xA0
+nonmatching func_80002890, 0x110
 
 glabel func_80002890
     /* 3890 80002890 8DE80000 */  lw         $t0, 0x0($t7)
@@ -3320,7 +3301,7 @@ glabel func_80002890
     /* 38D0 800028D0 AFA80048 */   sw        $t0, 0x48($sp)
     /* 38D4 800028D4 3C048000 */  lui        $a0, (0x80000180 >> 16)
     /* 38D8 800028D8 34840180 */  ori        $a0, $a0, (0x80000180 & 0xFFFF)
-    /* 38DC 800028DC 0C0014D4 */  jal        osInvalICache
+    /* 38DC 800028DC 0C0014D4 */  jal        func_80005350
     /* 38E0 800028E0 24050024 */   addiu     $a1, $zero, 0x24
     /* 38E4 800028E4 8FB90038 */  lw         $t9, 0x38($sp)
     /* 38E8 800028E8 240D0001 */  addiu      $t5, $zero, 0x1
@@ -3341,11 +3322,6 @@ glabel func_80002890
     /* 3924 80002924 3C0FBFF0 */  lui        $t7, (0xBFF00000 >> 16)
     /* 3928 80002928 AFAE0030 */  sw         $t6, 0x30($sp)
     /* 392C 8000292C AFAB002C */  sw         $t3, 0x2C($sp)
-endlabel func_80002890
-
-nonmatching osInitialize, 0x70
-
-glabel osInitialize
     /* 3930 80002930 AFAF0034 */  sw         $t7, 0x34($sp)
   .L80002934:
     /* 3934 80002934 8FA80034 */  lw         $t0, 0x34($sp)
@@ -3377,7 +3353,7 @@ glabel osInitialize
     /* 3994 80002994 27BD0060 */  addiu      $sp, $sp, 0x60
     /* 3998 80002998 03E00008 */  jr         $ra
     /* 399C 8000299C 00000000 */   nop
-endlabel osInitialize
+endlabel func_80002890
 
 nonmatching func_800029A0, 0x8
 
@@ -3754,7 +3730,7 @@ endlabel func_80002DE0
     /* 3DEC 80002DEC 00000000 */  nop
 
 /* Handwritten function */
-nonmatching func_80002DF0, 0x4C
+nonmatching func_80002DF0, 0x74
 
 glabel func_80002DF0
     /* 3DF0 80002DF0 18A00011 */  blez       $a1, .L80002E38
@@ -3778,13 +3754,7 @@ glabel func_80002DF0
     /* 3E34 80002E34 25080010 */   addiu     $t0, $t0, 0x10
   .L80002E38:
     /* 3E38 80002E38 03E00008 */  jr         $ra
-endlabel func_80002DF0
-
-/* Handwritten function */
-nonmatching __ull_rem, 0x28
-
-glabel __ull_rem
-    /* 3E3C 80002E3C 00000000 */  nop
+    /* 3E3C 80002E3C 00000000 */   nop
   .L80002E40:
     /* 3E40 80002E40 3C088000 */  lui        $t0, 0x8000
     /* 3E44 80002E44 010B4821 */  addu       $t1, $t0, $t3
@@ -3796,7 +3766,7 @@ glabel __ull_rem
     /* 3E58 80002E58 25080010 */   addiu     $t0, $t0, (0x80000010 & 0xFFFF)
     /* 3E5C 80002E5C 03E00008 */  jr         $ra
     /* 3E60 80002E60 00000000 */   nop
-endlabel __ull_rem
+endlabel func_80002DF0
     /* 3E64 80002E64 00000000 */  nop
     /* 3E68 80002E68 00000000 */  nop
     /* 3E6C 80002E6C 00000000 */  nop
@@ -3810,9 +3780,9 @@ glabel func_80002E70
 endlabel func_80002E70
 
 /* Handwritten function */
-nonmatching __ull_div, 0x3C
+nonmatching func_80002E78, 0x100
 
-glabel __ull_div
+glabel func_80002E78
     /* 3E78 80002E78 03400008 */  jr         $k0
     /* 3E7C 80002E7C 00000000 */   nop
     /* 3E80 80002E80 AFBAFFF0 */  sw         $k0, -0x10($sp) /* handwritten instruction */
@@ -3829,12 +3799,6 @@ glabel __ull_div
     /* 3EA8 80002EA8 17400008 */  bnez       $k0, .L80002ECC /* handwritten instruction */
     /* 3EAC 80002EAC 001AD082 */   srl       $k0, $k0, 2
     /* 3EB0 80002EB0 401A6800 */  mfc0       $k0, $13 /* handwritten instruction */
-endlabel __ull_div
-
-/* Handwritten function */
-nonmatching __ll_lshift, 0x68
-
-glabel __ll_lshift
     /* 3EB4 80002EB4 00000000 */  nop
     /* 3EB8 80002EB8 335A4000 */  andi       $k0, $k0, 0x4000 /* handwritten instruction */
     /* 3EBC 80002EBC 13400021 */  beqz       $k0, .L80002F44 /* handwritten instruction */
@@ -3863,12 +3827,6 @@ glabel __ll_lshift
     /* 3F10 80002F10 17400005 */  bnez       $k0, .L80002F28 /* handwritten instruction */
     /* 3F14 80002F14 3C1ABFF0 */   lui       $k0, (0xBFF00014 >> 16) /* handwritten instruction */
     /* 3F18 80002F18 375A0014 */  ori        $k0, $k0, (0xBFF00014 & 0xFFFF) /* handwritten instruction */
-endlabel __ll_lshift
-
-/* Handwritten function */
-nonmatching __ll_div, 0x5C
-
-glabel __ll_div
     /* 3F1C 80002F1C 8FBBFFF8 */  lw         $k1, -0x8($sp) /* handwritten instruction */
     /* 3F20 80002F20 03400008 */  jr         $k0
     /* 3F24 80002F24 27BDFFA0 */   addiu     $sp, $sp, -0x60
@@ -3894,11 +3852,12 @@ glabel __ll_div
     /* 3F6C 80002F6C FF4A0068 */  sd         $t2, 0x68($k0) /* handwritten instruction */
     /* 3F70 80002F70 AF400018 */  sw         $zero, 0x18($k0) /* handwritten instruction */
     /* 3F74 80002F74 40086800 */  mfc0       $t0, $13 /* handwritten instruction */
-endlabel __ll_div
+endlabel func_80002E78
 
-nonmatching __ll_mul, 0x30
+/* Handwritten function */
+nonmatching func_80002F78, 0x158
 
-glabel __ll_mul
+glabel func_80002F78
     /* 3F78 80002F78 3C0A8002 */  lui        $t2, %hi(__kmc_pt_mode)
     /* 3F7C 80002F7C 8D4A82F0 */  lw         $t2, %lo(__kmc_pt_mode)($t2)
     /* 3F80 80002F80 154000D9 */  bnez       $t2, .L800032E8
@@ -3911,12 +3870,6 @@ glabel __ll_mul
     /* 3F9C 80002F9C 312A4000 */  andi       $t2, $t1, 0x4000
     /* 3FA0 80002FA0 1140009E */  beqz       $t2, .L8000321C
     /* 3FA4 80002FA4 00000000 */   nop
-endlabel __ll_mul
-
-/* Handwritten function */
-nonmatching __ull_divremi, 0x60
-
-glabel __ull_divremi
     /* 3FA8 80002FA8 3C09C000 */  lui        $t1, %hi(D_C0000008)
     /* 3FAC 80002FAC 25290008 */  addiu      $t1, $t1, %lo(D_C0000008)
     /* 3FB0 80002FB0 AD200000 */  sw         $zero, 0x0($t1)
@@ -3942,13 +3895,8 @@ glabel __ull_divremi
     /* 3FFC 80002FFC 240A000F */  addiu      $t2, $zero, 0xF
     /* 4000 80003000 112A0022 */  beq        $t1, $t2, .L8000308C
     /* 4004 80003004 00000000 */   nop
-endlabel __ull_divremi
-
-nonmatching __ll_mod, 0x9C
-
-glabel __ll_mod
     /* 4008 80003008 240A0011 */  addiu      $t2, $zero, 0x11
-    /* 400C 8000300C 112A0025 */  beq        $t1, $t2, __ll_rshift
+    /* 400C 8000300C 112A0025 */  beq        $t1, $t2, .L800030A4
     /* 4010 80003010 00000000 */   nop
     /* 4014 80003014 240A000D */  addiu      $t2, $zero, 0xD
     /* 4018 80003018 112A0026 */  beq        $t1, $t2, .L800030B4
@@ -3990,11 +3938,7 @@ glabel __ll_mod
     /* 4098 80003098 3C018001 */  lui        $at, %hi(D_8000A404)
     /* 409C 8000309C 10000087 */  b          .L800032BC
     /* 40A0 800030A0 AC29A404 */   sw        $t1, %lo(D_8000A404)($at)
-endlabel __ll_mod
-
-nonmatching __ll_rshift, 0x2C
-
-glabel __ll_rshift
+  .L800030A4:
     /* 40A4 800030A4 240A0088 */  addiu      $t2, $zero, 0x88
     /* 40A8 800030A8 3C018001 */  lui        $at, %hi(D_8000A408)
     /* 40AC 800030AC 1000008E */  b          .L800032E8
@@ -4008,12 +3952,12 @@ glabel __ll_rshift
     /* 40C4 800030C4 240A0090 */  addiu      $t2, $zero, 0x90
     /* 40C8 800030C8 3C018001 */  lui        $at, (0x80010000 >> 16)
     /* 40CC 800030CC 10000086 */  b          .L800032E8
-endlabel __ll_rshift
+endlabel func_80002F78
 
 /* Handwritten function */
-nonmatching _bzero, 0x100
+nonmatching func_800030D0, 0x100
 
-glabel _bzero
+glabel func_800030D0
     /* 40D0 800030D0 AC2AA408 */  sw         $t2, -0x5BF8($at)
   .L800030D4:
     /* 40D4 800030D4 240A0098 */  addiu      $t2, $zero, 0x98
@@ -4083,7 +4027,7 @@ glabel _bzero
     /* 41C4 800031C4 A16A0000 */  sb         $t2, 0x0($t3)
     /* 41C8 800031C8 1009000A */  beq        $zero, $t1, .L800031F4
     /* 41CC 800031CC 216B0001 */   addi      $t3, $t3, 0x1 /* handwritten instruction */
-endlabel _bzero
+endlabel func_800030D0
 
 /* Handwritten function */
 nonmatching func_800031D0, 0x10
@@ -4096,17 +4040,17 @@ glabel func_800031D0
 endlabel func_800031D0
 
 /* Handwritten function */
-nonmatching __osGetSR, 0x10
+nonmatching func_800031E0, 0x10
 
-glabel __osGetSR
+glabel func_800031E0
     /* 41E0 800031E0 10090004 */  beq        $zero, $t1, .L800031F4
     /* 41E4 800031E4 216B0001 */   addi      $t3, $t3, 0x1 /* handwritten instruction */
     /* 41E8 800031E8 310800FF */  andi       $t0, $t0, 0xFF
     /* 41EC 800031EC A1680000 */  sb         $t0, 0x0($t3)
-endlabel __osGetSR
+endlabel func_800031E0
 
 /* Handwritten function */
-nonmatching func_800031F0, 0x80
+nonmatching func_800031F0, 0xA34
 
 glabel func_800031F0
     /* 41F0 800031F0 216B0001 */  addi       $t3, $t3, 0x1 /* handwritten instruction */
@@ -4144,23 +4088,12 @@ glabel func_800031F0
     /* 4264 80003264 214AFFFF */  addi       $t2, $t2, -0x1 /* handwritten instruction */
     /* 4268 80003268 3C018002 */  lui        $at, %hi(__osRdb_IP6_Ct)
     /* 426C 8000326C AC2A9308 */  sw         $t2, %lo(__osRdb_IP6_Ct)($at)
-endlabel func_800031F0
-
-/* Handwritten function */
-nonmatching __osExceptionPreamble, 0x10
-
-glabel __osExceptionPreamble
+  alabel D_80003270
     /* 4270 80003270 00095080 */  sll        $t2, $t1, 2
     /* 4274 80003274 01484020 */  add        $t0, $t2, $t0 /* handwritten instruction */
     /* 4278 80003278 8D0A0000 */  lw         $t2, 0x0($t0)
-    /* 427C 8000327C 3C088002 */  lui        $t0, (0x80020000 >> 16)
-endlabel __osExceptionPreamble
-
-/* Handwritten function */
-nonmatching __ptExceptionPreamble, 0x9A4
-
-glabel __ptExceptionPreamble
-    /* 4280 80003280 8D089304 */  lw         $t0, -0x6CFC($t0)
+    /* 427C 8000327C 3C088002 */  lui        $t0, %hi(__osRdb_IP6_Size)
+    /* 4280 80003280 8D089304 */  lw         $t0, %lo(__osRdb_IP6_Size)($t0)
     /* 4284 80003284 21290001 */  addi       $t1, $t1, 0x1 /* handwritten instruction */
     /* 4288 80003288 01094022 */  sub        $t0, $t0, $t1 /* handwritten instruction */
     /* 428C 8000328C 1D000002 */  bgtz       $t0, .L80003298
@@ -4302,7 +4235,7 @@ glabel __ptExceptionPreamble
     /* 448C 8000348C 8C84A40C */  lw         $a0, %lo(D_8000A40C)($a0)
     /* 4490 80003490 10800005 */  beqz       $a0, .L800034A8
     /* 4494 80003494 3C018001 */   lui       $at, %hi(D_8000A40C)
-    /* 4498 80003498 0C00136E */  jal        kdebugserver
+    /* 4498 80003498 0C00136E */  jal        func_80004DB8
     /* 449C 8000349C AC20A40C */   sw        $zero, %lo(D_8000A40C)($at)
     /* 44A0 800034A0 10000178 */  b          .L80003A84
     /* 44A4 800034A4 00000000 */   nop
@@ -4524,14 +4457,14 @@ glabel __ptExceptionPreamble
     /* 47C8 800037C8 03402825 */  or         $a1, $k0, $zero
     /* 47CC 800037CC 0C000F83 */  jal        func_80003E0C
     /* 47D0 800037D0 2484A418 */   addiu     $a0, $a0, %lo(__osRunQueue)
-    /* 47D4 800037D4 08000F99 */  j          __osDispatchThread
+    /* 47D4 800037D4 08000F99 */  j          func_80003E64
     /* 47D8 800037D8 00000000 */   nop
   .L800037DC:
     /* 47DC 800037DC 3C098001 */  lui        $t1, %hi(__osRunQueue)
     /* 47E0 800037E0 2529A418 */  addiu      $t1, $t1, %lo(__osRunQueue)
     /* 47E4 800037E4 8D2A0000 */  lw         $t2, 0x0($t1)
     /* 47E8 800037E8 AF4A0000 */  sw         $t2, 0x0($k0) /* handwritten instruction */
-    /* 47EC 800037EC 08000F99 */  j          __osDispatchThread
+    /* 47EC 800037EC 08000F99 */  j          func_80003E64
     /* 47F0 800037F0 AD3A0000 */   sw        $k0, 0x0($t1) /* handwritten instruction */
   .L800037F4:
     /* 47F4 800037F4 3C018001 */  lui        $at, %hi(D_8000A424)
@@ -4544,7 +4477,7 @@ glabel __ptExceptionPreamble
     /* 4810 80003810 AF4A0124 */  sw         $t2, 0x124($k0) /* handwritten instruction */
     /* 4814 80003814 0C000F09 */  jal        func_80003C24
     /* 4818 80003818 24040060 */   addiu     $a0, $zero, 0x60
-    /* 481C 8000381C 08000F99 */  j          __osDispatchThread
+    /* 481C 8000381C 08000F99 */  j          func_80003E64
     /* 4820 80003820 00000000 */   nop
     /* 4824 80003824 3C0A8002 */  lui        $t2, %hi(__osEventStateTab)
     /* 4828 80003828 254A9510 */  addiu      $t2, $t2, %lo(__osEventStateTab)
@@ -4584,7 +4517,7 @@ glabel __ptExceptionPreamble
     /* 48A8 800038A8 8D4B0000 */  lw         $t3, 0x0($t2)
     /* 48AC 800038AC 11600008 */  beqz       $t3, .L800038D0
     /* 48B0 800038B0 00000000 */   nop
-    /* 48B4 800038B4 0C000F95 */  jal        __osPopThread
+    /* 48B4 800038B4 0C000F95 */  jal        func_80003E54
     /* 48B8 800038B8 01202025 */   or        $a0, $t1, $zero
     /* 48BC 800038BC 00405025 */  or         $t2, $v0, $zero
     /* 48C0 800038C0 3C048001 */  lui        $a0, %hi(__osRunQueue)
@@ -4674,7 +4607,7 @@ glabel __ptExceptionPreamble
     /* 49FC 800039FC 0C000F83 */  jal        func_80003E0C
     /* 4A00 80003A00 00000000 */   nop
   .L80003A04:
-    /* 4A04 80003A04 08000F99 */  j          __osDispatchThread
+    /* 4A04 80003A04 08000F99 */  j          func_80003E64
     /* 4A08 80003A08 00000000 */   nop
     /* 4A0C 80003A0C 8C980000 */  lw         $t8, 0x0($a0)
     /* 4A10 80003A10 8CAF0004 */  lw         $t7, 0x4($a1)
@@ -4701,7 +4634,7 @@ glabel __ptExceptionPreamble
     /* 4A5C 80003A5C 03E00008 */  jr         $ra
     /* 4A60 80003A60 AC990000 */   sw        $t9, 0x0($a0)
     /* 4A64 80003A64 3C048001 */  lui        $a0, %hi(__osRunQueue)
-    /* 4A68 80003A68 0C000F95 */  jal        __osPopThread
+    /* 4A68 80003A68 0C000F95 */  jal        func_80003E54
     /* 4A6C 80003A6C 2484A418 */   addiu     $a0, $a0, %lo(__osRunQueue)
     /* 4A70 80003A70 3C018001 */  lui        $at, %hi(__osRunningThread)
     /* 4A74 80003A74 AC22A420 */  sw         $v0, %lo(__osRunningThread)($at)
@@ -4797,7 +4730,7 @@ glabel __ptExceptionPreamble
     /* 4BD4 80003BD4 00000000 */  nop
     /* 4BD8 80003BD8 00000000 */  nop
     /* 4BDC 80003BDC 42000018 */  eret /* handwritten instruction */
-    /* 4BE0 80003BE0 0C00100C */  jal        osDestroyThread
+    /* 4BE0 80003BE0 0C00100C */  jal        func_80004030
     /* 4BE4 80003BE4 00002025 */   or        $a0, $zero, $zero
     /* 4BE8 80003BE8 00000000 */  nop
     /* 4BEC 80003BEC 00000000 */  nop
@@ -4816,7 +4749,7 @@ glabel __ptExceptionPreamble
     /* 4C18 80003C18 00E03025 */  or         $a2, $a3, $zero
     /* 4C1C 80003C1C 8CC70000 */  lw         $a3, 0x0($a2)
     /* 4C20 80003C20 14E0FFF8 */  bnez       $a3, .L80003C04
-endlabel __ptExceptionPreamble
+endlabel func_800031F0
 
 nonmatching func_80003C24, 0xC
 
@@ -4896,10 +4829,10 @@ endlabel func_80003C30
 nonmatching func_80003D0C, 0x28
 
 glabel func_80003D0C
-    /* 4D0C 80003D0C 0C000F99 */  jal        __osDispatchThread
+    /* 4D0C 80003D0C 0C000F99 */  jal        func_80003E64
     /* 4D10 80003D10 00000000 */   nop
   .L80003D14:
-    /* 4D14 80003D14 0C0019B4 */  jal        __osRestoreInt
+    /* 4D14 80003D14 0C0019B4 */  jal        func_800066D0
     /* 4D18 80003D18 02002025 */   or        $a0, $s0, $zero
     /* 4D1C 80003D1C 8FBF0024 */  lw         $ra, 0x24($sp)
     /* 4D20 80003D20 8FB00018 */  lw         $s0, 0x18($sp)
@@ -4996,18 +4929,18 @@ glabel func_80003E0C
     /* 4E50 80003E50 8FB90030 */  lw         $t9, 0x30($sp)
 endlabel func_80003E0C
 
-nonmatching __osPopThread, 0x10
+nonmatching func_80003E54, 0x10
 
-glabel __osPopThread
+glabel func_80003E54
     /* 4E54 80003E54 3C010100 */  lui        $at, (0x1000000 >> 16)
     /* 4E58 80003E58 3C0BA500 */  lui        $t3, (0xA5000000 >> 16)
     /* 4E5C 80003E5C 8F290010 */  lw         $t1, 0x10($t9)
     /* 4E60 80003E60 00001025 */  or         $v0, $zero, $zero
-endlabel __osPopThread
+endlabel func_80003E54
 
-nonmatching __osDispatchThread, 0x17C
+nonmatching func_80003E64, 0x18C
 
-glabel __osDispatchThread
+glabel func_80003E64
     /* 4E64 80003E64 01215025 */  or         $t2, $t1, $at
     /* 4E68 80003E68 AD6A0510 */  sw         $t2, 0x510($t3)
     /* 4E6C 80003E6C 8FAC002C */  lw         $t4, 0x2C($sp)
@@ -5109,17 +5042,13 @@ glabel __osDispatchThread
   .L80003FD4:
     /* 4FD4 80003FD4 8FA9002C */  lw         $t1, 0x2C($sp)
     /* 4FD8 80003FD8 3C048002 */  lui        $a0, (0x80020000 >> 16)
-    /* 4FDC 80003FDC 3C060500 */  lui        $a2, (0x5000000 >> 16)
-endlabel __osDispatchThread
-
-nonmatching __osCleanupThread, 0x10
-
-glabel __osCleanupThread
+    /* 4FDC 80003FDC 3C060500 */  lui        $a2, (0x5000400 >> 16)
+  alabel D_80003FE0
     /* 4FE0 80003FE0 8D390004 */  lw         $t9, 0x4($t1)
     /* 4FE4 80003FE4 8D2A000C */  lw         $t2, 0xC($t1)
-    /* 4FE8 80003FE8 34C60400 */  ori        $a2, $a2, 0x400
+    /* 4FE8 80003FE8 34C60400 */  ori        $a2, $a2, (0x5000400 & 0xFFFF)
     /* 4FEC 80003FEC 24050001 */  addiu      $a1, $zero, 0x1
-endlabel __osCleanupThread
+endlabel func_80003E64
 
 nonmatching func_80003FF0, 0x40
 
@@ -5134,7 +5063,7 @@ glabel func_80003FF0
     /* 500C 8000400C 8C849644 */  lw         $a0, -0x69BC($a0)
     /* 5010 80004010 8DE8000C */  lw         $t0, 0xC($t7)
     /* 5014 80004014 8DE70004 */  lw         $a3, 0x4($t7)
-    /* 5018 80004018 0C0015BC */  jal        osEPiRawStartDma
+    /* 5018 80004018 0C0015BC */  jal        func_800056F0
     /* 501C 8000401C AFA80010 */   sw        $t0, 0x10($sp)
     /* 5020 80004020 100000EC */  b          .L800043D4
     /* 5024 80004024 24020001 */   addiu     $v0, $zero, 0x1
@@ -5143,9 +5072,9 @@ glabel func_80003FF0
     /* 502C 8000402C 8DB90000 */  lw         $t9, 0x0($t5)
 endlabel func_80003FF0
 
-nonmatching osDestroyThread, 0x49C
+nonmatching func_80004030, 0x49C
 
-glabel osDestroyThread
+glabel func_80004030
     /* 5030 80004030 172000E3 */  bnez       $t9, .L800043C0
     /* 5034 80004034 00000000 */   nop
     /* 5038 80004038 95AA0004 */  lhu        $t2, 0x4($t5)
@@ -5299,7 +5228,7 @@ glabel osDestroyThread
     /* 5258 80004258 00002825 */  or         $a1, $zero, $zero
     /* 525C 8000425C 000F6080 */  sll        $t4, $t7, 2
     /* 5260 80004260 AFAC0010 */  sw         $t4, 0x10($sp)
-    /* 5264 80004264 0C0015BC */  jal        osEPiRawStartDma
+    /* 5264 80004264 0C0015BC */  jal        func_800056F0
     /* 5268 80004268 3C060500 */   lui       $a2, (0x5000000 >> 16)
     /* 526C 8000426C 10000059 */  b          .L800043D4
     /* 5270 80004270 24020001 */   addiu     $v0, $zero, 0x1
@@ -5371,7 +5300,7 @@ glabel osDestroyThread
     /* 5368 80004368 34C60400 */  ori        $a2, $a2, (0x5000400 & 0xFFFF)
     /* 536C 8000436C 8C849644 */  lw         $a0, %lo(D_80019644)($a0)
     /* 5370 80004370 00002825 */  or         $a1, $zero, $zero
-    /* 5374 80004374 0C0015BC */  jal        osEPiRawStartDma
+    /* 5374 80004374 0C0015BC */  jal        func_800056F0
     /* 5378 80004378 AFAC0010 */   sw        $t4, 0x10($sp)
     /* 537C 8000437C 8FAA002C */  lw         $t2, 0x2C($sp)
     /* 5380 80004380 24020001 */  addiu      $v0, $zero, 0x1
@@ -5465,7 +5394,7 @@ glabel osDestroyThread
     /* 54C0 800044C0 AC2CA3E0 */  sw         $t4, %lo(__OSGlobalIntMask)($at)
     /* 54C4 800044C4 03E00008 */  jr         $ra
     /* 54C8 800044C8 27BD0020 */   addiu     $sp, $sp, 0x20
-endlabel osDestroyThread
+endlabel func_80004030
 
 nonmatching func_800044CC, 0xEC
 
@@ -5519,7 +5448,7 @@ glabel func_800044CC
     /* 557C 8000457C 8DE90000 */  lw         $t1, 0x0($t7)
     /* 5580 80004580 11200008 */  beqz       $t1, .L800045A4
     /* 5584 80004584 00000000 */   nop
-    /* 5588 80004588 0C000F95 */  jal        __osPopThread
+    /* 5588 80004588 0C000F95 */  jal        func_80003E54
     /* 558C 8000458C 01C02025 */   or        $a0, $t6, $zero
     /* 5590 80004590 00408025 */  or         $s0, $v0, $zero
     /* 5594 80004594 3C048001 */  lui        $a0, %hi(__osRunQueue)
@@ -5569,7 +5498,7 @@ glabel func_800045C0
     /* 5628 80004628 AFA2001C */  sw         $v0, 0x1C($sp)
     /* 562C 8000462C 3C018002 */  lui        $at, %hi(__osRdb_IP6_CurSend)
     /* 5630 80004630 AC209310 */  sw         $zero, %lo(__osRdb_IP6_CurSend)($at)
-    /* 5634 80004634 0C0019B4 */  jal        __osRestoreInt
+    /* 5634 80004634 0C0019B4 */  jal        func_800066D0
     /* 5638 80004638 8FA4001C */   lw        $a0, 0x1C($sp)
     /* 563C 8000463C 8FBF0014 */  lw         $ra, 0x14($sp)
     /* 5640 80004640 27BD0020 */  addiu      $sp, $sp, 0x20
@@ -5601,7 +5530,7 @@ glabel func_80004650
     /* 5690 80004690 1720FFFC */  bnez       $t9, .L80004684
     /* 5694 80004694 00000000 */   nop
   .L80004698:
-    /* 5698 80004698 0C0012CC */  jal        osVirtualToPhysical
+    /* 5698 80004698 0C0012CC */  jal        func_80004B30
     /* 569C 8000469C 8FA40030 */   lw        $a0, 0x30($sp)
     /* 56A0 800046A0 3C08A460 */  lui        $t0, %hi(D_A4600000)
     /* 56A4 800046A4 AD020000 */  sw         $v0, %lo(D_A4600000)($t0)
@@ -5865,16 +5794,11 @@ glabel func_800048E8
     /* 59B4 800049B4 00000000 */   nop
 endlabel func_800048E8
 
-nonmatching func_800049B8, 0x8
+nonmatching func_800049B8, 0x98
 
 glabel func_800049B8
     /* 59B8 800049B8 27BDFFD8 */  addiu      $sp, $sp, -0x28
     /* 59BC 800049BC AFBF0014 */  sw         $ra, 0x14($sp)
-endlabel func_800049B8
-
-nonmatching osInitRdb, 0x90
-
-glabel osInitRdb
     /* 59C0 800049C0 AFA40028 */  sw         $a0, 0x28($sp)
     /* 59C4 800049C4 AFA00024 */  sw         $zero, 0x24($sp)
   .L800049C8:
@@ -5885,10 +5809,10 @@ glabel osInitRdb
     /* 59D8 800049D8 91EF0029 */  lbu        $t7, 0x29($t7)
     /* 59DC 800049DC 3C198001 */  lui        $t9, %hi(D_8000A430)
     /* 59E0 800049E0 8F39A430 */  lw         $t9, %lo(D_8000A430)($t9)
-    /* 59E4 800049E4 3C018002 */  lui        $at, %hi(D_800194D0)
+    /* 59E4 800049E4 3C018002 */  lui        $at, %hi(kdebugserver_bss_01B0)
     /* 59E8 800049E8 8FA90024 */  lw         $t1, 0x24($sp)
     /* 59EC 800049EC 00380821 */  addu       $at, $at, $t8
-    /* 59F0 800049F0 A02F94D0 */  sb         $t7, %lo(D_800194D0)($at)
+    /* 59F0 800049F0 A02F94D0 */  sb         $t7, %lo(kdebugserver_bss_01B0)($at)
     /* 59F4 800049F4 3C018001 */  lui        $at, %hi(D_8000A430)
     /* 59F8 800049F8 27280001 */  addiu      $t0, $t9, 0x1
     /* 59FC 800049FC AC28A430 */  sw         $t0, %lo(D_8000A430)($at)
@@ -5896,8 +5820,8 @@ glabel osInitRdb
     /* 5A04 80004A04 2D410003 */  sltiu      $at, $t2, 0x3
     /* 5A08 80004A08 1420FFEF */  bnez       $at, .L800049C8
     /* 5A0C 80004A0C AFAA0024 */   sw        $t2, 0x24($sp)
-    /* 5A10 80004A10 3C0B8002 */  lui        $t3, %hi(D_800194D0)
-    /* 5A14 80004A14 256B94D0 */  addiu      $t3, $t3, %lo(D_800194D0)
+    /* 5A10 80004A10 3C0B8002 */  lui        $t3, %hi(kdebugserver_bss_01B0)
+    /* 5A14 80004A14 256B94D0 */  addiu      $t3, $t3, %lo(kdebugserver_bss_01B0)
     /* 5A18 80004A18 916C0000 */  lbu        $t4, 0x0($t3)
     /* 5A1C 80004A1C 24010002 */  addiu      $at, $zero, 0x2
     /* 5A20 80004A20 15810009 */  bne        $t4, $at, .L80004A48
@@ -5913,24 +5837,24 @@ glabel osInitRdb
   .L80004A48:
     /* 5A48 80004A48 3C0D8001 */  lui        $t5, %hi(D_8000A430)
     /* 5A4C 80004A4C 8DADA430 */  lw         $t5, %lo(D_8000A430)($t5)
-endlabel osInitRdb
+endlabel func_800049B8
 
-nonmatching osPiRawStartDma, 0x68
+nonmatching func_80004A50, 0x68
 
-glabel osPiRawStartDma
+glabel func_80004A50
     /* 5A50 80004A50 2DA10009 */  sltiu      $at, $t5, 0x9
     /* 5A54 80004A54 14200014 */  bnez       $at, .L80004AA8
     /* 5A58 80004A58 00000000 */   nop
-    /* 5A5C 80004A5C 3C0E8002 */  lui        $t6, %hi(D_800194D0)
-    /* 5A60 80004A60 25CE94D0 */  addiu      $t6, $t6, %lo(D_800194D0)
+    /* 5A5C 80004A5C 3C0E8002 */  lui        $t6, %hi(kdebugserver_bss_01B0)
+    /* 5A60 80004A60 25CE94D0 */  addiu      $t6, $t6, %lo(kdebugserver_bss_01B0)
     /* 5A64 80004A64 91CF0000 */  lbu        $t7, 0x0($t6)
     /* 5A68 80004A68 24010001 */  addiu      $at, $zero, 0x1
     /* 5A6C 80004A6C 15E1000E */  bne        $t7, $at, .L80004AA8
     /* 5A70 80004A70 00000000 */   nop
     /* 5A74 80004A74 0C0012EC */  jal        func_80004BB0
     /* 5A78 80004A78 25C40001 */   addiu     $a0, $t6, 0x1
-    /* 5A7C 80004A7C 3C048002 */  lui        $a0, %hi(D_800194D0)
-    /* 5A80 80004A80 248494D0 */  addiu      $a0, $a0, %lo(D_800194D0)
+    /* 5A7C 80004A7C 3C048002 */  lui        $a0, %hi(kdebugserver_bss_01B0)
+    /* 5A80 80004A80 248494D0 */  addiu      $a0, $a0, %lo(kdebugserver_bss_01B0)
     /* 5A84 80004A84 AFA2001C */  sw         $v0, 0x1C($sp)
     /* 5A88 80004A88 0C0012EC */  jal        func_80004BB0
     /* 5A8C 80004A8C 24840005 */   addiu     $a0, $a0, 0x5
@@ -5945,7 +5869,7 @@ glabel osPiRawStartDma
     /* 5AAC 80004AAC 27BD0028 */  addiu      $sp, $sp, 0x28
     /* 5AB0 80004AB0 03E00008 */  jr         $ra
     /* 5AB4 80004AB4 00000000 */   nop
-endlabel osPiRawStartDma
+endlabel func_80004A50
     /* 5AB8 80004AB8 00000000 */  nop
     /* 5ABC 80004ABC 00000000 */  nop
 
@@ -5989,20 +5913,20 @@ glabel func_80004B10
     /* 5B2C 80004B2C 15C0000F */  bnez       $t6, .L80004B6C
 endlabel func_80004B10
 
-nonmatching osVirtualToPhysical, 0x80
+nonmatching func_80004B30, 0x80
 
-glabel osVirtualToPhysical
+glabel func_80004B30
     /* 5B30 80004B30 AFA00028 */  sw         $zero, 0x28($sp)
-    /* 5B34 80004B34 3C048002 */  lui        $a0, %hi(D_800194E0)
-    /* 5B38 80004B38 3C058002 */  lui        $a1, %hi(D_800194F8)
-    /* 5B3C 80004B3C 24A594F8 */  addiu      $a1, $a1, %lo(D_800194F8)
-    /* 5B40 80004B40 248494E0 */  addiu      $a0, $a0, %lo(D_800194E0)
+    /* 5B34 80004B34 3C048002 */  lui        $a0, %hi(readhost_bss_0000)
+    /* 5B38 80004B38 3C058002 */  lui        $a1, %hi(readhost_bss_0018)
+    /* 5B3C 80004B3C 24A594F8 */  addiu      $a1, $a1, %lo(readhost_bss_0018)
+    /* 5B40 80004B40 248494E0 */  addiu      $a0, $a0, %lo(readhost_bss_0000)
     /* 5B44 80004B44 0C0014F4 */  jal        func_800053D0
     /* 5B48 80004B48 24060001 */   addiu     $a2, $zero, 0x1
-    /* 5B4C 80004B4C 3C058002 */  lui        $a1, %hi(D_800194E0)
-    /* 5B50 80004B50 24A594E0 */  addiu      $a1, $a1, %lo(D_800194E0)
+    /* 5B4C 80004B4C 3C058002 */  lui        $a1, %hi(readhost_bss_0000)
+    /* 5B50 80004B50 24A594E0 */  addiu      $a1, $a1, %lo(readhost_bss_0000)
     /* 5B54 80004B54 2404000F */  addiu      $a0, $zero, 0xF
-    /* 5B58 80004B58 0C001478 */  jal        osSetEventMesg
+    /* 5B58 80004B58 0C001478 */  jal        func_800051E0
     /* 5B5C 80004B5C 00003025 */   or        $a2, $zero, $zero
     /* 5B60 80004B60 240F0001 */  addiu      $t7, $zero, 0x1
     /* 5B64 80004B64 3C018001 */  lui        $at, %hi(D_8000A440)
@@ -6019,14 +5943,14 @@ glabel osVirtualToPhysical
   .L80004B8C:
     /* 5B8C 80004B8C 27A4002C */  addiu      $a0, $sp, 0x2C
     /* 5B90 80004B90 24050001 */  addiu      $a1, $zero, 0x1
-    /* 5B94 80004B94 0C0019BC */  jal        __osRdbSend
+    /* 5B94 80004B94 0C0019BC */  jal        func_800066F0
     /* 5B98 80004B98 24060005 */   addiu     $a2, $zero, 0x5
     /* 5B9C 80004B9C 8FA90028 */  lw         $t1, 0x28($sp)
     /* 5BA0 80004BA0 00408025 */  or         $s0, $v0, $zero
     /* 5BA4 80004BA4 01305021 */  addu       $t2, $t1, $s0
     /* 5BA8 80004BA8 AFAA0028 */  sw         $t2, 0x28($sp)
     /* 5BAC 80004BAC 8FAB0028 */  lw         $t3, 0x28($sp)
-endlabel osVirtualToPhysical
+endlabel func_80004B30
 
 nonmatching func_80004BB0, 0x30
 
@@ -6034,10 +5958,10 @@ glabel func_80004BB0
     /* 5BB0 80004BB0 1160FFF6 */  beqz       $t3, .L80004B8C
     /* 5BB4 80004BB4 00000000 */   nop
   .L80004BB8:
-    /* 5BB8 80004BB8 3C048002 */  lui        $a0, %hi(D_800194E0)
-    /* 5BBC 80004BBC 248494E0 */  addiu      $a0, $a0, %lo(D_800194E0)
+    /* 5BB8 80004BB8 3C048002 */  lui        $a0, %hi(readhost_bss_0000)
+    /* 5BBC 80004BBC 248494E0 */  addiu      $a0, $a0, %lo(readhost_bss_0000)
     /* 5BC0 80004BC0 00002825 */  or         $a1, $zero, $zero
-    /* 5BC4 80004BC4 0C0013F8 */  jal        osRecvMesg
+    /* 5BC4 80004BC4 0C0013F8 */  jal        func_80004FE0
     /* 5BC8 80004BC8 24060001 */   addiu     $a2, $zero, 0x1
     /* 5BCC 80004BCC 8FBF001C */  lw         $ra, 0x1C($sp)
     /* 5BD0 80004BD0 8FB00018 */  lw         $s0, 0x18($sp)
@@ -6071,7 +5995,7 @@ glabel func_80004C08
     /* 5C14 80004C14 8FB80030 */  lw         $t8, 0x30($sp)
     /* 5C18 80004C18 17000005 */  bnez       $t8, .L80004C30
     /* 5C1C 80004C1C 00000000 */   nop
-    /* 5C20 80004C20 0C0019B4 */  jal        __osRestoreInt
+    /* 5C20 80004C20 0C0019B4 */  jal        func_800066D0
     /* 5C24 80004C24 02002025 */   or        $a0, $s0, $zero
     /* 5C28 80004C28 10000036 */  b          .L80004D04
     /* 5C2C 80004C2C 2402FFFF */   addiu     $v0, $zero, -0x1
@@ -6130,7 +6054,7 @@ glabel func_80004C7C
     /* 5CD8 80004CD8 8D690000 */  lw         $t1, 0x0($t3)
     /* 5CDC 80004CDC 11200006 */  beqz       $t1, .L80004CF8
     /* 5CE0 80004CE0 00000000 */   nop
-    /* 5CE4 80004CE4 0C000F95 */  jal        __osPopThread
+    /* 5CE4 80004CE4 0C000F95 */  jal        func_80003E54
 endlabel func_80004C7C
 
 nonmatching func_80004CE8, 0x30
@@ -6138,10 +6062,10 @@ nonmatching func_80004CE8, 0x30
 glabel func_80004CE8
     /* 5CE8 80004CE8 27240004 */  addiu      $a0, $t9, 0x4
     /* 5CEC 80004CEC 00408825 */  or         $s1, $v0, $zero
-    /* 5CF0 80004CF0 0C002844 */  jal        osStartThread
+    /* 5CF0 80004CF0 0C002844 */  jal        func_8000A110
     /* 5CF4 80004CF4 02202025 */   or        $a0, $s1, $zero
   .L80004CF8:
-    /* 5CF8 80004CF8 0C0019B4 */  jal        __osRestoreInt
+    /* 5CF8 80004CF8 0C0019B4 */  jal        func_800066D0
     /* 5CFC 80004CFC 02002025 */   or        $a0, $s0, $zero
     /* 5D00 80004D00 00001025 */  or         $v0, $zero, $zero
   .L80004D04:
@@ -6201,9 +6125,9 @@ glabel func_80004D20
 endlabel func_80004D20
 
 /* Handwritten function */
-nonmatching kdebugserver, 0x20
+nonmatching func_80004DB8, 0x20
 
-glabel kdebugserver
+glabel func_80004DB8
     /* 5DB8 80004DB8 008B6824 */  and        $t5, $a0, $t3
     /* 5DBC 80004DBC 004D1020 */  add        $v0, $v0, $t5 /* handwritten instruction */
     /* 5DC0 80004DC0 10000002 */  b          .L80004DCC
@@ -6214,7 +6138,7 @@ glabel kdebugserver
     /* 5DCC 80004DCC 40885000 */  mtc0       $t0, $10 /* handwritten instruction */
     /* 5DD0 80004DD0 03E00008 */  jr         $ra
     /* 5DD4 80004DD4 00000000 */   nop
-endlabel kdebugserver
+endlabel func_80004DB8
     /* 5DD8 80004DD8 00000000 */  nop
     /* 5DDC 80004DDC 00000000 */  nop
 
@@ -6240,7 +6164,7 @@ glabel func_80004DE0
     /* 5E20 80004E20 8FA90030 */  lw         $t1, 0x30($sp)
     /* 5E24 80004E24 00408025 */  or         $s0, $v0, $zero
     /* 5E28 80004E28 02002025 */  or         $a0, $s0, $zero
-    /* 5E2C 80004E2C 0C0019B4 */  jal        __osRestoreInt
+    /* 5E2C 80004E2C 0C0019B4 */  jal        func_800066D0
     /* 5E30 80004E30 AD490004 */   sw        $t1, 0x4($t2)
     /* 5E34 80004E34 8FBF001C */  lw         $ra, 0x1C($sp)
     /* 5E38 80004E38 8FB00018 */  lw         $s0, 0x18($sp)
@@ -6284,9 +6208,9 @@ glabel func_80004E50
     /* 5EBC 80004EBC 3C0EA460 */  lui        $t6, (0xA4600000 >> 16)
 endlabel func_80004E50
 
-nonmatching __osSpRawReadIo, 0x50
+nonmatching func_80004EC0, 0x90
 
-glabel __osSpRawReadIo
+glabel func_80004EC0
     /* 5EC0 80004EC0 3C0F8002 */  lui        $t7, %hi(D_800195D6)
     /* 5EC4 80004EC4 ADCD0028 */  sw         $t5, 0x28($t6)
     /* 5EC8 80004EC8 91EF95D6 */  lbu        $t7, %lo(D_800195D6)($t7)
@@ -6301,17 +6225,12 @@ glabel __osSpRawReadIo
     /* 5EEC 80004EEC AD190030 */  sw         $t9, %lo(D_A4600030)($t0)
     /* 5EF0 80004EF0 AC2095E0 */  sw         $zero, %lo(D_800195E0)($at)
     /* 5EF4 80004EF4 24840014 */  addiu      $a0, $a0, 0x14
-    /* 5EF8 80004EF8 0C000C34 */  jal        _bzero
+    /* 5EF8 80004EF8 0C000C34 */  jal        func_800030D0
     /* 5EFC 80004EFC 24050060 */   addiu     $a1, $zero, 0x60
     /* 5F00 80004F00 0C0019AC */  jal        func_800066B0
     /* 5F04 80004F04 00000000 */   nop
     /* 5F08 80004F08 3C098001 */  lui        $t1, %hi(__osPiTable)
     /* 5F0C 80004F0C 8D29A46C */  lw         $t1, %lo(__osPiTable)($t1)
-endlabel __osSpRawReadIo
-
-nonmatching osReadHost, 0x40
-
-glabel osReadHost
     /* 5F10 80004F10 3C018002 */  lui        $at, %hi(D_800195D0)
     /* 5F14 80004F14 3C0A8002 */  lui        $t2, %hi(D_800195D0)
     /* 5F18 80004F18 AC2995D0 */  sw         $t1, %lo(D_800195D0)($at)
@@ -6321,14 +6240,14 @@ glabel osReadHost
     /* 5F28 80004F28 AFA2001C */  sw         $v0, 0x1C($sp)
     /* 5F2C 80004F2C 3C018002 */  lui        $at, %hi(D_80019644)
     /* 5F30 80004F30 AC2A9644 */  sw         $t2, %lo(D_80019644)($at)
-    /* 5F34 80004F34 0C0019B4 */  jal        __osRestoreInt
+    /* 5F34 80004F34 0C0019B4 */  jal        func_800066D0
     /* 5F38 80004F38 8FA4001C */   lw        $a0, 0x1C($sp)
     /* 5F3C 80004F3C 8FBF0014 */  lw         $ra, 0x14($sp)
     /* 5F40 80004F40 3C028002 */  lui        $v0, %hi(D_800195D0)
     /* 5F44 80004F44 244295D0 */  addiu      $v0, $v0, %lo(D_800195D0)
     /* 5F48 80004F48 03E00008 */  jr         $ra
     /* 5F4C 80004F4C 27BD0020 */   addiu     $sp, $sp, 0x20
-endlabel osReadHost
+endlabel func_80004EC0
 
 /* Handwritten function */
 nonmatching func_80004F50, 0x74
@@ -6381,9 +6300,9 @@ glabel func_80004FD0
     /* 5FDC 80004FDC 25EFA410 */  addiu      $t7, $t7, %lo(D_8000A410)
 endlabel func_80004FD0
 
-nonmatching osRecvMesg, 0x1C
+nonmatching func_80004FE0, 0x1C
 
-glabel osRecvMesg
+glabel func_80004FE0
     /* 5FE0 80004FE0 AC8E0000 */  sw         $t6, 0x0($a0)
     /* 5FE4 80004FE4 AC8F0004 */  sw         $t7, 0x4($a0)
     /* 5FE8 80004FE8 AC800008 */  sw         $zero, 0x8($a0)
@@ -6391,7 +6310,7 @@ glabel osRecvMesg
     /* 5FF0 80004FF0 AC860010 */  sw         $a2, 0x10($a0)
     /* 5FF4 80004FF4 03E00008 */  jr         $ra
     /* 5FF8 80004FF8 AC850014 */   sw        $a1, 0x14($a0)
-endlabel osRecvMesg
+endlabel func_80004FE0
     /* 5FFC 80004FFC 00000000 */  nop
 
 /* Handwritten function */
@@ -6471,7 +6390,7 @@ glabel func_800050C0
     /* 60EC 800050EC 241901B0 */  addiu      $t9, $zero, 0x1B0
     /* 60F0 800050F0 24060002 */  addiu      $a2, $zero, 0x2
     /* 60F4 800050F4 03382823 */  subu       $a1, $t9, $t8
-    /* 60F8 800050F8 0C0019BC */  jal        __osRdbSend
+    /* 60F8 800050F8 0C0019BC */  jal        func_800066F0
     /* 60FC 800050FC 01F82021 */   addu      $a0, $t7, $t8
     /* 6100 80005100 8FA80024 */  lw         $t0, 0x24($sp)
     /* 6104 80005104 00408025 */  or         $s0, $v0, $zero
@@ -6503,7 +6422,7 @@ glabel func_80005134
   .L80005144:
     /* 6144 80005144 27A40028 */  addiu      $a0, $sp, 0x28
     /* 6148 80005148 24050001 */  addiu      $a1, $zero, 0x1
-    /* 614C 8000514C 0C0019BC */  jal        __osRdbSend
+    /* 614C 8000514C 0C0019BC */  jal        func_800066F0
     /* 6150 80005150 2406000A */   addiu     $a2, $zero, 0xA
     /* 6154 80005154 8FAE002C */  lw         $t6, 0x2C($sp)
     /* 6158 80005158 00408025 */  or         $s0, $v0, $zero
@@ -6535,7 +6454,7 @@ glabel func_80005184
     /* 61A8 800051A8 24190004 */  addiu      $t9, $zero, 0x4
     /* 61AC 800051AC 24060008 */  addiu      $a2, $zero, 0x8
     /* 61B0 800051B0 03382823 */  subu       $a1, $t9, $t8
-    /* 61B4 800051B4 0C0019BC */  jal        __osRdbSend
+    /* 61B4 800051B4 0C0019BC */  jal        func_800066F0
     /* 61B8 800051B8 01F82021 */   addu      $a0, $t7, $t8
     /* 61BC 800051BC 8FA8002C */  lw         $t0, 0x2C($sp)
     /* 61C0 800051C0 00408025 */  or         $s0, $v0, $zero
@@ -6548,44 +6467,44 @@ glabel func_80005184
     /* 61DC 800051DC 8FBF001C */  lw         $ra, 0x1C($sp)
 endlabel func_80005184
 
-nonmatching osSetEventMesg, 0x10
+nonmatching func_800051E0, 0x10
 
-glabel osSetEventMesg
+glabel func_800051E0
     /* 61E0 800051E0 8FB00018 */  lw         $s0, 0x18($sp)
     /* 61E4 800051E4 27BD0030 */  addiu      $sp, $sp, 0x30
     /* 61E8 800051E8 03E00008 */  jr         $ra
     /* 61EC 800051EC 00000000 */   nop
-endlabel osSetEventMesg
+endlabel func_800051E0
 
 nonmatching func_800051F0, 0xC4
 
 glabel func_800051F0
     /* 61F0 800051F0 27BDFFD0 */  addiu      $sp, $sp, -0x30
     /* 61F4 800051F4 AFBF001C */  sw         $ra, 0x1C($sp)
-    /* 61F8 800051F8 3C048002 */  lui        $a0, %hi(D_80019650)
-    /* 61FC 800051FC 3C058002 */  lui        $a1, %hi(D_80019668)
+    /* 61F8 800051F8 3C048002 */  lui        $a0, %hi(rmonsio_bss_0000)
+    /* 61FC 800051FC 3C058002 */  lui        $a1, %hi(rmonsio_bss_0018)
     /* 6200 80005200 AFB00018 */  sw         $s0, 0x18($sp)
-    /* 6204 80005204 24A59668 */  addiu      $a1, $a1, %lo(D_80019668)
-    /* 6208 80005208 24849650 */  addiu      $a0, $a0, %lo(D_80019650)
+    /* 6204 80005204 24A59668 */  addiu      $a1, $a1, %lo(rmonsio_bss_0018)
+    /* 6208 80005208 24849650 */  addiu      $a0, $a0, %lo(rmonsio_bss_0000)
     /* 620C 8000520C 0C0014F4 */  jal        func_800053D0
     /* 6210 80005210 24060001 */   addiu     $a2, $zero, 0x1
-    /* 6214 80005214 3C058002 */  lui        $a1, %hi(D_80019650)
-    /* 6218 80005218 24A59650 */  addiu      $a1, $a1, %lo(D_80019650)
+    /* 6214 80005214 3C058002 */  lui        $a1, %hi(rmonsio_bss_0000)
+    /* 6218 80005218 24A59650 */  addiu      $a1, $a1, %lo(rmonsio_bss_0000)
     /* 621C 8000521C 24040014 */  addiu      $a0, $zero, 0x14
-    /* 6220 80005220 0C001478 */  jal        osSetEventMesg
+    /* 6220 80005220 0C001478 */  jal        func_800051E0
     /* 6224 80005224 00003025 */   or        $a2, $zero, $zero
     /* 6228 80005228 3C0E8002 */  lui        $t6, %hi(rmonRdbReadBuf)
     /* 622C 8000522C 25CE9670 */  addiu      $t6, $t6, %lo(rmonRdbReadBuf)
     /* 6230 80005230 3C018002 */  lui        $at, %hi(__osRdb_DbgRead_Buf)
     /* 6234 80005234 AC2E966C */  sw         $t6, %lo(__osRdb_DbgRead_Buf)($at)
   .L80005238:
-    /* 6238 80005238 3C048002 */  lui        $a0, %hi(D_80019650)
-    /* 623C 8000523C 24849650 */  addiu      $a0, $a0, %lo(D_80019650)
+    /* 6238 80005238 3C048002 */  lui        $a0, %hi(rmonsio_bss_0000)
+    /* 623C 8000523C 24849650 */  addiu      $a0, $a0, %lo(rmonsio_bss_0000)
     /* 6240 80005240 00002825 */  or         $a1, $zero, $zero
-    /* 6244 80005244 0C0013F8 */  jal        osRecvMesg
+    /* 6244 80005244 0C0013F8 */  jal        func_80004FE0
     /* 6248 80005248 24060001 */   addiu     $a2, $zero, 0x1
     /* 624C 8000524C 3C048002 */  lui        $a0, %hi(rmonRdbReadBuf)
-    /* 6250 80005250 0C001A6F */  jal        __rmonExecute
+    /* 6250 80005250 0C001A6F */  jal        func_800069BC
     /* 6254 80005254 24849670 */   addiu     $a0, $a0, %lo(rmonRdbReadBuf)
     /* 6258 80005258 3C0F8002 */  lui        $t7, %hi(rmonRdbReadBuf)
     /* 625C 8000525C 25EF9670 */  addiu      $t7, $t7, %lo(rmonRdbReadBuf)
@@ -6595,7 +6514,7 @@ glabel func_800051F0
   .L8000526C:
     /* 626C 8000526C 27A40028 */  addiu      $a0, $sp, 0x28
     /* 6270 80005270 24050001 */  addiu      $a1, $zero, 0x1
-    /* 6274 80005274 0C0019BC */  jal        __osRdbSend
+    /* 6274 80005274 0C0019BC */  jal        func_800066F0
     /* 6278 80005278 2406000B */   addiu     $a2, $zero, 0xB
     /* 627C 8000527C 8FB8002C */  lw         $t8, 0x2C($sp)
     /* 6280 80005280 00408025 */  or         $s0, $v0, $zero
@@ -6666,9 +6585,9 @@ glabel func_800052F0
     /* 634C 8000534C 01CD7021 */  addu       $t6, $t6, $t5
 endlabel func_800052F0
 
-nonmatching osInvalICache, 0x80
+nonmatching func_80005350, 0x80
 
-glabel osInvalICache
+glabel func_80005350
     /* 6350 80005350 8DCEA470 */  lw         $t6, -0x5B90($t6)
     /* 6354 80005354 AFAC0028 */  sw         $t4, 0x28($sp)
     /* 6358 80005358 11CB0048 */  beq        $t6, $t3, .L8000547C
@@ -6704,7 +6623,7 @@ glabel osInvalICache
     /* 63C4 800053C4 8FA90030 */  lw         $t1, 0x30($sp)
     /* 63C8 800053C8 910A0008 */  lbu        $t2, 0x8($t0)
     /* 63CC 800053CC 912D0008 */  lbu        $t5, 0x8($t1)
-endlabel osInvalICache
+endlabel func_80005350
 
 nonmatching func_800053D0, 0x30
 
@@ -6763,7 +6682,7 @@ glabel func_80005400
     /* 6474 80005474 002B0821 */  addu       $at, $at, $t3
     /* 6478 80005478 AC2EA470 */  sw         $t6, %lo(__osCurrentHandle)($at)
   .L8000547C:
-    /* 647C 8000547C 0C0012CC */  jal        osVirtualToPhysical
+    /* 647C 8000547C 0C0012CC */  jal        func_80004B30
     /* 6480 80005480 8FA4003C */   lw        $a0, 0x3C($sp)
     /* 6484 80005484 3C18A460 */  lui        $t8, %hi(D_A4600000)
     /* 6488 80005488 AF020000 */  sw         $v0, %lo(D_A4600000)($t8)
@@ -6782,9 +6701,9 @@ glabel func_80005400
     /* 64BC 800054BC 12010008 */  beq        $s0, $at, .L800054E0
 endlabel func_80005400
 
-nonmatching __rmonSendFault, 0x54
+nonmatching func_800054C0, 0x54
 
-glabel __rmonSendFault
+glabel func_800054C0
     /* 64C0 800054C0 00000000 */  nop
     /* 64C4 800054C4 1000000B */  b          .L800054F4
     /* 64C8 800054C8 00000000 */   nop
@@ -6811,7 +6730,7 @@ glabel __rmonSendFault
     /* 6508 80005508 27BD0030 */  addiu      $sp, $sp, 0x30
     /* 650C 8000550C 03E00008 */  jr         $ra
     /* 6510 80005510 00000000 */   nop
-endlabel __rmonSendFault
+endlabel func_800054C0
     /* 6514 80005514 00000000 */  nop
     /* 6518 80005518 00000000 */  nop
     /* 651C 8000551C 00000000 */  nop
@@ -6826,9 +6745,9 @@ glabel func_80005520
     /* 6530 80005530 AFA40030 */  sw         $a0, 0x30($sp)
 endlabel func_80005520
 
-nonmatching __rmonIOflush, 0x50
+nonmatching func_80005534, 0x50
 
-glabel __rmonIOflush
+glabel func_80005534
     /* 6534 80005534 AFA50034 */  sw         $a1, 0x34($sp)
     /* 6538 80005538 AFA60038 */  sw         $a2, 0x38($sp)
     /* 653C 8000553C 15C00067 */  bnez       $t6, .L800056DC
@@ -6837,32 +6756,32 @@ glabel __rmonIOflush
     /* 6548 80005548 8FA50038 */  lw         $a1, 0x38($sp)
     /* 654C 8000554C 0C0014F4 */  jal        func_800053D0
     /* 6550 80005550 8FA6003C */   lw        $a2, 0x3C($sp)
-    /* 6554 80005554 3C048002 */  lui        $a0, %hi(D_8001B610)
-    /* 6558 80005558 3C058002 */  lui        $a1, %hi(D_8001B628)
-    /* 655C 8000555C 24A5B628 */  addiu      $a1, $a1, %lo(D_8001B628)
-    /* 6560 80005560 2484B610 */  addiu      $a0, $a0, %lo(D_8001B610)
+    /* 6554 80005554 3C048002 */  lui        $a0, %hi(pimgr_bss_17A0)
+    /* 6558 80005558 3C058002 */  lui        $a1, %hi(pimgr_bss_17B8)
+    /* 655C 8000555C 24A5B628 */  addiu      $a1, $a1, %lo(pimgr_bss_17B8)
+    /* 6560 80005560 2484B610 */  addiu      $a0, $a0, %lo(pimgr_bss_17A0)
     /* 6564 80005564 0C0014F4 */  jal        func_800053D0
     /* 6568 80005568 24060001 */   addiu     $a2, $zero, 0x1
     /* 656C 8000556C 3C0F8001 */  lui        $t7, %hi(__osPiAccessQueueEnabled)
     /* 6570 80005570 8DEFA480 */  lw         $t7, %lo(__osPiAccessQueueEnabled)($t7)
-    /* 6574 80005574 15E00003 */  bnez       $t7, __rmonIOputw
+    /* 6574 80005574 15E00003 */  bnez       $t7, func_80005584
     /* 6578 80005578 00000000 */   nop
-    /* 657C 8000557C 0C001700 */  jal        __osSiCreateAccessQueue
+    /* 657C 8000557C 0C001700 */  jal        func_80005C00
     /* 6580 80005580 00000000 */   nop
-endlabel __rmonIOflush
+endlabel func_80005534
 
-nonmatching __rmonIOputw, 0x6C
+nonmatching func_80005584, 0x13C
 
-glabel __rmonIOputw
-    /* 6584 80005584 3C058002 */  lui        $a1, %hi(D_8001B610)
+glabel func_80005584
+    /* 6584 80005584 3C058002 */  lui        $a1, %hi(pimgr_bss_17A0)
     /* 6588 80005588 3C062222 */  lui        $a2, (0x22222222 >> 16)
     /* 658C 8000558C 34C62222 */  ori        $a2, $a2, (0x22222222 & 0xFFFF)
-    /* 6590 80005590 24A5B610 */  addiu      $a1, $a1, %lo(D_8001B610)
-    /* 6594 80005594 0C001478 */  jal        osSetEventMesg
+    /* 6590 80005590 24A5B610 */  addiu      $a1, $a1, %lo(pimgr_bss_17A0)
+    /* 6594 80005594 0C001478 */  jal        func_800051E0
     /* 6598 80005598 24040008 */   addiu     $a0, $zero, 0x8
     /* 659C 8000559C 2418FFFF */  addiu      $t8, $zero, -0x1
     /* 65A0 800055A0 AFB80028 */  sw         $t8, 0x28($sp)
-    /* 65A4 800055A4 0C00193C */  jal        osGetThreadPri
+    /* 65A4 800055A4 0C00193C */  jal        func_800064F0
     /* 65A8 800055A8 00002025 */   or        $a0, $zero, $zero
     /* 65AC 800055AC AFA20024 */  sw         $v0, 0x24($sp)
     /* 65B0 800055B0 8FB90024 */  lw         $t9, 0x24($sp)
@@ -6872,74 +6791,70 @@ glabel __rmonIOputw
     /* 65C0 800055C0 00000000 */   nop
     /* 65C4 800055C4 AFB90028 */  sw         $t9, 0x28($sp)
     /* 65C8 800055C8 00002025 */  or         $a0, $zero, $zero
-    /* 65CC 800055CC 0C001944 */  jal        osSetThreadPri
+    /* 65CC 800055CC 0C001944 */  jal        func_80006510
     /* 65D0 800055D0 01002825 */   or        $a1, $t0, $zero
   .L800055D4:
     /* 65D4 800055D4 0C0019AC */  jal        func_800066B0
     /* 65D8 800055D8 00000000 */   nop
-    /* 65DC 800055DC 3C018001 */  lui        $at, (0x80010000 >> 16)
+    /* 65DC 800055DC 3C018001 */  lui        $at, %hi(D_8000A450)
     /* 65E0 800055E0 8FAB0034 */  lw         $t3, 0x34($sp)
-    /* 65E4 800055E4 3C0A8002 */  lui        $t2, (0x80020000 >> 16)
-    /* 65E8 800055E8 3C0C8002 */  lui        $t4, (0x80020000 >> 16)
+    /* 65E4 800055E4 3C0A8002 */  lui        $t2, %hi(pimgr_bss_0000)
+    /* 65E8 800055E8 3C0C8002 */  lui        $t4, %hi(pimgr_bss_17A0)
     /* 65EC 800055EC 24090001 */  addiu      $t1, $zero, 0x1
-endlabel __rmonIOputw
-
-nonmatching __rmonIOhandler, 0xD0
-
-glabel __rmonIOhandler
-    /* 65F0 800055F0 254A9E70 */  addiu      $t2, $t2, -0x6190
-    /* 65F4 800055F4 258CB610 */  addiu      $t4, $t4, -0x49F0
-    /* 65F8 800055F8 AC29A450 */  sw         $t1, -0x5BB0($at)
-    /* 65FC 800055FC AC2AA454 */  sw         $t2, -0x5BAC($at)
-    /* 6600 80005600 AC2CA45C */  sw         $t4, -0x5BA4($at)
-    /* 6604 80005604 3C188002 */  lui        $t8, %hi(D_8001A020)
-    /* 6608 80005608 AC2BA458 */  sw         $t3, -0x5BA8($at)
+  alabel D_800055F0
+    /* 65F0 800055F0 254A9E70 */  addiu      $t2, $t2, %lo(pimgr_bss_0000)
+    /* 65F4 800055F4 258CB610 */  addiu      $t4, $t4, %lo(pimgr_bss_17A0)
+    /* 65F8 800055F8 AC29A450 */  sw         $t1, %lo(D_8000A450)($at)
+    /* 65FC 800055FC AC2AA454 */  sw         $t2, %lo(D_8000A454)($at)
+    /* 6600 80005600 AC2CA45C */  sw         $t4, %lo(D_8000A45C)($at)
+    /* 6604 80005604 3C188002 */  lui        $t8, %hi(pimgr_bss_01B0)
+    /* 6608 80005608 AC2BA458 */  sw         $t3, %lo(D_8000A458)($at)
     /* 660C 8000560C 8FA80030 */  lw         $t0, 0x30($sp)
     /* 6610 80005610 3C018001 */  lui        $at, %hi(D_8000A460)
     /* 6614 80005614 3C0D8002 */  lui        $t5, %hi(__osPiAccessQueue)
-    /* 6618 80005618 3C0E8000 */  lui        $t6, %hi(osPiRawStartDma)
-    /* 661C 8000561C 3C0F8000 */  lui        $t7, %hi(osEPiRawStartDma)
-    /* 6620 80005620 2718A020 */  addiu      $t8, $t8, %lo(D_8001A020)
+    /* 6618 80005618 3C0E8000 */  lui        $t6, %hi(func_80004A50)
+    /* 661C 8000561C 3C0F8000 */  lui        $t7, %hi(func_800056F0)
+    /* 6620 80005620 2718A020 */  addiu      $t8, $t8, %lo(pimgr_bss_01B0)
     /* 6624 80005624 25ADB638 */  addiu      $t5, $t5, %lo(__osPiAccessQueue)
-    /* 6628 80005628 25CE4A50 */  addiu      $t6, $t6, %lo(osPiRawStartDma)
-    /* 662C 8000562C 25EF56F0 */  addiu      $t7, $t7, %lo(osEPiRawStartDma)
+    /* 6628 80005628 25CE4A50 */  addiu      $t6, $t6, %lo(func_80004A50)
+    /* 662C 8000562C 25EF56F0 */  addiu      $t7, $t7, %lo(func_800056F0)
     /* 6630 80005630 27191000 */  addiu      $t9, $t8, 0x1000
-    /* 6634 80005634 3C068000 */  lui        $a2, %hi(__osDevMgrMain)
+    /* 6634 80005634 3C068000 */  lui        $a2, %hi(D_80006060)
     /* 6638 80005638 3C078001 */  lui        $a3, %hi(D_8000A450)
     /* 663C 8000563C AFA2002C */  sw         $v0, 0x2C($sp)
     /* 6640 80005640 AC2DA460 */  sw         $t5, %lo(D_8000A460)($at)
     /* 6644 80005644 AC2EA464 */  sw         $t6, %lo(D_8000A464)($at)
     /* 6648 80005648 AC2FA468 */  sw         $t7, %lo(D_8000A468)($at)
     /* 664C 8000564C 24E7A450 */  addiu      $a3, $a3, %lo(D_8000A450)
-    /* 6650 80005650 24C66060 */  addiu      $a2, $a2, %lo(__osDevMgrMain)
+    /* 6650 80005650 24C66060 */  addiu      $a2, $a2, %lo(D_80006060)
     /* 6654 80005654 AFB90010 */  sw         $t9, 0x10($sp)
     /* 6658 80005658 01402025 */  or         $a0, $t2, $zero
     /* 665C 8000565C 00002825 */  or         $a1, $zero, $zero
-    /* 6660 80005660 0C0017C4 */  jal        osCreateThread
+    /* 6660 80005660 0C0017C4 */  jal        func_80005F10
     /* 6664 80005664 AFA80014 */   sw        $t0, 0x14($sp)
-    /* 6668 80005668 3C048002 */  lui        $a0, %hi(D_80019E70)
-    /* 666C 8000566C 0C002844 */  jal        osStartThread
-    /* 6670 80005670 24849E70 */   addiu     $a0, $a0, %lo(D_80019E70)
+    /* 6668 80005668 3C048002 */  lui        $a0, %hi(pimgr_bss_0000)
+    /* 666C 8000566C 0C002844 */  jal        func_8000A110
+    /* 6670 80005670 24849E70 */   addiu     $a0, $a0, %lo(pimgr_bss_0000)
     /* 6674 80005674 8FAC0030 */  lw         $t4, 0x30($sp)
-    /* 6678 80005678 3C098002 */  lui        $t1, %hi(D_8001B1D0)
-    /* 667C 8000567C 2529B1D0 */  addiu      $t1, $t1, %lo(D_8001B1D0)
+    /* 6678 80005678 3C098002 */  lui        $t1, %hi(pimgr_bss_1360)
+    /* 667C 8000567C 2529B1D0 */  addiu      $t1, $t1, %lo(pimgr_bss_1360)
     /* 6680 80005680 252B0400 */  addiu      $t3, $t1, 0x400
-    /* 6684 80005684 3C048002 */  lui        $a0, %hi(D_8001B020)
-    /* 6688 80005688 3C068000 */  lui        $a2, %hi(pimgr_text_01CC)
+    /* 6684 80005684 3C048002 */  lui        $a0, %hi(pimgr_bss_11B0)
+    /* 6688 80005688 3C068000 */  lui        $a2, %hi(D_80005AEC)
     /* 668C 8000568C 258DFFFF */  addiu      $t5, $t4, -0x1
     /* 6690 80005690 AFAD0014 */  sw         $t5, 0x14($sp)
-    /* 6694 80005694 24C65AEC */  addiu      $a2, $a2, %lo(pimgr_text_01CC)
-    /* 6698 80005698 2484B020 */  addiu      $a0, $a0, %lo(D_8001B020)
+    /* 6694 80005694 24C65AEC */  addiu      $a2, $a2, %lo(D_80005AEC)
+    /* 6698 80005698 2484B020 */  addiu      $a0, $a0, %lo(pimgr_bss_11B0)
     /* 669C 8000569C AFAB0010 */  sw         $t3, 0x10($sp)
     /* 66A0 800056A0 00002825 */  or         $a1, $zero, $zero
-    /* 66A4 800056A4 0C0017C4 */  jal        osCreateThread
+    /* 66A4 800056A4 0C0017C4 */  jal        func_80005F10
     /* 66A8 800056A8 00003825 */   or        $a3, $zero, $zero
-    /* 66AC 800056AC 3C048002 */  lui        $a0, %hi(D_8001B020)
-    /* 66B0 800056B0 0C002844 */  jal        osStartThread
-    /* 66B4 800056B4 2484B020 */   addiu     $a0, $a0, %lo(D_8001B020)
-    /* 66B8 800056B8 0C0019B4 */  jal        __osRestoreInt
+    /* 66AC 800056AC 3C048002 */  lui        $a0, %hi(pimgr_bss_11B0)
+    /* 66B0 800056B0 0C002844 */  jal        func_8000A110
+    /* 66B4 800056B4 2484B020 */   addiu     $a0, $a0, %lo(pimgr_bss_11B0)
+    /* 66B8 800056B8 0C0019B4 */  jal        func_800066D0
     /* 66BC 800056BC 8FA4002C */   lw        $a0, 0x2C($sp)
-endlabel __rmonIOhandler
+endlabel func_80005584
 
 nonmatching func_800056C0, 0x2C
 
@@ -6949,7 +6864,7 @@ glabel func_800056C0
     /* 66C8 800056C8 11C10004 */  beq        $t6, $at, .L800056DC
     /* 66CC 800056CC 00000000 */   nop
     /* 66D0 800056D0 00002025 */  or         $a0, $zero, $zero
-    /* 66D4 800056D4 0C001944 */  jal        osSetThreadPri
+    /* 66D4 800056D4 0C001944 */  jal        func_80006510
     /* 66D8 800056D8 01C02825 */   or        $a1, $t6, $zero
   .L800056DC:
     /* 66DC 800056DC 8FBF001C */  lw         $ra, 0x1C($sp)
@@ -6964,9 +6879,9 @@ glabel func_800056EC
     /* 66EC 800056EC 27BDFFD0 */  addiu      $sp, $sp, -0x30
 endlabel func_800056EC
 
-nonmatching osEPiRawStartDma, 0x104
+nonmatching func_800056F0, 0x104
 
-glabel osEPiRawStartDma
+glabel func_800056F0
     /* 66F0 800056F0 AFA40030 */  sw         $a0, 0x30($sp)
     /* 66F4 800056F4 AFBF001C */  sw         $ra, 0x1C($sp)
     /* 66F8 800056F8 3C048002 */  lui        $a0, %hi(D_8001B5D0)
@@ -6985,26 +6900,26 @@ glabel osEPiRawStartDma
     /* 672C 8000572C 3C058002 */  lui        $a1, %hi(D_8001B5D0)
     /* 6730 80005730 24A5B5D0 */  addiu      $a1, $a1, %lo(D_8001B5D0)
     /* 6734 80005734 24040012 */  addiu      $a0, $zero, 0x12
-    /* 6738 80005738 0C001478 */  jal        osSetEventMesg
+    /* 6738 80005738 0C001478 */  jal        func_800051E0
     /* 673C 8000573C 00003025 */   or        $a2, $zero, $zero
     /* 6740 80005740 3C058002 */  lui        $a1, %hi(D_8001B5F0)
     /* 6744 80005744 24A5B5F0 */  addiu      $a1, $a1, %lo(D_8001B5F0)
     /* 6748 80005748 24040013 */  addiu      $a0, $zero, 0x13
-    /* 674C 8000574C 0C001478 */  jal        osSetEventMesg
+    /* 674C 8000574C 0C001478 */  jal        func_800051E0
     /* 6750 80005750 00003025 */   or        $a2, $zero, $zero
   .L80005754:
     /* 6754 80005754 3C048002 */  lui        $a0, %hi(D_8001B5D0)
     /* 6758 80005758 2484B5D0 */  addiu      $a0, $a0, %lo(D_8001B5D0)
     /* 675C 8000575C 00002825 */  or         $a1, $zero, $zero
-    /* 6760 80005760 0C0013F8 */  jal        osRecvMesg
+    /* 6760 80005760 0C0013F8 */  jal        func_80004FE0
     /* 6764 80005764 24060001 */   addiu     $a2, $zero, 0x1
-    /* 6768 80005768 0C001714 */  jal        __osSiGetAccess
+    /* 6768 80005768 0C001714 */  jal        func_80005C50
     /* 676C 8000576C 00000000 */   nop
     /* 6770 80005770 AFA0002C */  sw         $zero, 0x2C($sp)
   .L80005774:
     /* 6774 80005774 27A40028 */  addiu      $a0, $sp, 0x28
     /* 6778 80005778 24050001 */  addiu      $a1, $zero, 0x1
-    /* 677C 8000577C 0C0019BC */  jal        __osRdbSend
+    /* 677C 8000577C 0C0019BC */  jal        func_800066F0
     /* 6780 80005780 24060009 */   addiu     $a2, $zero, 0x9
     /* 6784 80005784 8FAE002C */  lw         $t6, 0x2C($sp)
     /* 6788 80005788 00408025 */  or         $s0, $v0, $zero
@@ -7016,9 +6931,9 @@ glabel osEPiRawStartDma
     /* 67A0 800057A0 3C048002 */  lui        $a0, %hi(D_8001B5F0)
     /* 67A4 800057A4 2484B5F0 */  addiu      $a0, $a0, %lo(D_8001B5F0)
     /* 67A8 800057A8 00002825 */  or         $a1, $zero, $zero
-    /* 67AC 800057AC 0C0013F8 */  jal        osRecvMesg
+    /* 67AC 800057AC 0C0013F8 */  jal        func_80004FE0
     /* 67B0 800057B0 24060001 */   addiu     $a2, $zero, 0x1
-    /* 67B4 800057B4 0C001725 */  jal        __osSiRelAccess
+    /* 67B4 800057B4 0C001725 */  jal        func_80005C94
     /* 67B8 800057B8 00000000 */   nop
     /* 67BC 800057BC 1000FFE5 */  b          .L80005754
     /* 67C0 800057C0 00000000 */   nop
@@ -7034,7 +6949,7 @@ glabel osEPiRawStartDma
     /* 67E8 800057E8 27BD0030 */  addiu      $sp, $sp, 0x30
     /* 67EC 800057EC 03E00008 */  jr         $ra
     /* 67F0 800057F0 00000000 */   nop
-endlabel osEPiRawStartDma
+endlabel func_800056F0
     /* 67F4 800057F4 00000000 */  nop
     /* 67F8 800057F8 00000000 */  nop
     /* 67FC 800057FC 00000000 */  nop
@@ -7047,16 +6962,16 @@ glabel func_80005800
     /* 6808 80005808 240E0001 */  addiu      $t6, $zero, 0x1
     /* 680C 8000580C 3C018001 */  lui        $at, %hi(__osPiAccessQueueEnabled)
     /* 6810 80005810 3C048002 */  lui        $a0, %hi(__osPiAccessQueue)
-    /* 6814 80005814 3C058002 */  lui        $a1, %hi(D_8001B630)
+    /* 6814 80005814 3C058002 */  lui        $a1, %hi(siacs_bss_0000)
     /* 6818 80005818 AC2EA480 */  sw         $t6, %lo(__osPiAccessQueueEnabled)($at)
-    /* 681C 8000581C 24A5B630 */  addiu      $a1, $a1, %lo(D_8001B630)
+    /* 681C 8000581C 24A5B630 */  addiu      $a1, $a1, %lo(siacs_bss_0000)
     /* 6820 80005820 2484B638 */  addiu      $a0, $a0, %lo(__osPiAccessQueue)
     /* 6824 80005824 0C0014F4 */  jal        func_800053D0
     /* 6828 80005828 24060001 */   addiu     $a2, $zero, 0x1
     /* 682C 8000582C 3C048002 */  lui        $a0, %hi(__osPiAccessQueue)
     /* 6830 80005830 2484B638 */  addiu      $a0, $a0, %lo(__osPiAccessQueue)
     /* 6834 80005834 00002825 */  or         $a1, $zero, $zero
-    /* 6838 80005838 0C001770 */  jal        osSendMesg
+    /* 6838 80005838 0C001770 */  jal        func_80005DC0
     /* 683C 8000583C 00003025 */   or        $a2, $zero, $zero
     /* 6840 80005840 8FBF0014 */  lw         $ra, 0x14($sp)
     /* 6844 80005844 27BD0018 */  addiu      $sp, $sp, 0x18
@@ -7073,13 +6988,13 @@ glabel func_80005850
     /* 685C 8000585C AFBF0014 */  sw         $ra, 0x14($sp)
     /* 6860 80005860 15C00003 */  bnez       $t6, .L80005870
     /* 6864 80005864 00000000 */   nop
-    /* 6868 80005868 0C001700 */  jal        __osSiCreateAccessQueue
+    /* 6868 80005868 0C001700 */  jal        func_80005C00
     /* 686C 8000586C 00000000 */   nop
   .L80005870:
     /* 6870 80005870 3C048002 */  lui        $a0, %hi(__osPiAccessQueue)
     /* 6874 80005874 2484B638 */  addiu      $a0, $a0, %lo(__osPiAccessQueue)
     /* 6878 80005878 27A5001C */  addiu      $a1, $sp, 0x1C
-    /* 687C 8000587C 0C0013F8 */  jal        osRecvMesg
+    /* 687C 8000587C 0C0013F8 */  jal        func_80004FE0
     /* 6880 80005880 24060001 */   addiu     $a2, $zero, 0x1
     /* 6884 80005884 8FBF0014 */  lw         $ra, 0x14($sp)
     /* 6888 80005888 27BD0020 */  addiu      $sp, $sp, 0x20
@@ -7095,7 +7010,7 @@ glabel func_80005894
     /* 689C 8000589C 3C048002 */  lui        $a0, %hi(__osPiAccessQueue)
     /* 68A0 800058A0 2484B638 */  addiu      $a0, $a0, %lo(__osPiAccessQueue)
     /* 68A4 800058A4 00002825 */  or         $a1, $zero, $zero
-    /* 68A8 800058A8 0C001770 */  jal        osSendMesg
+    /* 68A8 800058A8 0C001770 */  jal        func_80005DC0
     /* 68AC 800058AC 00003025 */   or        $a2, $zero, $zero
     /* 68B0 800058B0 8FBF0014 */  lw         $ra, 0x14($sp)
     /* 68B4 800058B4 27BD0018 */  addiu      $sp, $sp, 0x18
@@ -7133,9 +7048,9 @@ glabel func_800058C0
     /* 691C 8000591C 00184202 */  srl        $t0, $t8, 8
 endlabel func_800058C0
 
-nonmatching osCreatePiManager, 0x94
+nonmatching func_80005920, 0x94
 
-glabel osCreatePiManager
+glabel func_80005920
     /* 6920 80005920 310900FF */  andi       $t1, $t0, 0xFF
     /* 6924 80005924 3C018002 */  lui        $at, %hi(D_8001B658)
     /* 6928 80005928 A029B658 */  sb         $t1, %lo(D_8001B658)($at)
@@ -7152,7 +7067,7 @@ glabel osCreatePiManager
     /* 6954 80005954 2484B650 */  addiu      $a0, $a0, -0x49B0
     /* 6958 80005958 AC20B660 */  sw         $zero, %lo(D_8001B660)($at)
     /* 695C 8000595C 24840014 */  addiu      $a0, $a0, 0x14
-    /* 6960 80005960 0C000C34 */  jal        _bzero
+    /* 6960 80005960 0C000C34 */  jal        func_800030D0
     /* 6964 80005964 24050060 */   addiu     $a1, $zero, 0x60
     /* 6968 80005968 0C0019AC */  jal        func_800066B0
     /* 696C 8000596C 00000000 */   nop
@@ -7165,7 +7080,7 @@ glabel osCreatePiManager
     /* 6988 80005988 3C018001 */  lui        $at, %hi(__osPiTable)
     /* 698C 8000598C 25EFB650 */  addiu      $t7, $t7, %lo(CartRomHandle)
     /* 6990 80005990 AC2FA46C */  sw         $t7, %lo(__osPiTable)($at)
-    /* 6994 80005994 0C0019B4 */  jal        __osRestoreInt
+    /* 6994 80005994 0C0019B4 */  jal        func_800066D0
     /* 6998 80005998 8FA40018 */   lw        $a0, 0x18($sp)
     /* 699C 8000599C 3C028002 */  lui        $v0, %hi(CartRomHandle)
     /* 69A0 800059A0 2442B650 */  addiu      $v0, $v0, %lo(CartRomHandle)
@@ -7174,12 +7089,12 @@ glabel osCreatePiManager
     /* 69A8 800059A8 27BD0020 */  addiu      $sp, $sp, 0x20
     /* 69AC 800059AC 03E00008 */  jr         $ra
     /* 69B0 800059B0 00000000 */   nop
-endlabel osCreatePiManager
+endlabel func_80005920
     /* 69B4 800059B4 00000000 */  nop
     /* 69B8 800059B8 00000000 */  nop
     /* 69BC 800059BC 00000000 */  nop
 
-nonmatching func_800059C0, 0x12C
+nonmatching func_800059C0, 0x14C
 
 glabel func_800059C0
     /* 69C0 800059C0 27BDFFC8 */  addiu      $sp, $sp, -0x38
@@ -7213,7 +7128,7 @@ glabel func_800059C0
     /* 6A2C 80005A2C 10000005 */  b          .L80005A44
     /* 6A30 80005A30 00000000 */   nop
   .L80005A34:
-    /* 6A34 80005A34 0C0019B4 */  jal        __osRestoreInt
+    /* 6A34 80005A34 0C0019B4 */  jal        func_800066D0
     /* 6A38 80005A38 02002025 */   or        $a0, $s0, $zero
     /* 6A3C 80005A3C 1000002D */  b          .L80005AF4
     /* 6A40 80005A40 2402FFFF */   addiu     $v0, $zero, -0x1
@@ -7257,19 +7172,15 @@ glabel func_800059C0
     /* 6AC8 80005AC8 8F2D0000 */  lw         $t5, 0x0($t9)
     /* 6ACC 80005ACC 11A00006 */  beqz       $t5, .L80005AE8
     /* 6AD0 80005AD0 00000000 */   nop
-    /* 6AD4 80005AD4 0C000F95 */  jal        __osPopThread
+    /* 6AD4 80005AD4 0C000F95 */  jal        func_80003E54
     /* 6AD8 80005AD8 03002025 */   or        $a0, $t8, $zero
     /* 6ADC 80005ADC 00409025 */  or         $s2, $v0, $zero
-    /* 6AE0 80005AE0 0C002844 */  jal        osStartThread
+    /* 6AE0 80005AE0 0C002844 */  jal        func_8000A110
     /* 6AE4 80005AE4 02402025 */   or        $a0, $s2, $zero
   .L80005AE8:
-    /* 6AE8 80005AE8 0C0019B4 */  jal        __osRestoreInt
-endlabel func_800059C0
-
-nonmatching pimgr_text_01CC, 0x20
-
-glabel pimgr_text_01CC
-    /* 6AEC 80005AEC 02002025 */  or         $a0, $s0, $zero
+    /* 6AE8 80005AE8 0C0019B4 */  jal        func_800066D0
+  alabel D_80005AEC
+    /* 6AEC 80005AEC 02002025 */   or        $a0, $s0, $zero
     /* 6AF0 80005AF0 00001025 */  or         $v0, $zero, $zero
   .L80005AF4:
     /* 6AF4 80005AF4 8FBF0024 */  lw         $ra, 0x24($sp)
@@ -7278,7 +7189,7 @@ glabel pimgr_text_01CC
     /* 6B00 80005B00 8FB20020 */  lw         $s2, 0x20($sp)
     /* 6B04 80005B04 03E00008 */  jr         $ra
     /* 6B08 80005B08 27BD0038 */   addiu     $sp, $sp, 0x38
-endlabel pimgr_text_01CC
+endlabel func_800059C0
     /* 6B0C 80005B0C 00000000 */  nop
 
 nonmatching func_80005B10, 0xF0
@@ -7312,7 +7223,7 @@ glabel func_80005B10
     /* 6B74 80005B74 ADAF003C */  sw         $t7, 0x3C($t5)
     /* 6B78 80005B78 8FB80038 */  lw         $t8, 0x38($sp)
     /* 6B7C 80005B7C 8FB90028 */  lw         $t9, 0x28($sp)
-    /* 6B80 80005B80 3C0C8000 */  lui        $t4, %hi(__osCleanupThread)
+    /* 6B80 80005B80 3C0C8000 */  lui        $t4, %hi(D_80003FE0)
     /* 6B84 80005B84 03004825 */  or         $t1, $t8, $zero
     /* 6B88 80005B88 2D210010 */  sltiu      $at, $t1, 0x10
     /* 6B8C 80005B8C 001847C3 */  sra        $t0, $t8, 31
@@ -7321,7 +7232,7 @@ glabel func_80005B10
     /* 6B98 80005B98 AF2B00F4 */  sw         $t3, 0xF4($t9)
     /* 6B9C 80005B9C AF2A00F0 */  sw         $t2, 0xF0($t9)
     /* 6BA0 80005BA0 8FAD0028 */  lw         $t5, 0x28($sp)
-    /* 6BA4 80005BA4 258C3FE0 */  addiu      $t4, $t4, %lo(__osCleanupThread)
+    /* 6BA4 80005BA4 258C3FE0 */  addiu      $t4, $t4, %lo(D_80003FE0)
     /* 6BA8 80005BA8 01807825 */  or         $t7, $t4, $zero
     /* 6BAC 80005BAC 000C77C3 */  sra        $t6, $t4, 31
     /* 6BB0 80005BB0 ADAE0100 */  sw         $t6, 0x100($t5)
@@ -7346,9 +7257,9 @@ glabel func_80005B10
     /* 6BFC 80005BFC 24180001 */  addiu      $t8, $zero, 0x1
 endlabel func_80005B10
 
-nonmatching __osSiCreateAccessQueue, 0x50
+nonmatching func_80005C00, 0x50
 
-glabel __osSiCreateAccessQueue
+glabel func_80005C00
     /* 6C00 80005C00 ADA00018 */  sw         $zero, 0x18($t5)
     /* 6C04 80005C04 8FA80028 */  lw         $t0, 0x28($sp)
     /* 6C08 80005C08 A5180010 */  sh         $t8, 0x10($t0)
@@ -7363,19 +7274,19 @@ glabel __osSiCreateAccessQueue
     /* 6C2C 80005C2C AD6A000C */  sw         $t2, 0xC($t3)
     /* 6C30 80005C30 8FB90028 */  lw         $t9, 0x28($sp)
     /* 6C34 80005C34 02002025 */  or         $a0, $s0, $zero
-    /* 6C38 80005C38 0C0019B4 */  jal        __osRestoreInt
+    /* 6C38 80005C38 0C0019B4 */  jal        func_800066D0
     /* 6C3C 80005C3C AC39A41C */   sw        $t9, %lo(__osActiveQueue)($at)
     /* 6C40 80005C40 8FBF001C */  lw         $ra, 0x1C($sp)
     /* 6C44 80005C44 8FB00018 */  lw         $s0, 0x18($sp)
     /* 6C48 80005C48 27BD0028 */  addiu      $sp, $sp, 0x28
     /* 6C4C 80005C4C 03E00008 */  jr         $ra
-endlabel __osSiCreateAccessQueue
+endlabel func_80005C00
 
-nonmatching __osSiGetAccess, 0x4
+nonmatching func_80005C50, 0x4
 
-glabel __osSiGetAccess
+glabel func_80005C50
     /* 6C50 80005C50 00000000 */  nop
-endlabel __osSiGetAccess
+endlabel func_80005C50
     /* 6C54 80005C54 00000000 */  nop
     /* 6C58 80005C58 00000000 */  nop
     /* 6C5C 80005C5C 00000000 */  nop
@@ -7395,13 +7306,13 @@ glabel func_80005C60
     /* 6C80 80005C80 8FAF0034 */  lw         $t7, 0x34($sp)
     /* 6C84 80005C84 27A50044 */  addiu      $a1, $sp, 0x44
     /* 6C88 80005C88 24060001 */  addiu      $a2, $zero, 0x1
-    /* 6C8C 80005C8C 0C0013F8 */  jal        osRecvMesg
+    /* 6C8C 80005C8C 0C0013F8 */  jal        func_80004FE0
     /* 6C90 80005C90 8DE40008 */   lw        $a0, 0x8($t7)
 endlabel func_80005C60
 
-nonmatching __osSiRelAccess, 0x2C
+nonmatching func_80005C94, 0x12C
 
-glabel __osSiRelAccess
+glabel func_80005C94
     /* 6C94 80005C94 8FB80044 */  lw         $t8, 0x44($sp)
     /* 6C98 80005C98 8F190014 */  lw         $t9, 0x14($t8)
     /* 6C9C 80005C9C 132000A1 */  beqz       $t9, .L80005F24
@@ -7413,11 +7324,6 @@ glabel __osSiRelAccess
     /* 6CB4 80005CB4 8F290014 */  lw         $t1, 0x14($t9)
     /* 6CB8 80005CB8 11200003 */  beqz       $t1, .L80005CC8
     /* 6CBC 80005CBC 24010001 */   addiu     $at, $zero, 0x1
-endlabel __osSiRelAccess
-
-nonmatching osCartRomInit, 0x100
-
-glabel osCartRomInit
     /* 6CC0 80005CC0 15210098 */  bne        $t1, $at, .L80005F24
     /* 6CC4 80005CC4 00000000 */   nop
   .L80005CC8:
@@ -7464,7 +7370,7 @@ glabel osCartRomInit
     /* 6D5C 80005D5C 8FAB0034 */  lw         $t3, 0x34($sp)
     /* 6D60 80005D60 27A5003C */  addiu      $a1, $sp, 0x3C
     /* 6D64 80005D64 24060001 */  addiu      $a2, $zero, 0x1
-    /* 6D68 80005D68 0C0013F8 */  jal        osRecvMesg
+    /* 6D68 80005D68 0C0013F8 */  jal        func_80004FE0
     /* 6D6C 80005D6C 8D640010 */   lw        $a0, 0x10($t3)
     /* 6D70 80005D70 3C040010 */  lui        $a0, (0x100401 >> 16)
     /* 6D74 80005D74 0C001994 */  jal        __osResetGlobalIntMask
@@ -7483,15 +7389,15 @@ glabel osCartRomInit
     /* 6DA4 80005DA4 8FAF0034 */  lw         $t7, 0x34($sp)
     /* 6DA8 80005DA8 27A50040 */  addiu      $a1, $sp, 0x40
     /* 6DAC 80005DAC 24060001 */  addiu      $a2, $zero, 0x1
-    /* 6DB0 80005DB0 0C0013F8 */  jal        osRecvMesg
+    /* 6DB0 80005DB0 0C0013F8 */  jal        func_80004FE0
     /* 6DB4 80005DB4 8DE4000C */   lw        $a0, 0xC($t7)
     /* 6DB8 80005DB8 8FB80044 */  lw         $t8, 0x44($sp)
     /* 6DBC 80005DBC 2401001D */  addiu      $at, $zero, 0x1D
-endlabel osCartRomInit
+endlabel func_80005C94
 
-nonmatching osSendMesg, 0x150
+nonmatching func_80005DC0, 0x150
 
-glabel osSendMesg
+glabel func_80005DC0
     /* 6DC0 80005DC0 8F080014 */  lw         $t0, 0x14($t8)
     /* 6DC4 80005DC4 250C0014 */  addiu      $t4, $t0, 0x14
     /* 6DC8 80005DC8 AFAC0028 */  sw         $t4, 0x28($sp)
@@ -7524,7 +7430,7 @@ glabel osSendMesg
     /* 6E34 80005E34 3C050500 */  lui        $a1, (0x5000508 >> 16)
     /* 6E38 80005E38 34A50508 */  ori        $a1, $a1, (0x5000508 & 0xFFFF)
     /* 6E3C 80005E3C 27A60024 */  addiu      $a2, $sp, 0x24
-    /* 6E40 80005E40 0C002714 */  jal        osEPiRawReadIo
+    /* 6E40 80005E40 0C002714 */  jal        func_80009C50
     /* 6E44 80005E44 8F240014 */   lw        $a0, 0x14($t9)
     /* 6E48 80005E48 8FA90024 */  lw         $t1, 0x24($sp)
     /* 6E4C 80005E4C 3C010200 */  lui        $at, (0x2000000 >> 16)
@@ -7549,13 +7455,13 @@ glabel osSendMesg
     /* 6E94 80005E94 3C040010 */  lui        $a0, (0x100C01 >> 16)
     /* 6E98 80005E98 AD4C0000 */  sw         $t4, 0x0($t2)
     /* 6E9C 80005E9C AD0F0010 */  sw         $t7, %lo(D_A4600010)($t0)
-    /* 6EA0 80005EA0 0C00197C */  jal        __osSetGlobalIntMask
+    /* 6EA0 80005EA0 0C00197C */  jal        func_800065F0
     /* 6EA4 80005EA4 34840C01 */   ori       $a0, $a0, (0x100C01 & 0xFFFF)
   .L80005EA8:
     /* 6EA8 80005EA8 8FB90044 */  lw         $t9, 0x44($sp)
     /* 6EAC 80005EAC 00003025 */  or         $a2, $zero, $zero
     /* 6EB0 80005EB0 8F240004 */  lw         $a0, 0x4($t9)
-    /* 6EB4 80005EB4 0C001770 */  jal        osSendMesg
+    /* 6EB4 80005EB4 0C001770 */  jal        func_80005DC0
     /* 6EB8 80005EB8 03202825 */   or        $a1, $t9, $zero
     /* 6EBC 80005EBC 8FA90030 */  lw         $t1, 0x30($sp)
     /* 6EC0 80005EC0 24010001 */  addiu      $at, $zero, 0x1
@@ -7572,20 +7478,20 @@ glabel osSendMesg
     /* 6EE8 80005EE8 8FB80034 */  lw         $t8, 0x34($sp)
     /* 6EEC 80005EEC 00002825 */  or         $a1, $zero, $zero
     /* 6EF0 80005EF0 00003025 */  or         $a2, $zero, $zero
-    /* 6EF4 80005EF4 0C001770 */  jal        osSendMesg
+    /* 6EF4 80005EF4 0C001770 */  jal        func_80005DC0
     /* 6EF8 80005EF8 8F040010 */   lw        $a0, 0x10($t8)
     /* 6EFC 80005EFC 8FAC0044 */  lw         $t4, 0x44($sp)
     /* 6F00 80005F00 24010001 */  addiu      $at, $zero, 0x1
     /* 6F04 80005F04 8D8A0014 */  lw         $t2, 0x14($t4)
     /* 6F08 80005F08 954F001A */  lhu        $t7, 0x1A($t2)
     /* 6F0C 80005F0C 15E1FF5C */  bne        $t7, $at, .L80005C80
-endlabel osSendMesg
+endlabel func_80005DC0
 
-nonmatching osCreateThread, 0x150
+nonmatching func_80005F10, 0x1E0
 
-glabel osCreateThread
+glabel func_80005F10
     /* 6F10 80005F10 00000000 */  nop
-    /* 6F14 80005F14 0C002794 */  jal        osYieldThread
+    /* 6F14 80005F14 0C002794 */  jal        func_80009E50
     /* 6F18 80005F18 00000000 */   nop
     /* 6F1C 80005F1C 1000FF58 */  b          .L80005C80
     /* 6F20 80005F20 00000000 */   nop
@@ -7605,7 +7511,7 @@ glabel osCreateThread
     /* 6F54 80005F54 8FAD0034 */  lw         $t5, 0x34($sp)
     /* 6F58 80005F58 27A5003C */  addiu      $a1, $sp, 0x3C
     /* 6F5C 80005F5C 24060001 */  addiu      $a2, $zero, 0x1
-    /* 6F60 80005F60 0C0013F8 */  jal        osRecvMesg
+    /* 6F60 80005F60 0C0013F8 */  jal        func_80004FE0
     /* 6F64 80005F64 8DA40010 */   lw        $a0, 0x10($t5)
     /* 6F68 80005F68 8FAE0034 */  lw         $t6, 0x34($sp)
     /* 6F6C 80005F6C 8FAB0044 */  lw         $t3, 0x44($sp)
@@ -7620,7 +7526,7 @@ glabel osCreateThread
     /* 6F90 80005F90 8FB80034 */  lw         $t8, 0x34($sp)
     /* 6F94 80005F94 27A5003C */  addiu      $a1, $sp, 0x3C
     /* 6F98 80005F98 24060001 */  addiu      $a2, $zero, 0x1
-    /* 6F9C 80005F9C 0C0013F8 */  jal        osRecvMesg
+    /* 6F9C 80005F9C 0C0013F8 */  jal        func_80004FE0
     /* 6FA0 80005FA0 8F040010 */   lw        $a0, 0x10($t8)
     /* 6FA4 80005FA4 8FAA0034 */  lw         $t2, 0x34($sp)
     /* 6FA8 80005FA8 8FAC0044 */  lw         $t4, 0x44($sp)
@@ -7635,7 +7541,7 @@ glabel osCreateThread
     /* 6FCC 80005FCC 8FAF0034 */  lw         $t7, 0x34($sp)
     /* 6FD0 80005FD0 27A5003C */  addiu      $a1, $sp, 0x3C
     /* 6FD4 80005FD4 24060001 */  addiu      $a2, $zero, 0x1
-    /* 6FD8 80005FD8 0C0013F8 */  jal        osRecvMesg
+    /* 6FD8 80005FD8 0C0013F8 */  jal        func_80004FE0
     /* 6FDC 80005FDC 8DE40010 */   lw        $a0, 0x10($t7)
     /* 6FE0 80005FE0 8FA80044 */  lw         $t0, 0x44($sp)
     /* 6FE4 80005FE4 8FAD0034 */  lw         $t5, 0x34($sp)
@@ -7653,7 +7559,7 @@ glabel osCreateThread
     /* 7014 80006014 8FAB0034 */  lw         $t3, 0x34($sp)
     /* 7018 80006018 27A5003C */  addiu      $a1, $sp, 0x3C
     /* 701C 8000601C 24060001 */  addiu      $a2, $zero, 0x1
-    /* 7020 80006020 0C0013F8 */  jal        osRecvMesg
+    /* 7020 80006020 0C0013F8 */  jal        func_80004FE0
     /* 7024 80006024 8D640010 */   lw        $a0, 0x10($t3)
     /* 7028 80006028 8FAE0044 */  lw         $t6, 0x44($sp)
     /* 702C 8000602C 8FAC0034 */  lw         $t4, 0x34($sp)
@@ -7669,14 +7575,10 @@ glabel osCreateThread
     /* 7054 80006054 1000000B */  b          .L80006084
     /* 7058 80006058 AFA20038 */   sw        $v0, 0x38($sp)
     /* 705C 8000605C 8FAA0044 */  lw         $t2, 0x44($sp)
-endlabel osCreateThread
-
-nonmatching __osDevMgrMain, 0x90
-
-glabel __osDevMgrMain
+  alabel D_80006060
     /* 7060 80006060 00003025 */  or         $a2, $zero, $zero
     /* 7064 80006064 8D440004 */  lw         $a0, 0x4($t2)
-    /* 7068 80006068 0C001770 */  jal        osSendMesg
+    /* 7068 80006068 0C001770 */  jal        func_80005DC0
     /* 706C 8000606C 01402825 */   or        $a1, $t2, $zero
     /* 7070 80006070 240FFFFF */  addiu      $t7, $zero, -0x1
     /* 7074 80006074 10000003 */  b          .L80006084
@@ -7691,17 +7593,17 @@ glabel __osDevMgrMain
     /* 7090 80006090 8FAD0034 */  lw         $t5, 0x34($sp)
     /* 7094 80006094 27A50040 */  addiu      $a1, $sp, 0x40
     /* 7098 80006098 24060001 */  addiu      $a2, $zero, 0x1
-    /* 709C 8000609C 0C0013F8 */  jal        osRecvMesg
+    /* 709C 8000609C 0C0013F8 */  jal        func_80004FE0
     /* 70A0 800060A0 8DA4000C */   lw        $a0, 0xC($t5)
     /* 70A4 800060A4 8FAB0044 */  lw         $t3, 0x44($sp)
     /* 70A8 800060A8 00003025 */  or         $a2, $zero, $zero
     /* 70AC 800060AC 8D640004 */  lw         $a0, 0x4($t3)
-    /* 70B0 800060B0 0C001770 */  jal        osSendMesg
+    /* 70B0 800060B0 0C001770 */  jal        func_80005DC0
     /* 70B4 800060B4 01602825 */   or        $a1, $t3, $zero
     /* 70B8 800060B8 8FAE0034 */  lw         $t6, 0x34($sp)
     /* 70BC 800060BC 00002825 */  or         $a1, $zero, $zero
     /* 70C0 800060C0 00003025 */  or         $a2, $zero, $zero
-    /* 70C4 800060C4 0C001770 */  jal        osSendMesg
+    /* 70C4 800060C4 0C001770 */  jal        func_80005DC0
     /* 70C8 800060C8 8DC40010 */   lw        $a0, 0x10($t6)
     /* 70CC 800060CC 1000FEEC */  b          .L80005C80
     /* 70D0 800060D0 00000000 */   nop
@@ -7712,7 +7614,7 @@ glabel __osDevMgrMain
     /* 70E4 800060E4 27BD0048 */  addiu      $sp, $sp, 0x48
     /* 70E8 800060E8 03E00008 */  jr         $ra
     /* 70EC 800060EC 00000000 */   nop
-endlabel __osDevMgrMain
+endlabel func_80005F10
 
 nonmatching func_800060F0, 0x18
 
@@ -7783,7 +7685,7 @@ glabel func_80006110
     /* 71CC 800061CC 0C000F43 */  jal        func_80003D0C
     /* 71D0 800061D0 2484A418 */   addiu     $a0, $a0, %lo(__osRunQueue)
   .L800061D4:
-    /* 71D4 800061D4 0C0019B4 */  jal        __osRestoreInt
+    /* 71D4 800061D4 0C0019B4 */  jal        func_800066D0
     /* 71D8 800061D8 02002025 */   or        $a0, $s0, $zero
     /* 71DC 800061DC 8FBF001C */  lw         $ra, 0x1C($sp)
     /* 71E0 800061E0 8FB00018 */  lw         $s0, 0x18($sp)
@@ -7807,7 +7709,7 @@ glabel func_800061F0
     /* 7214 80006214 3C018001 */  lui        $at, %hi(__OSGlobalIntMask)
     /* 7218 80006218 01CFC025 */  or         $t8, $t6, $t7
     /* 721C 8000621C AC38A3E0 */  sw         $t8, %lo(__OSGlobalIntMask)($at)
-    /* 7220 80006220 0C0019B4 */  jal        __osRestoreInt
+    /* 7220 80006220 0C0019B4 */  jal        func_800066D0
     /* 7224 80006224 02002025 */   or        $a0, $s0, $zero
     /* 7228 80006228 8FBF001C */  lw         $ra, 0x1C($sp)
     /* 722C 8000622C 8FB00018 */  lw         $s0, 0x18($sp)
@@ -7844,7 +7746,7 @@ glabel func_80006250
     /* 7280 80006280 3C018001 */  lui        $at, %hi(__OSGlobalIntMask)
     /* 7284 80006284 01D94024 */  and        $t0, $t6, $t9
     /* 7288 80006288 AC28A3E0 */  sw         $t0, %lo(__OSGlobalIntMask)($at)
-    /* 728C 8000628C 0C0019B4 */  jal        __osRestoreInt
+    /* 728C 8000628C 0C0019B4 */  jal        func_800066D0
     /* 7290 80006290 02002025 */   or        $a0, $s0, $zero
     /* 7294 80006294 8FBF001C */  lw         $ra, 0x1C($sp)
     /* 7298 80006298 8FB00018 */  lw         $s0, 0x18($sp)
@@ -8025,9 +7927,9 @@ glabel func_800062F0
     /* 74EC 800064EC 1420FFEE */  bnez       $at, .L800064A8
 endlabel func_800062F0
 
-nonmatching osGetThreadPri, 0x20
+nonmatching func_800064F0, 0x20
 
-glabel osGetThreadPri
+glabel func_800064F0
     /* 74F0 800064F0 00000000 */  nop
   .L800064F4:
     /* 74F4 800064F4 3C088002 */  lui        $t0, %hi(__osRdb_IP6_CurWrite)
@@ -8037,11 +7939,11 @@ glabel osGetThreadPri
     /* 7504 80006504 3C018002 */  lui        $at, %hi(__osRdb_IP6_CurWrite)
     /* 7508 80006508 25190001 */  addiu      $t9, $t0, 0x1
     /* 750C 8000650C AC39930C */  sw         $t9, %lo(__osRdb_IP6_CurWrite)($at)
-endlabel osGetThreadPri
+endlabel func_800064F0
 
-nonmatching osSetThreadPri, 0x9C
+nonmatching func_80006510, 0x9C
 
-glabel osSetThreadPri
+glabel func_80006510
     /* 7510 80006510 032F082B */  sltu       $at, $t9, $t7
     /* 7514 80006514 14200002 */  bnez       $at, .L80006520
     /* 7518 80006518 3C018002 */   lui       $at, %hi(__osRdb_IP6_CurWrite)
@@ -8077,14 +7979,14 @@ glabel osSetThreadPri
     /* 7588 80006588 3C0BC000 */  lui        $t3, (0xC0000000 >> 16)
     /* 758C 8000658C AD690000 */  sw         $t1, (0xC0000000 & 0xFFFF)($t3)
   .L80006590:
-    /* 7590 80006590 0C0019B4 */  jal        __osRestoreInt
+    /* 7590 80006590 0C0019B4 */  jal        func_800066D0
     /* 7594 80006594 8FA4001C */   lw        $a0, 0x1C($sp)
     /* 7598 80006598 8FBF0014 */  lw         $ra, 0x14($sp)
     /* 759C 8000659C 8FA20018 */  lw         $v0, 0x18($sp)
     /* 75A0 800065A0 27BD0038 */  addiu      $sp, $sp, 0x38
     /* 75A4 800065A4 03E00008 */  jr         $ra
     /* 75A8 800065A8 00000000 */   nop
-endlabel osSetThreadPri
+endlabel func_80006510
     /* 75AC 800065AC 00000000 */  nop
 
 nonmatching func_800065B0, 0xC
@@ -8114,9 +8016,9 @@ glabel func_800065BC
     /* 75EC 800065EC 03002025 */  or         $a0, $t8, $zero
 endlabel func_800065BC
 
-nonmatching __osSetGlobalIntMask, 0x50
+nonmatching func_800065F0, 0x50
 
-glabel __osSetGlobalIntMask
+glabel func_800065F0
     /* 75F0 800065F0 00194080 */  sll        $t0, $t9, 2
     /* 75F4 800065F4 3C198001 */  lui        $t9, %hi(D_8000A4A0)
     /* 75F8 800065F8 0328C821 */  addu       $t9, $t9, $t0
@@ -8133,13 +8035,13 @@ glabel __osSetGlobalIntMask
     /* 7624 80006624 914B0004 */  lbu        $t3, 0x4($t2)
     /* 7628 80006628 A7A9001E */  sh         $t1, 0x1E($sp)
     /* 762C 8000662C 24060001 */  addiu      $a2, $zero, 0x1
-    /* 7630 80006630 0C001CFE */  jal        __rmonSendReply
+    /* 7630 80006630 0C001CFE */  jal        func_800073F8
     /* 7634 80006634 A3AB001C */   sb        $t3, 0x1C($sp)
   .L80006638:
     /* 7638 80006638 8FA20024 */  lw         $v0, 0x24($sp)
   .L8000663C:
     /* 763C 8000663C 8FBF0014 */  lw         $ra, 0x14($sp)
-endlabel __osSetGlobalIntMask
+endlabel func_800065F0
 
 nonmatching func_80006640, 0xC
 
@@ -8199,9 +8101,9 @@ glabel func_800066B0
     /* 76CC 800066CC 27A5001C */   addiu     $a1, $sp, 0x1C
 endlabel func_800066B0
 
-nonmatching __osRestoreInt, 0x1C
+nonmatching func_800066D0, 0x1C
 
-glabel __osRestoreInt
+glabel func_800066D0
     /* 76D0 800066D0 10000002 */  b          .L800066DC
     /* 76D4 800066D4 8FA2001C */   lw        $v0, 0x1C($sp)
   .L800066D8:
@@ -8211,7 +8113,7 @@ glabel __osRestoreInt
     /* 76E0 800066E0 27BD0020 */  addiu      $sp, $sp, 0x20
     /* 76E4 800066E4 03E00008 */  jr         $ra
     /* 76E8 800066E8 00000000 */   nop
-endlabel __osRestoreInt
+endlabel func_800066D0
 
 nonmatching func_800066EC, 0x4
 
@@ -8219,9 +8121,9 @@ glabel func_800066EC
     /* 76EC 800066EC 00C03825 */  or         $a3, $a2, $zero
 endlabel func_800066EC
 
-nonmatching __osRdbSend, 0x30
+nonmatching func_800066F0, 0x30
 
-glabel __osRdbSend
+glabel func_800066F0
     /* 76F0 800066F0 27BDFFF8 */  addiu      $sp, $sp, -0x8
     /* 76F4 800066F4 10E00008 */  beqz       $a3, .L80006718
     /* 76F8 800066F8 24C6FFFF */   addiu     $a2, $a2, -0x1
@@ -8236,7 +8138,7 @@ glabel __osRdbSend
   .L80006718:
     /* 7718 80006718 03E00008 */  jr         $ra
     /* 771C 8000671C 27BD0008 */   addiu     $sp, $sp, 0x8
-endlabel __osRdbSend
+endlabel func_800066F0
 
 nonmatching func_80006720, 0x34
 
@@ -8369,7 +8271,7 @@ glabel func_80006790
     /* 78BC 800068BC 2402FFFB */   addiu     $v0, $zero, -0x5
   .L800068C0:
     /* 78C0 800068C0 8FB80030 */  lw         $t8, 0x30($sp)
-    /* 78C4 800068C4 0C0012CC */  jal        osVirtualToPhysical
+    /* 78C4 800068C4 0C0012CC */  jal        func_80004B30
     /* 78C8 800068C8 8F040010 */   lw        $a0, 0x10($t8)
     /* 78CC 800068CC 2401FFFF */  addiu      $at, $zero, -0x1
     /* 78D0 800068D0 14410003 */  bne        $v0, $at, .L800068E0
@@ -8397,7 +8299,7 @@ glabel func_80006790
     /* 7920 80006920 240F0004 */  addiu      $t7, $zero, 0x4
     /* 7924 80006924 24060008 */  addiu      $a2, $zero, 0x8
     /* 7928 80006928 01F92823 */  subu       $a1, $t7, $t9
-    /* 792C 8000692C 0C0019BC */  jal        __osRdbSend
+    /* 792C 8000692C 0C0019BC */  jal        func_800066F0
     /* 7930 80006930 03192021 */   addu      $a0, $t8, $t9
     /* 7934 80006934 8FA80038 */  lw         $t0, 0x38($sp)
     /* 7938 80006938 00408025 */  or         $s0, $v0, $zero
@@ -8413,7 +8315,7 @@ glabel func_80006790
     /* 7960 80006960 24060001 */   addiu     $a2, $zero, 0x1
     /* 7964 80006964 8FAB0030 */  lw         $t3, 0x30($sp)
     /* 7968 80006968 8FA40028 */  lw         $a0, 0x28($sp)
-    /* 796C 8000696C 0C001D28 */  jal        __rmonSendData
+    /* 796C 8000696C 0C001D28 */  jal        func_800074A0
     /* 7970 80006970 8D650014 */   lw        $a1, 0x14($t3)
     /* 7974 80006974 00001025 */  or         $v0, $zero, $zero
   .L80006978:
@@ -8437,13 +8339,13 @@ glabel func_8000698C
     /* 79A8 800069A8 01C08025 */  or         $s0, $t6, $zero
     /* 79AC 800069AC 15E00008 */  bnez       $t7, .L800069D0
     /* 79B0 800069B0 00000000 */   nop
-    /* 79B4 800069B4 0C0012CC */  jal        osVirtualToPhysical
+    /* 79B4 800069B4 0C0012CC */  jal        func_80004B30
     /* 79B8 800069B8 8E040010 */   lw        $a0, 0x10($s0)
 endlabel func_8000698C
 
-nonmatching __rmonExecute, 0x94
+nonmatching func_800069BC, 0x94
 
-glabel __rmonExecute
+glabel func_800069BC
     /* 79BC 800069BC 2401FFFF */  addiu      $at, $zero, -0x1
     /* 79C0 800069C0 14410003 */  bne        $v0, $at, .L800069D0
     /* 79C4 800069C4 00000000 */   nop
@@ -8486,17 +8388,17 @@ glabel __rmonExecute
     /* 7A44 80006A44 11A10003 */  beq        $t5, $at, .L80006A54
     /* 7A48 80006A48 00000000 */   nop
     /* 7A4C 80006A4C 1000005D */  b          .L80006BC4
-endlabel __rmonExecute
+endlabel func_800069BC
 
-nonmatching __rmonWriteWordTo, 0x48
+nonmatching func_80006A50, 0x48
 
-glabel __rmonWriteWordTo
+glabel func_80006A50
     /* 7A50 80006A50 2402FFFB */  addiu      $v0, $zero, -0x5
   .L80006A54:
     /* 7A54 80006A54 8E040010 */  lw         $a0, 0x10($s0)
     /* 7A58 80006A58 2401FFFC */  addiu      $at, $zero, -0x4
     /* 7A5C 80006A5C 00817024 */  and        $t6, $a0, $at
-    /* 7A60 80006A60 0C001AA6 */  jal        __rmonReadWordAt
+    /* 7A60 80006A60 0C001AA6 */  jal        func_80006A98
     /* 7A64 80006A64 01C02025 */   or        $a0, $t6, $zero
     /* 7A68 80006A68 8FAF0030 */  lw         $t7, 0x30($sp)
     /* 7A6C 80006A6C 24010001 */  addiu      $at, $zero, 0x1
@@ -8510,12 +8412,12 @@ glabel __rmonWriteWordTo
     /* 7A8C 80006A8C 0018CC00 */  sll        $t9, $t8, 16
     /* 7A90 80006A90 01014824 */  and        $t1, $t0, $at
     /* 7A94 80006A94 03295025 */  or         $t2, $t9, $t1
-endlabel __rmonWriteWordTo
+endlabel func_80006A50
 
-nonmatching __rmonReadWordAt, 0x54
+nonmatching func_80006A98, 0x54
 
-glabel __rmonReadWordAt
-    /* 7A98 80006A98 10000014 */  b          __rmonMemcpy
+glabel func_80006A98
+    /* 7A98 80006A98 10000014 */  b          func_80006AEC
     /* 7A9C 80006A9C AFAA002C */   sw        $t2, 0x2C($sp)
   .L80006AA0:
     /* 7AA0 80006AA0 8FAB0030 */  lw         $t3, 0x30($sp)
@@ -8529,7 +8431,7 @@ glabel __rmonReadWordAt
     /* 7AC0 80006AC0 000C6A00 */  sll        $t5, $t4, 8
     /* 7AC4 80006AC4 01C17824 */  and        $t7, $t6, $at
     /* 7AC8 80006AC8 01AFC025 */  or         $t8, $t5, $t7
-    /* 7ACC 80006ACC 10000007 */  b          __rmonMemcpy
+    /* 7ACC 80006ACC 10000007 */  b          func_80006AEC
     /* 7AD0 80006AD0 AFB8002C */   sw        $t8, 0x2C($sp)
   .L80006AD4:
     /* 7AD4 80006AD4 8FB9002C */  lw         $t9, 0x2C($sp)
@@ -8538,16 +8440,16 @@ glabel __rmonReadWordAt
     /* 7AE0 80006AE0 03214824 */  and        $t1, $t9, $at
     /* 7AE4 80006AE4 01095025 */  or         $t2, $t0, $t1
     /* 7AE8 80006AE8 AFAA002C */  sw         $t2, 0x2C($sp)
-endlabel __rmonReadWordAt
+endlabel func_80006A98
 
-nonmatching __rmonMemcpy, 0x34
+nonmatching func_80006AEC, 0x34
 
-glabel __rmonMemcpy
+glabel func_80006AEC
     /* 7AEC 80006AEC 8E040010 */  lw         $a0, 0x10($s0)
     /* 7AF0 80006AF0 2401FFFC */  addiu      $at, $zero, -0x4
     /* 7AF4 80006AF4 8FA5002C */  lw         $a1, 0x2C($sp)
     /* 7AF8 80006AF8 00815824 */  and        $t3, $a0, $at
-    /* 7AFC 80006AFC 0C001A94 */  jal        __rmonWriteWordTo
+    /* 7AFC 80006AFC 0C001A94 */  jal        func_80006A50
     /* 7B00 80006B00 01602025 */   or        $a0, $t3, $zero
     /* 7B04 80006B04 10000025 */  b          .L80006B9C
     /* 7B08 80006B08 00000000 */   nop
@@ -8557,11 +8459,11 @@ glabel __rmonMemcpy
     /* 7B14 80006B14 AFAD0024 */  sw         $t5, 0x24($sp)
     /* 7B18 80006B18 000C7082 */  srl        $t6, $t4, 2
     /* 7B1C 80006B1C AFAE0028 */  sw         $t6, 0x28($sp)
-endlabel __rmonMemcpy
+endlabel func_80006AEC
 
-nonmatching __rmonCopyWords, 0x34
+nonmatching func_80006B20, 0x34
 
-glabel __rmonCopyWords
+glabel func_80006B20
     /* 7B20 80006B20 8E0F0014 */  lw         $t7, 0x14($s0)
     /* 7B24 80006B24 31F80003 */  andi       $t8, $t7, 0x3
     /* 7B28 80006B28 13000003 */  beqz       $t8, .L80006B38
@@ -8577,14 +8479,14 @@ glabel __rmonCopyWords
   .L80006B4C:
     /* 7B4C 80006B4C 8FA90024 */  lw         $t1, 0x24($sp)
     /* 7B50 80006B50 8E040010 */  lw         $a0, 0x10($s0)
-endlabel __rmonCopyWords
+endlabel func_80006B20
 
-nonmatching func_80006B54, 0x3C
+nonmatching func_80006B54, 0x84
 
 glabel func_80006B54
     /* 7B54 80006B54 8D250000 */  lw         $a1, 0x0($t1)
     /* 7B58 80006B58 252A0004 */  addiu      $t2, $t1, 0x4
-    /* 7B5C 80006B5C 0C001A94 */  jal        __rmonWriteWordTo
+    /* 7B5C 80006B5C 0C001A94 */  jal        func_80006A50
     /* 7B60 80006B60 AFAA0024 */   sw        $t2, 0x24($sp)
     /* 7B64 80006B64 8E0B0010 */  lw         $t3, 0x10($s0)
     /* 7B68 80006B68 256C0004 */  addiu      $t4, $t3, 0x4
@@ -8598,13 +8500,8 @@ glabel func_80006B54
     /* 7B88 80006B88 00000000 */   nop
   .L80006B8C:
     /* 7B8C 80006B8C 8E040010 */  lw         $a0, 0x10($s0)
-endlabel func_80006B54
-
-nonmatching __rmonReadMem, 0x48
-
-glabel __rmonReadMem
     /* 7B90 80006B90 26050018 */  addiu      $a1, $s0, 0x18
-    /* 7B94 80006B94 0C001ABB */  jal        __rmonMemcpy
+    /* 7B94 80006B94 0C001ABB */  jal        func_80006AEC
     /* 7B98 80006B98 8E060014 */   lw        $a2, 0x14($s0)
   .L80006B9C:
     /* 7B9C 80006B9C 920F0004 */  lbu        $t7, 0x4($s0)
@@ -8614,7 +8511,7 @@ glabel __rmonReadMem
     /* 7BAC 80006BAC 8E18000C */  lw         $t8, 0xC($s0)
     /* 7BB0 80006BB0 24050010 */  addiu      $a1, $zero, 0x10
     /* 7BB4 80006BB4 24060001 */  addiu      $a2, $zero, 0x1
-    /* 7BB8 80006BB8 0C001CFE */  jal        __rmonSendReply
+    /* 7BB8 80006BB8 0C001CFE */  jal        func_800073F8
     /* 7BBC 80006BBC AFB80040 */   sw        $t8, 0x40($sp)
     /* 7BC0 80006BC0 00001025 */  or         $v0, $zero, $zero
   .L80006BC4:
@@ -8623,7 +8520,7 @@ glabel __rmonReadMem
     /* 7BCC 80006BCC 8FB10018 */  lw         $s1, 0x18($sp)
     /* 7BD0 80006BD0 03E00008 */  jr         $ra
     /* 7BD4 80006BD4 27BD0048 */   addiu     $sp, $sp, 0x48
-endlabel __rmonReadMem
+endlabel func_80006B54
 
 nonmatching func_80006BD8, 0x80
 
@@ -8655,7 +8552,7 @@ glabel func_80006BD8
     /* 7C30 80006C30 916C0004 */  lbu        $t4, 0x4($t3)
     /* 7C34 80006C34 A7A00022 */  sh         $zero, 0x22($sp)
     /* 7C38 80006C38 24060001 */  addiu      $a2, $zero, 0x1
-    /* 7C3C 80006C3C 0C001CFE */  jal        __rmonSendReply
+    /* 7C3C 80006C3C 0C001CFE */  jal        func_800073F8
     /* 7C40 80006C40 A3AC0020 */   sb        $t4, 0x20($sp)
     /* 7C44 80006C44 8FBF0014 */  lw         $ra, 0x14($sp)
     /* 7C48 80006C48 27BD0038 */  addiu      $sp, $sp, 0x38
@@ -8712,7 +8609,7 @@ glabel func_80006C64
   .L80006CE8:
     /* 7CE8 80006CE8 8FA40018 */  lw         $a0, 0x18($sp)
     /* 7CEC 80006CEC 24050018 */  addiu      $a1, $zero, 0x18
-    /* 7CF0 80006CF0 0C001CFE */  jal        __rmonSendReply
+    /* 7CF0 80006CF0 0C001CFE */  jal        func_800073F8
     /* 7CF4 80006CF4 24060001 */   addiu     $a2, $zero, 0x1
     /* 7CF8 80006CF8 8FBF0014 */  lw         $ra, 0x14($sp)
     /* 7CFC 80006CFC 27BD0020 */  addiu      $sp, $sp, 0x20
@@ -8747,7 +8644,7 @@ glabel func_80006D0C
   .L80006D58:
     /* 7D58 80006D58 27A40018 */  addiu      $a0, $sp, 0x18
     /* 7D5C 80006D5C 24050014 */  addiu      $a1, $zero, 0x14
-    /* 7D60 80006D60 0C001CFE */  jal        __rmonSendReply
+    /* 7D60 80006D60 0C001CFE */  jal        func_800073F8
     /* 7D64 80006D64 24060001 */   addiu     $a2, $zero, 0x1
     /* 7D68 80006D68 8FBF0014 */  lw         $ra, 0x14($sp)
     /* 7D6C 80006D6C 27BD0030 */  addiu      $sp, $sp, 0x30
@@ -8756,19 +8653,14 @@ glabel func_80006D0C
     /* 7D78 80006D78 00000000 */   nop
 endlabel func_80006D0C
 
-nonmatching func_80006D7C, 0x10
+nonmatching func_80006D7C, 0x1E0
 
 glabel func_80006D7C
     /* 7D7C 80006D7C 27BDFFD8 */  addiu      $sp, $sp, -0x28
     /* 7D80 80006D80 AFA40028 */  sw         $a0, 0x28($sp)
     /* 7D84 80006D84 8FAE0028 */  lw         $t6, 0x28($sp)
-    /* 7D88 80006D88 3C0F8002 */  lui        $t7, (0x80020000 >> 16)
-endlabel func_80006D7C
-
-nonmatching __rmonWriteMem, 0x1D0
-
-glabel __rmonWriteMem
-    /* 7D8C 80006D8C 25EFB6D0 */  addiu      $t7, $t7, -0x4930
+    /* 7D88 80006D88 3C0F8002 */  lui        $t7, %hi(__rmonUtilityBuffer)
+    /* 7D8C 80006D8C 25EFB6D0 */  addiu      $t7, $t7, %lo(__rmonUtilityBuffer)
     /* 7D90 80006D90 AFBF0014 */  sw         $ra, 0x14($sp)
     /* 7D94 80006D94 AFAF0020 */  sw         $t7, 0x20($sp)
     /* 7D98 80006D98 AFAE0024 */  sw         $t6, 0x24($sp)
@@ -8880,17 +8772,17 @@ glabel __rmonWriteMem
     /* 7F34 80006F34 8FB90020 */  lw         $t9, 0x20($sp)
     /* 7F38 80006F38 24060001 */  addiu      $a2, $zero, 0x1
     /* 7F3C 80006F3C 03202025 */  or         $a0, $t9, $zero
-    /* 7F40 80006F40 0C001CFE */  jal        __rmonSendReply
+    /* 7F40 80006F40 0C001CFE */  jal        func_800073F8
     /* 7F44 80006F44 8F250000 */   lw        $a1, 0x0($t9)
     /* 7F48 80006F48 8FBF0014 */  lw         $ra, 0x14($sp)
     /* 7F4C 80006F4C 27BD0028 */  addiu      $sp, $sp, 0x28
     /* 7F50 80006F50 00001025 */  or         $v0, $zero, $zero
     /* 7F54 80006F54 03E00008 */  jr         $ra
     /* 7F58 80006F58 00000000 */   nop
-endlabel __rmonWriteMem
+endlabel func_80006D7C
     /* 7F5C 80006F5C 00000000 */  nop
 
-nonmatching func_80006F60, 0x78
+nonmatching func_80006F60, 0x98
 
 glabel func_80006F60
     /* 7F60 80006F60 27BDFFD0 */  addiu      $sp, $sp, -0x30
@@ -8916,7 +8808,7 @@ glabel func_80006F60
     /* 7FAC 80006FAC 8FAB0034 */  lw         $t3, 0x34($sp)
     /* 7FB0 80006FB0 24060008 */  addiu      $a2, $zero, 0x8
     /* 7FB4 80006FB4 012A2021 */  addu       $a0, $t1, $t2
-    /* 7FB8 80006FB8 0C0019BC */  jal        __osRdbSend
+    /* 7FB8 80006FB8 0C0019BC */  jal        func_800066F0
     /* 7FBC 80006FBC 016A2823 */   subu      $a1, $t3, $t2
     /* 7FC0 80006FC0 8FAC002C */  lw         $t4, 0x2C($sp)
     /* 7FC4 80006FC4 00408025 */  or         $s0, $v0, $zero
@@ -8924,11 +8816,6 @@ glabel func_80006F60
     /* 7FCC 80006FCC 01906821 */  addu       $t5, $t4, $s0
     /* 7FD0 80006FD0 AFAD002C */  sw         $t5, 0x2C($sp)
     /* 7FD4 80006FD4 8FAF002C */  lw         $t7, 0x2C($sp)
-endlabel func_80006F60
-
-nonmatching __rmonListProcesses, 0x20
-
-glabel __rmonListProcesses
     /* 7FD8 80006FD8 01EE082B */  sltu       $at, $t7, $t6
     /* 7FDC 80006FDC 1420FFF1 */  bnez       $at, .L80006FA4
     /* 7FE0 80006FE0 00000000 */   nop
@@ -8938,9 +8825,9 @@ glabel __rmonListProcesses
     /* 7FEC 80006FEC 27BD0030 */  addiu      $sp, $sp, 0x30
     /* 7FF0 80006FF0 03E00008 */  jr         $ra
     /* 7FF4 80006FF4 00000000 */   nop
-endlabel __rmonListProcesses
+endlabel func_80006F60
 
-nonmatching func_80006FF8, 0x60
+nonmatching func_80006FF8, 0xA8
 
 glabel func_80006FF8
     /* 7FF8 80006FF8 27BDFFD0 */  addiu      $sp, $sp, -0x30
@@ -8965,22 +8852,12 @@ glabel func_80006FF8
     /* 8040 80007040 240A0004 */  addiu      $t2, $zero, 0x4
     /* 8044 80007044 24060008 */  addiu      $a2, $zero, 0x8
     /* 8048 80007048 01492823 */  subu       $a1, $t2, $t1
-    /* 804C 8000704C 0C0019BC */  jal        __osRdbSend
+    /* 804C 8000704C 0C0019BC */  jal        func_800066F0
     /* 8050 80007050 01092021 */   addu      $a0, $t0, $t1
     /* 8054 80007054 8FAB0028 */  lw         $t3, 0x28($sp)
-endlabel func_80006FF8
-
-nonmatching __rmonListBreak, 0xC
-
-glabel __rmonListBreak
     /* 8058 80007058 00408025 */  or         $s0, $v0, $zero
     /* 805C 8000705C 01706021 */  addu       $t4, $t3, $s0
     /* 8060 80007060 AFAC0028 */  sw         $t4, 0x28($sp)
-endlabel __rmonListBreak
-
-nonmatching __rmonGetExeName, 0x3C
-
-glabel __rmonGetExeName
     /* 8064 80007064 8FAD0028 */  lw         $t5, 0x28($sp)
     /* 8068 80007068 29A10004 */  slti       $at, $t5, 0x4
     /* 806C 8000706C 1420FFF2 */  bnez       $at, .L80007038
@@ -8990,16 +8867,16 @@ glabel __rmonGetExeName
     /* 8078 80007078 8FA50034 */  lw         $a1, 0x34($sp)
     /* 807C 8000707C 0C001CD8 */  jal        __rmonSendHeader
     /* 8080 80007080 8FA60038 */   lw        $a2, 0x38($sp)
-    /* 8084 80007084 0C00154D */  jal        __rmonIOflush
+    /* 8084 80007084 0C00154D */  jal        func_80005534
     /* 8088 80007088 00000000 */   nop
     /* 808C 8000708C 8FBF001C */  lw         $ra, 0x1C($sp)
     /* 8090 80007090 8FB00018 */  lw         $s0, 0x18($sp)
     /* 8094 80007094 27BD0030 */  addiu      $sp, $sp, 0x30
     /* 8098 80007098 03E00008 */  jr         $ra
     /* 809C 8000709C 00000000 */   nop
-endlabel __rmonGetExeName
+endlabel func_80006FF8
 
-nonmatching func_800070A0, 0x6C
+nonmatching func_800070A0, 0x120
 
 glabel func_800070A0
     /* 80A0 800070A0 27BDFFC8 */  addiu      $sp, $sp, -0x38
@@ -9030,15 +8907,10 @@ glabel func_800070A0
     /* 8100 80007100 00000000 */   nop
     /* 8104 80007104 254B0004 */  addiu      $t3, $t2, 0x4
     /* 8108 80007108 AFAB0034 */  sw         $t3, 0x34($sp)
-endlabel func_800070A0
-
-nonmatching __rmonGetRegionCount, 0x70
-
-glabel __rmonGetRegionCount
     /* 810C 8000710C 01402025 */  or         $a0, $t2, $zero
     /* 8110 80007110 0C0023EC */  jal        func_80008FB0
     /* 8114 80007114 27A5002C */   addiu     $a1, $sp, 0x2C
-    /* 8118 80007118 0C001561 */  jal        __rmonIOputw
+    /* 8118 80007118 0C001561 */  jal        func_80005584
     /* 811C 8000711C 8FA4002C */   lw        $a0, 0x2C($sp)
     /* 8120 80007120 10000006 */  b          .L8000713C
     /* 8124 80007124 00000000 */   nop
@@ -9046,7 +8918,7 @@ glabel __rmonGetRegionCount
     /* 8128 80007128 8FAC0034 */  lw         $t4, 0x34($sp)
     /* 812C 8000712C 8D840000 */  lw         $a0, 0x0($t4)
     /* 8130 80007130 258D0004 */  addiu      $t5, $t4, 0x4
-    /* 8134 80007134 0C001561 */  jal        __rmonIOputw
+    /* 8134 80007134 0C001561 */  jal        func_80005584
     /* 8138 80007138 AFAD0034 */   sw        $t5, 0x34($sp)
   .L8000713C:
     /* 813C 8000713C 8FAF0030 */  lw         $t7, 0x30($sp)
@@ -9065,14 +8937,9 @@ glabel __rmonGetRegionCount
   .L8000716C:
     /* 816C 8000716C 27A40028 */  addiu      $a0, $sp, 0x28
     /* 8170 80007170 8FA50034 */  lw         $a1, 0x34($sp)
-    /* 8174 80007174 0C001ABB */  jal        __rmonMemcpy
+    /* 8174 80007174 0C001ABB */  jal        func_80006AEC
     /* 8178 80007178 24060004 */   addiu     $a2, $zero, 0x4
-endlabel __rmonGetRegionCount
-
-nonmatching __rmonGetRegions, 0x44
-
-glabel __rmonGetRegions
-    /* 817C 8000717C 0C001561 */  jal        __rmonIOputw
+    /* 817C 8000717C 0C001561 */  jal        func_80005584
     /* 8180 80007180 8FA40028 */   lw        $a0, 0x28($sp)
     /* 8184 80007184 8FAA0030 */  lw         $t2, 0x30($sp)
     /* 8188 80007188 8FB90034 */  lw         $t9, 0x34($sp)
@@ -9083,43 +8950,43 @@ glabel __rmonGetRegions
     /* 819C 8000719C 1600FFF3 */  bnez       $s0, .L8000716C
     /* 81A0 800071A0 AFAB0030 */   sw        $t3, 0x30($sp)
   .L800071A4:
-    /* 81A4 800071A4 0C00154D */  jal        __rmonIOflush
+    /* 81A4 800071A4 0C00154D */  jal        func_80005534
     /* 81A8 800071A8 00000000 */   nop
     /* 81AC 800071AC 8FBF001C */  lw         $ra, 0x1C($sp)
     /* 81B0 800071B0 8FB00018 */  lw         $s0, 0x18($sp)
     /* 81B4 800071B4 27BD0038 */  addiu      $sp, $sp, 0x38
     /* 81B8 800071B8 03E00008 */  jr         $ra
     /* 81BC 800071BC 00000000 */   nop
-endlabel __rmonGetRegions
+endlabel func_800070A0
 
 nonmatching func_800071C0, 0x194
 
 glabel func_800071C0
     /* 81C0 800071C0 3C018002 */  lui        $at, %hi(D_8001B7D0)
     /* 81C4 800071C4 AC20B7D0 */  sw         $zero, %lo(D_8001B7D0)($at)
-    /* 81C8 800071C8 3C018002 */  lui        $at, %hi(D_8001BC39)
+    /* 81C8 800071C8 3C018002 */  lui        $at, %hi(rmonmain_bss_0469)
     /* 81CC 800071CC 27BDFFD8 */  addiu      $sp, $sp, -0x28
-    /* 81D0 800071D0 A020BC39 */  sb         $zero, %lo(D_8001BC39)($at)
+    /* 81D0 800071D0 A020BC39 */  sb         $zero, %lo(rmonmain_bss_0469)($at)
     /* 81D4 800071D4 AFBF001C */  sw         $ra, 0x1C($sp)
-    /* 81D8 800071D8 3C018002 */  lui        $at, %hi(D_8001BC38)
+    /* 81D8 800071D8 3C018002 */  lui        $at, %hi(rmonmain_bss_0468)
     /* 81DC 800071DC AFB00018 */  sw         $s0, 0x18($sp)
-    /* 81E0 800071E0 0C0020BB */  jal        __rmonInit
-    /* 81E4 800071E4 A020BC38 */   sb        $zero, %lo(D_8001BC38)($at)
+    /* 81E0 800071E0 0C0020BB */  jal        func_800082EC
+    /* 81E4 800071E4 A020BC38 */   sb        $zero, %lo(rmonmain_bss_0468)($at)
     /* 81E8 800071E8 240E0001 */  addiu      $t6, $zero, 0x1
     /* 81EC 800071EC 3C018001 */  lui        $at, %hi(__rmonActive)
     /* 81F0 800071F0 AC2EA580 */  sw         $t6, %lo(__rmonActive)($at)
-    /* 81F4 800071F4 3C018002 */  lui        $at, %hi(D_8001BC3C)
-    /* 81F8 800071F8 AC20BC3C */  sw         $zero, %lo(D_8001BC3C)($at)
-    /* 81FC 800071FC 3C0F8002 */  lui        $t7, %hi(D_8001B7D8)
-    /* 8200 80007200 25EFB7D8 */  addiu      $t7, $t7, %lo(D_8001B7D8)
-    /* 8204 80007204 3C018002 */  lui        $at, %hi(D_8001BC40)
-    /* 8208 80007208 AC2FBC40 */  sw         $t7, %lo(D_8001BC40)($at)
+    /* 81F4 800071F4 3C018002 */  lui        $at, %hi(rmonmain_bss_046C)
+    /* 81F8 800071F8 AC20BC3C */  sw         $zero, %lo(rmonmain_bss_046C)($at)
+    /* 81FC 800071FC 3C0F8002 */  lui        $t7, %hi(rmonmain_bss_0008)
+    /* 8200 80007200 25EFB7D8 */  addiu      $t7, $t7, %lo(rmonmain_bss_0008)
+    /* 8204 80007204 3C018002 */  lui        $at, %hi(rmonmain_bss_0470)
+    /* 8208 80007208 AC2FBC40 */  sw         $t7, %lo(rmonmain_bss_0470)($at)
     /* 820C 8000720C 00008025 */  or         $s0, $zero, $zero
   .L80007210:
     /* 8210 80007210 3C048002 */  lui        $a0, %hi(__rmonMQ)
     /* 8214 80007214 2484BC50 */  addiu      $a0, $a0, %lo(__rmonMQ)
     /* 8218 80007218 27A50020 */  addiu      $a1, $sp, 0x20
-    /* 821C 8000721C 0C0013F8 */  jal        osRecvMesg
+    /* 821C 8000721C 0C0013F8 */  jal        func_80004FE0
     /* 8220 80007220 24060001 */   addiu     $a2, $zero, 0x1
     /* 8224 80007224 3C188002 */  lui        $t8, %hi(D_8001B7D0)
     /* 8228 80007228 8F18B7D0 */  lw         $t8, %lo(D_8001B7D0)($t8)
@@ -9137,7 +9004,7 @@ glabel func_800071C0
     /* 8258 80007258 2401FFFD */  addiu      $at, $zero, -0x3
     /* 825C 8000725C 01616024 */  and        $t4, $t3, $at
     /* 8260 80007260 3C018002 */  lui        $at, %hi(D_8001B7D0)
-    /* 8264 80007264 0C002382 */  jal        __rmonHitBreak
+    /* 8264 80007264 0C002382 */  jal        func_80008E08
     /* 8268 80007268 AC2CB7D0 */   sw        $t4, %lo(D_8001B7D0)($at)
   .L8000726C:
     /* 826C 8000726C 3C0D8002 */  lui        $t5, %hi(D_8001B7D0)
@@ -9150,7 +9017,7 @@ glabel func_800071C0
     /* 8288 80007288 2401FFFB */  addiu      $at, $zero, -0x5
     /* 828C 8000728C 01E1C024 */  and        $t8, $t7, $at
     /* 8290 80007290 3C018002 */  lui        $at, %hi(D_8001B7D0)
-    /* 8294 80007294 0C00238E */  jal        __rmonHitSpBreak
+    /* 8294 80007294 0C00238E */  jal        func_80008E38
     /* 8298 80007298 AC38B7D0 */   sw        $t8, %lo(D_8001B7D0)($at)
   .L8000729C:
     /* 829C 8000729C 3C198002 */  lui        $t9, %hi(D_8001B7D0)
@@ -9257,9 +9124,9 @@ glabel func_800073DC
     /* 83F4 800073F4 00408025 */  or         $s0, $v0, $zero
 endlabel func_800073DC
 
-nonmatching __rmonSendReply, 0x64
+nonmatching func_800073F8, 0x64
 
-glabel __rmonSendReply
+glabel func_800073F8
     /* 83F8 800073F8 1DC00003 */  bgtz       $t6, .L80007408
     /* 83FC 800073FC 00000000 */   nop
     /* 8400 80007400 10000011 */  b          .L80007448
@@ -9290,7 +9157,7 @@ glabel __rmonSendReply
     /* 8450 80007450 27BD0028 */  addiu      $sp, $sp, 0x28
     /* 8454 80007454 03E00008 */  jr         $ra
     /* 8458 80007458 00000000 */   nop
-endlabel __rmonSendReply
+endlabel func_800073F8
 
 nonmatching func_8000745C, 0x44
 
@@ -9315,9 +9182,9 @@ glabel func_8000745C
     /* 849C 8000749C 8FB90028 */  lw         $t9, 0x28($sp)
 endlabel func_8000745C
 
-nonmatching __rmonSendData, 0xC4
+nonmatching func_800074A0, 0xC4
 
-glabel __rmonSendData
+glabel func_800074A0
     /* 84A0 800074A0 13190006 */  beq        $t8, $t9, .L800074BC
     /* 84A4 800074A4 00000000 */   nop
     /* 84A8 800074A8 8E31000C */  lw         $s1, 0xC($s1)
@@ -9340,7 +9207,7 @@ glabel __rmonSendData
     /* 84E4 800074E4 29610080 */  slti       $at, $t3, 0x80
     /* 84E8 800074E8 10200018 */  beqz       $at, .L8000754C
     /* 84EC 800074EC 00000000 */   nop
-    /* 84F0 800074F0 0C002074 */  jal        osStopThread
+    /* 84F0 800074F0 0C002074 */  jal        func_800081D0
     /* 84F4 800074F4 02202025 */   or        $a0, $s1, $zero
     /* 84F8 800074F8 10000014 */  b          .L8000754C
     /* 84FC 800074FC 8FB00028 */   lw        $s0, 0x28($sp)
@@ -9357,7 +9224,7 @@ glabel __rmonSendData
     /* 8520 80007520 29C10080 */  slti       $at, $t6, 0x80
     /* 8524 80007524 10200004 */  beqz       $at, .L80007538
     /* 8528 80007528 00000000 */   nop
-    /* 852C 8000752C 0C002074 */  jal        osStopThread
+    /* 852C 8000752C 0C002074 */  jal        func_800081D0
     /* 8530 80007530 02202025 */   or        $a0, $s1, $zero
     /* 8534 80007534 2410FFFF */  addiu      $s0, $zero, -0x1
   .L80007538:
@@ -9374,9 +9241,9 @@ glabel __rmonSendData
     /* 8558 80007558 8FB10018 */  lw         $s1, 0x18($sp)
     /* 855C 8000755C 03E00008 */  jr         $ra
     /* 8560 80007560 27BD0028 */   addiu     $sp, $sp, 0x28
-endlabel __rmonSendData
+endlabel func_800074A0
 
-nonmatching func_80007564, 0x5C
+nonmatching func_80007564, 0x134
 
 glabel func_80007564
     /* 8564 80007564 27BDFFD0 */  addiu      $sp, $sp, -0x30
@@ -9404,12 +9271,7 @@ glabel func_80007564
     /* 85B4 800075B4 24010001 */  addiu      $at, $zero, 0x1
     /* 85B8 800075B8 912A0009 */  lbu        $t2, 0x9($t1)
     /* 85BC 800075BC 15410008 */  bne        $t2, $at, .L800075E0
-endlabel func_80007564
-
-nonmatching rmonMain, 0xD8
-
-glabel rmonMain
-    /* 85C0 800075C0 00000000 */  nop
+    /* 85C0 800075C0 00000000 */   nop
     /* 85C4 800075C4 8FAC0028 */  lw         $t4, 0x28($sp)
     /* 85C8 800075C8 240B0001 */  addiu      $t3, $zero, 0x1
     /* 85CC 800075CC 240D03E8 */  addiu      $t5, $zero, 0x3E8
@@ -9459,7 +9321,7 @@ glabel rmonMain
     /* 866C 8000766C 01602025 */  or         $a0, $t3, $zero
     /* 8670 80007670 00054080 */  sll        $t0, $a1, 2
     /* 8674 80007674 01002825 */  or         $a1, $t0, $zero
-    /* 8678 80007678 0C001CFE */  jal        __rmonSendReply
+    /* 8678 80007678 0C001CFE */  jal        func_800073F8
     /* 867C 8000767C 24A50014 */   addiu     $a1, $a1, 0x14
     /* 8680 80007680 8FBF001C */  lw         $ra, 0x1C($sp)
     /* 8684 80007684 8FB00014 */  lw         $s0, 0x14($sp)
@@ -9467,7 +9329,7 @@ glabel rmonMain
     /* 868C 8000768C 27BD0030 */  addiu      $sp, $sp, 0x30
     /* 8690 80007690 03E00008 */  jr         $ra
     /* 8694 80007694 00001025 */   or        $v0, $zero, $zero
-endlabel rmonMain
+endlabel func_80007564
 
 nonmatching func_80007698, 0xC8
 
@@ -9526,16 +9388,16 @@ glabel func_80007698
     /* 875C 8000775C 8FAF0028 */  lw         $t7, 0x28($sp)
 endlabel func_80007698
 
-nonmatching __rmonMaskIdleThreadInts, 0x7C
+nonmatching func_80007760, 0x7C
 
-glabel __rmonMaskIdleThreadInts
+glabel func_80007760
     /* 8760 80007760 10000085 */  b          .L80007978
     /* 8764 80007764 ADE0001C */   sw        $zero, 0x1C($t7)
   .L80007768:
     /* 8768 80007768 8FB90028 */  lw         $t9, 0x28($sp)
     /* 876C 8000776C 24180001 */  addiu      $t8, $zero, 0x1
     /* 8770 80007770 3C040408 */  lui        $a0, (0x4080000 >> 16)
-    /* 8774 80007774 0C001AA6 */  jal        __rmonReadWordAt
+    /* 8774 80007774 0C001AA6 */  jal        func_80006A98
     /* 8778 80007778 AF38000C */   sw        $t8, 0xC($t9)
     /* 877C 8000777C 8FA90028 */  lw         $t1, 0x28($sp)
     /* 8780 80007780 3C010400 */  lui        $at, (0x4001000 >> 16)
@@ -9543,7 +9405,7 @@ glabel __rmonMaskIdleThreadInts
     /* 8788 80007788 00414021 */  addu       $t0, $v0, $at
     /* 878C 8000778C AD280020 */  sw         $t0, 0x20($t1)
     /* 8790 80007790 8FAA0028 */  lw         $t2, 0x28($sp)
-    /* 8794 80007794 0C001AA6 */  jal        __rmonReadWordAt
+    /* 8794 80007794 0C001AA6 */  jal        func_80006A98
     /* 8798 80007798 8D440020 */   lw        $a0, 0x20($t2)
     /* 879C 8000779C AFA2001C */  sw         $v0, 0x1C($sp)
     /* 87A0 800077A0 8FAB001C */  lw         $t3, 0x1C($sp)
@@ -9562,11 +9424,11 @@ glabel __rmonMaskIdleThreadInts
     /* 87D0 800077D0 00000000 */   nop
     /* 87D4 800077D4 8FB80028 */  lw         $t8, 0x28($sp)
     /* 87D8 800077D8 240F0002 */  addiu      $t7, $zero, 0x2
-endlabel __rmonMaskIdleThreadInts
+endlabel func_80007760
 
-nonmatching __rmonGetTCB, 0x80
+nonmatching func_800077DC, 0x80
 
-glabel __rmonGetTCB
+glabel func_800077DC
     /* 87DC 800077DC 24190002 */  addiu      $t9, $zero, 0x2
     /* 87E0 800077E0 A70F0010 */  sh         $t7, 0x10($t8)
     /* 87E4 800077E4 8FA80028 */  lw         $t0, 0x28($sp)
@@ -9586,13 +9448,13 @@ glabel __rmonGetTCB
     /* 8814 80007814 8FAD0018 */  lw         $t5, 0x18($sp)
     /* 8818 80007818 2401FFFF */  addiu      $at, $zero, -0x1
     /* 881C 8000781C 8DAE0004 */  lw         $t6, 0x4($t5)
-    /* 8820 80007820 11C1000E */  beq        $t6, $at, __rmonStopUserThreads
+    /* 8820 80007820 11C1000E */  beq        $t6, $at, func_8000785C
     /* 8824 80007824 00000000 */   nop
   .L80007828:
     /* 8828 80007828 8FAF0018 */  lw         $t7, 0x18($sp)
     /* 882C 8000782C 8FB90024 */  lw         $t9, 0x24($sp)
     /* 8830 80007830 8DF80014 */  lw         $t8, 0x14($t7)
-    /* 8834 80007834 13190009 */  beq        $t8, $t9, __rmonStopUserThreads
+    /* 8834 80007834 13190009 */  beq        $t8, $t9, func_8000785C
     /* 8838 80007838 00000000 */   nop
     /* 883C 8000783C 8FA80018 */  lw         $t0, 0x18($sp)
     /* 8840 80007840 2401FFFF */  addiu      $at, $zero, -0x1
@@ -9602,11 +9464,11 @@ glabel __rmonGetTCB
     /* 8850 80007850 8D4B0004 */  lw         $t3, 0x4($t2)
     /* 8854 80007854 1561FFF4 */  bne        $t3, $at, .L80007828
     /* 8858 80007858 00000000 */   nop
-endlabel __rmonGetTCB
+endlabel func_800077DC
 
-nonmatching __rmonStopUserThreads, 0x108
+nonmatching func_8000785C, 0x130
 
-glabel __rmonStopUserThreads
+glabel func_8000785C
     /* 885C 8000785C 8FAC0018 */  lw         $t4, 0x18($sp)
     /* 8860 80007860 2401FFFF */  addiu      $at, $zero, -0x1
     /* 8864 80007864 8D8D0004 */  lw         $t5, 0x4($t4)
@@ -9678,11 +9540,6 @@ glabel __rmonStopUserThreads
     /* 8958 80007958 24180002 */  addiu      $t8, $zero, 0x2
     /* 895C 8000795C 24080001 */  addiu      $t0, $zero, 0x1
     /* 8960 80007960 A7380010 */  sh         $t8, 0x10($t9)
-endlabel __rmonStopUserThreads
-
-nonmatching __rmonListThreads, 0x28
-
-glabel __rmonListThreads
     /* 8964 80007964 8FA90028 */  lw         $t1, 0x28($sp)
     /* 8968 80007968 240A0002 */  addiu      $t2, $zero, 0x2
     /* 896C 8000796C A5280024 */  sh         $t0, 0x24($t1)
@@ -9695,7 +9552,7 @@ glabel __rmonListThreads
     /* 8980 80007980 27BD0020 */  addiu      $sp, $sp, 0x20
     /* 8984 80007984 03E00008 */  jr         $ra
     /* 8988 80007988 00000000 */   nop
-endlabel __rmonListThreads
+endlabel func_8000785C
 
 nonmatching func_8000798C, 0x68
 
@@ -9707,7 +9564,7 @@ glabel func_8000798C
     /* 899C 8000799C 27A60018 */  addiu      $a2, $sp, 0x18
     /* 89A0 800079A0 AFAE0064 */  sw         $t6, 0x64($sp)
     /* 89A4 800079A4 8DC5000C */  lw         $a1, 0xC($t6)
-    /* 89A8 800079A8 0C001EA6 */  jal        __rmonGetThreadStatus
+    /* 89A8 800079A8 0C001EA6 */  jal        func_80007A98
     /* 89AC 800079AC 91C40009 */   lbu       $a0, 0x9($t6)
     /* 89B0 800079B0 10400003 */  beqz       $v0, .L800079C0
     /* 89B4 800079B4 00000000 */   nop
@@ -9720,7 +9577,7 @@ glabel func_8000798C
     /* 89CC 800079CC 91F80004 */  lbu        $t8, 0x4($t7)
     /* 89D0 800079D0 A7A0001E */  sh         $zero, 0x1E($sp)
     /* 89D4 800079D4 24060001 */  addiu      $a2, $zero, 0x1
-    /* 89D8 800079D8 0C001CFE */  jal        __rmonSendReply
+    /* 89D8 800079D8 0C001CFE */  jal        func_800073F8
     /* 89DC 800079DC A3B8001C */   sb        $t8, 0x1C($sp)
     /* 89E0 800079E0 00001025 */  or         $v0, $zero, $zero
   .L800079E4:
@@ -9748,7 +9605,7 @@ glabel func_800079F4
     /* 8A24 80007A24 00000000 */   nop
   .L80007A28:
     /* 8A28 80007A28 8FAF0074 */  lw         $t7, 0x74($sp)
-    /* 8A2C 80007A2C 0C001E17 */  jal        __rmonStopUserThreads
+    /* 8A2C 80007A2C 0C001E17 */  jal        func_8000785C
     /* 8A30 80007A30 8DE4000C */   lw        $a0, 0xC($t7)
     /* 8A34 80007A34 1000001F */  b          .L80007AB4
     /* 8A38 80007A38 00000000 */   nop
@@ -9757,9 +9614,9 @@ glabel func_800079F4
     /* 8A40 80007A40 00000000 */   nop
     /* 8A44 80007A44 1040001B */  beqz       $v0, .L80007AB4
     /* 8A48 80007A48 00000000 */   nop
-    /* 8A4C 80007A4C 0C002115 */  jal        __rmonIdleRCP
+    /* 8A4C 80007A4C 0C002115 */  jal        func_80008454
     /* 8A50 80007A50 00000000 */   nop
-    /* 8A54 80007A54 0C001AA6 */  jal        __rmonReadWordAt
+    /* 8A54 80007A54 0C001AA6 */  jal        func_80006A98
     /* 8A58 80007A58 3C040408 */   lui       $a0, (0x4080000 >> 16)
     /* 8A5C 80007A5C AFA20024 */  sw         $v0, 0x24($sp)
     /* 8A60 80007A60 8FB80024 */  lw         $t8, 0x24($sp)
@@ -9772,17 +9629,17 @@ glabel func_800079F4
     /* 8A7C 80007A7C AFA80024 */  sw         $t0, 0x24($sp)
     /* 8A80 80007A80 01013021 */  addu       $a2, $t0, $at
     /* 8A84 80007A84 24040001 */  addiu      $a0, $zero, 0x1
-    /* 8A88 80007A88 0C002263 */  jal        __rmonGetBranchTarget
+    /* 8A88 80007A88 0C002263 */  jal        func_8000898C
     /* 8A8C 80007A8C 240503E8 */   addiu     $a1, $zero, 0x3E8
     /* 8A90 80007A90 30490003 */  andi       $t1, $v0, 0x3
     /* 8A94 80007A94 15200007 */  bnez       $t1, .L80007AB4
 endlabel func_800079F4
 
-nonmatching __rmonGetThreadStatus, 0xA4
+nonmatching func_80007A98, 0xA4
 
-glabel __rmonGetThreadStatus
+glabel func_80007A98
     /* 8A98 80007A98 00000000 */  nop
-    /* 8A9C 80007A9C 0C002126 */  jal        __rmonStepRCP
+    /* 8A9C 80007A9C 0C002126 */  jal        func_80008498
     /* 8AA0 80007AA0 00000000 */   nop
     /* 8AA4 80007AA4 10000003 */  b          .L80007AB4
     /* 8AA8 80007AA8 00000000 */   nop
@@ -9794,7 +9651,7 @@ glabel __rmonGetThreadStatus
     /* 8AB8 80007AB8 8FAB0074 */  lw         $t3, 0x74($sp)
     /* 8ABC 80007ABC 27A60028 */  addiu      $a2, $sp, 0x28
     /* 8AC0 80007AC0 91440009 */  lbu        $a0, 0x9($t2)
-    /* 8AC4 80007AC4 0C001EA6 */  jal        __rmonGetThreadStatus
+    /* 8AC4 80007AC4 0C001EA6 */  jal        func_80007A98
     /* 8AC8 80007AC8 8D65000C */   lw        $a1, 0xC($t3)
     /* 8ACC 80007ACC 10400003 */  beqz       $v0, .L80007ADC
     /* 8AD0 80007AD0 00000000 */   nop
@@ -9807,7 +9664,7 @@ glabel __rmonGetThreadStatus
     /* 8AE8 80007AE8 918D0004 */  lbu        $t5, 0x4($t4)
     /* 8AEC 80007AEC A7A0002E */  sh         $zero, 0x2E($sp)
     /* 8AF0 80007AF0 24060001 */  addiu      $a2, $zero, 0x1
-    /* 8AF4 80007AF4 0C001CFE */  jal        __rmonSendReply
+    /* 8AF4 80007AF4 0C001CFE */  jal        func_800073F8
     /* 8AF8 80007AF8 A3AD002C */   sb        $t5, 0x2C($sp)
     /* 8AFC 80007AFC 8FAE0034 */  lw         $t6, 0x34($sp)
     /* 8B00 80007B00 24010001 */  addiu      $at, $zero, 0x1
@@ -9817,7 +9674,7 @@ glabel __rmonGetThreadStatus
     /* 8B10 80007B10 A3AF002C */  sb         $t7, 0x2C($sp)
     /* 8B14 80007B14 27A40028 */  addiu      $a0, $sp, 0x28
     /* 8B18 80007B18 2405004C */  addiu      $a1, $zero, 0x4C
-    /* 8B1C 80007B1C 0C001CFE */  jal        __rmonSendReply
+    /* 8B1C 80007B1C 0C001CFE */  jal        func_800073F8
     /* 8B20 80007B20 24060002 */   addiu     $a2, $zero, 0x2
   .L80007B24:
     /* 8B24 80007B24 00001025 */  or         $v0, $zero, $zero
@@ -9827,9 +9684,9 @@ glabel __rmonGetThreadStatus
     /* 8B30 80007B30 27BD0078 */  addiu      $sp, $sp, 0x78
     /* 8B34 80007B34 03E00008 */  jr         $ra
     /* 8B38 80007B38 00000000 */   nop
-endlabel __rmonGetThreadStatus
+endlabel func_80007A98
 
-nonmatching func_80007B3C, 0x250
+nonmatching func_80007B3C, 0x294
 
 glabel func_80007B3C
     /* 8B3C 80007B3C 27BDFF68 */  addiu      $sp, $sp, -0x98
@@ -9900,7 +9757,7 @@ glabel func_80007B3C
     /* 8C28 80007C28 11400008 */  beqz       $t2, .L80007C4C
     /* 8C2C 80007C2C 00000000 */   nop
     /* 8C30 80007C30 8D04000C */  lw         $a0, 0xC($t0)
-    /* 8C34 80007C34 0C002312 */  jal        __rmonSetSingleStep
+    /* 8C34 80007C34 0C002312 */  jal        func_80008C48
     /* 8C38 80007C38 8E05011C */   lw        $a1, 0x11C($s0)
     /* 8C3C 80007C3C 14400003 */  bnez       $v0, .L80007C4C
     /* 8C40 80007C40 00000000 */   nop
@@ -9926,7 +9783,7 @@ glabel func_80007B3C
     /* 8C84 80007C84 3C01FBFF */  lui        $at, (0xFBFFF000 >> 16)
     /* 8C88 80007C88 3421F000 */  ori        $at, $at, (0xFBFFF000 & 0xFFFF)
     /* 8C8C 80007C8C 3C040408 */  lui        $a0, (0x4080000 >> 16)
-    /* 8C90 80007C90 0C001A94 */  jal        __rmonWriteWordTo
+    /* 8C90 80007C90 0C001A94 */  jal        func_80006A50
     /* 8C94 80007C94 00A12821 */   addu      $a1, $a1, $at
   .L80007C98:
     /* 8C98 80007C98 8FAF0094 */  lw         $t7, 0x94($sp)
@@ -9934,22 +9791,22 @@ glabel func_80007B3C
     /* 8CA0 80007CA0 332E0001 */  andi       $t6, $t9, 0x1
     /* 8CA4 80007CA4 11C00015 */  beqz       $t6, .L80007CFC
     /* 8CA8 80007CA8 00000000 */   nop
-    /* 8CAC 80007CAC 0C001AA6 */  jal        __rmonReadWordAt
+    /* 8CAC 80007CAC 0C001AA6 */  jal        func_80006A98
     /* 8CB0 80007CB0 3C040408 */   lui       $a0, (0x4080000 >> 16)
     /* 8CB4 80007CB4 3C010400 */  lui        $at, (0x4001000 >> 16)
     /* 8CB8 80007CB8 34211000 */  ori        $at, $at, (0x4001000 & 0xFFFF)
     /* 8CBC 80007CBC 00409025 */  or         $s2, $v0, $zero
     /* 8CC0 80007CC0 02413021 */  addu       $a2, $s2, $at
     /* 8CC4 80007CC4 24040001 */  addiu      $a0, $zero, 0x1
-    /* 8CC8 80007CC8 0C002263 */  jal        __rmonGetBranchTarget
+    /* 8CC8 80007CC8 0C002263 */  jal        func_8000898C
     /* 8CCC 80007CCC 240503E8 */   addiu     $a1, $zero, 0x3E8
     /* 8CD0 80007CD0 30580003 */  andi       $t8, $v0, 0x3
     /* 8CD4 80007CD4 17000003 */  bnez       $t8, .L80007CE4
     /* 8CD8 80007CD8 00000000 */   nop
-    /* 8CDC 80007CDC 0C002126 */  jal        __rmonStepRCP
+    /* 8CDC 80007CDC 0C002126 */  jal        func_80008498
     /* 8CE0 80007CE0 00000000 */   nop
   .L80007CE4:
-    /* 8CE4 80007CE4 0C002126 */  jal        __rmonStepRCP
+    /* 8CE4 80007CE4 0C002126 */  jal        func_80008498
     /* 8CE8 80007CE8 00000000 */   nop
     /* 8CEC 80007CEC 24090001 */  addiu      $t1, $zero, 0x1
     /* 8CF0 80007CF0 3C018002 */  lui        $at, %hi(__rmonRcpAtBreak)
@@ -9968,7 +9825,7 @@ glabel func_80007B3C
     /* 8D1C 80007D1C 24060001 */  addiu      $a2, $zero, 0x1
     /* 8D20 80007D20 A3A80088 */  sb         $t0, 0x88($sp)
     /* 8D24 80007D24 8D4C000C */  lw         $t4, 0xC($t2)
-    /* 8D28 80007D28 0C001CFE */  jal        __rmonSendReply
+    /* 8D28 80007D28 0C001CFE */  jal        func_800073F8
     /* 8D2C 80007D2C AFAC0090 */   sw        $t4, 0x90($sp)
     /* 8D30 80007D30 8FAD0094 */  lw         $t5, 0x94($sp)
     /* 8D34 80007D34 8DAB0010 */  lw         $t3, 0x10($t5)
@@ -9977,13 +9834,13 @@ glabel func_80007B3C
     /* 8D40 80007D40 00000000 */   nop
     /* 8D44 80007D44 24040001 */  addiu      $a0, $zero, 0x1
     /* 8D48 80007D48 240503E8 */  addiu      $a1, $zero, 0x3E8
-    /* 8D4C 80007D4C 0C001EA6 */  jal        __rmonGetThreadStatus
+    /* 8D4C 80007D4C 0C001EA6 */  jal        func_80007A98
     /* 8D50 80007D50 27A60038 */   addiu     $a2, $sp, 0x38
-    /* 8D54 80007D54 0C002343 */  jal        __rmonGetExceptionStatus
+    /* 8D54 80007D54 0C002343 */  jal        func_80008D0C
     /* 8D58 80007D58 27A40038 */   addiu     $a0, $sp, 0x38
     /* 8D5C 80007D5C 27A40038 */  addiu      $a0, $sp, 0x38
     /* 8D60 80007D60 2405004C */  addiu      $a1, $zero, 0x4C
-    /* 8D64 80007D64 0C001CFE */  jal        __rmonSendReply
+    /* 8D64 80007D64 0C001CFE */  jal        func_800073F8
     /* 8D68 80007D68 24060002 */   addiu     $a2, $zero, 0x2
   .L80007D6C:
     /* 8D6C 80007D6C 10000012 */  b          .L80007DB8
@@ -9996,20 +9853,15 @@ glabel func_80007B3C
     /* 8D80 80007D80 27A40084 */  addiu      $a0, $sp, 0x84
     /* 8D84 80007D84 24050010 */  addiu      $a1, $zero, 0x10
     /* 8D88 80007D88 932E0004 */  lbu        $t6, 0x4($t9)
-endlabel func_80007B3C
-
-nonmatching __rmonThreadStatus, 0x44
-
-glabel __rmonThreadStatus
     /* 8D8C 80007D8C A7A0008A */  sh         $zero, 0x8A($sp)
     /* 8D90 80007D90 24060001 */  addiu      $a2, $zero, 0x1
     /* 8D94 80007D94 A3AE0088 */  sb         $t6, 0x88($sp)
     /* 8D98 80007D98 8F38000C */  lw         $t8, 0xC($t9)
-    /* 8D9C 80007D9C 0C001CFE */  jal        __rmonSendReply
+    /* 8D9C 80007D9C 0C001CFE */  jal        func_800073F8
     /* 8DA0 80007DA0 AFB80090 */   sw        $t8, 0x90($sp)
     /* 8DA4 80007DA4 12200003 */  beqz       $s1, .L80007DB4
     /* 8DA8 80007DA8 00000000 */   nop
-    /* 8DAC 80007DAC 0C002844 */  jal        osStartThread
+    /* 8DAC 80007DAC 0C002844 */  jal        func_8000A110
     /* 8DB0 80007DB0 02002025 */   or        $a0, $s0, $zero
   .L80007DB4:
     /* 8DB4 80007DB4 24020001 */  addiu      $v0, $zero, 0x1
@@ -10020,9 +9872,9 @@ glabel __rmonThreadStatus
     /* 8DC4 80007DC4 8FB20020 */  lw         $s2, 0x20($sp)
     /* 8DC8 80007DC8 03E00008 */  jr         $ra
     /* 8DCC 80007DCC 27BD0098 */   addiu     $sp, $sp, 0x98
-endlabel __rmonThreadStatus
+endlabel func_80007B3C
 
-nonmatching func_80007DD0, 0x24
+nonmatching func_80007DD0, 0xC0
 
 glabel func_80007DD0
     /* 8DD0 80007DD0 27BDFFC8 */  addiu      $sp, $sp, -0x38
@@ -10034,11 +9886,6 @@ glabel func_80007DD0
     /* 8DE8 80007DE8 AFB00018 */   sw        $s0, 0x18($sp)
     /* 8DEC 80007DEC 8FAE0038 */  lw         $t6, 0x38($sp)
     /* 8DF0 80007DF0 00408025 */  or         $s0, $v0, $zero
-endlabel func_80007DD0
-
-nonmatching __rmonStopThread, 0x9C
-
-glabel __rmonStopThread
     /* 8DF4 80007DF4 15C00003 */  bnez       $t6, .L80007E04
     /* 8DF8 80007DF8 00000000 */   nop
     /* 8DFC 80007DFC 10000003 */  b          .L80007E0C
@@ -10075,7 +9922,7 @@ glabel __rmonStopThread
     /* 8E68 80007E68 0C000FFC */  jal        func_80003FF0
     /* 8E6C 80007E6C 01402825 */   or        $a1, $t2, $zero
   .L80007E70:
-    /* 8E70 80007E70 0C0019B4 */  jal        __osRestoreInt
+    /* 8E70 80007E70 0C0019B4 */  jal        func_800066D0
     /* 8E74 80007E74 02002025 */   or        $a0, $s0, $zero
     /* 8E78 80007E78 8FBF0024 */  lw         $ra, 0x24($sp)
     /* 8E7C 80007E7C 8FB00018 */  lw         $s0, 0x18($sp)
@@ -10083,7 +9930,7 @@ glabel __rmonStopThread
     /* 8E84 80007E84 8FB20020 */  lw         $s2, 0x20($sp)
     /* 8E88 80007E88 03E00008 */  jr         $ra
     /* 8E8C 80007E8C 27BD0038 */   addiu     $sp, $sp, 0x38
-endlabel __rmonStopThread
+endlabel func_80007DD0
     /* 8E90 80007E90 00000000 */  nop
     /* 8E94 80007E94 00000000 */  nop
     /* 8E98 80007E98 00000000 */  nop
@@ -10104,7 +9951,7 @@ glabel func_80007EA0
     /* 8EC4 80007EC4 A3AF0020 */  sb         $t7, 0x20($sp)
     /* 8EC8 80007EC8 8DD8000C */  lw         $t8, 0xC($t6)
     /* 8ECC 80007ECC 24060001 */  addiu      $a2, $zero, 0x1
-    /* 8ED0 80007ED0 0C001CFE */  jal        __rmonSendReply
+    /* 8ED0 80007ED0 0C001CFE */  jal        func_800073F8
     /* 8ED4 80007ED4 AFB80028 */   sw        $t8, 0x28($sp)
     /* 8ED8 80007ED8 8FBF0014 */  lw         $ra, 0x14($sp)
     /* 8EDC 80007EDC 27BD0030 */  addiu      $sp, $sp, 0x30
@@ -10113,70 +9960,65 @@ glabel func_80007EA0
     /* 8EE8 80007EE8 00000000 */   nop
 endlabel func_80007EA0
 
-nonmatching func_80007EEC, 0x50
+nonmatching func_80007EEC, 0xDC
 
 glabel func_80007EEC
     /* 8EEC 80007EEC 27BDFFE0 */  addiu      $sp, $sp, -0x20
     /* 8EF0 80007EF0 AFBF001C */  sw         $ra, 0x1C($sp)
     /* 8EF4 80007EF4 3C048002 */  lui        $a0, %hi(__rmonMQ)
-    /* 8EF8 80007EF8 3C058002 */  lui        $a1, %hi(D_8001BE18)
-    /* 8EFC 80007EFC 24A5BE18 */  addiu      $a1, $a1, %lo(D_8001BE18)
+    /* 8EF8 80007EF8 3C058002 */  lui        $a1, %hi(rmonmisc_bss_01C8)
+    /* 8EFC 80007EFC 24A5BE18 */  addiu      $a1, $a1, %lo(rmonmisc_bss_01C8)
     /* 8F00 80007F00 2484BC50 */  addiu      $a0, $a0, %lo(__rmonMQ)
     /* 8F04 80007F04 0C0014F4 */  jal        func_800053D0
     /* 8F08 80007F08 24060008 */   addiu     $a2, $zero, 0x8
     /* 8F0C 80007F0C 3C058002 */  lui        $a1, %hi(__rmonMQ)
     /* 8F10 80007F10 24A5BC50 */  addiu      $a1, $a1, %lo(__rmonMQ)
     /* 8F14 80007F14 2404000A */  addiu      $a0, $zero, 0xA
-    /* 8F18 80007F18 0C001478 */  jal        osSetEventMesg
+    /* 8F18 80007F18 0C001478 */  jal        func_800051E0
     /* 8F1C 80007F1C 24060002 */   addiu     $a2, $zero, 0x2
     /* 8F20 80007F20 3C058002 */  lui        $a1, %hi(__rmonMQ)
     /* 8F24 80007F24 24A5BC50 */  addiu      $a1, $a1, %lo(__rmonMQ)
     /* 8F28 80007F28 2404000B */  addiu      $a0, $zero, 0xB
-    /* 8F2C 80007F2C 0C001478 */  jal        osSetEventMesg
+    /* 8F2C 80007F2C 0C001478 */  jal        func_800051E0
     /* 8F30 80007F30 24060004 */   addiu     $a2, $zero, 0x4
     /* 8F34 80007F34 3C058002 */  lui        $a1, %hi(__rmonMQ)
     /* 8F38 80007F38 24A5BC50 */  addiu      $a1, $a1, %lo(__rmonMQ)
-endlabel func_80007EEC
-
-nonmatching __rmonRunThread, 0x8C
-
-glabel __rmonRunThread
     /* 8F3C 80007F3C 2404000C */  addiu      $a0, $zero, 0xC
-    /* 8F40 80007F40 0C001478 */  jal        osSetEventMesg
+    /* 8F40 80007F40 0C001478 */  jal        func_800051E0
     /* 8F44 80007F44 24060008 */   addiu     $a2, $zero, 0x8
     /* 8F48 80007F48 3C058002 */  lui        $a1, %hi(__rmonMQ)
     /* 8F4C 80007F4C 24A5BC50 */  addiu      $a1, $a1, %lo(__rmonMQ)
     /* 8F50 80007F50 2404000D */  addiu      $a0, $zero, 0xD
-    /* 8F54 80007F54 0C001478 */  jal        osSetEventMesg
+    /* 8F54 80007F54 0C001478 */  jal        func_800051E0
     /* 8F58 80007F58 00003025 */   or        $a2, $zero, $zero
-    /* 8F5C 80007F5C 3C0E8002 */  lui        $t6, %hi(D_8001BE38)
-    /* 8F60 80007F60 25CEBE38 */  addiu      $t6, $t6, %lo(D_8001BE38)
+    /* 8F5C 80007F5C 3C0E8002 */  lui        $t6, %hi(rmonmisc_bss_01E8)
+    /* 8F60 80007F60 25CEBE38 */  addiu      $t6, $t6, %lo(rmonmisc_bss_01E8)
     /* 8F64 80007F64 25CF4000 */  addiu      $t7, $t6, 0x4000
-    /* 8F68 80007F68 3C048002 */  lui        $a0, %hi(D_8001BC68)
-    /* 8F6C 80007F6C 3C068000 */  lui        $a2, %hi(__rmonIOhandler)
+    /* 8F68 80007F68 3C048002 */  lui        $a0, %hi(rmonmisc_bss_0018)
+    /* 8F6C 80007F6C 3C068000 */  lui        $a2, %hi(D_800055F0)
     /* 8F70 80007F70 241800FF */  addiu      $t8, $zero, 0xFF
     /* 8F74 80007F74 AFB80014 */  sw         $t8, 0x14($sp)
-    /* 8F78 80007F78 24C655F0 */  addiu      $a2, $a2, %lo(__rmonIOhandler)
-    /* 8F7C 80007F7C 2484BC68 */  addiu      $a0, $a0, %lo(D_8001BC68)
+    /* 8F78 80007F78 24C655F0 */  addiu      $a2, $a2, %lo(D_800055F0)
+    /* 8F7C 80007F7C 2484BC68 */  addiu      $a0, $a0, %lo(rmonmisc_bss_0018)
     /* 8F80 80007F80 AFAF0010 */  sw         $t7, 0x10($sp)
     /* 8F84 80007F84 00002825 */  or         $a1, $zero, $zero
-    /* 8F88 80007F88 0C0017C4 */  jal        osCreateThread
+    /* 8F88 80007F88 0C0017C4 */  jal        func_80005F10
     /* 8F8C 80007F8C 00003825 */   or        $a3, $zero, $zero
-    /* 8F90 80007F90 3C058002 */  lui        $a1, %hi(D_8001FE58)
-    /* 8F94 80007F94 3C068002 */  lui        $a2, %hi(D_8001FE38)
-    /* 8F98 80007F98 24C6FE38 */  addiu      $a2, $a2, %lo(D_8001FE38)
-    /* 8F9C 80007F9C 24A5FE58 */  addiu      $a1, $a1, %lo(D_8001FE58)
+    /* 8F90 80007F90 3C058002 */  lui        $a1, %hi(rmonmisc_bss_4208)
+    /* 8F94 80007F94 3C068002 */  lui        $a2, %hi(rmonmisc_bss_41E8)
+    /* 8F98 80007F98 24C6FE38 */  addiu      $a2, $a2, %lo(rmonmisc_bss_41E8)
+    /* 8F9C 80007F9C 24A5FE58 */  addiu      $a1, $a1, %lo(rmonmisc_bss_4208)
     /* 8FA0 80007FA0 24040096 */  addiu      $a0, $zero, 0x96
-    /* 8FA4 80007FA4 0C001648 */  jal        osCreatePiManager
+    /* 8FA4 80007FA4 0C001648 */  jal        func_80005920
     /* 8FA8 80007FA8 24070008 */   addiu     $a3, $zero, 0x8
-    /* 8FAC 80007FAC 3C048002 */  lui        $a0, %hi(D_8001BC68)
-    /* 8FB0 80007FB0 0C002844 */  jal        osStartThread
-    /* 8FB4 80007FB4 2484BC68 */   addiu     $a0, $a0, %lo(D_8001BC68)
+    /* 8FAC 80007FAC 3C048002 */  lui        $a0, %hi(rmonmisc_bss_0018)
+    /* 8FB0 80007FB0 0C002844 */  jal        func_8000A110
+    /* 8FB4 80007FB4 2484BC68 */   addiu     $a0, $a0, %lo(rmonmisc_bss_0018)
     /* 8FB8 80007FB8 8FBF001C */  lw         $ra, 0x1C($sp)
     /* 8FBC 80007FBC 27BD0020 */  addiu      $sp, $sp, 0x20
     /* 8FC0 80007FC0 03E00008 */  jr         $ra
     /* 8FC4 80007FC4 00000000 */   nop
-endlabel __rmonRunThread
+endlabel func_80007EEC
 
 nonmatching func_80007FC8, 0x20
 
@@ -10204,7 +10046,7 @@ glabel func_80007FE8
     /* 9004 80008004 A7A0001E */  sh         $zero, 0x1E($sp)
     /* 9008 80008008 24050010 */  addiu      $a1, $zero, 0x10
     /* 900C 8000800C 24060001 */  addiu      $a2, $zero, 0x1
-    /* 9010 80008010 0C001CFE */  jal        __rmonSendReply
+    /* 9010 80008010 0C001CFE */  jal        func_800073F8
     /* 9014 80008014 A3AF001C */   sb        $t7, 0x1C($sp)
     /* 9018 80008018 8FBF0014 */  lw         $ra, 0x14($sp)
     /* 901C 8000801C 27BD0028 */  addiu      $sp, $sp, 0x28
@@ -10276,8 +10118,8 @@ glabel func_800080D0
     /* 90DC 800080DC AFBF0014 */  sw         $ra, 0x14($sp)
     /* 90E0 800080E0 AFA5001C */  sw         $a1, 0x1C($sp)
     /* 90E4 800080E4 8DCF0000 */  lw         $t7, 0x0($t6)
-    /* 90E8 800080E8 3C188002 */  lui        $t8, %hi(D_8001FE70)
-    /* 90EC 800080EC 2718FE70 */  addiu      $t8, $t8, %lo(D_8001FE70)
+    /* 90E8 800080E8 3C188002 */  lui        $t8, %hi(rmonbrk_bss_0000)
+    /* 90EC 800080EC 2718FE70 */  addiu      $t8, $t8, %lo(rmonbrk_bss_0000)
     /* 90F0 800080F0 AF0F0004 */  sw         $t7, 0x4($t8)
     /* 90F4 800080F4 8FA80018 */  lw         $t0, 0x18($sp)
     /* 90F8 800080F8 2419040D */  addiu      $t9, $zero, 0x40D
@@ -10286,11 +10128,11 @@ glabel func_800080D0
     /* 9104 80008104 0C000C7C */  jal        func_800031F0
     /* 9108 80008108 8FA40018 */   lw        $a0, 0x18($sp)
     /* 910C 8000810C 8FA40018 */  lw         $a0, 0x18($sp)
-    /* 9110 80008110 0C0014D4 */  jal        osInvalICache
+    /* 9110 80008110 0C0014D4 */  jal        func_80005350
     /* 9114 80008114 24050004 */   addiu     $a1, $zero, 0x4
     /* 9118 80008118 8FA90018 */  lw         $t1, 0x18($sp)
-    /* 911C 8000811C 3C0A8002 */  lui        $t2, %hi(D_8001FE70)
-    /* 9120 80008120 254AFE70 */  addiu      $t2, $t2, %lo(D_8001FE70)
+    /* 911C 8000811C 3C0A8002 */  lui        $t2, %hi(rmonbrk_bss_0000)
+    /* 9120 80008120 254AFE70 */  addiu      $t2, $t2, %lo(rmonbrk_bss_0000)
     /* 9124 80008124 AD490000 */  sw         $t1, 0x0($t2)
     /* 9128 80008128 8FAB001C */  lw         $t3, 0x1C($sp)
     /* 912C 8000812C 1160000F */  beqz       $t3, .L8000816C
@@ -10304,7 +10146,7 @@ glabel func_800080D0
     /* 914C 8000814C 0C000C7C */  jal        func_800031F0
     /* 9150 80008150 24050004 */   addiu     $a1, $zero, 0x4
     /* 9154 80008154 8FA4001C */  lw         $a0, 0x1C($sp)
-    /* 9158 80008158 0C0014D4 */  jal        osInvalICache
+    /* 9158 80008158 0C0014D4 */  jal        func_80005350
     /* 915C 8000815C 24050004 */   addiu     $a1, $zero, 0x4
     /* 9160 80008160 8FAE001C */  lw         $t6, 0x1C($sp)
     /* 9164 80008164 3C018002 */  lui        $at, %hi(D_8001FEF0)
@@ -10320,9 +10162,9 @@ nonmatching func_8000817C, 0x54
 
 glabel func_8000817C
     /* 917C 8000817C 27BDFFE0 */  addiu      $sp, $sp, -0x20
-    /* 9180 80008180 3C0E8002 */  lui        $t6, %hi(D_8001FE70)
+    /* 9180 80008180 3C0E8002 */  lui        $t6, %hi(rmonbrk_bss_0000)
     /* 9184 80008184 AFBF0014 */  sw         $ra, 0x14($sp)
-    /* 9188 80008188 25CEFE70 */  addiu      $t6, $t6, %lo(D_8001FE70)
+    /* 9188 80008188 25CEFE70 */  addiu      $t6, $t6, %lo(rmonbrk_bss_0000)
     /* 918C 8000818C 8DCF0000 */  lw         $t7, 0x0($t6)
     /* 9190 80008190 11E00018 */  beqz       $t7, .L800081F4
     /* 9194 80008194 00000000 */   nop
@@ -10335,25 +10177,25 @@ glabel func_8000817C
     /* 91B0 800081B0 AFB8001C */   sw        $t8, 0x1C($sp)
     /* 91B4 800081B4 8DC80004 */  lw         $t0, 0x4($t6)
     /* 91B8 800081B8 8DC90000 */  lw         $t1, 0x0($t6)
-    /* 91BC 800081BC 3C0A8002 */  lui        $t2, %hi(D_8001FE70)
-    /* 91C0 800081C0 254AFE70 */  addiu      $t2, $t2, %lo(D_8001FE70)
+    /* 91BC 800081BC 3C0A8002 */  lui        $t2, %hi(rmonbrk_bss_0000)
+    /* 91C0 800081C0 254AFE70 */  addiu      $t2, $t2, %lo(rmonbrk_bss_0000)
     /* 91C4 800081C4 AD280000 */  sw         $t0, 0x0($t1)
     /* 91C8 800081C8 8D440000 */  lw         $a0, 0x0($t2)
     /* 91CC 800081CC 0C000C7C */  jal        func_800031F0
 endlabel func_8000817C
 
-nonmatching osStopThread, 0x94
+nonmatching func_800081D0, 0x94
 
-glabel osStopThread
+glabel func_800081D0
     /* 91D0 800081D0 24050004 */  addiu      $a1, $zero, 0x4
-    /* 91D4 800081D4 3C0B8002 */  lui        $t3, %hi(D_8001FE70)
-    /* 91D8 800081D8 256BFE70 */  addiu      $t3, $t3, %lo(D_8001FE70)
+    /* 91D4 800081D4 3C0B8002 */  lui        $t3, %hi(rmonbrk_bss_0000)
+    /* 91D8 800081D8 256BFE70 */  addiu      $t3, $t3, %lo(rmonbrk_bss_0000)
     /* 91DC 800081DC 8D640000 */  lw         $a0, 0x0($t3)
-    /* 91E0 800081E0 0C0014D4 */  jal        osInvalICache
+    /* 91E0 800081E0 0C0014D4 */  jal        func_80005350
     /* 91E4 800081E4 24050004 */   addiu     $a1, $zero, 0x4
   .L800081E8:
-    /* 91E8 800081E8 3C0C8002 */  lui        $t4, %hi(D_8001FE70)
-    /* 91EC 800081EC 258CFE70 */  addiu      $t4, $t4, %lo(D_8001FE70)
+    /* 91E8 800081E8 3C0C8002 */  lui        $t4, %hi(rmonbrk_bss_0000)
+    /* 91EC 800081EC 258CFE70 */  addiu      $t4, $t4, %lo(rmonbrk_bss_0000)
     /* 91F0 800081F0 AD800000 */  sw         $zero, 0x0($t4)
   .L800081F4:
     /* 91F4 800081F4 3C0D8002 */  lui        $t5, %hi(D_8001FEF0)
@@ -10376,7 +10218,7 @@ glabel osStopThread
     /* 9238 80008238 8C84FEF0 */   lw        $a0, %lo(D_8001FEF0)($a0)
     /* 923C 8000823C 3C048002 */  lui        $a0, %hi(D_8001FEF0)
     /* 9240 80008240 8C84FEF0 */  lw         $a0, %lo(D_8001FEF0)($a0)
-    /* 9244 80008244 0C0014D4 */  jal        osInvalICache
+    /* 9244 80008244 0C0014D4 */  jal        func_80005350
     /* 9248 80008248 24050004 */   addiu     $a1, $zero, 0x4
   .L8000824C:
     /* 924C 8000824C 3C018002 */  lui        $at, %hi(D_8001FEF0)
@@ -10386,9 +10228,9 @@ glabel osStopThread
     /* 9258 80008258 27BD0020 */  addiu      $sp, $sp, 0x20
     /* 925C 8000825C 03E00008 */  jr         $ra
     /* 9260 80008260 00000000 */   nop
-endlabel osStopThread
+endlabel func_800081D0
 
-nonmatching func_80008264, 0x3C
+nonmatching func_80008264, 0x88
 
 glabel func_80008264
     /* 9264 80008264 27BDFFB0 */  addiu      $sp, $sp, -0x50
@@ -10404,20 +10246,15 @@ glabel func_80008264
     /* 928C 8000828C 01C08025 */  or         $s0, $t6, $zero
     /* 9290 80008290 15E10007 */  bne        $t7, $at, .L800082B0
     /* 9294 80008294 00000000 */   nop
-    /* 9298 80008298 3C188002 */  lui        $t8, %hi(D_8001FEF8)
-    /* 929C 8000829C 2718FEF8 */  addiu      $t8, $t8, %lo(D_8001FEF8)
-endlabel func_80008264
-
-nonmatching __rmonSetFault, 0x4C
-
-glabel __rmonSetFault
+    /* 9298 80008298 3C188002 */  lui        $t8, %hi(rmonbrk_bss_0088)
+    /* 929C 8000829C 2718FEF8 */  addiu      $t8, $t8, %lo(rmonbrk_bss_0088)
     /* 92A0 800082A0 03008825 */  or         $s1, $t8, $zero
     /* 92A4 800082A4 27120008 */  addiu      $s2, $t8, 0x8
     /* 92A8 800082A8 10000006 */  b          .L800082C4
     /* 92AC 800082AC 27130080 */   addiu     $s3, $t8, 0x80
   .L800082B0:
-    /* 92B0 800082B0 3C198002 */  lui        $t9, %hi(D_8001FE70)
-    /* 92B4 800082B4 2739FE70 */  addiu      $t9, $t9, %lo(D_8001FE70)
+    /* 92B0 800082B0 3C198002 */  lui        $t9, %hi(rmonbrk_bss_0000)
+    /* 92B4 800082B4 2739FE70 */  addiu      $t9, $t9, %lo(rmonbrk_bss_0000)
     /* 92B8 800082B8 03208825 */  or         $s1, $t9, $zero
     /* 92BC 800082BC 27320008 */  addiu      $s2, $t9, 0x8
     /* 92C0 800082C0 27330080 */  addiu      $s3, $t9, 0x80
@@ -10433,11 +10270,11 @@ glabel __rmonSetFault
     /* 92E0 800082E0 8E0A0010 */  lw         $t2, 0x10($s0)
     /* 92E4 800082E4 112A0005 */  beq        $t1, $t2, .L800082FC
     /* 92E8 800082E8 00000000 */   nop
-endlabel __rmonSetFault
+endlabel func_80008264
 
-nonmatching __rmonInit, 0xDC
+nonmatching func_800082EC, 0x138
 
-glabel __rmonInit
+glabel func_800082EC
     /* 92EC 800082EC 26520008 */  addiu      $s2, $s2, 0x8
     /* 92F0 800082F0 0253082B */  sltu       $at, $s2, $s3
     /* 92F4 800082F4 1420FFF6 */  bnez       $at, .L800082D0
@@ -10456,7 +10293,7 @@ glabel __rmonInit
     /* 9320 80008320 918D0009 */  lbu        $t5, 0x9($t4)
     /* 9324 80008324 15A10014 */  bne        $t5, $at, .L80008378
     /* 9328 80008328 00000000 */   nop
-    /* 932C 8000832C 0C001AA6 */  jal        __rmonReadWordAt
+    /* 932C 8000832C 0C001AA6 */  jal        func_80006A98
     /* 9330 80008330 8E040010 */   lw        $a0, 0x10($s0)
     /* 9334 80008334 02512823 */  subu       $a1, $s2, $s1
     /* 9338 80008338 000570C3 */  sra        $t6, $a1, 3
@@ -10471,7 +10308,7 @@ glabel __rmonInit
     /* 935C 8000835C AE420004 */  sw         $v0, 0x4($s2)
     /* 9360 80008360 34B9000D */  ori        $t9, $a1, 0xD
     /* 9364 80008364 03202825 */  or         $a1, $t9, $zero
-    /* 9368 80008368 0C001A94 */  jal        __rmonWriteWordTo
+    /* 9368 80008368 0C001A94 */  jal        func_80006A50
     /* 936C 8000836C 8E040010 */   lw        $a0, 0x10($s0)
     /* 9370 80008370 10000014 */  b          .L800083C4
     /* 9374 80008374 00000000 */   nop
@@ -10493,15 +10330,10 @@ glabel __rmonInit
     /* 93B0 800083B0 0C000C7C */  jal        func_800031F0
     /* 93B4 800083B4 24050004 */   addiu     $a1, $zero, 0x4
     /* 93B8 800083B8 8E040010 */  lw         $a0, 0x10($s0)
-    /* 93BC 800083BC 0C0014D4 */  jal        osInvalICache
+    /* 93BC 800083BC 0C0014D4 */  jal        func_80005350
     /* 93C0 800083C0 24050004 */   addiu     $a1, $zero, 0x4
   .L800083C4:
     /* 93C4 800083C4 8E190010 */  lw         $t9, 0x10($s0)
-endlabel __rmonInit
-
-nonmatching __rmonPanic, 0x20
-
-glabel __rmonPanic
     /* 93C8 800083C8 AE590000 */  sw         $t9, 0x0($s2)
   .L800083CC:
     /* 93CC 800083CC 92080004 */  lbu        $t0, 0x4($s0)
@@ -10511,17 +10343,12 @@ glabel __rmonPanic
     /* 93DC 800083DC 8E09000C */  lw         $t1, 0xC($s0)
     /* 93E0 800083E0 000A58C3 */  sra        $t3, $t2, 3
     /* 93E4 800083E4 AFAB0038 */  sw         $t3, 0x38($sp)
-endlabel __rmonPanic
-
-nonmatching __rmonSetComm, 0x3C
-
-glabel __rmonSetComm
     /* 93E8 800083E8 AFA90034 */  sw         $t1, 0x34($sp)
     /* 93EC 800083EC 8E4C0004 */  lw         $t4, 0x4($s2)
     /* 93F0 800083F0 27A40028 */  addiu      $a0, $sp, 0x28
     /* 93F4 800083F4 24050018 */  addiu      $a1, $zero, 0x18
     /* 93F8 800083F8 24060001 */  addiu      $a2, $zero, 0x1
-    /* 93FC 800083FC 0C001CFE */  jal        __rmonSendReply
+    /* 93FC 800083FC 0C001CFE */  jal        func_800073F8
     /* 9400 80008400 AFAC003C */   sw        $t4, 0x3C($sp)
     /* 9404 80008404 00001025 */  or         $v0, $zero, $zero
   .L80008408:
@@ -10532,7 +10359,7 @@ glabel __rmonSetComm
     /* 9418 80008418 8FB30020 */  lw         $s3, 0x20($sp)
     /* 941C 8000841C 03E00008 */  jr         $ra
     /* 9420 80008420 27BD0050 */   addiu     $sp, $sp, 0x50
-endlabel __rmonSetComm
+endlabel func_800082EC
 
 nonmatching func_80008424, 0xC
 
@@ -10556,9 +10383,9 @@ glabel func_80008430
     /* 9450 80008450 14200003 */  bnez       $at, .L80008460
 endlabel func_80008430
 
-nonmatching __rmonIdleRCP, 0x44
+nonmatching func_80008454, 0x44
 
-glabel __rmonIdleRCP
+glabel func_80008454
     /* 9454 80008454 00000000 */  nop
     /* 9458 80008458 10000047 */  b          .L80008578
     /* 945C 8000845C 2402FFFE */   addiu     $v0, $zero, -0x2
@@ -10569,26 +10396,26 @@ glabel __rmonIdleRCP
     /* 946C 8000846C 1701001A */  bne        $t8, $at, .L800084D8
     /* 9470 80008470 00000000 */   nop
     /* 9474 80008474 8E190010 */  lw         $t9, 0x10($s0)
-    /* 9478 80008478 3C098002 */  lui        $t1, %hi(D_8001FEF8)
-    /* 947C 8000847C 2529FEF8 */  addiu      $t1, $t1, %lo(D_8001FEF8)
+    /* 9478 80008478 3C098002 */  lui        $t1, %hi(rmonbrk_bss_0088)
+    /* 947C 8000847C 2529FEF8 */  addiu      $t1, $t1, %lo(rmonbrk_bss_0088)
     /* 9480 80008480 001940C0 */  sll        $t0, $t9, 3
     /* 9484 80008484 01098821 */  addu       $s1, $t0, $t1
     /* 9488 80008488 8E2A0000 */  lw         $t2, 0x0($s1)
     /* 948C 8000848C 15400003 */  bnez       $t2, .L8000849C
     /* 9490 80008490 00000000 */   nop
     /* 9494 80008494 10000038 */  b          .L80008578
-endlabel __rmonIdleRCP
+endlabel func_80008454
 
-nonmatching __rmonStepRCP, 0x14
+nonmatching func_80008498, 0x14
 
-glabel __rmonStepRCP
+glabel func_80008498
     /* 9498 80008498 2402FFFE */  addiu      $v0, $zero, -0x2
   .L8000849C:
-    /* 949C 8000849C 0C001AA6 */  jal        __rmonReadWordAt
+    /* 949C 8000849C 0C001AA6 */  jal        func_80006A98
     /* 94A0 800084A0 8E240000 */   lw        $a0, 0x0($s1)
     /* 94A4 800084A4 AFA20024 */  sw         $v0, 0x24($sp)
     /* 94A8 800084A8 8FAB0024 */  lw         $t3, 0x24($sp)
-endlabel __rmonStepRCP
+endlabel func_80008498
 
 nonmatching func_800084AC, 0x24
 
@@ -10600,7 +10427,7 @@ glabel func_800084AC
     /* 94BC 800084BC 15810021 */  bne        $t4, $at, .L80008544
     /* 94C0 800084C0 00000000 */   nop
     /* 94C4 800084C4 8E240000 */  lw         $a0, 0x0($s1)
-    /* 94C8 800084C8 0C001A94 */  jal        __rmonWriteWordTo
+    /* 94C8 800084C8 0C001A94 */  jal        func_80006A50
     /* 94CC 800084CC 8E250004 */   lw        $a1, 0x4($s1)
 endlabel func_800084AC
 
@@ -10611,8 +10438,8 @@ glabel func_800084D0
     /* 94D4 800084D4 00000000 */   nop
   .L800084D8:
     /* 94D8 800084D8 8E0D0010 */  lw         $t5, 0x10($s0)
-    /* 94DC 800084DC 3C0F8002 */  lui        $t7, %hi(D_8001FE70)
-    /* 94E0 800084E0 25EFFE70 */  addiu      $t7, $t7, %lo(D_8001FE70)
+    /* 94DC 800084DC 3C0F8002 */  lui        $t7, %hi(rmonbrk_bss_0000)
+    /* 94E0 800084E0 25EFFE70 */  addiu      $t7, $t7, %lo(rmonbrk_bss_0000)
     /* 94E4 800084E4 000D70C0 */  sll        $t6, $t5, 3
     /* 94E8 800084E8 01CF8821 */  addu       $s1, $t6, $t7
     /* 94EC 800084EC 8E380000 */  lw         $t8, 0x0($s1)
@@ -10636,7 +10463,7 @@ glabel func_800084D0
     /* 9530 80008530 0C000C7C */  jal        func_800031F0
     /* 9534 80008534 8E240000 */   lw        $a0, 0x0($s1)
     /* 9538 80008538 8E240000 */  lw         $a0, 0x0($s1)
-    /* 953C 8000853C 0C0014D4 */  jal        osInvalICache
+    /* 953C 8000853C 0C0014D4 */  jal        func_80005350
     /* 9540 80008540 24050004 */   addiu     $a1, $zero, 0x4
   .L80008544:
     /* 9544 80008544 AE200000 */  sw         $zero, 0x0($s1)
@@ -10649,7 +10476,7 @@ glabel func_800084D0
     /* 9560 80008560 24060001 */  addiu      $a2, $zero, 0x1
     /* 9564 80008564 AFAD0034 */  sw         $t5, 0x34($sp)
     /* 9568 80008568 8E0E0010 */  lw         $t6, 0x10($s0)
-    /* 956C 8000856C 0C001CFE */  jal        __rmonSendReply
+    /* 956C 8000856C 0C001CFE */  jal        func_800073F8
     /* 9570 80008570 AFAE0038 */   sw        $t6, 0x38($sp)
     /* 9574 80008574 00001025 */  or         $v0, $zero, $zero
   .L80008578:
@@ -10665,7 +10492,7 @@ glabel func_8000857C
     /* 9588 80008588 27BD0048 */   addiu     $sp, $sp, 0x48
 endlabel func_8000857C
 
-nonmatching func_8000858C, 0xD8
+nonmatching func_8000858C, 0x228
 
 glabel func_8000858C
     /* 958C 8000858C 27BDFFD8 */  addiu      $sp, $sp, -0x28
@@ -10677,7 +10504,7 @@ glabel func_8000858C
     /* 95A4 800085A4 AFA60030 */  sw         $a2, 0x30($sp)
     /* 95A8 800085A8 15C10005 */  bne        $t6, $at, .L800085C0
     /* 95AC 800085AC AFB00018 */   sw        $s0, 0x18($sp)
-    /* 95B0 800085B0 0C001AA6 */  jal        __rmonReadWordAt
+    /* 95B0 800085B0 0C001AA6 */  jal        func_80006A98
     /* 95B4 800085B4 8FA40030 */   lw        $a0, 0x30($sp)
     /* 95B8 800085B8 10000004 */  b          .L800085CC
     /* 95BC 800085BC AFA20024 */   sw        $v0, 0x24($sp)
@@ -10711,7 +10538,7 @@ glabel func_8000858C
     /* 9624 80008624 30CE001F */  andi       $t6, $a2, 0x1F
     /* 9628 80008628 01C03025 */  or         $a2, $t6, $zero
     /* 962C 8000862C 8FA40028 */  lw         $a0, 0x28($sp)
-    /* 9630 80008630 0C0026D8 */  jal        __rmonGetRegisterContents
+    /* 9630 80008630 0C0026D8 */  jal        func_80009B60
     /* 9634 80008634 8FA5002C */   lw        $a1, 0x2C($sp)
     /* 9638 80008638 10000059 */  b          .L800087A0
     /* 963C 8000863C 00000000 */   nop
@@ -10725,16 +10552,11 @@ glabel func_8000858C
     /* 9658 80008658 24010009 */  addiu      $at, $zero, 0x9
     /* 965C 8000865C 1501004F */  bne        $t0, $at, .L8000879C
     /* 9660 80008660 00000000 */   nop
-endlabel func_8000858C
-
-nonmatching __rmonSetBreak, 0x150
-
-glabel __rmonSetBreak
     /* 9664 80008664 000F3543 */  sra        $a2, $t7, 21
     /* 9668 80008668 30C9001F */  andi       $t1, $a2, 0x1F
     /* 966C 8000866C 01203025 */  or         $a2, $t1, $zero
     /* 9670 80008670 8FA40028 */  lw         $a0, 0x28($sp)
-    /* 9674 80008674 0C0026D8 */  jal        __rmonGetRegisterContents
+    /* 9674 80008674 0C0026D8 */  jal        func_80009B60
     /* 9678 80008678 8FA5002C */   lw        $a1, 0x2C($sp)
     /* 967C 8000867C 10000048 */  b          .L800087A0
     /* 9680 80008680 00000000 */   nop
@@ -10817,9 +10639,9 @@ glabel __rmonSetBreak
     /* 97A8 800087A8 27BD0028 */  addiu      $sp, $sp, 0x28
     /* 97AC 800087AC 03E00008 */  jr         $ra
     /* 97B0 800087B0 00000000 */   nop
-endlabel __rmonSetBreak
+endlabel func_8000858C
 
-nonmatching func_800087B4, 0x7C
+nonmatching func_800087B4, 0x94
 
 glabel func_800087B4
     /* 97B4 800087B4 00042E82 */  srl        $a1, $a0, 26
@@ -10855,12 +10677,7 @@ glabel func_800087B4
     /* 9824 80008824 15410005 */  bne        $t2, $at, .L8000883C
     /* 9828 80008828 00000000 */   nop
     /* 982C 8000882C 10000004 */  b          .L80008840
-endlabel func_800087B4
-
-nonmatching __rmonClearBreak, 0x18
-
-glabel __rmonClearBreak
-    /* 9830 80008830 24020001 */  addiu      $v0, $zero, 0x1
+    /* 9830 80008830 24020001 */   addiu     $v0, $zero, 0x1
   .L80008834:
     /* 9834 80008834 10000002 */  b          .L80008840
     /* 9838 80008838 24020001 */   addiu     $v0, $zero, 0x1
@@ -10869,7 +10686,7 @@ glabel __rmonClearBreak
   .L80008840:
     /* 9840 80008840 03E00008 */  jr         $ra
     /* 9844 80008844 27BD0008 */   addiu     $sp, $sp, 0x8
-endlabel __rmonClearBreak
+endlabel func_800087B4
 
 nonmatching func_80008848, 0xC4
 
@@ -10880,7 +10697,7 @@ glabel func_80008848
     /* 9854 80008854 AFA50024 */  sw         $a1, 0x24($sp)
     /* 9858 80008858 8FA60024 */  lw         $a2, 0x24($sp)
     /* 985C 8000885C 8FA50020 */  lw         $a1, 0x20($sp)
-    /* 9860 80008860 0C002263 */  jal        __rmonGetBranchTarget
+    /* 9860 80008860 0C002263 */  jal        func_8000898C
     /* 9864 80008864 00002025 */   or        $a0, $zero, $zero
     /* 9868 80008868 AFA2001C */  sw         $v0, 0x1C($sp)
     /* 986C 8000886C 8FAE001C */  lw         $t6, 0x1C($sp)
@@ -10969,15 +10786,15 @@ glabel func_8000894C
   .L80008974:
     /* 9974 80008974 00002025 */  or         $a0, $zero, $zero
     /* 9978 80008978 02002825 */  or         $a1, $s0, $zero
-    /* 997C 8000897C 0C001EA6 */  jal        __rmonGetThreadStatus
+    /* 997C 8000897C 0C001EA6 */  jal        func_80007A98
     /* 9980 80008980 27A60024 */   addiu     $a2, $sp, 0x24
-    /* 9984 80008984 0C002343 */  jal        __rmonGetExceptionStatus
+    /* 9984 80008984 0C002343 */  jal        func_80008D0C
     /* 9988 80008988 27A40024 */   addiu     $a0, $sp, 0x24
 endlabel func_8000894C
 
-nonmatching __rmonGetBranchTarget, 0x7C
+nonmatching func_8000898C, 0x7C
 
-glabel __rmonGetBranchTarget
+glabel func_8000898C
     /* 998C 8000898C 8FAF0074 */  lw         $t7, 0x74($sp)
     /* 9990 80008990 2401000F */  addiu      $at, $zero, 0xF
     /* 9994 80008994 15E10005 */  bne        $t7, $at, .L800089AC
@@ -11006,14 +10823,14 @@ glabel __rmonGetBranchTarget
   .L800089E4:
     /* 99E4 800089E4 27A40024 */  addiu      $a0, $sp, 0x24
     /* 99E8 800089E8 2405004C */  addiu      $a1, $zero, 0x4C
-    /* 99EC 800089EC 0C001CFE */  jal        __rmonSendReply
+    /* 99EC 800089EC 0C001CFE */  jal        func_800073F8
     /* 99F0 800089F0 24060002 */   addiu     $a2, $zero, 0x2
     /* 99F4 800089F4 8FBF001C */  lw         $ra, 0x1C($sp)
     /* 99F8 800089F8 8FB00018 */  lw         $s0, 0x18($sp)
     /* 99FC 800089FC 27BD0070 */  addiu      $sp, $sp, 0x70
     /* 9A00 80008A00 03E00008 */  jr         $ra
     /* 9A04 80008A04 00000000 */   nop
-endlabel __rmonGetBranchTarget
+endlabel func_8000898C
 
 nonmatching func_80008A08, 0x30
 
@@ -11022,7 +10839,7 @@ glabel func_80008A08
     /* 9A0C 80008A0C AFBF0014 */  sw         $ra, 0x14($sp)
     /* 9A10 80008A10 0C00215F */  jal        func_8000857C
     /* 9A14 80008A14 00000000 */   nop
-    /* 9A18 80008A18 0C001E17 */  jal        __rmonStopUserThreads
+    /* 9A18 80008A18 0C001E17 */  jal        func_8000785C
     /* 9A1C 80008A1C 00002025 */   or        $a0, $zero, $zero
     /* 9A20 80008A20 0C0023B4 */  jal        func_80008ED0
     /* 9A24 80008A24 00000000 */   nop
@@ -11038,21 +10855,21 @@ glabel func_80008A38
     /* 9A38 80008A38 27BDFF90 */  addiu      $sp, $sp, -0x70
     /* 9A3C 80008A3C AFBF001C */  sw         $ra, 0x1C($sp)
     /* 9A40 80008A40 AFB00018 */  sw         $s0, 0x18($sp)
-    /* 9A44 80008A44 0C001AA6 */  jal        __rmonReadWordAt
+    /* 9A44 80008A44 0C001AA6 */  jal        func_80006A98
     /* 9A48 80008A48 3C040408 */   lui       $a0, (0x4080000 >> 16)
     /* 9A4C 80008A4C 00408025 */  or         $s0, $v0, $zero
     /* 9A50 80008A50 2605FFFC */  addiu      $a1, $s0, -0x4
-    /* 9A54 80008A54 0C001A94 */  jal        __rmonWriteWordTo
+    /* 9A54 80008A54 0C001A94 */  jal        func_80006A50
     /* 9A58 80008A58 3C040408 */   lui       $a0, (0x4080000 >> 16)
     /* 9A5C 80008A5C 24040001 */  addiu      $a0, $zero, 0x1
     /* 9A60 80008A60 240503E8 */  addiu      $a1, $zero, 0x3E8
-    /* 9A64 80008A64 0C001EA6 */  jal        __rmonGetThreadStatus
+    /* 9A64 80008A64 0C001EA6 */  jal        func_80007A98
     /* 9A68 80008A68 27A60024 */   addiu     $a2, $sp, 0x24
-    /* 9A6C 80008A6C 0C002343 */  jal        __rmonGetExceptionStatus
+    /* 9A6C 80008A6C 0C002343 */  jal        func_80008D0C
     /* 9A70 80008A70 27A40024 */   addiu     $a0, $sp, 0x24
     /* 9A74 80008A74 27A40024 */  addiu      $a0, $sp, 0x24
     /* 9A78 80008A78 2405004C */  addiu      $a1, $zero, 0x4C
-    /* 9A7C 80008A7C 0C001CFE */  jal        __rmonSendReply
+    /* 9A7C 80008A7C 0C001CFE */  jal        func_800073F8
     /* 9A80 80008A80 24060002 */   addiu     $a2, $zero, 0x2
     /* 9A84 80008A84 8FBF001C */  lw         $ra, 0x1C($sp)
     /* 9A88 80008A88 240E0001 */  addiu      $t6, $zero, 0x1
@@ -11068,9 +10885,9 @@ nonmatching func_80008AA0, 0x30
 glabel func_80008AA0
     /* 9AA0 80008AA0 27BDFFE8 */  addiu      $sp, $sp, -0x18
     /* 9AA4 80008AA4 AFBF0014 */  sw         $ra, 0x14($sp)
-    /* 9AA8 80008AA8 0C001DD8 */  jal        __rmonMaskIdleThreadInts
+    /* 9AA8 80008AA8 0C001DD8 */  jal        func_80007760
     /* 9AAC 80008AAC 00000000 */   nop
-    /* 9AB0 80008AB0 0C001E17 */  jal        __rmonStopUserThreads
+    /* 9AB0 80008AB0 0C001E17 */  jal        func_8000785C
     /* 9AB4 80008AB4 00002025 */   or        $a0, $zero, $zero
     /* 9AB8 80008AB8 0C0023B4 */  jal        func_80008ED0
     /* 9ABC 80008ABC 00000000 */   nop
@@ -11126,7 +10943,7 @@ glabel func_80008AD0
     /* 9B64 80008B64 318D0002 */  andi       $t5, $t4, 0x2
     /* 9B68 80008B68 11A00006 */  beqz       $t5, .L80008B84
     /* 9B6C 80008B6C 00000000 */   nop
-    /* 9B70 80008B70 0C001530 */  jal        __rmonSendFault
+    /* 9B70 80008B70 0C001530 */  jal        func_800054C0
     /* 9B74 80008B74 02002025 */   or        $a0, $s0, $zero
     /* 9B78 80008B78 8E040014 */  lw         $a0, 0x14($s0)
     /* 9B7C 80008B7C 0C002353 */  jal        func_80008D4C
@@ -11157,7 +10974,7 @@ nonmatching func_80008BB4, 0x4C
 glabel func_80008BB4
     /* 9BB4 80008BB4 AFBF0014 */  sw         $ra, 0x14($sp)
     /* 9BB8 80008BB8 AFA40018 */  sw         $a0, 0x18($sp)
-    /* 9BBC 80008BBC 0C002400 */  jal        __osSpDeviceBusy
+    /* 9BBC 80008BBC 0C002400 */  jal        func_80009000
     /* 9BC0 80008BC0 AFA5001C */   sw        $a1, 0x1C($sp)
     /* 9BC4 80008BC4 10400003 */  beqz       $v0, .L80008BD4
     /* 9BC8 80008BC8 00000000 */   nop
@@ -11208,9 +11025,9 @@ glabel func_80008C30
     /* 9C44 80008C44 000E7E80 */  sll        $t7, $t6, 26
 endlabel func_80008C30
 
-nonmatching __rmonSetSingleStep, 0x6C
+nonmatching func_80008C48, 0x6C
 
-glabel __rmonSetSingleStep
+glabel func_80008C48
     /* 9C48 80008C48 AFA0001C */  sw         $zero, 0x1C($sp)
     /* 9C4C 80008C4C 000FC683 */  sra        $t8, $t7, 26
     /* 9C50 80008C50 83A9001C */  lb         $t1, 0x1C($sp)
@@ -11229,16 +11046,16 @@ glabel __rmonSetSingleStep
     /* 9C84 80008C84 A3A9001D */  sb         $t1, 0x1D($sp)
     /* 9C88 80008C88 3C040400 */  lui        $a0, (0x4001000 >> 16)
     /* 9C8C 80008C8C 34841000 */  ori        $a0, $a0, (0x4001000 & 0xFFFF)
-    /* 9C90 80008C90 0C001A94 */  jal        __rmonWriteWordTo
+    /* 9C90 80008C90 0C001A94 */  jal        func_80006A50
     /* 9C94 80008C94 8FA5001C */   lw        $a1, 0x1C($sp)
     /* 9C98 80008C98 3C040408 */  lui        $a0, (0x4080000 >> 16)
-    /* 9C9C 80008C9C 0C001A94 */  jal        __rmonWriteWordTo
+    /* 9C9C 80008C9C 0C001A94 */  jal        func_80006A50
     /* 9CA0 80008CA0 00002825 */   or        $a1, $zero, $zero
     /* 9CA4 80008CA4 8FBF0014 */  lw         $ra, 0x14($sp)
     /* 9CA8 80008CA8 27BD0020 */  addiu      $sp, $sp, 0x20
     /* 9CAC 80008CAC 03E00008 */  jr         $ra
     /* 9CB0 80008CB0 00000000 */   nop
-endlabel __rmonSetSingleStep
+endlabel func_80008C48
 
 nonmatching func_80008CB4, 0x58
 
@@ -11267,25 +11084,25 @@ glabel func_80008CB4
     /* 9D08 80008D08 01F94825 */  or         $t1, $t7, $t9
 endlabel func_80008CB4
 
-nonmatching __rmonGetExceptionStatus, 0x3C
+nonmatching func_80008D0C, 0x3C
 
-glabel __rmonGetExceptionStatus
+glabel func_80008D0C
     /* 9D0C 80008D0C 354B0020 */  ori        $t3, $t2, 0x20
     /* 9D10 80008D10 AFBF0014 */  sw         $ra, 0x14($sp)
     /* 9D14 80008D14 A3A9001D */  sb         $t1, 0x1D($sp)
     /* 9D18 80008D18 A3AB001E */  sb         $t3, 0x1E($sp)
     /* 9D1C 80008D1C 3C040400 */  lui        $a0, (0x4001000 >> 16)
     /* 9D20 80008D20 34841000 */  ori        $a0, $a0, (0x4001000 & 0xFFFF)
-    /* 9D24 80008D24 0C001A94 */  jal        __rmonWriteWordTo
+    /* 9D24 80008D24 0C001A94 */  jal        func_80006A50
     /* 9D28 80008D28 8FA5001C */   lw        $a1, 0x1C($sp)
     /* 9D2C 80008D2C 3C040408 */  lui        $a0, (0x4080000 >> 16)
-    /* 9D30 80008D30 0C001A94 */  jal        __rmonWriteWordTo
+    /* 9D30 80008D30 0C001A94 */  jal        func_80006A50
     /* 9D34 80008D34 00002825 */   or        $a1, $zero, $zero
     /* 9D38 80008D38 8FBF0014 */  lw         $ra, 0x14($sp)
     /* 9D3C 80008D3C 27BD0020 */  addiu      $sp, $sp, 0x20
     /* 9D40 80008D40 03E00008 */  jr         $ra
     /* 9D44 80008D44 00000000 */   nop
-endlabel __rmonGetExceptionStatus
+endlabel func_80008D0C
 
 nonmatching func_80008D48, 0x4
 
@@ -11298,16 +11115,16 @@ nonmatching func_80008D4C, 0xA4
 glabel func_80008D4C
     /* 9D4C 80008D4C AFBF0014 */  sw         $ra, 0x14($sp)
     /* 9D50 80008D50 AFA40018 */  sw         $a0, 0x18($sp)
-    /* 9D54 80008D54 0C001AA6 */  jal        __rmonReadWordAt
+    /* 9D54 80008D54 0C001AA6 */  jal        func_80006A98
     /* 9D58 80008D58 3C040408 */   lui       $a0, (0x4080000 >> 16)
     /* 9D5C 80008D5C 3C018002 */  lui        $at, %hi(D_8001FF80)
     /* 9D60 80008D60 3C040400 */  lui        $a0, (0x4001000 >> 16)
     /* 9D64 80008D64 AC22FF80 */  sw         $v0, %lo(D_8001FF80)($at)
-    /* 9D68 80008D68 0C001AA6 */  jal        __rmonReadWordAt
+    /* 9D68 80008D68 0C001AA6 */  jal        func_80006A98
     /* 9D6C 80008D6C 34841000 */   ori       $a0, $a0, (0x4001000 & 0xFFFF)
     /* 9D70 80008D70 3C018002 */  lui        $at, %hi(D_8001FF84)
     /* 9D74 80008D74 AC22FF84 */  sw         $v0, %lo(D_8001FF84)($at)
-    /* 9D78 80008D78 0C001AA6 */  jal        __rmonReadWordAt
+    /* 9D78 80008D78 0C001AA6 */  jal        func_80006A98
     /* 9D7C 80008D7C 3C040400 */   lui       $a0, (0x4000000 >> 16)
     /* 9D80 80008D80 3C0E8002 */  lui        $t6, %hi(D_8001FF88)
     /* 9D84 80008D84 25CEFF88 */  addiu      $t6, $t6, %lo(D_8001FF88)
@@ -11316,19 +11133,19 @@ glabel func_80008D4C
     /* 9D90 80008D90 11E00013 */  beqz       $t7, .L80008DE0
     /* 9D94 80008D94 00000000 */   nop
     /* 9D98 80008D98 3C040400 */  lui        $a0, (0x4000004 >> 16)
-    /* 9D9C 80008D9C 0C001AA6 */  jal        __rmonReadWordAt
+    /* 9D9C 80008D9C 0C001AA6 */  jal        func_80006A98
     /* 9DA0 80008DA0 34840004 */   ori       $a0, $a0, (0x4000004 & 0xFFFF)
     /* 9DA4 80008DA4 3C188002 */  lui        $t8, %hi(D_8001FF88)
     /* 9DA8 80008DA8 2718FF88 */  addiu      $t8, $t8, %lo(D_8001FF88)
     /* 9DAC 80008DAC 3C040400 */  lui        $a0, (0x4000008 >> 16)
     /* 9DB0 80008DB0 AF020004 */  sw         $v0, 0x4($t8)
-    /* 9DB4 80008DB4 0C001AA6 */  jal        __rmonReadWordAt
+    /* 9DB4 80008DB4 0C001AA6 */  jal        func_80006A98
     /* 9DB8 80008DB8 34840008 */   ori       $a0, $a0, (0x4000008 & 0xFFFF)
     /* 9DBC 80008DBC 3C198002 */  lui        $t9, %hi(D_8001FF88)
     /* 9DC0 80008DC0 2739FF88 */  addiu      $t9, $t9, %lo(D_8001FF88)
     /* 9DC4 80008DC4 3C040400 */  lui        $a0, (0x400000C >> 16)
     /* 9DC8 80008DC8 AF220008 */  sw         $v0, 0x8($t9)
-    /* 9DCC 80008DCC 0C001AA6 */  jal        __rmonReadWordAt
+    /* 9DCC 80008DCC 0C001AA6 */  jal        func_80006A98
     /* 9DD0 80008DD0 3484000C */   ori       $a0, $a0, (0x400000C & 0xFFFF)
     /* 9DD4 80008DD4 3C088002 */  lui        $t0, %hi(D_8001FF88)
     /* 9DD8 80008DD8 2508FF88 */  addiu      $t0, $t0, %lo(D_8001FF88)
@@ -11351,10 +11168,10 @@ glabel func_80008DF0
     /* 9E04 80008E04 8DC50000 */  lw         $a1, 0x0($t6)
 endlabel func_80008DF0
 
-nonmatching __rmonHitBreak, 0x30
+nonmatching func_80008E08, 0x30
 
-glabel __rmonHitBreak
-    /* 9E08 80008E08 0C001A94 */  jal        __rmonWriteWordTo
+glabel func_80008E08
+    /* 9E08 80008E08 0C001A94 */  jal        func_80006A50
     /* 9E0C 80008E0C 3C040400 */   lui       $a0, (0x4000000 >> 16)
     /* 9E10 80008E10 8FAF0018 */  lw         $t7, 0x18($sp)
     /* 9E14 80008E14 11E00013 */  beqz       $t7, .L80008E64
@@ -11363,40 +11180,40 @@ glabel __rmonHitBreak
     /* 9E20 80008E20 2718FF88 */  addiu      $t8, $t8, %lo(D_8001FF88)
     /* 9E24 80008E24 3C040400 */  lui        $a0, (0x4000004 >> 16)
     /* 9E28 80008E28 34840004 */  ori        $a0, $a0, (0x4000004 & 0xFFFF)
-    /* 9E2C 80008E2C 0C001A94 */  jal        __rmonWriteWordTo
+    /* 9E2C 80008E2C 0C001A94 */  jal        func_80006A50
     /* 9E30 80008E30 8F050004 */   lw        $a1, 0x4($t8)
     /* 9E34 80008E34 3C198002 */  lui        $t9, (0x80020000 >> 16)
-endlabel __rmonHitBreak
+endlabel func_80008E08
 
-nonmatching __rmonHitSpBreak, 0x60
+nonmatching func_80008E38, 0x60
 
-glabel __rmonHitSpBreak
+glabel func_80008E38
     /* 9E38 80008E38 2739FF88 */  addiu      $t9, $t9, -0x78
     /* 9E3C 80008E3C 3C040400 */  lui        $a0, (0x4000008 >> 16)
     /* 9E40 80008E40 34840008 */  ori        $a0, $a0, (0x4000008 & 0xFFFF)
-    /* 9E44 80008E44 0C001A94 */  jal        __rmonWriteWordTo
+    /* 9E44 80008E44 0C001A94 */  jal        func_80006A50
     /* 9E48 80008E48 8F250008 */   lw        $a1, 0x8($t9)
     /* 9E4C 80008E4C 3C088002 */  lui        $t0, %hi(D_8001FF88)
     /* 9E50 80008E50 2508FF88 */  addiu      $t0, $t0, %lo(D_8001FF88)
     /* 9E54 80008E54 3C040400 */  lui        $a0, (0x400000C >> 16)
     /* 9E58 80008E58 3484000C */  ori        $a0, $a0, (0x400000C & 0xFFFF)
-    /* 9E5C 80008E5C 0C001A94 */  jal        __rmonWriteWordTo
+    /* 9E5C 80008E5C 0C001A94 */  jal        func_80006A50
     /* 9E60 80008E60 8D050008 */   lw        $a1, 0x8($t0)
   .L80008E64:
     /* 9E64 80008E64 3C040400 */  lui        $a0, (0x4001000 >> 16)
     /* 9E68 80008E68 3C058002 */  lui        $a1, %hi(D_8001FF84)
     /* 9E6C 80008E6C 8CA5FF84 */  lw         $a1, %lo(D_8001FF84)($a1)
-    /* 9E70 80008E70 0C001A94 */  jal        __rmonWriteWordTo
+    /* 9E70 80008E70 0C001A94 */  jal        func_80006A50
     /* 9E74 80008E74 34841000 */   ori       $a0, $a0, (0x4001000 & 0xFFFF)
     /* 9E78 80008E78 3C058002 */  lui        $a1, %hi(D_8001FF80)
     /* 9E7C 80008E7C 8CA5FF80 */  lw         $a1, %lo(D_8001FF80)($a1)
-    /* 9E80 80008E80 0C001A94 */  jal        __rmonWriteWordTo
+    /* 9E80 80008E80 0C001A94 */  jal        func_80006A50
     /* 9E84 80008E84 3C040408 */   lui       $a0, (0x4080000 >> 16)
     /* 9E88 80008E88 8FBF0014 */  lw         $ra, 0x14($sp)
     /* 9E8C 80008E8C 27BD0018 */  addiu      $sp, $sp, 0x18
     /* 9E90 80008E90 03E00008 */  jr         $ra
     /* 9E94 80008E94 00000000 */   nop
-endlabel __rmonHitSpBreak
+endlabel func_80008E38
 
 nonmatching func_80008E98, 0x8
 
@@ -11425,7 +11242,7 @@ endlabel func_80008EA0
 nonmatching func_80008ED0, 0xE0
 
 glabel func_80008ED0
-    /* 9ED0 80008ED0 0C001DF7 */  jal        __rmonGetTCB
+    /* 9ED0 80008ED0 0C001DF7 */  jal        func_800077DC
     /* 9ED4 80008ED4 8E04000C */   lw        $a0, 0xC($s0)
     /* 9ED8 80008ED8 AFA2002C */  sw         $v0, 0x2C($sp)
     /* 9EDC 80008EDC 8FB9002C */  lw         $t9, 0x2C($sp)
@@ -11502,7 +11319,7 @@ glabel func_80008FB0
   .L80008FCC:
     /* 9FCC 80008FCC 27A40030 */  addiu      $a0, $sp, 0x30
     /* 9FD0 80008FD0 240500A4 */  addiu      $a1, $zero, 0xA4
-    /* 9FD4 80008FD4 0C001CFE */  jal        __rmonSendReply
+    /* 9FD4 80008FD4 0C001CFE */  jal        func_800073F8
     /* 9FD8 80008FD8 24060001 */   addiu     $a2, $zero, 0x1
     /* 9FDC 80008FDC 00001025 */  or         $v0, $zero, $zero
   .L80008FE0:
@@ -11521,22 +11338,22 @@ glabel func_80008FF4
     /* 9FFC 80008FFC AFB00014 */  sw         $s0, 0x14($sp)
 endlabel func_80008FF4
 
-nonmatching __osSpDeviceBusy, 0x30
+nonmatching func_80009000, 0x30
 
-glabel __osSpDeviceBusy
+glabel func_80009000
     /* A000 80009000 8FB00040 */  lw         $s0, 0x40($sp)
     /* A004 80009004 AFBF001C */  sw         $ra, 0x1C($sp)
     /* A008 80009008 AFB10018 */  sw         $s1, 0x18($sp)
     /* A00C 8000900C 920E0009 */  lbu        $t6, 0x9($s0)
     /* A010 80009010 15C0003B */  bnez       $t6, .L80009100
     /* A014 80009014 00000000 */   nop
-    /* A018 80009018 0C001DF7 */  jal        __rmonGetTCB
+    /* A018 80009018 0C001DF7 */  jal        func_800077DC
     /* A01C 8000901C 8E04000C */   lw        $a0, 0xC($s0)
     /* A020 80009020 AFA20028 */  sw         $v0, 0x28($sp)
     /* A024 80009024 8FAF0028 */  lw         $t7, 0x28($sp)
     /* A028 80009028 15E00003 */  bnez       $t7, .L80009038
     /* A02C 8000902C 00000000 */   nop
-endlabel __osSpDeviceBusy
+endlabel func_80009000
 
 nonmatching func_80009030, 0x84
 
@@ -11614,7 +11431,7 @@ glabel func_800090B4
     /* A118 80009118 920B0004 */  lbu        $t3, 0x4($s0)
     /* A11C 8000911C A7A00032 */  sh         $zero, 0x32($sp)
     /* A120 80009120 24060001 */  addiu      $a2, $zero, 0x1
-    /* A124 80009124 0C001CFE */  jal        __rmonSendReply
+    /* A124 80009124 0C001CFE */  jal        func_800073F8
     /* A128 80009128 A3AB0030 */   sb        $t3, 0x30($sp)
     /* A12C 8000912C 00001025 */  or         $v0, $zero, $zero
   .L80009130:
@@ -11648,7 +11465,7 @@ glabel func_80009148
     /* A170 80009170 44802000 */  mtc1       $zero, $f4
     /* A174 80009174 00000000 */  nop
     /* A178 80009178 E7A40020 */  swc1       $f4, 0x20($sp)
-    /* A17C 8000917C 0C001DF7 */  jal        __rmonGetTCB
+    /* A17C 8000917C 0C001DF7 */  jal        func_800077DC
     /* A180 80009180 8E04000C */   lw        $a0, 0xC($s0)
     /* A184 80009184 AFA20024 */  sw         $v0, 0x24($sp)
     /* A188 80009188 8FB80024 */  lw         $t8, 0x24($sp)
@@ -11661,7 +11478,7 @@ glabel func_80009148
     /* A1A0 800091A0 27A40028 */  addiu      $a0, $sp, 0x28
     /* A1A4 800091A4 24840010 */  addiu      $a0, $a0, 0x10
     /* A1A8 800091A8 24060020 */  addiu      $a2, $zero, 0x20
-    /* A1AC 800091AC 0C001AC8 */  jal        __rmonCopyWords
+    /* A1AC 800091AC 0C001AC8 */  jal        func_80006B20
     /* A1B0 800091B0 24A50130 */   addiu     $a1, $a1, 0x130
     /* A1B4 800091B4 8FB90024 */  lw         $t9, 0x24($sp)
     /* A1B8 800091B8 27A40028 */  addiu      $a0, $sp, 0x28
@@ -11673,7 +11490,7 @@ glabel func_80009148
     /* A1D0 800091D0 A7A0002E */  sh         $zero, 0x2E($sp)
     /* A1D4 800091D4 A3A9002C */  sb         $t1, 0x2C($sp)
     /* A1D8 800091D8 8E0A000C */  lw         $t2, 0xC($s0)
-    /* A1DC 800091DC 0C001CFE */  jal        __rmonSendReply
+    /* A1DC 800091DC 0C001CFE */  jal        func_800073F8
     /* A1E0 800091E0 AFAA0034 */   sw        $t2, 0x34($sp)
     /* A1E4 800091E4 00001025 */  or         $v0, $zero, $zero
   .L800091E8:
@@ -11689,7 +11506,7 @@ glabel func_800091F0
     /* A1F8 800091F8 00000000 */   nop
 endlabel func_800091F0
 
-nonmatching func_800091FC, 0x9C
+nonmatching func_800091FC, 0xB4
 
 glabel func_800091FC
     /* A1FC 800091FC 27BDFFC0 */  addiu      $sp, $sp, -0x40
@@ -11707,7 +11524,7 @@ glabel func_800091FC
     /* A228 80009228 44802000 */  mtc1       $zero, $f4
     /* A22C 8000922C 00000000 */  nop
     /* A230 80009230 E7A40024 */  swc1       $f4, 0x24($sp)
-    /* A234 80009234 0C001DF7 */  jal        __rmonGetTCB
+    /* A234 80009234 0C001DF7 */  jal        func_800077DC
     /* A238 80009238 8E04000C */   lw        $a0, 0xC($s0)
     /* A23C 8000923C AFA20028 */  sw         $v0, 0x28($sp)
     /* A240 80009240 8FB80028 */  lw         $t8, 0x28($sp)
@@ -11719,7 +11536,7 @@ glabel func_800091FC
     /* A254 80009254 8FA40028 */  lw         $a0, 0x28($sp)
     /* A258 80009258 26050010 */  addiu      $a1, $s0, 0x10
     /* A25C 8000925C 24060020 */  addiu      $a2, $zero, 0x20
-    /* A260 80009260 0C001AC8 */  jal        __rmonCopyWords
+    /* A260 80009260 0C001AC8 */  jal        func_80006B20
     /* A264 80009264 24840130 */   addiu     $a0, $a0, 0x130
     /* A268 80009268 8E190090 */  lw         $t9, 0x90($s0)
     /* A26C 8000926C 8FA80028 */  lw         $t0, 0x28($sp)
@@ -11731,13 +11548,8 @@ glabel func_800091FC
     /* A284 80009284 AFA90038 */  sw         $t1, 0x38($sp)
     /* A288 80009288 920A0004 */  lbu        $t2, 0x4($s0)
     /* A28C 8000928C A7A00032 */  sh         $zero, 0x32($sp)
-    /* A290 80009290 0C001CFE */  jal        __rmonSendReply
+    /* A290 80009290 0C001CFE */  jal        func_800073F8
     /* A294 80009294 A3AA0030 */   sb        $t2, 0x30($sp)
-endlabel func_800091FC
-
-nonmatching __rmonGetGRegisters, 0x18
-
-glabel __rmonGetGRegisters
     /* A298 80009298 00001025 */  or         $v0, $zero, $zero
   .L8000929C:
     /* A29C 8000929C 8FBF001C */  lw         $ra, 0x1C($sp)
@@ -11745,7 +11557,7 @@ glabel __rmonGetGRegisters
     /* A2A4 800092A4 27BD0040 */  addiu      $sp, $sp, 0x40
     /* A2A8 800092A8 03E00008 */  jr         $ra
     /* A2AC 800092AC 00000000 */   nop
-endlabel __rmonGetGRegisters
+endlabel func_800091FC
 
 nonmatching func_800092B0, 0x64
 
@@ -11764,9 +11576,9 @@ glabel func_800092B0
     /* A2D8 800092D8 2404002B */  addiu      $a0, $zero, 0x2B
     /* A2DC 800092DC 0C00240C */  jal        func_80009030
     /* A2E0 800092E0 8FA50020 */   lw        $a1, 0x20($sp)
-    /* A2E4 800092E4 0C002126 */  jal        __rmonStepRCP
+    /* A2E4 800092E4 0C002126 */  jal        func_80008498
     /* A2E8 800092E8 00000000 */   nop
-    /* A2EC 800092EC 0C001AA6 */  jal        __rmonReadWordAt
+    /* A2EC 800092EC 0C001AA6 */  jal        func_80006A98
     /* A2F0 800092F0 3C040400 */   lui       $a0, (0x4000000 >> 16)
     /* A2F4 800092F4 AFA2001C */  sw         $v0, 0x1C($sp)
     /* A2F8 800092F8 0C00247C */  jal        func_800091F0
@@ -11779,7 +11591,7 @@ glabel func_800092B0
     /* A310 80009310 00000000 */   nop
 endlabel func_800092B0
 
-nonmatching func_80009314, 0xE0
+nonmatching func_80009314, 0x160
 
 glabel func_80009314
     /* A314 80009314 27BDFF28 */  addiu      $sp, $sp, -0xD8
@@ -11809,9 +11621,9 @@ glabel func_80009314
     /* A36C 8000936C 2404002B */  addiu      $a0, $zero, 0x2B
     /* A370 80009370 0C00240C */  jal        func_80009030
     /* A374 80009374 02202825 */   or        $a1, $s1, $zero
-    /* A378 80009378 0C002126 */  jal        __rmonStepRCP
+    /* A378 80009378 0C002126 */  jal        func_80008498
     /* A37C 8000937C 00000000 */   nop
-    /* A380 80009380 0C001AA6 */  jal        __rmonReadWordAt
+    /* A380 80009380 0C001AA6 */  jal        func_80006A98
     /* A384 80009384 3C040400 */   lui       $a0, (0x4000000 >> 16)
     /* A388 80009388 0011C080 */  sll        $t8, $s1, 2
     /* A38C 8000938C 26310001 */  addiu      $s1, $s1, 0x1
@@ -11823,54 +11635,49 @@ glabel func_80009314
     /* A3A0 800093A0 0C00247C */  jal        func_800091F0
     /* A3A4 800093A4 00002025 */   or        $a0, $zero, $zero
     /* A3A8 800093A8 3C040404 */  lui        $a0, (0x4040004 >> 16)
-    /* A3AC 800093AC 0C001AA6 */  jal        __rmonReadWordAt
+    /* A3AC 800093AC 0C001AA6 */  jal        func_80006A98
     /* A3B0 800093B0 34840004 */   ori       $a0, $a0, (0x4040004 & 0xFFFF)
     /* A3B4 800093B4 27A80024 */  addiu      $t0, $sp, 0x24
     /* A3B8 800093B8 AD020090 */  sw         $v0, 0x90($t0)
-    /* A3BC 800093BC 0C001AA6 */  jal        __rmonReadWordAt
+    /* A3BC 800093BC 0C001AA6 */  jal        func_80006A98
     /* A3C0 800093C0 3C040404 */   lui       $a0, (0x4040000 >> 16)
     /* A3C4 800093C4 27A90024 */  addiu      $t1, $sp, 0x24
     /* A3C8 800093C8 3C040404 */  lui        $a0, (0x4040008 >> 16)
     /* A3CC 800093CC AD220094 */  sw         $v0, 0x94($t1)
-    /* A3D0 800093D0 0C001AA6 */  jal        __rmonReadWordAt
+    /* A3D0 800093D0 0C001AA6 */  jal        func_80006A98
     /* A3D4 800093D4 34840008 */   ori       $a0, $a0, (0x4040008 & 0xFFFF)
     /* A3D8 800093D8 27AA0024 */  addiu      $t2, $sp, 0x24
     /* A3DC 800093DC AD420098 */  sw         $v0, 0x98($t2)
-    /* A3E0 800093E0 0C001AA6 */  jal        __rmonReadWordAt
+    /* A3E0 800093E0 0C001AA6 */  jal        func_80006A98
     /* A3E4 800093E4 3C040408 */   lui       $a0, (0x4080000 >> 16)
     /* A3E8 800093E8 3C010400 */  lui        $at, (0x4001000 >> 16)
     /* A3EC 800093EC 34211000 */  ori        $at, $at, (0x4001000 & 0xFFFF)
     /* A3F0 800093F0 00415821 */  addu       $t3, $v0, $at
-endlabel func_80009314
-
-nonmatching __rmonSetGRegisters, 0x80
-
-glabel __rmonSetGRegisters
     /* A3F4 800093F4 27AC0024 */  addiu      $t4, $sp, 0x24
     /* A3F8 800093F8 3C040404 */  lui        $a0, (0x404000C >> 16)
     /* A3FC 800093FC AD8B009C */  sw         $t3, 0x9C($t4)
-    /* A400 80009400 0C001AA6 */  jal        __rmonReadWordAt
+    /* A400 80009400 0C001AA6 */  jal        func_80006A98
     /* A404 80009404 3484000C */   ori       $a0, $a0, (0x404000C & 0xFFFF)
     /* A408 80009408 27AD0024 */  addiu      $t5, $sp, 0x24
     /* A40C 8000940C 3C040404 */  lui        $a0, (0x4040010 >> 16)
     /* A410 80009410 ADA200A0 */  sw         $v0, 0xA0($t5)
-    /* A414 80009414 0C001AA6 */  jal        __rmonReadWordAt
+    /* A414 80009414 0C001AA6 */  jal        func_80006A98
     /* A418 80009418 34840010 */   ori       $a0, $a0, (0x4040010 & 0xFFFF)
     /* A41C 8000941C 27AE0024 */  addiu      $t6, $sp, 0x24
     /* A420 80009420 3C040404 */  lui        $a0, (0x4040014 >> 16)
     /* A424 80009424 ADC200A4 */  sw         $v0, 0xA4($t6)
-    /* A428 80009428 0C001AA6 */  jal        __rmonReadWordAt
+    /* A428 80009428 0C001AA6 */  jal        func_80006A98
     /* A42C 8000942C 34840014 */   ori       $a0, $a0, (0x4040014 & 0xFFFF)
     /* A430 80009430 27AF0024 */  addiu      $t7, $sp, 0x24
     /* A434 80009434 3C040404 */  lui        $a0, (0x4040018 >> 16)
     /* A438 80009438 ADE200A8 */  sw         $v0, 0xA8($t7)
-    /* A43C 8000943C 0C001AA6 */  jal        __rmonReadWordAt
+    /* A43C 8000943C 0C001AA6 */  jal        func_80006A98
     /* A440 80009440 34840018 */   ori       $a0, $a0, (0x4040018 & 0xFFFF)
     /* A444 80009444 27B80024 */  addiu      $t8, $sp, 0x24
     /* A448 80009448 AF0200AC */  sw         $v0, 0xAC($t8)
     /* A44C 8000944C 27A40024 */  addiu      $a0, $sp, 0x24
     /* A450 80009450 240500B0 */  addiu      $a1, $zero, 0xB0
-    /* A454 80009454 0C001CFE */  jal        __rmonSendReply
+    /* A454 80009454 0C001CFE */  jal        func_800073F8
     /* A458 80009458 24060001 */   addiu     $a2, $zero, 0x1
     /* A45C 8000945C 00001025 */  or         $v0, $zero, $zero
   .L80009460:
@@ -11879,9 +11686,9 @@ glabel __rmonSetGRegisters
     /* A468 80009468 8FB10018 */  lw         $s1, 0x18($sp)
     /* A46C 8000946C 03E00008 */  jr         $ra
     /* A470 80009470 27BD00D8 */   addiu     $sp, $sp, 0xD8
-endlabel __rmonSetGRegisters
+endlabel func_80009314
 
-nonmatching func_80009474, 0xD0
+nonmatching func_80009474, 0x110
 
 glabel func_80009474
     /* A474 80009474 27BDFFC8 */  addiu      $sp, $sp, -0x38
@@ -11906,12 +11713,12 @@ glabel func_80009474
     /* A4B8 800094B8 00117080 */  sll        $t6, $s1, 2
     /* A4BC 800094BC 020E7821 */  addu       $t7, $s0, $t6
     /* A4C0 800094C0 8DE50010 */  lw         $a1, 0x10($t7)
-    /* A4C4 800094C4 0C001A94 */  jal        __rmonWriteWordTo
+    /* A4C4 800094C4 0C001A94 */  jal        func_80006A50
     /* A4C8 800094C8 3C040400 */   lui       $a0, (0x4000000 >> 16)
     /* A4CC 800094CC 24040023 */  addiu      $a0, $zero, 0x23
     /* A4D0 800094D0 0C00240C */  jal        func_80009030
     /* A4D4 800094D4 02202825 */   or        $a1, $s1, $zero
-    /* A4D8 800094D8 0C002126 */  jal        __rmonStepRCP
+    /* A4D8 800094D8 0C002126 */  jal        func_80008498
     /* A4DC 800094DC 00000000 */   nop
     /* A4E0 800094E0 26310001 */  addiu      $s1, $s1, 0x1
     /* A4E4 800094E4 2A210020 */  slti       $at, $s1, 0x20
@@ -11922,29 +11729,24 @@ glabel func_80009474
     /* A4F4 800094F4 00002025 */   or        $a0, $zero, $zero
     /* A4F8 800094F8 3C040404 */  lui        $a0, (0x4040004 >> 16)
     /* A4FC 800094FC 34840004 */  ori        $a0, $a0, (0x4040004 & 0xFFFF)
-    /* A500 80009500 0C001A94 */  jal        __rmonWriteWordTo
+    /* A500 80009500 0C001A94 */  jal        func_80006A50
     /* A504 80009504 8E050090 */   lw        $a1, 0x90($s0)
     /* A508 80009508 3C040404 */  lui        $a0, (0x4040000 >> 16)
-    /* A50C 8000950C 0C001A94 */  jal        __rmonWriteWordTo
+    /* A50C 8000950C 0C001A94 */  jal        func_80006A50
     /* A510 80009510 8E050094 */   lw        $a1, 0x94($s0)
     /* A514 80009514 8E05009C */  lw         $a1, 0x9C($s0)
     /* A518 80009518 3C040408 */  lui        $a0, (0x4080000 >> 16)
     /* A51C 8000951C 30B80FFF */  andi       $t8, $a1, 0xFFF
-    /* A520 80009520 0C001A94 */  jal        __rmonWriteWordTo
+    /* A520 80009520 0C001A94 */  jal        func_80006A50
     /* A524 80009524 03002825 */   or        $a1, $t8, $zero
     /* A528 80009528 3C040404 */  lui        $a0, (0x404000C >> 16)
     /* A52C 8000952C 3484000C */  ori        $a0, $a0, (0x404000C & 0xFFFF)
-    /* A530 80009530 0C001A94 */  jal        __rmonWriteWordTo
+    /* A530 80009530 0C001A94 */  jal        func_80006A50
     /* A534 80009534 8E0500A0 */   lw        $a1, 0xA0($s0)
     /* A538 80009538 3C040404 */  lui        $a0, (0x4040010 >> 16)
     /* A53C 8000953C 34840010 */  ori        $a0, $a0, (0x4040010 & 0xFFFF)
-    /* A540 80009540 0C001A94 */  jal        __rmonWriteWordTo
-endlabel func_80009474
-
-nonmatching __rmonGetFRegisters, 0x40
-
-glabel __rmonGetFRegisters
-    /* A544 80009544 8E0500A4 */  lw         $a1, 0xA4($s0)
+    /* A540 80009540 0C001A94 */  jal        func_80006A50
+    /* A544 80009544 8E0500A4 */   lw        $a1, 0xA4($s0)
     /* A548 80009548 8E19000C */  lw         $t9, 0xC($s0)
     /* A54C 8000954C 27A40024 */  addiu      $a0, $sp, 0x24
     /* A550 80009550 24050010 */  addiu      $a1, $zero, 0x10
@@ -11952,7 +11754,7 @@ glabel __rmonGetFRegisters
     /* A558 80009558 92080004 */  lbu        $t0, 0x4($s0)
     /* A55C 8000955C A7A0002A */  sh         $zero, 0x2A($sp)
     /* A560 80009560 24060001 */  addiu      $a2, $zero, 0x1
-    /* A564 80009564 0C001CFE */  jal        __rmonSendReply
+    /* A564 80009564 0C001CFE */  jal        func_800073F8
     /* A568 80009568 A3A80028 */   sb        $t0, 0x28($sp)
     /* A56C 8000956C 00001025 */  or         $v0, $zero, $zero
   .L80009570:
@@ -11961,9 +11763,9 @@ glabel __rmonGetFRegisters
     /* A578 80009578 8FB10018 */  lw         $s1, 0x18($sp)
     /* A57C 8000957C 03E00008 */  jr         $ra
     /* A580 80009580 27BD0038 */   addiu     $sp, $sp, 0x38
-endlabel __rmonGetFRegisters
+endlabel func_80009474
 
-nonmatching func_80009584, 0x78
+nonmatching func_80009584, 0x118
 
 glabel func_80009584
     /* A584 80009584 27BDFDB0 */  addiu      $sp, $sp, -0x250
@@ -11997,13 +11799,8 @@ glabel func_80009584
     /* A5EC 800095EC 240B0004 */  addiu      $t3, $zero, 0x4
     /* A5F0 800095F0 24060008 */  addiu      $a2, $zero, 0x8
     /* A5F4 800095F4 016A2823 */  subu       $a1, $t3, $t2
-    /* A5F8 800095F8 0C0019BC */  jal        __osRdbSend
-endlabel func_80009584
-
-nonmatching __rmonSetFRegisters, 0xA0
-
-glabel __rmonSetFRegisters
-    /* A5FC 800095FC 012A2021 */  addu       $a0, $t1, $t2
+    /* A5F8 800095F8 0C0019BC */  jal        func_800066F0
+    /* A5FC 800095FC 012A2021 */   addu      $a0, $t1, $t2
     /* A600 80009600 8FAC0248 */  lw         $t4, 0x248($sp)
     /* A604 80009604 00409025 */  or         $s2, $v0, $zero
     /* A608 80009608 01926821 */  addu       $t5, $t4, $s2
@@ -12026,10 +11823,10 @@ glabel __rmonSetFRegisters
     /* A648 80009648 2404003A */  addiu      $a0, $zero, 0x3A
     /* A64C 8000964C 0C00242D */  jal        func_800090B4
     /* A650 80009650 02202825 */   or        $a1, $s1, $zero
-    /* A654 80009654 0C002126 */  jal        __rmonStepRCP
+    /* A654 80009654 0C002126 */  jal        func_80008498
     /* A658 80009658 00000000 */   nop
     /* A65C 8000965C 3C040400 */  lui        $a0, (0x4000000 >> 16)
-    /* A660 80009660 0C001D28 */  jal        __rmonSendData
+    /* A660 80009660 0C001D28 */  jal        func_800074A0
     /* A664 80009664 24050010 */   addiu     $a1, $zero, 0x10
     /* A668 80009668 26310001 */  addiu      $s1, $s1, 0x1
     /* A66C 8000966C 2A210020 */  slti       $at, $s1, 0x20
@@ -12046,7 +11843,7 @@ glabel __rmonSetFRegisters
     /* A690 80009690 8FB20020 */  lw         $s2, 0x20($sp)
     /* A694 80009694 03E00008 */  jr         $ra
     /* A698 80009698 27BD0250 */   addiu     $sp, $sp, 0x250
-endlabel __rmonSetFRegisters
+endlabel func_80009584
 
 nonmatching func_8000969C, 0x14
 
@@ -12058,7 +11855,7 @@ glabel func_8000969C
     /* A6AC 800096AC AFB10018 */  sw         $s1, 0x18($sp)
 endlabel func_8000969C
 
-nonmatching func_800096B0, 0x64
+nonmatching func_800096B0, 0xB0
 
 glabel func_800096B0
     /* A6B0 800096B0 0C00210C */  jal        func_80008430
@@ -12079,20 +11876,15 @@ glabel func_800096B0
     /* A6E4 800096E4 020E2821 */  addu       $a1, $s0, $t6
     /* A6E8 800096E8 24A50010 */  addiu      $a1, $a1, 0x10
     /* A6EC 800096EC 3C040400 */  lui        $a0, (0x4000000 >> 16)
-    /* A6F0 800096F0 0C001AC8 */  jal        __rmonCopyWords
+    /* A6F0 800096F0 0C001AC8 */  jal        func_80006B20
     /* A6F4 800096F4 24060004 */   addiu     $a2, $zero, 0x4
     /* A6F8 800096F8 24040032 */  addiu      $a0, $zero, 0x32
     /* A6FC 800096FC 0C00242D */  jal        func_800090B4
     /* A700 80009700 02202825 */   or        $a1, $s1, $zero
-    /* A704 80009704 0C002126 */  jal        __rmonStepRCP
+    /* A704 80009704 0C002126 */  jal        func_80008498
     /* A708 80009708 00000000 */   nop
     /* A70C 8000970C 26310001 */  addiu      $s1, $s1, 0x1
     /* A710 80009710 2A210020 */  slti       $at, $s1, 0x20
-endlabel func_800096B0
-
-nonmatching __rmonGetSRegs, 0x4C
-
-glabel __rmonGetSRegs
     /* A714 80009714 1420FFF2 */  bnez       $at, .L800096E0
     /* A718 80009718 00000000 */   nop
   .L8000971C:
@@ -12105,7 +11897,7 @@ glabel __rmonGetSRegs
     /* A734 80009734 92180004 */  lbu        $t8, 0x4($s0)
     /* A738 80009738 A7A0002A */  sh         $zero, 0x2A($sp)
     /* A73C 8000973C 24060001 */  addiu      $a2, $zero, 0x1
-    /* A740 80009740 0C001CFE */  jal        __rmonSendReply
+    /* A740 80009740 0C001CFE */  jal        func_800073F8
     /* A744 80009744 A3B80028 */   sb        $t8, 0x28($sp)
     /* A748 80009748 00001025 */  or         $v0, $zero, $zero
   .L8000974C:
@@ -12114,7 +11906,7 @@ glabel __rmonGetSRegs
     /* A754 80009754 8FB10018 */  lw         $s1, 0x18($sp)
     /* A758 80009758 03E00008 */  jr         $ra
     /* A75C 8000975C 27BD0038 */   addiu     $sp, $sp, 0x38
-endlabel __rmonGetSRegs
+endlabel func_800096B0
 
 nonmatching func_80009760, 0xC4
 
@@ -12148,7 +11940,7 @@ glabel func_80009760
     /* A7C0 800097C0 10000014 */  b          .L80009814
     /* A7C4 800097C4 00001025 */   or        $v0, $zero, $zero
   .L800097C8:
-    /* A7C8 800097C8 0C001DF7 */  jal        __rmonGetTCB
+    /* A7C8 800097C8 0C001DF7 */  jal        func_800077DC
     /* A7CC 800097CC 8FA40024 */   lw        $a0, 0x24($sp)
     /* A7D0 800097D0 AFA20018 */  sw         $v0, 0x18($sp)
     /* A7D4 800097D4 8FA90018 */  lw         $t1, 0x18($sp)
@@ -12197,7 +11989,7 @@ glabel func_80009840
     /* A84C 8000984C 00000000 */   nop
 endlabel func_80009840
 
-nonmatching func_80009850, 0x24
+nonmatching func_80009850, 0x194
 
 glabel func_80009850
     /* A850 80009850 3C0EA460 */  lui        $t6, %hi(D_A4600010)
@@ -12210,11 +12002,6 @@ glabel func_80009850
     /* A868 80009868 3C18A460 */  lui        $t8, %hi(D_A4600010)
     /* A86C 8000986C 8F070010 */  lw         $a3, %lo(D_A4600010)($t8)
     /* A870 80009870 30F90003 */  andi       $t9, $a3, 0x3
-endlabel func_80009850
-
-nonmatching __rmonSetSRegs, 0x110
-
-glabel __rmonSetSRegs
     /* A874 80009874 1720FFFC */  bnez       $t9, .L80009868
     /* A878 80009878 00000000 */   nop
   .L8000987C:
@@ -12290,11 +12077,6 @@ glabel __rmonSetSRegs
     /* A978 80009978 912B0007 */  lbu        $t3, 0x7($t1)
     /* A97C 8000997C 116C0004 */  beq        $t3, $t4, .L80009990
     /* A980 80009980 00000000 */   nop
-endlabel __rmonSetSRegs
-
-nonmatching __rmonGetVRegs, 0x60
-
-glabel __rmonGetVRegs
     /* A984 80009984 908D0007 */  lbu        $t5, 0x7($a0)
     /* A988 80009988 3C0AA460 */  lui        $t2, %hi(D_A4600030)
     /* A98C 8000998C AD4D0030 */  sw         $t5, %lo(D_A4600030)($t2)
@@ -12322,7 +12104,7 @@ glabel __rmonGetVRegs
     /* A9D8 800099D8 27BD0010 */  addiu      $sp, $sp, 0x10
     /* A9DC 800099DC 03E00008 */  jr         $ra
     /* A9E0 800099E0 ACCE0000 */   sw        $t6, 0x0($a2)
-endlabel __rmonGetVRegs
+endlabel func_80009850
     /* A9E4 800099E4 00000000 */  nop
     /* A9E8 800099E8 00000000 */  nop
     /* A9EC 800099EC 00000000 */  nop
@@ -12372,7 +12154,7 @@ glabel func_80009A50
     /* AA74 80009A74 2484A418 */  addiu      $a0, $a0, %lo(__osRunQueue)
     /* AA78 80009A78 0C000F43 */  jal        func_80003D0C
     /* AA7C 80009A7C A5EE0010 */   sh        $t6, 0x10($t7)
-    /* AA80 80009A80 0C0019B4 */  jal        __osRestoreInt
+    /* AA80 80009A80 0C0019B4 */  jal        func_800066D0
     /* AA84 80009A84 02002025 */   or        $a0, $s0, $zero
     /* AA88 80009A88 8FBF001C */  lw         $ra, 0x1C($sp)
     /* AA8C 80009A8C 8FB00018 */  lw         $s0, 0x18($sp)
@@ -12380,16 +12162,16 @@ glabel func_80009A50
     /* AA94 80009A94 03E00008 */  jr         $ra
     /* AA98 80009A98 00000000 */   nop
 endlabel func_80009A50
+    /* AA9C 80009A9C 00000000 */  nop
 
 /* Handwritten function */
-nonmatching __rmonSetVRegs, 0x10
+nonmatching func_80009AA0, 0xC
 
-glabel __rmonSetVRegs
-    /* AA9C 80009A9C 00000000 */  nop
+glabel func_80009AA0
     /* AAA0 80009AA0 40026800 */  mfc0       $v0, $13 /* handwritten instruction */
     /* AAA4 80009AA4 03E00008 */  jr         $ra
     /* AAA8 80009AA8 00000000 */   nop
-endlabel __rmonSetVRegs
+endlabel func_80009AA0
     /* AAAC 80009AAC 00000000 */  nop
 
 nonmatching func_80009AB0, 0xB0
@@ -12445,9 +12227,9 @@ glabel func_80009AB0
     /* AB5C 80009B5C 00000000 */   nop
 endlabel func_80009AB0
 
-nonmatching __rmonGetRegisterContents, 0xD0
+nonmatching func_80009B60, 0xD0
 
-glabel __rmonGetRegisterContents
+glabel func_80009B60
     /* AB60 80009B60 908B0007 */  lbu        $t3, 0x7($a0)
     /* AB64 80009B64 3C0CA460 */  lui        $t4, %hi(D_A4600020)
     /* AB68 80009B68 AD8B0020 */  sw         $t3, %lo(D_A4600020)($t4)
@@ -12507,7 +12289,7 @@ glabel __rmonGetRegisterContents
     /* AC24 80009C24 3C01A000 */  lui        $at, (0xA0000000 >> 16)
     /* AC28 80009C28 27BD0010 */  addiu      $sp, $sp, 0x10
     /* AC2C 80009C2C 01856825 */  or         $t5, $t4, $a1
-endlabel __rmonGetRegisterContents
+endlabel func_80009B60
 
 nonmatching func_80009C30, 0x10
 
@@ -12527,9 +12309,9 @@ glabel func_80009C40
     /* AC4C 80009C4C 0C0015B0 */  jal        func_800056C0
 endlabel func_80009C40
 
-nonmatching osEPiRawReadIo, 0x3C
+nonmatching func_80009C50, 0x3C
 
-glabel osEPiRawReadIo
+glabel func_80009C50
     /* AC50 80009C50 AFA5001C */  sw         $a1, 0x1C($sp)
     /* AC54 80009C54 10400003 */  beqz       $v0, .L80009C64
     /* AC58 80009C58 00000000 */   nop
@@ -12547,7 +12329,7 @@ glabel osEPiRawReadIo
     /* AC80 80009C80 27BD0018 */  addiu      $sp, $sp, 0x18
     /* AC84 80009C84 03E00008 */  jr         $ra
     /* AC88 80009C88 00000000 */   nop
-endlabel osEPiRawReadIo
+endlabel func_80009C50
     /* AC8C 80009C8C 00000000 */  nop
 
 nonmatching func_80009C90, 0x4C
@@ -12556,7 +12338,7 @@ glabel func_80009C90
     /* AC90 80009C90 27BDFFE8 */  addiu      $sp, $sp, -0x18
     /* AC94 80009C94 AFBF0014 */  sw         $ra, 0x14($sp)
     /* AC98 80009C98 AFA40018 */  sw         $a0, 0x18($sp)
-    /* AC9C 80009C9C 0C002400 */  jal        __osSpDeviceBusy
+    /* AC9C 80009C9C 0C002400 */  jal        func_80009000
     /* ACA0 80009CA0 AFA5001C */   sw        $a1, 0x1C($sp)
     /* ACA4 80009CA4 10400003 */  beqz       $v0, .L80009CB4
     /* ACA8 80009CA8 00000000 */   nop
@@ -12650,7 +12432,7 @@ glabel func_80009D10
     /* ADC4 80009DC4 0C000F83 */  jal        func_80003E0C
     /* ADC8 80009DC8 01C02825 */   or        $a1, $t6, $zero
     /* ADCC 80009DCC 8FAF0028 */  lw         $t7, 0x28($sp)
-    /* ADD0 80009DD0 0C000F95 */  jal        __osPopThread
+    /* ADD0 80009DD0 0C000F95 */  jal        func_80003E54
     /* ADD4 80009DD4 8DE40008 */   lw        $a0, 0x8($t7)
     /* ADD8 80009DD8 00408825 */  or         $s1, $v0, $zero
     /* ADDC 80009DDC 3C048001 */  lui        $a0, %hi(__osRunQueue)
@@ -12667,7 +12449,7 @@ glabel func_80009DF0
     /* ADF0 80009DF0 8F18A420 */  lw         $t8, -0x5BE0($t8)
     /* ADF4 80009DF4 17000005 */  bnez       $t8, .L80009E0C
     /* ADF8 80009DF8 00000000 */   nop
-    /* ADFC 80009DFC 0C000F99 */  jal        __osDispatchThread
+    /* ADFC 80009DFC 0C000F99 */  jal        func_80003E64
     /* AE00 80009E00 00000000 */   nop
     /* AE04 80009E04 1000000F */  b          .L80009E44
     /* AE08 80009E08 00000000 */   nop
@@ -12687,19 +12469,19 @@ glabel func_80009DF0
     /* AE3C 80009E3C 0C000F43 */  jal        func_80003D0C
     /* AE40 80009E40 2484A418 */   addiu     $a0, $a0, %lo(__osRunQueue)
   .L80009E44:
-    /* AE44 80009E44 0C0019B4 */  jal        __osRestoreInt
+    /* AE44 80009E44 0C0019B4 */  jal        func_800066D0
     /* AE48 80009E48 02002025 */   or        $a0, $s0, $zero
     /* AE4C 80009E4C 8FBF001C */  lw         $ra, 0x1C($sp)
 endlabel func_80009DF0
 
-nonmatching osYieldThread, 0x10
+nonmatching func_80009E50, 0x10
 
-glabel osYieldThread
+glabel func_80009E50
     /* AE50 80009E50 8FB00014 */  lw         $s0, 0x14($sp)
     /* AE54 80009E54 8FB10018 */  lw         $s1, 0x18($sp)
     /* AE58 80009E58 03E00008 */  jr         $ra
     /* AE5C 80009E5C 27BD0028 */   addiu     $sp, $sp, 0x28
-endlabel osYieldThread
+endlabel func_80009E50
 
 /* Handwritten function */
 nonmatching func_80009E60, 0x20
@@ -12837,9 +12619,9 @@ dlabel func_80009EB0
     /* B03C 8000A03C 00000000 */ .word 0x00000000
 enddlabel func_80009EB0
 
-nonmatching __osSpRawWriteIo, 0x38
+nonmatching func_8000A040, 0x38
 
-glabel __osSpRawWriteIo
+glabel func_8000A040
     /* B040 8000A040 00000000 */  nop
     /* B044 8000A044 00000000 */  nop
     /* B048 8000A048 00000000 */  nop
@@ -12854,7 +12636,7 @@ glabel __osSpRawWriteIo
     /* B06C 8000A06C 00000000 */  nop
     /* B070 8000A070 8001B650 */  lb         $at, -0x49B0($zero)
     /* B074 8000A074 800195D0 */  lb         $at, -0x6A30($zero)
-endlabel __osSpRawWriteIo
+endlabel func_8000A040
     /* B078 8000A078 00000000 */  nop
     /* B07C 8000A07C 00000000 */  nop
     /* B080 8000A080 00000000 */  nop
@@ -12869,22 +12651,22 @@ dlabel func_8000A090
     /* B094 8000A094 00000000 */ .word 0x00000000
     /* B098 8000A098 00000000 */ .word 0x00000000
     /* B09C 8000A09C 00000000 */ .word 0x00000000
-    /* B0A0 8000A0A0 80007058 */ .word __rmonListBreak
-    /* B0A4 8000A0A4 80006FD8 */ .word __rmonListProcesses
-    /* B0A8 8000A0A8 80007064 */ .word __rmonGetExeName
-    /* B0AC 8000A0AC 80007964 */ .word __rmonListThreads
-    /* B0B0 8000A0B0 80007D8C */ .word __rmonThreadStatus
+    /* B0A0 8000A0A0 80007058 */ .word 0x80007058
+    /* B0A4 8000A0A4 80006FD8 */ .word 0x80006FD8
+    /* B0A8 8000A0A8 80007064 */ .word 0x80007064
+    /* B0AC 8000A0AC 80007964 */ .word 0x80007964
+    /* B0B0 8000A0B0 80007D8C */ .word 0x80007D8C
     /* B0B4 8000A0B4 800069B0 */ .word 0x800069B0
-    /* B0B8 8000A0B8 80007DF4 */ .word __rmonStopThread
-    /* B0BC 8000A0BC 80007F3C */ .word __rmonRunThread
+    /* B0B8 8000A0B8 80007DF4 */ .word 0x80007DF4
+    /* B0BC 8000A0BC 80007F3C */ .word 0x80007F3C
     /* B0C0 8000A0C0 800069B0 */ .word 0x800069B0
     /* B0C4 8000A0C4 800069B0 */ .word 0x800069B0
-    /* B0C8 8000A0C8 800082A0 */ .word __rmonSetFault
+    /* B0C8 8000A0C8 800082A0 */ .word 0x800082A0
     /* B0CC 8000A0CC 800069B0 */ .word 0x800069B0
-    /* B0D0 8000A0D0 8000710C */ .word __rmonGetRegionCount
-    /* B0D4 8000A0D4 8000717C */ .word __rmonGetRegions
-    /* B0D8 8000A0D8 80009298 */ .word __rmonGetGRegisters
-    /* B0DC 8000A0DC 800093F4 */ .word __rmonSetGRegisters
+    /* B0D0 8000A0D0 8000710C */ .word 0x8000710C
+    /* B0D4 8000A0D4 8000717C */ .word 0x8000717C
+    /* B0D8 8000A0D8 80009298 */ .word 0x80009298
+    /* B0DC 8000A0DC 800093F4 */ .word 0x800093F4
 enddlabel func_8000A090
 
 nonmatching func_8000A0E0, 0x30
@@ -12904,12 +12686,12 @@ glabel func_8000A0E0
     /* B10C 8000A10C 800069B0 */  lb         $zero, 0x69B0($zero)
 endlabel func_8000A0E0
 
-nonmatching osStartThread
+nonmatching func_8000A110
 
-glabel osStartThread
+dlabel func_8000A110
     /* B110 8000A110 800069B0 */ .word 0x800069B0
     /* B114 8000A114 800069B0 */ .word 0x800069B0
-    /* B118 8000A118 800083E8 */ .word __rmonSetComm
+    /* B118 8000A118 800083E8 */ .word 0x800083E8
     /* B11C 8000A11C 800069B0 */ .word 0x800069B0
     /* B120 8000A120 800069B0 */ .word 0x800069B0
     /* B124 8000A124 800069B0 */ .word 0x800069B0
@@ -12928,10 +12710,10 @@ glabel osStartThread
     /* B158 8000A158 800069B0 */ .word 0x800069B0
     /* B15C 8000A15C 800069B0 */ .word 0x800069B0
     /* B160 8000A160 800069B0 */ .word 0x800069B0
-    /* B164 8000A164 80009714 */ .word __rmonGetSRegs
-    /* B168 8000A168 80009874 */ .word __rmonSetSRegs
-    /* B16C 8000A16C 80009984 */ .word __rmonGetVRegs
-    /* B170 8000A170 80009A9C */ .word __rmonSetVRegs
+    /* B164 8000A164 80009714 */ .word 0x80009714
+    /* B168 8000A168 80009874 */ .word 0x80009874
+    /* B16C 8000A16C 80009984 */ .word 0x80009984
+    /* B170 8000A170 80009A9C */ .word 0x80009A9C
     /* B174 8000A174 800069B0 */ .word 0x800069B0
     /* B178 8000A178 00000000 */ .word 0x00000000
     /* B17C 8000A17C 00000000 */ .word 0x00000000
@@ -13039,11 +12821,11 @@ nonmatching D_8000A2DC
 
 dlabel D_8000A2DC
     /* B2DC 8000A2DC 09A909AA */ .word 0x09A909AA
-enddlabel osStartThread
+enddlabel func_8000A110
 
 nonmatching __additional_scanline
 
-glabel __additional_scanline
+dlabel __additional_scanline
     /* B2E0 8000A2E0 0A550A56 */ .word 0x0A550A56
 
 nonmatching D_8000A2E4
@@ -13174,7 +12956,7 @@ enddlabel __additional_scanline
 
 nonmatching osViClock
 
-glabel osViClock
+dlabel osViClock
     /* B3D8 8000A3D8 65206E6F */ .word 0x65206E6F
 
 nonmatching D_8000A3DC
@@ -13185,7 +12967,7 @@ enddlabel osViClock
 
 nonmatching __OSGlobalIntMask
 
-glabel __OSGlobalIntMask
+dlabel __OSGlobalIntMask
     /* B3E0 8000A3E0 20696E74 */ .word 0x20696E74
     /* B3E4 8000A3E4 65677261 */ .word 0x65677261
     /* B3E8 8000A3E8 6C206E75 */ .word 0x6C206E75
@@ -13224,19 +13006,19 @@ enddlabel __OSGlobalIntMask
 
 nonmatching __osRunQueue
 
-glabel __osRunQueue
+dlabel __osRunQueue
     /* B418 8000A418 00000000 */ .word 0x00000000
 enddlabel __osRunQueue
 
 nonmatching __osActiveQueue
 
-glabel __osActiveQueue
+dlabel __osActiveQueue
     /* B41C 8000A41C 47657445 */ .word 0x47657445 /* invalid instruction */
 enddlabel __osActiveQueue
 
 nonmatching __osRunningThread
 
-glabel __osRunningThread
+dlabel __osRunningThread
     /* B420 8000A420 78654E61 */ .word 0x78654E61 /* invalid instruction */
 
 nonmatching D_8000A424
@@ -13266,8 +13048,20 @@ nonmatching D_8000A450
 
 dlabel D_8000A450
     /* B450 8000A450 6E730A00 */ .word 0x6E730A00
+
+nonmatching D_8000A454
+
+dlabel D_8000A454
     /* B454 8000A454 00000000 */ .word 0x00000000
+
+nonmatching D_8000A458
+
+dlabel D_8000A458
     /* B458 8000A458 00000000 */ .word 0x00000000
+
+nonmatching D_8000A45C
+
+dlabel D_8000A45C
     /* B45C 8000A45C 00000000 */ .word 0x00000000
 
 nonmatching D_8000A460
@@ -13295,7 +13089,7 @@ endlabel __osPiTable
 
 nonmatching __osCurrentHandle
 
-glabel __osCurrentHandle
+dlabel __osCurrentHandle
     /* B470 8000A470 63726561 */ .word 0x63726561
     /* B474 8000A474 7465640A */ .word 0x7465640A /* invalid instruction */
     /* B478 8000A478 00000000 */ .word 0x00000000
@@ -13304,7 +13098,7 @@ enddlabel __osCurrentHandle
 
 nonmatching __osPiAccessQueueEnabled
 
-glabel __osPiAccessQueueEnabled
+dlabel __osPiAccessQueueEnabled
     /* B480 8000A480 3A205468 */ .word 0x3A205468
     /* B484 8000A484 72656164 */ .word 0x72656164 /* invalid instruction */
     /* B488 8000A488 20256420 */ .word 0x20256420
@@ -13313,7 +13107,7 @@ enddlabel __osPiAccessQueueEnabled
 
 nonmatching __osRdb_IP6_Empty
 
-glabel __osRdb_IP6_Empty
+dlabel __osRdb_IP6_Empty
     /* B490 8000A490 726F7965 */ .word 0x726F7965 /* invalid instruction */
     /* B494 8000A494 640A0000 */ .word 0x640A0000
     /* B498 8000A498 00000000 */ .word 0x00000000
@@ -13382,7 +13176,7 @@ enddlabel __osRdb_IP6_Empty
 
 nonmatching __rmonActive
 
-glabel __rmonActive
+dlabel __rmonActive
     /* B580 8000A580 30387800 */ .word 0x30387800
     /* B584 8000A584 20616E64 */ .word 0x20616E64
     /* B588 8000A588 20253038 */ .word 0x20253038
@@ -13463,7 +13257,7 @@ enddlabel __rmonActive
 
 nonmatching __osRcpImTable
 
-glabel __osRcpImTable
+dlabel __osRcpImTable
     /* B680 8000A680 20696E73 */ .word 0x20696E73
     /* B684 8000A684 74202530 */ .word 0x74202530 /* invalid instruction */
     /* B688 8000A688 38780D0A */ .word 0x38780D0A

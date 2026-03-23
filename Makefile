@@ -26,11 +26,23 @@ CFLAGS   := -G 0 -non_shared -Xcpluscomm -Wab,-r4300_mul
 CPPFLAGS := -I include -I src
 LDFLAGS  := -T $(LD_SCRIPT) -T undefined_syms_auto.txt -Map build/$(TARGET).map --no-check-sections
 
-# Per-file optimization overrides
-# (kernel.c is compiled at default -O2; O1 functions use INCLUDE_ASM)
+# Per-file optimization overrides (O1 libultra functions)
+build/src/kernel/kernel_001.c.o: OPT_FLAGS := -O1
+build/src/kernel/kernel_003.c.o: OPT_FLAGS := -O1
+build/src/kernel/kernel_005.c.o: OPT_FLAGS := -O1
+build/src/kernel/kernel_007.c.o: OPT_FLAGS := -O1
+build/src/kernel/kernel_009.c.o: OPT_FLAGS := -O1
+build/src/kernel/kernel_011.c.o: OPT_FLAGS := -O1
+build/src/kernel/kernel_013.c.o: OPT_FLAGS := -O1
+build/src/kernel/kernel_015.c.o: OPT_FLAGS := -O1
+build/src/kernel/kernel_017.c.o: OPT_FLAGS := -O1
+build/src/kernel/kernel_019.c.o: OPT_FLAGS := -O1
+build/src/kernel/kernel_021.c.o: OPT_FLAGS := -O1
+build/src/kernel/kernel_023.c.o: OPT_FLAGS := -O1
+build/src/kernel/kernel_025.c.o: OPT_FLAGS := -O1
 
-# Collect source files (exclude o1/ reference sources)
-C_FILES   := $(shell find src -maxdepth 1 -name '*.c' -type f 2>/dev/null)
+# Collect source files (kernel/ subdirectory, exclude o1/ reference)
+C_FILES   := $(shell find src/kernel -name '*.c' -type f 2>/dev/null)
 ASM_FILES := $(shell find asm -maxdepth 1 -name '*.s' -type f 2>/dev/null)
 BIN_FILES := $(shell find assets -name '*.bin' -type f)
 
@@ -75,8 +87,8 @@ verify: $(ROM)
 # Snapshot expected objects for objdiff baseline
 expected:
 	$(RM) -r expected
-	mkdir -p expected/src
-	cp build/src/*.o expected/src/
+	mkdir -p expected/src/kernel
+	cp build/src/kernel/*.o expected/src/kernel/
 
 clean:
 	rm -rf build $(ROM)

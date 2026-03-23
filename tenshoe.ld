@@ -35,15 +35,39 @@ SECTIONS
     {
         FILL(0x00000000);
         kernel_TEXT_START = .;
-        build/src/kernel.c.o(.text);
+        build/src/kernel/kernel_000.c.o(.text);
+        build/src/kernel/kernel_001.c.o(.text);
+        build/src/kernel/kernel_002.c.o(.text);
+        build/src/kernel/kernel_003.c.o(.text);
+        build/src/kernel/kernel_004.c.o(.text);
+        build/src/kernel/kernel_005.c.o(.text);
+        build/src/kernel/kernel_006.c.o(.text);
+        build/src/kernel/kernel_007.c.o(.text);
+        build/src/kernel/kernel_008.c.o(.text);
+        build/src/kernel/kernel_009.c.o(.text);
+        build/src/kernel/kernel_010.c.o(.text);
+        build/src/kernel/kernel_011.c.o(.text);
+        build/src/kernel/kernel_013.c.o(.text);
+        build/src/kernel/kernel_014.c.o(.text);
+        build/src/kernel/kernel_015.c.o(.text);
+        build/src/kernel/kernel_016.c.o(.text);
+        build/src/kernel/kernel_017.c.o(.text);
+        build/src/kernel/kernel_018.c.o(.text);
+        build/src/kernel/kernel_019.c.o(.text);
+        build/src/kernel/kernel_020.c.o(.text);
+        build/src/kernel/kernel_021.c.o(.text);
+        build/src/kernel/kernel_022.c.o(.text);
+        build/src/kernel/kernel_023.c.o(.text);
+        build/src/kernel/kernel_024.c.o(.text);
+        build/src/kernel/kernel_025.c.o(.text);
+        build/src/kernel/kernel_026.c.o(.text);
         kernel_TEXT_END = .;
         kernel_TEXT_SIZE = ABSOLUTE(kernel_TEXT_END - kernel_TEXT_START);
         kernel_RODATA_START = .;
-        build/src/kernel.c.o(.rodata);
+        build/src/kernel/*.c.o(.rodata);
         kernel_RODATA_END = .;
         kernel_RODATA_SIZE = ABSOLUTE(kernel_RODATA_END - kernel_RODATA_START);
         kernel_DATA_START = .;
-        build/src/kernel.c.o(.data);
         build/assets/kernel.data.bin.o(.data);
         kernel_DATA_END = .;
         kernel_DATA_SIZE = ABSOLUTE(kernel_DATA_END - kernel_DATA_START);
@@ -53,7 +77,7 @@ SECTIONS
     {
         FILL(0x00000000);
         kernel_BSS_START = .;
-        build/src/kernel.c.o(.bss);
+        build/src/kernel/*.c.o(.bss);
         kernel_BSS_END = .;
         kernel_BSS_SIZE = ABSOLUTE(kernel_BSS_END - kernel_BSS_START);
     }

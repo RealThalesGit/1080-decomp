@@ -92,14 +92,14 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80006B20);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80006B54);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80006BD8);
+
 
 /* __rmonWriteWordTo (unimplemented stub) */
 s32 func_80006C58(s32 arg0) {
     return -1;
 }
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80006C64);
+
 
 
 

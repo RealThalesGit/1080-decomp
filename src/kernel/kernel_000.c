@@ -28,6 +28,10 @@ extern FuncPtr2 D_80012C44;
 extern s32 D_8000A32C;
 extern s32 D_8000A340;
 extern s32 D_80012BC0;
+extern s32 D_80012BE4;
+extern s32 D_80012C64;
+extern s32 D_80012C68;
+extern s32 D_80012D60[];
 extern s32 D_8000A2E0;
 extern s32 D_8000A41C;
 extern s32 func_80002890(s32);
@@ -170,7 +174,40 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80000A98);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80000B34);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80000C88);
+/* uso_call_init — dispatches a function from the USO module vtable */
+typedef s32 (*UsoFunc)(void*);
+
+s32 func_80000C88(void) {
+    s32 modIndex = D_80012C68;
+    s32* mod;
+    s32 funcIndex;
+    s32 funcTable;
+
+    if (modIndex < 0) {
+        return -1;
+    }
+
+    mod = (s32*)D_80012D60[modIndex];
+    if (mod == 0) {
+        return -1;
+    }
+
+    funcIndex = D_80012C64;
+    if (funcIndex < 0) {
+        return -1;
+    }
+
+    funcTable = *(s32*)((char*)mod + 0x3C);
+    if (funcTable == 0) {
+        return -1;
+    }
+
+    {
+        UsoFunc fn = (UsoFunc)*(s32*)(funcTable + funcIndex * 12 + 4);
+        D_80012BE4 = fn(&D_80012BC0);
+    }
+    return 0;
+}
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80000D2C);
 

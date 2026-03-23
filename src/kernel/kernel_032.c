@@ -25,4 +25,3 @@ s32 func_80006BD8(RmonMsg2* msg) {
     return 0;
 }
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80006C64);

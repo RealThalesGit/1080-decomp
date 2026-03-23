@@ -1,9 +1,9 @@
 #include "common.h"
 
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80007EA0);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80007EEC);
+
+
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80007FC8);
 

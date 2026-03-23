@@ -1,9 +1,6 @@
 #include "common.h"
 
 
-/* Merged kernel — compiled at -O2 */
-/* O1 decompiled functions use INCLUDE_ASM; matching C source in src/o1/ */
-
 /* Forward declarations */
 extern s32 __osPiAccessQueue;
 extern s32 D_8000A480;
@@ -90,8 +87,6 @@ s32 func_8000058C(s32 arg0) {
 }
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80000598);
-
-INCLUDE_ASM("asm/nonmatchings/kernel", func_800005D8);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800005DC);
 
@@ -259,8 +254,6 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80001994);
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80001ADC);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80001CB0);
-
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80001CF0);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80001CF4);
 
@@ -450,8 +443,6 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80005534);
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80005584);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800056C0);
-
-INCLUDE_ASM("asm/nonmatchings/kernel", func_800056EC);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800056F0);
 
@@ -673,8 +664,6 @@ void func_80008AA0(void) {
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80008AD0);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80008BB0);
-
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80008BB4);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80008C00);
@@ -686,8 +675,6 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80008C48);
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80008CB4);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80008D0C);
-
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80008D48);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80008D4C);
 
@@ -712,8 +699,6 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80009000);
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80009030);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800090B4);
-
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80009144);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80009148);
 

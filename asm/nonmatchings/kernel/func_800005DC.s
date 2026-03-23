@@ -1,7 +1,8 @@
 
-nonmatching func_800005DC, 0x30
+nonmatching func_800005DC, 0x34
 
 glabel func_800005DC
+    /* 15D8 800005D8 27BDFFE0 */  addiu      $sp, $sp, -0x20
     /* 15DC 800005DC 308F0007 */  andi       $t7, $a0, 0x7
     /* 15E0 800005E0 AFBF0014 */  sw         $ra, 0x14($sp)
     /* 15E4 800005E4 AFA40020 */  sw         $a0, 0x20($sp)

@@ -1,7 +1,8 @@
 
-nonmatching func_800056F0, 0x104
+nonmatching func_800056F0, 0x108
 
 glabel func_800056F0
+    /* 66EC 800056EC 27BDFFD0 */  addiu      $sp, $sp, -0x30
     /* 66F0 800056F0 AFA40030 */  sw         $a0, 0x30($sp)
     /* 66F4 800056F4 AFBF001C */  sw         $ra, 0x1C($sp)
     /* 66F8 800056F8 3C048002 */  lui        $a0, %hi(D_8001B5D0)

@@ -40,7 +40,6 @@ SECTIONS
         kernel_TEXT_SIZE = ABSOLUTE(kernel_TEXT_END - kernel_TEXT_START);
         kernel_RODATA_START = .;
         build/src/kernel.c.o(.rodata);
-        build/assets/kernel.rodata.bin.o(.data);
         kernel_RODATA_END = .;
         kernel_RODATA_SIZE = ABSOLUTE(kernel_RODATA_END - kernel_RODATA_START);
         kernel_DATA_START = .;

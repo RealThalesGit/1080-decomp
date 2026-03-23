@@ -1,7 +1,8 @@
 
-nonmatching func_80008D4C, 0xA4
+nonmatching func_80008D4C, 0xA8
 
 glabel func_80008D4C
+    /* 9D48 80008D48 27BDFFE8 */  addiu      $sp, $sp, -0x18
     /* 9D4C 80008D4C AFBF0014 */  sw         $ra, 0x14($sp)
     /* 9D50 80008D50 AFA40018 */  sw         $a0, 0x18($sp)
     /* 9D54 80008D54 0C001AA6 */  jal        func_80006A98

@@ -113,9 +113,9 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_800070A0);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800071C0);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", __rmonSendHeader);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_800073DC);
+
+
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800073F8);
 

@@ -1,0 +1,30 @@
+{
+  "function_name": "__rmonSendHeader",
+  "asm_text": "\nnonmatching __rmonSendHeader, 0x7C\n\nglabel __rmonSendHeader\n    /* 8360 80007360 27BDFFD8 */  addiu      $sp, $sp, -0x28\n    /* 8364 80007364 AFBF001C */  sw         $ra, 0x1C($sp)\n    /* 8368 80007368 0C00270C */  jal        func_80009C30\n    /* 836C 8000736C AFB00018 */   sw        $s0, 0x18($sp)\n    /* 8370 80007370 00408025 */  or         $s0, $v0, $zero\n    /* 8374 80007374 8E0E0004 */  lw         $t6, 0x4($s0)\n    /* 8378 80007378 2401FFFF */  addiu      $at, $zero, -0x1\n    /* 837C 8000737C 11C10012 */  beq        $t6, $at, .L800073C8\n    /* 8380 80007380 00000000 */   nop\n  .L80007384:\n    /* 8384 80007384 8E0F0004 */  lw         $t7, 0x4($s0)\n    /* 8388 80007388 15E0000A */  bnez       $t7, .L800073B4\n    /* 838C 8000738C 00000000 */   nop\n    /* 8390 80007390 8E180118 */  lw         $t8, 0x118($s0)\n    /* 8394 80007394 3C01FFFF */  lui        $at, (0xFFFF00FE >> 16)\n    /* 8398 80007398 342100FE */  ori        $at, $at, (0xFFFF00FE & 0xFFFF)\n    /* 839C 8000739C 0301C824 */  and        $t9, $t8, $at\n    /* 83A0 800073A0 AE190118 */  sw         $t9, 0x118($s0)\n    /* 83A4 800073A4 8E080118 */  lw         $t0, 0x118($s0)\n    /* 83A8 800073A8 35096C01 */  ori        $t1, $t0, 0x6C01\n    /* 83AC 800073AC 10000006 */  b          .L800073C8\n    /* 83B0 800073B0 AE090118 */   sw        $t1, 0x118($s0)\n  .L800073B4:\n    /* 83B4 800073B4 8E10000C */  lw         $s0, 0xC($s0)\n    /* 83B8 800073B8 2401FFFF */  addiu      $at, $zero, -0x1\n    /* 83BC 800073BC 8E0A0004 */  lw         $t2, 0x4($s0)\n    /* 83C0 800073C0 1541FFF0 */  bne        $t2, $at, .L80007384\n    /* 83C4 800073C4 00000000 */   nop\n  .L800073C8:\n    /* 83C8 800073C8 8FBF001C */  lw         $ra, 0x1C($sp)\n    /* 83CC 800073CC 8FB00018 */  lw         $s0, 0x18($sp)\n    /* 83D0 800073D0 27BD0028 */  addiu      $sp, $sp, 0x28\n    /* 83D4 800073D4 03E00008 */  jr         $ra\n    /* 83D8 800073D8 00000000 */   nop\nendlabel __rmonSendHeader\n",
+  "m2c_output": "void *func_80009C30();                              /* extern */\n\nvoid __rmonSendHeader(void) {\n    void *var_s0;\n\n    var_s0 = func_80009C30();\n    if (var_s0->unk4 != -1) {\nloop_1:\n        if (var_s0->unk4 == 0) {\n            var_s0->unk118 = (s32) (var_s0->unk118 & 0xFFFF00FE);\n            var_s0->unk118 = (s32) (var_s0->unk118 | 0x6C01);\n            return;\n        }\n        var_s0 = var_s0->unkC;\n        if (var_s0->unk4 == -1) {\n\n        } else {\n            goto loop_1;\n        }\n    }\n}\n",
+  "attempts": [
+    {
+      "c_code": "void __rmonSendHeader(void) {\n    register s32* node = (s32*)func_80009C30();\n    while (node[1] != -1) {\n        if (node[1] == 0) {\n            *(s32*)((char*)node + 0x118) = *(s32*)((char*)node + 0x118) & 0xFFFF00FE;\n            *(s32*)((char*)node + 0x118) = *(s32*)((char*)node + 0x118) | 0x6C01;\n            break;\n        }\n        node = (s32*)node[3];\n    }\n}",
+      "matched": true,
+      "diff_count": 0,
+      "diff_details": [],
+      "compiler_flags": "",
+      "notes": "flags: -O2 -g2"
+    }
+  ],
+  "final_c": "void __rmonSendHeader(void) {\n    register s32* node = (s32*)func_80009C30();\n    while (node[1] != -1) {\n        if (node[1] == 0) {\n            *(s32*)((char*)node + 0x118) = *(s32*)((char*)node + 0x118) & 0xFFFF00FE;\n            *(s32*)((char*)node + 0x118) = *(s32*)((char*)node + 0x118) | 0x6C01;\n            break;\n        }\n        node = (s32*)node[3];\n    }\n}",
+  "matched": true,
+  "instruction_count": 31,
+  "has_branches": true,
+  "has_calls": true,
+  "timestamp": 1774306177.014716,
+  "game": "glover",
+  "compiler": "gcc_2.7.2_kmc",
+  "compiler_flags": "-O2 -g2",
+  "nearby_decompiled": [],
+  "called_functions": [
+    "func_80009C30"
+  ],
+  "referenced_data": [],
+  "segment": "kernel"
+}

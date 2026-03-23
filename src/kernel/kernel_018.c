@@ -101,9 +101,9 @@ s32 func_80006C58(s32 arg0) {
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80006C64);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80006D0C);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80006D7C);
+
+
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80006F60);
 

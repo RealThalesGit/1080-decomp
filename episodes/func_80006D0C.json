@@ -1,0 +1,30 @@
+{
+  "function_name": "func_80006D0C",
+  "asm_text": "\nnonmatching func_80006D0C, 0x70\n\nglabel func_80006D0C\n    /* 7D0C 80006D0C 27BDFFD0 */  addiu      $sp, $sp, -0x30\n    /* 7D10 80006D10 AFA40030 */  sw         $a0, 0x30($sp)\n    /* 7D14 80006D14 8FAE0030 */  lw         $t6, 0x30($sp)\n    /* 7D18 80006D18 AFBF0014 */  sw         $ra, 0x14($sp)\n    /* 7D1C 80006D1C 24010001 */  addiu      $at, $zero, 0x1\n    /* 7D20 80006D20 AFAE002C */  sw         $t6, 0x2C($sp)\n    /* 7D24 80006D24 91CF0004 */  lbu        $t7, 0x4($t6)\n    /* 7D28 80006D28 A7A0001E */  sh         $zero, 0x1E($sp)\n    /* 7D2C 80006D2C A3AF001C */  sb         $t7, 0x1C($sp)\n    /* 7D30 80006D30 8DD8000C */  lw         $t8, 0xC($t6)\n    /* 7D34 80006D34 AFB80024 */  sw         $t8, 0x24($sp)\n    /* 7D38 80006D38 91D90009 */  lbu        $t9, 0x9($t6)\n    /* 7D3C 80006D3C 17210004 */  bne        $t9, $at, .L80006D50\n    /* 7D40 80006D40 00000000 */   nop\n    /* 7D44 80006D44 24080002 */  addiu      $t0, $zero, 0x2\n    /* 7D48 80006D48 10000003 */  b          .L80006D58\n    /* 7D4C 80006D4C AFA80028 */   sw        $t0, 0x28($sp)\n  .L80006D50:\n    /* 7D50 80006D50 24090005 */  addiu      $t1, $zero, 0x5\n    /* 7D54 80006D54 AFA90028 */  sw         $t1, 0x28($sp)\n  .L80006D58:\n    /* 7D58 80006D58 27A40018 */  addiu      $a0, $sp, 0x18\n    /* 7D5C 80006D5C 24050014 */  addiu      $a1, $zero, 0x14\n    /* 7D60 80006D60 0C001CFE */  jal        func_800073F8\n    /* 7D64 80006D64 24060001 */   addiu     $a2, $zero, 0x1\n    /* 7D68 80006D68 8FBF0014 */  lw         $ra, 0x14($sp)\n    /* 7D6C 80006D6C 27BD0030 */  addiu      $sp, $sp, 0x30\n    /* 7D70 80006D70 00001025 */  or         $v0, $zero, $zero\n    /* 7D74 80006D74 03E00008 */  jr         $ra\n    /* 7D78 80006D78 00000000 */   nop\nendlabel func_80006D0C\n",
+  "m2c_output": "? func_800073F8(? *, ?, ?);                         /* extern */\n\ns32 func_80006D0C(void *arg0) {\n    void *sp2C;\n    s32 sp28;\n    s32 sp24;\n    s16 sp1E;\n    u8 sp1C;\n    ? sp18;\n\n    sp2C = arg0;\n    sp1E = 0;\n    sp1C = arg0->unk4;\n    sp24 = arg0->unkC;\n    if (arg0->unk9 == 1) {\n        sp28 = 2;\n    } else {\n        sp28 = 5;\n    }\n    func_800073F8(&sp18, 0x14, 1);\n    return 0;\n}\n",
+  "attempts": [
+    {
+      "c_code": "typedef struct { s32 pad0; u8 type; char pad5; u16 flags; s32 pad8; s32 id; s32 count; } RmonHdr;\ntypedef struct { s32 pad0; u8 type; char pad5[4]; u8 domain; char padA[2]; s32 id; } RmonMsg;\ns32 func_80006D0C(RmonMsg* msg) {\n    RmonMsg* p = msg;\n    RmonHdr hdr;\n    hdr.type = p->type;\n    hdr.flags = 0;\n    hdr.id = p->id;\n    if (p->domain == 1) { hdr.count = 2; } else { hdr.count = 5; }\n    func_800073F8(&hdr, 0x14, 1);\n    return 0;\n}",
+      "matched": true,
+      "diff_count": 0,
+      "diff_details": [],
+      "compiler_flags": "",
+      "notes": "flags: -O2 -g2"
+    }
+  ],
+  "final_c": "typedef struct { s32 pad0; u8 type; char pad5; u16 flags; s32 pad8; s32 id; s32 count; } RmonHdr;\ntypedef struct { s32 pad0; u8 type; char pad5[4]; u8 domain; char padA[2]; s32 id; } RmonMsg;\ns32 func_80006D0C(RmonMsg* msg) {\n    RmonMsg* p = msg;\n    RmonHdr hdr;\n    hdr.type = p->type;\n    hdr.flags = 0;\n    hdr.id = p->id;\n    if (p->domain == 1) { hdr.count = 2; } else { hdr.count = 5; }\n    func_800073F8(&hdr, 0x14, 1);\n    return 0;\n}",
+  "matched": true,
+  "instruction_count": 28,
+  "has_branches": true,
+  "has_calls": true,
+  "timestamp": 1774234815.657895,
+  "game": "glover",
+  "compiler": "gcc_2.7.2_kmc",
+  "compiler_flags": "-O2 -g2",
+  "nearby_decompiled": [],
+  "called_functions": [
+    "func_800073F8"
+  ],
+  "referenced_data": [],
+  "segment": "kernel"
+}

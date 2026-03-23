@@ -9,8 +9,8 @@ The kernel (libultra + USO loader + game init) is being decompiled.
 ```
 $ ../../scripts/progress.sh
 Decompilation Progress
-Code:      ~1.6K / ~30K bytes (~5%)
-Functions:   ~19 / ~218       (~9%)
+Code:      ~1.8K / ~30K bytes (~6%)
+Functions:   ~35 / ~218       (~16%)
 ```
 
 ## Building

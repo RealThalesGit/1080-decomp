@@ -47,13 +47,20 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80000260);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800003A8);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80000474);
+/* uso_set_alloc */
+extern s32 D_8000A2E0;
+void func_80000474(s32 val) {
+    D_8000A2E0 = val;
+}
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80000480);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80000568);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_8000058C);
+/* uso_stub_ret0 */
+s32 func_8000058C(s32 arg0) {
+    return 0;
+}
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80000598);
 
@@ -301,7 +308,10 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80005F10);
 
 
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80006240);
+/* __osPiReadStatus */
+s32 func_80006240(void) {
+    return *(volatile s32*)0xA4600010;
+}
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800062B0);
 
@@ -323,7 +333,10 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80006B54);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80006BD8);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80006C58);
+/* __rmonWriteWordTo (unimplemented stub) */
+s32 func_80006C58(s32 arg0) {
+    return -1;
+}
 
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80006D0C);
@@ -430,7 +443,11 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80009314);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80009760);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80009830);
+/* __osGetActiveQueue */
+extern s32 D_8000A41C;
+s32 func_80009830(void) {
+    return D_8000A41C;
+}
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80009840);
 

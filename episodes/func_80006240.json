@@ -1,0 +1,30 @@
+{
+  "function_name": "func_80006240",
+  "asm_text": "\nnonmatching func_80006240, 0xC\n\nglabel func_80006240\n    /* 7240 80006240 3C0EA460 */  lui        $t6, %hi(D_A4600010)\n    /* 7244 80006244 03E00008 */  jr         $ra\n    /* 7248 80006248 8DC20010 */   lw        $v0, %lo(D_A4600010)($t6)\nendlabel func_80006240\n    /* 724C 8000624C 00000000 */  nop\n",
+  "m2c_output": "extern s32 D_A4600010;\n\ns32 func_80006240(void) {\n    return D_A4600010;\n}\n",
+  "attempts": [
+    {
+      "c_code": "s32 func_80006240(void) { return *(volatile s32*)0xA4600010; }",
+      "matched": true,
+      "diff_count": 0,
+      "diff_details": [],
+      "compiler_flags": "",
+      "notes": "flags: -O2 -g2"
+    }
+  ],
+  "final_c": "s32 func_80006240(void) { return *(volatile s32*)0xA4600010; }",
+  "matched": true,
+  "instruction_count": 4,
+  "has_branches": false,
+  "has_calls": false,
+  "timestamp": 1774227741.1501906,
+  "game": "glover",
+  "compiler": "gcc_2.7.2_kmc",
+  "compiler_flags": "-O2 -g2",
+  "nearby_decompiled": [],
+  "called_functions": [],
+  "referenced_data": [
+    "D_A4600010"
+  ],
+  "segment": "kernel"
+}

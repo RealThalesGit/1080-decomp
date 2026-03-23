@@ -1,0 +1,28 @@
+{
+  "function_name": "func_8000058C",
+  "asm_text": "\nnonmatching func_8000058C, 0xC\n\nglabel func_8000058C\n    /* 158C 8000058C AFA40000 */  sw         $a0, 0x0($sp)\n    /* 1590 80000590 03E00008 */  jr         $ra\n    /* 1594 80000594 00001025 */   or        $v0, $zero, $zero\nendlabel func_8000058C\n",
+  "m2c_output": "s32 func_8000058C(s32 arg0) {\n    return 0;\n}\n",
+  "attempts": [
+    {
+      "c_code": "s32 func_8000058C(s32 arg0) { return 0; }",
+      "matched": true,
+      "diff_count": 0,
+      "diff_details": [],
+      "compiler_flags": "",
+      "notes": "flags: -O2 -g2"
+    }
+  ],
+  "final_c": "s32 func_8000058C(s32 arg0) { return 0; }",
+  "matched": true,
+  "instruction_count": 3,
+  "has_branches": false,
+  "has_calls": false,
+  "timestamp": 1774227740.916503,
+  "game": "glover",
+  "compiler": "gcc_2.7.2_kmc",
+  "compiler_flags": "-O2 -g2",
+  "nearby_decompiled": [],
+  "called_functions": [],
+  "referenced_data": [],
+  "segment": "kernel"
+}

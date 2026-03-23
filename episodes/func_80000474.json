@@ -1,0 +1,30 @@
+{
+  "function_name": "func_80000474",
+  "asm_text": "\nnonmatching func_80000474, 0xC\n\nglabel func_80000474\n    /* 1474 80000474 3C018001 */  lui        $at, %hi(D_8000A2E0)\n    /* 1478 80000478 03E00008 */  jr         $ra\n    /* 147C 8000047C AC24A2E0 */   sw        $a0, %lo(D_8000A2E0)($at)\nendlabel func_80000474\n",
+  "m2c_output": "extern s32 D_8000A2E0;\n\nvoid func_80000474(s32 arg0) {\n    D_8000A2E0 = arg0;\n}\n",
+  "attempts": [
+    {
+      "c_code": "extern s32 D_8000A2E0;\nvoid func_80000474(s32 val) { D_8000A2E0 = val; }",
+      "matched": true,
+      "diff_count": 0,
+      "diff_details": [],
+      "compiler_flags": "",
+      "notes": "flags: -O2 -g2"
+    }
+  ],
+  "final_c": "extern s32 D_8000A2E0;\nvoid func_80000474(s32 val) { D_8000A2E0 = val; }",
+  "matched": true,
+  "instruction_count": 3,
+  "has_branches": false,
+  "has_calls": false,
+  "timestamp": 1774227740.701987,
+  "game": "glover",
+  "compiler": "gcc_2.7.2_kmc",
+  "compiler_flags": "-O2 -g2",
+  "nearby_decompiled": [],
+  "called_functions": [],
+  "referenced_data": [
+    "D_8000A2E0"
+  ],
+  "segment": "kernel"
+}

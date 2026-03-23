@@ -92,7 +92,7 @@ void func_80008A08(void) {
     func_80008ED0();
 }
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80008A38);
+
 
 void func_80008AA0(void) {
     func_80007760();
@@ -100,7 +100,7 @@ void func_80008AA0(void) {
     func_80008ED0();
 }
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80008AD0);
+
 
 
 

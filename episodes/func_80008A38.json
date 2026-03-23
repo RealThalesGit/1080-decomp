@@ -1,0 +1,34 @@
+{
+  "function_name": "func_80008A38",
+  "asm_text": "\nnonmatching func_80008A38, 0x68\n\nglabel func_80008A38\n    /* 9A38 80008A38 27BDFF90 */  addiu      $sp, $sp, -0x70\n    /* 9A3C 80008A3C AFBF001C */  sw         $ra, 0x1C($sp)\n    /* 9A40 80008A40 AFB00018 */  sw         $s0, 0x18($sp)\n    /* 9A44 80008A44 0C001AA6 */  jal        func_80006A98\n    /* 9A48 80008A48 3C040408 */   lui       $a0, (0x4080000 >> 16)\n    /* 9A4C 80008A4C 00408025 */  or         $s0, $v0, $zero\n    /* 9A50 80008A50 2605FFFC */  addiu      $a1, $s0, -0x4\n    /* 9A54 80008A54 0C001A94 */  jal        func_80006A50\n    /* 9A58 80008A58 3C040408 */   lui       $a0, (0x4080000 >> 16)\n    /* 9A5C 80008A5C 24040001 */  addiu      $a0, $zero, 0x1\n    /* 9A60 80008A60 240503E8 */  addiu      $a1, $zero, 0x3E8\n    /* 9A64 80008A64 0C001EA6 */  jal        func_80007A98\n    /* 9A68 80008A68 27A60024 */   addiu     $a2, $sp, 0x24\n    /* 9A6C 80008A6C 0C002343 */  jal        func_80008D0C\n    /* 9A70 80008A70 27A40024 */   addiu     $a0, $sp, 0x24\n    /* 9A74 80008A74 27A40024 */  addiu      $a0, $sp, 0x24\n    /* 9A78 80008A78 2405004C */  addiu      $a1, $zero, 0x4C\n    /* 9A7C 80008A7C 0C001CFE */  jal        func_800073F8\n    /* 9A80 80008A80 24060002 */   addiu     $a2, $zero, 0x2\n    /* 9A84 80008A84 8FBF001C */  lw         $ra, 0x1C($sp)\n    /* 9A88 80008A88 240E0001 */  addiu      $t6, $zero, 0x1\n    /* 9A8C 80008A8C 3C018002 */  lui        $at, %hi(__rmonRcpAtBreak)\n    /* 9A90 80008A90 8FB00018 */  lw         $s0, 0x18($sp)\n    /* 9A94 80008A94 A02EFF78 */  sb         $t6, %lo(__rmonRcpAtBreak)($at)\n    /* 9A98 80008A98 03E00008 */  jr         $ra\n    /* 9A9C 80008A9C 27BD0070 */   addiu     $sp, $sp, 0x70\nendlabel func_80008A38\n",
+  "m2c_output": "? func_80006A50(?, s32);                            /* extern */\ns32 func_80006A98(?);                               /* extern */\n? func_800073F8(? *, ?, ?);                         /* extern */\n? func_80007A98(?, ?, ? *);                         /* extern */\n? func_80008D0C(? *);                               /* extern */\nextern s8 __rmonRcpAtBreak;\n\nvoid func_80008A38(void) {\n    ? sp24;\n\n    func_80006A50(0x04080000, func_80006A98(0x04080000) - 4);\n    func_80007A98(1, 0x3E8, &sp24);\n    func_80008D0C(&sp24);\n    func_800073F8(&sp24, 0x4C, 2);\n    __rmonRcpAtBreak = 1;\n}\n",
+  "attempts": [
+    {
+      "c_code": "void func_80008A38(void) {\n    s32 buf[19];\n    register s32 val = func_80006A98(0x04080000);\n    func_80006A50(0x04080000, val - 4);\n    func_80007A98(1, 0x3E8, buf);\n    func_80008D0C(buf);\n    func_800073F8(buf, 0x4C, 2);\n    __rmonRcpAtBreak = 1;\n}",
+      "matched": true,
+      "diff_count": 0,
+      "diff_details": [],
+      "compiler_flags": "",
+      "notes": "flags: -O2 -g2"
+    }
+  ],
+  "final_c": "void func_80008A38(void) {\n    s32 buf[19];\n    register s32 val = func_80006A98(0x04080000);\n    func_80006A50(0x04080000, val - 4);\n    func_80007A98(1, 0x3E8, buf);\n    func_80008D0C(buf);\n    func_800073F8(buf, 0x4C, 2);\n    __rmonRcpAtBreak = 1;\n}",
+  "matched": true,
+  "instruction_count": 26,
+  "has_branches": false,
+  "has_calls": true,
+  "timestamp": 1774236469.3750386,
+  "game": "glover",
+  "compiler": "gcc_2.7.2_kmc",
+  "compiler_flags": "-O2 -g2",
+  "nearby_decompiled": [],
+  "called_functions": [
+    "func_80006A98",
+    "func_80006A50",
+    "func_80007A98",
+    "func_80008D0C",
+    "func_800073F8"
+  ],
+  "referenced_data": [],
+  "segment": "kernel"
+}

@@ -1,0 +1,32 @@
+{
+  "function_name": "func_80008848",
+  "asm_text": "\nnonmatching func_80008848, 0xC4\n\nglabel func_80008848\n    /* 9848 80008848 27BDFFE0 */  addiu      $sp, $sp, -0x20\n    /* 984C 8000884C AFBF0014 */  sw         $ra, 0x14($sp)\n    /* 9850 80008850 AFA40020 */  sw         $a0, 0x20($sp)\n    /* 9854 80008854 AFA50024 */  sw         $a1, 0x24($sp)\n    /* 9858 80008858 8FA60024 */  lw         $a2, 0x24($sp)\n    /* 985C 8000885C 8FA50020 */  lw         $a1, 0x20($sp)\n    /* 9860 80008860 0C002263 */  jal        func_8000898C\n    /* 9864 80008864 00002025 */   or        $a0, $zero, $zero\n    /* 9868 80008868 AFA2001C */  sw         $v0, 0x1C($sp)\n    /* 986C 8000886C 8FAE001C */  lw         $t6, 0x1C($sp)\n    /* 9870 80008870 31CF0003 */  andi       $t7, $t6, 0x3\n    /* 9874 80008874 11E00007 */  beqz       $t7, .L80008894\n    /* 9878 80008878 00000000 */   nop\n    /* 987C 8000887C 8FA40024 */  lw         $a0, 0x24($sp)\n    /* 9880 80008880 00002825 */  or         $a1, $zero, $zero\n    /* 9884 80008884 0C002134 */  jal        func_800084D0\n    /* 9888 80008888 24840004 */   addiu     $a0, $a0, 0x4\n    /* 988C 8000888C 1000001A */  b          .L800088F8\n    /* 9890 80008890 00000000 */   nop\n  .L80008894:\n    /* 9894 80008894 8FB80024 */  lw         $t8, 0x24($sp)\n    /* 9898 80008898 8FB9001C */  lw         $t9, 0x1C($sp)\n    /* 989C 8000889C 17190003 */  bne        $t8, $t9, .L800088AC\n    /* 98A0 800088A0 00000000 */   nop\n    /* 98A4 800088A4 10000015 */  b          .L800088FC\n    /* 98A8 800088A8 00001025 */   or        $v0, $zero, $zero\n  .L800088AC:\n    /* 98AC 800088AC 8FA80024 */  lw         $t0, 0x24($sp)\n    /* 98B0 800088B0 0C0022ED */  jal        func_80008BB4\n    /* 98B4 800088B4 8D040000 */   lw        $a0, 0x0($t0)\n    /* 98B8 800088B8 14400006 */  bnez       $v0, .L800088D4\n    /* 98BC 800088BC 00000000 */   nop\n    /* 98C0 800088C0 8FA90024 */  lw         $t1, 0x24($sp)\n    /* 98C4 800088C4 8FAB001C */  lw         $t3, 0x1C($sp)\n    /* 98C8 800088C8 252A0008 */  addiu      $t2, $t1, 0x8\n    /* 98CC 800088CC 154B0006 */  bne        $t2, $t3, .L800088E8\n    /* 98D0 800088D0 00000000 */   nop\n  .L800088D4:\n    /* 98D4 800088D4 8FA4001C */  lw         $a0, 0x1C($sp)\n    /* 98D8 800088D8 0C002134 */  jal        func_800084D0\n    /* 98DC 800088DC 00002825 */   or        $a1, $zero, $zero\n    /* 98E0 800088E0 10000005 */  b          .L800088F8\n    /* 98E4 800088E4 00000000 */   nop\n  .L800088E8:\n    /* 98E8 800088E8 8FA50024 */  lw         $a1, 0x24($sp)\n    /* 98EC 800088EC 8FA4001C */  lw         $a0, 0x1C($sp)\n    /* 98F0 800088F0 0C002134 */  jal        func_800084D0\n    /* 98F4 800088F4 24A50008 */   addiu     $a1, $a1, 0x8\n  .L800088F8:\n    /* 98F8 800088F8 24020001 */  addiu      $v0, $zero, 0x1\n  .L800088FC:\n    /* 98FC 800088FC 8FBF0014 */  lw         $ra, 0x14($sp)\n    /* 9900 80008900 27BD0020 */  addiu      $sp, $sp, 0x20\n    /* 9904 80008904 03E00008 */  jr         $ra\n    /* 9908 80008908 00000000 */   nop\nendlabel func_80008848\n",
+  "m2c_output": "? func_800084D0(s32, s32 *);                        /* extern */\ns32 func_8000898C(?, s32, s32 *);                   /* extern */\ns32 func_80008BB4(s32);                             /* extern */\n\ns32 func_80008848(s32 arg0, s32 *arg1) {\n    s32 sp1C;\n\n    sp1C = func_8000898C(0, arg0, arg1);\n    if (sp1C & 3) {\n        func_800084D0((s32) (arg1 + 4), NULL);\n        goto block_8;\n    }\n    if (arg1 == sp1C) {\n        return 0;\n    }\n    if ((func_80008BB4(*arg1) != 0) || ((arg1 + 8) == sp1C)) {\n        func_800084D0(sp1C, NULL);\n    } else {\n        func_800084D0(sp1C, arg1 + 8);\n    }\nblock_8:\n    return 1;\n}\n",
+  "attempts": [
+    {
+      "c_code": "s32 func_80008848(s32 arg0, s32* arg1) {\n    s32 result = func_8000898C(0, arg0, (s32)arg1);\n    if (result & 3) {\n        func_800084D0((s32)arg1 + 4, 0);\n    } else {\n        if ((s32)arg1 == result) {\n            return 0;\n        }\n        if (func_80008BB4(*arg1) != 0 || (s32)arg1 + 8 == result) {\n            func_800084D0(result, 0);\n        } else {\n            func_800084D0(result, (s32)arg1 + 8);\n        }\n    }\n    return 1;\n}",
+      "matched": true,
+      "diff_count": 0,
+      "diff_details": [],
+      "compiler_flags": "",
+      "notes": "flags: -O2 -g2"
+    }
+  ],
+  "final_c": "s32 func_80008848(s32 arg0, s32* arg1) {\n    s32 result = func_8000898C(0, arg0, (s32)arg1);\n    if (result & 3) {\n        func_800084D0((s32)arg1 + 4, 0);\n    } else {\n        if ((s32)arg1 == result) {\n            return 0;\n        }\n        if (func_80008BB4(*arg1) != 0 || (s32)arg1 + 8 == result) {\n            func_800084D0(result, 0);\n        } else {\n            func_800084D0(result, (s32)arg1 + 8);\n        }\n    }\n    return 1;\n}",
+  "matched": true,
+  "instruction_count": 49,
+  "has_branches": true,
+  "has_calls": true,
+  "timestamp": 1774321721.5923464,
+  "game": "glover",
+  "compiler": "gcc_2.7.2_kmc",
+  "compiler_flags": "-O2 -g2",
+  "nearby_decompiled": [],
+  "called_functions": [
+    "func_8000898C",
+    "func_800084D0",
+    "func_80008BB4"
+  ],
+  "referenced_data": [],
+  "segment": "kernel"
+}

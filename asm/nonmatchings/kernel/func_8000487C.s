@@ -1,5 +1,5 @@
 
-nonmatching func_8000487C, 0x50
+nonmatching func_8000487C, 0x6C
 
 glabel func_8000487C
     /* 587C 8000487C 27BDFFE8 */  addiu      $sp, $sp, -0x18
@@ -25,4 +25,12 @@ glabel func_8000487C
   .L800048C4:
     /* 58C4 800048C4 0C0027A8 */  jal        func_80009EA0
     /* 58C8 800048C8 00000000 */   nop
+    /* 58CC 800048CC 30482000 */  andi       $t0, $v0, 0x2000
+    /* 58D0 800048D0 1500FFFC */  bnez       $t0, .L800048C4
+    /* 58D4 800048D4 00000000 */   nop
+  .L800048D8:
+    /* 58D8 800048D8 8FBF0014 */  lw         $ra, 0x14($sp)
+    /* 58DC 800048DC 27BD0018 */  addiu      $sp, $sp, 0x18
+    /* 58E0 800048E0 03E00008 */  jr         $ra
+    /* 58E4 800048E4 00000000 */   nop
 endlabel func_8000487C

@@ -419,8 +419,6 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80004808);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_8000487C);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_800048CC);
-
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800048E8);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800049B8);

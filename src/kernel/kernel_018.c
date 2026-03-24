@@ -90,8 +90,6 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80006AEC);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80006B20);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80006B54);
-
 
 
 /* __rmonWriteWordTo (unimplemented stub) */
@@ -117,8 +115,6 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_800071C0);
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800073F8);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_8000745C);
-
-INCLUDE_ASM("asm/nonmatchings/kernel", func_800074A0);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80007564);
 

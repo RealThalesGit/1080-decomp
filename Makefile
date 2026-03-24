@@ -6,7 +6,7 @@ LD_SCRIPT := $(TARGET).ld
 BASEROM   := baserom.z64
 
 # Paths
-TOOLS       := ../../tools
+TOOLS       := tools
 IDO_DIR     := $(TOOLS)/ido-static-recomp/build/7.1/out
 ASM_PROC    := python3 $(TOOLS)/asm-processor/asm_processor.py
 ASM_PRELUDE := $(TOOLS)/asm-processor/prelude.inc

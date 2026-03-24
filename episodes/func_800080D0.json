@@ -1,0 +1,34 @@
+{
+  "function_name": "func_800080D0",
+  "asm_text": "\nnonmatching func_800080D0, 0xAC\n\nglabel func_800080D0\n    /* 90D0 800080D0 27BDFFE8 */  addiu      $sp, $sp, -0x18\n    /* 90D4 800080D4 AFA40018 */  sw         $a0, 0x18($sp)\n    /* 90D8 800080D8 8FAE0018 */  lw         $t6, 0x18($sp)\n    /* 90DC 800080DC AFBF0014 */  sw         $ra, 0x14($sp)\n    /* 90E0 800080E0 AFA5001C */  sw         $a1, 0x1C($sp)\n    /* 90E4 800080E4 8DCF0000 */  lw         $t7, 0x0($t6)\n    /* 90E8 800080E8 3C188002 */  lui        $t8, %hi(rmonbrk_bss_0000)\n    /* 90EC 800080EC 2718FE70 */  addiu      $t8, $t8, %lo(rmonbrk_bss_0000)\n    /* 90F0 800080F0 AF0F0004 */  sw         $t7, 0x4($t8)\n    /* 90F4 800080F4 8FA80018 */  lw         $t0, 0x18($sp)\n    /* 90F8 800080F8 2419040D */  addiu      $t9, $zero, 0x40D\n    /* 90FC 800080FC 24050004 */  addiu      $a1, $zero, 0x4\n    /* 9100 80008100 AD190000 */  sw         $t9, 0x0($t0)\n    /* 9104 80008104 0C000C7C */  jal        func_800031F0\n    /* 9108 80008108 8FA40018 */   lw        $a0, 0x18($sp)\n    /* 910C 8000810C 8FA40018 */  lw         $a0, 0x18($sp)\n    /* 9110 80008110 0C0014D4 */  jal        func_80005350\n    /* 9114 80008114 24050004 */   addiu     $a1, $zero, 0x4\n    /* 9118 80008118 8FA90018 */  lw         $t1, 0x18($sp)\n    /* 911C 8000811C 3C0A8002 */  lui        $t2, %hi(rmonbrk_bss_0000)\n    /* 9120 80008120 254AFE70 */  addiu      $t2, $t2, %lo(rmonbrk_bss_0000)\n    /* 9124 80008124 AD490000 */  sw         $t1, 0x0($t2)\n    /* 9128 80008128 8FAB001C */  lw         $t3, 0x1C($sp)\n    /* 912C 8000812C 1160000F */  beqz       $t3, .L8000816C\n    /* 9130 80008130 00000000 */   nop\n    /* 9134 80008134 8D6C0000 */  lw         $t4, 0x0($t3)\n    /* 9138 80008138 3C018002 */  lui        $at, %hi(D_8001FEF4)\n    /* 913C 8000813C 240D040D */  addiu      $t5, $zero, 0x40D\n    /* 9140 80008140 AC2CFEF4 */  sw         $t4, %lo(D_8001FEF4)($at)\n    /* 9144 80008144 AD6D0000 */  sw         $t5, 0x0($t3)\n    /* 9148 80008148 8FA4001C */  lw         $a0, 0x1C($sp)\n    /* 914C 8000814C 0C000C7C */  jal        func_800031F0\n    /* 9150 80008150 24050004 */   addiu     $a1, $zero, 0x4\n    /* 9154 80008154 8FA4001C */  lw         $a0, 0x1C($sp)\n    /* 9158 80008158 0C0014D4 */  jal        func_80005350\n    /* 915C 8000815C 24050004 */   addiu     $a1, $zero, 0x4\n    /* 9160 80008160 8FAE001C */  lw         $t6, 0x1C($sp)\n    /* 9164 80008164 3C018002 */  lui        $at, %hi(D_8001FEF0)\n    /* 9168 80008168 AC2EFEF0 */  sw         $t6, %lo(D_8001FEF0)($at)\n  .L8000816C:\n    /* 916C 8000816C 8FBF0014 */  lw         $ra, 0x14($sp)\n    /* 9170 80008170 27BD0018 */  addiu      $sp, $sp, 0x18\n    /* 9174 80008174 03E00008 */  jr         $ra\n    /* 9178 80008178 00000000 */   nop\nendlabel func_800080D0\n",
+  "m2c_output": "? func_800031F0(s32 *, ?);                          /* extern */\n? func_80005350(s32 *, ?);                          /* extern */\nextern s32 *D_8001FEF0;\nextern s32 D_8001FEF4;\nextern ? rmonbrk_bss_0000;\n\nvoid func_800080D0(s32 *arg0, s32 *arg1) {\n    rmonbrk_bss_0000.unk4 = (s32) *arg0;\n    *arg0 = 0x40D;\n    func_800031F0(arg0, 4);\n    func_80005350(arg0, 4);\n    rmonbrk_bss_0000.unk0 = arg0;\n    if (arg1 != NULL) {\n        D_8001FEF4 = *arg1;\n        *arg1 = 0x40D;\n        func_800031F0(arg1, 4);\n        func_80005350(arg1, 4);\n        D_8001FEF0 = arg1;\n    }\n}\n",
+  "attempts": [
+    {
+      "c_code": "void func_800080D0(s32* arg0, s32* arg1) {\n    *((s32*)((char*)&rmonbrk_bss_0000 + 4)) = *arg0;\n    *arg0 = 0x40D;\n    func_800031F0(arg0, 4);\n    func_80005350(arg0, 4);\n    *(s32*)&rmonbrk_bss_0000 = (s32)arg0;\n    if (arg1 != 0) {\n        D_8001FEF4 = *arg1;\n        *arg1 = 0x40D;\n        func_800031F0(arg1, 4);\n        func_80005350(arg1, 4);\n        D_8001FEF0 = (s32)arg1;\n    }\n}",
+      "matched": true,
+      "diff_count": 0,
+      "diff_details": [],
+      "compiler_flags": "",
+      "notes": "flags: -O2 -g2"
+    }
+  ],
+  "final_c": "void func_800080D0(s32* arg0, s32* arg1) {\n    *((s32*)((char*)&rmonbrk_bss_0000 + 4)) = *arg0;\n    *arg0 = 0x40D;\n    func_800031F0(arg0, 4);\n    func_80005350(arg0, 4);\n    *(s32*)&rmonbrk_bss_0000 = (s32)arg0;\n    if (arg1 != 0) {\n        D_8001FEF4 = *arg1;\n        *arg1 = 0x40D;\n        func_800031F0(arg1, 4);\n        func_80005350(arg1, 4);\n        D_8001FEF0 = (s32)arg1;\n    }\n}",
+  "matched": true,
+  "instruction_count": 43,
+  "has_branches": true,
+  "has_calls": true,
+  "timestamp": 1774321516.7607815,
+  "game": "glover",
+  "compiler": "gcc_2.7.2_kmc",
+  "compiler_flags": "-O2 -g2",
+  "nearby_decompiled": [],
+  "called_functions": [
+    "func_800031F0",
+    "func_80005350"
+  ],
+  "referenced_data": [
+    "D_8001FEF4",
+    "D_8001FEF0"
+  ],
+  "segment": "kernel"
+}

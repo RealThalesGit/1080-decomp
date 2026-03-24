@@ -100,8 +100,6 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80000480);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800004B8);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80000518);
-
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80000568);
 
 /* uso_stub_ret0 */
@@ -158,11 +156,7 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80000874);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80000880);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_800008B8);
-
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800008F0);
-
-INCLUDE_ASM("asm/nonmatchings/kernel", func_8000098C);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800009D8);
 
@@ -211,15 +205,11 @@ s32 func_80000C88(void) {
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80000D2C);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80000DEC);
-
 void func_80000E58(void) {
     D_80012C44(&D_8000A32C, &D_8000A340);
 }
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80000E8C);
-
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80001088);
 
 /* uso_get_vtable — returns pointer to USO vtable */
 extern s32 D_80012BC0;
@@ -287,11 +277,11 @@ float func_8000149C(void) {
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800014A8);
 
+INCLUDE_ASM("asm/nonmatchings/kernel", func_800015D0);
+
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80001584);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80001594);
-
-INCLUDE_ASM("asm/nonmatchings/kernel", func_800015D0);
 
 void func_800017B4(void) {
 }
@@ -309,8 +299,6 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80001994);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80001ADC);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80001CB0);
-
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80001CF4);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80001DD0);
@@ -319,15 +307,11 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80001EC8);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80001EDC);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_800020F4);
-
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800021A4);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800021D0);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80002250);
-
-INCLUDE_ASM("asm/nonmatchings/kernel", func_800022C8);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_8000235C);
 

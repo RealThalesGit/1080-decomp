@@ -88,4 +88,3 @@ s32 func_800059C0(OSMesgQueue* mq, s32 msg, s32 flags) {
 }
 
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80005B10);

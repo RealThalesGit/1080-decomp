@@ -168,14 +168,6 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_8000969C);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800096B0);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80009760);
-
-/* __osGetActiveQueue */
-extern s32 D_8000A41C;
-s32 func_80009830(void) {
-    return D_8000A41C;
-}
-
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80009840);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80009850);

@@ -1,17 +1,19 @@
-# 1080 Snowboarding (USA) Decompilation
+# 1080 Snowboarding n64 decompilation
 
-A work-in-progress decompilation of 1080 Snowboarding for the Nintendo 64.
+In progress 1080 Snowboarding decompilation, mostly driven by Claude. Uses https://github.com/bigyoshi51/decomp for n64 common tooling, Claude skills, etc.
 
 ## Status
 
-The kernel (libultra + USO loader + game init) is being decompiled.
+**Kernel only** — the libultra + USO loader + game init segment (~40 KB, 275 functions). USO overlays (bootup.uso, game.uso, character models, audio banks, etc.) are currently tracked as opaque binary blobs and are **not** counted toward progress: they use a custom relocatable overlay format that would require a bespoke USO linker to decompile byte-matching.
 
 ```
-$ ../../scripts/progress.sh
-Decompilation Progress
-Code:      ~3.0K / ~30K bytes (~10%)
-Functions:   ~53 / ~295       (~18%)
+Kernel code:      6,156 / 40,464 bytes (15.21%)
+Kernel functions:    63 / 275          (22.91%)
 ```
+
+ROM-wide totals (for context — not currently tracked):
+- Full ROM: ~2,014 functions, ~290 KB code
+- True progress relative to full ROM: ~3.1% functions, ~2.1% code
 
 ## Building
 

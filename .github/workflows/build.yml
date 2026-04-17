@@ -1,0 +1,26 @@
+name: Progress Report
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate progress report
+        run: |
+          curl -sL https://github.com/encounter/objdiff/releases/latest/download/objdiff-cli-linux-x86_64 -o objdiff-cli
+          chmod +x objdiff-cli
+          ./objdiff-cli report generate -p . -o report.json
+
+      - name: Upload progress report
+        uses: actions/upload-artifact@v4
+        with:
+          name: us_report
+          path: report.json

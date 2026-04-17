@@ -1,8 +1,24 @@
 baserom.z64
 tenshoe.z64
+*.z64
+*.n64
+*.v64
 build/
-tools/ido*
+tools/ido-static-recomp/build/
 tools/gcc*
 *.o
 *.d
 assets/uso_data.bin
+uso_extract/
+n64sym_output.txt
+*.bak
+__pycache__/
+*.pyc
+.claude/
+.env
+.env.*
+.splat/
+logs/
+
+# Expected .o files are checked in (see expected/) — do not ignore
+!expected/**/*.o

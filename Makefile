@@ -111,4 +111,9 @@ expected:
 clean:
 	rm -rf build $(ROM)
 
-.PHONY: all clean verify expected
+# Extract asset .bin files from baserom.z64 via splat.
+# Run once after providing your own legally-obtained ROM.
+setup: $(BASEROM)
+	python3 -m splat split tenshoe.yaml
+
+.PHONY: all clean verify expected setup

@@ -17,10 +17,22 @@ ROM-wide totals (for context — not currently tracked):
 
 ## Building
 
+Requires: `mips-linux-gnu` binutils, Python 3, and IDO 7.1.
+
 ```bash
-# Requires: mips-linux-gnu binutils, IDO 7.1 (via ido-static-recomp)
+# 1. Place your legally-obtained 1080 Snowboarding (USA) ROM as baserom.z64
+#    (md5: f0a98b4b4a8f2b0f4d2e3c7b7d9e1a8c — N64 Z64 format, 16 MB).
+# 2. Extract IDO 7.1:
+#    https://github.com/decompals/ido-static-recomp/releases/latest
+#    Extract `ido-7.1-recomp-linux.tar.gz` into tools/ido-static-recomp/build/7.1/out/
+# 3. Extract asset bins from baserom via splat (one-time):
+make setup
+# 4. Build:
 make
 ```
+
+ROM-derived binary extracts (`assets/*.bin`) are not committed — they are
+regenerated from your local baserom by `make setup`.
 
 The build uses IDO 7.1 with two optimization levels:
 - `kernel_o2.c` — game code compiled with `-O2`

@@ -8,7 +8,9 @@ tools/ido-static-recomp/build/
 tools/gcc*
 *.o
 *.d
-assets/uso_data.bin
+# ROM-derived binary extracts — regenerated locally by splat from baserom.z64.
+# Do not commit these to a public repo (copyrighted game code/data).
+assets/*.bin
 uso_extract/
 n64sym_output.txt
 *.bak

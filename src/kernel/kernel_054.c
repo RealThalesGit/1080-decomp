@@ -127,3 +127,42 @@ void func_8000894C(s32 arg0, s32 arg1) {
     }
     func_800073F8(&buf, 0x4C, 2);
 }
+
+
+extern s32 func_80008430();
+extern void func_800090B4(s32, s32);
+extern void func_80008498(void);
+extern void func_800091F0(s32);
+
+/* NON_MATCHING: 99.7% match; 3 IDO -O1 scheduling diffs remain:
+ *  - sw s0 / sw s1 store order at prologue is swapped
+ *  - jal delay slot loads $a0 (redundant) instead of $s0
+ *  - hdr stack offset differs by 4 bytes (0x28 vs 0x24)
+ * All are pure scheduler/frame-layout choices; logic and size match.
+ * Permuter ran 14k iterations, best score 15 (target 0). */
+#ifdef NON_MATCHING
+s32 func_8000969C(s32* msg) {
+    register s32* p;
+    RmonHdr16 hdr;
+    register s32 i;
+
+    if (func_80008430(msg) != 0) {
+        return -4;
+    }
+    func_80009148((RmonMsg91FC*)1);
+    for (i = 0; i < 0x20; i++) {
+        func_80006B20((void*)0x04000000, (char*)p + i * 4 + 0x10, 4);
+        func_800090B4(0x32, i);
+        func_80008498();
+    }
+    func_800091F0(1);
+    hdr.field_0C = p[3];
+    hdr.type = ((u8*)p)[4];
+    hdr.flags = 0;
+    func_800073F8(&hdr, 0x10, 1);
+    return 0;
+    p = msg;
+}
+#else
+INCLUDE_ASM("asm/nonmatchings/kernel", func_8000969C);
+#endif

@@ -94,12 +94,18 @@ $(ELF): $(O_FILES) $(LD_SCRIPT)
 	$(LD) $(LDFLAGS) -o $@
 
 # C source -- two-phase asm-processor pattern
+ifdef PERMUTER
+build/src/%.c.o: src/%.c
+	@mkdir -p $(dir $@) build/$(<D)
+	$(CC) -c $(CFLAGS) $(OPT_FLAGS) $(MIPSISET) $(CPPFLAGS) -o $@ $<
+else
 build/src/%.c.o: src/%.c
 	@mkdir -p $(dir $@) build/$(<D)
 	$(ASM_PROC) $(OPT_FLAGS) $< > build/$<
 	$(CC) -c $(CFLAGS) $(OPT_FLAGS) $(MIPSISET) $(CPPFLAGS) -o $@ build/$<
 	$(ASM_PROC) $(OPT_FLAGS) $< --post-process $@ \
 		--assembler "$(AS) $(ASFLAGS)" --asm-prelude $(ASM_PRELUDE)
+endif
 
 # Standalone assembly
 build/asm/%.s.o: asm/%.s

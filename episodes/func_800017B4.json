@@ -1,0 +1,28 @@
+{
+  "function_name": "func_800017B4",
+  "asm_text": "\nnonmatching func_800017B4, 0x8\n\nglabel func_800017B4\n    /* 27B4 800017B4 03E00008 */  jr         $ra\n    /* 27B8 800017B8 00000000 */   nop\nendlabel func_800017B4\n",
+  "m2c_output": "void func_800017B4(void) {\n\n}\n",
+  "attempts": [
+    {
+      "c_code": "void func_800017B4(void) {\n}\n",
+      "matched": true,
+      "diff_count": 0,
+      "diff_details": [],
+      "compiler_flags": "",
+      "notes": "flags: -O2 -g2"
+    }
+  ],
+  "final_c": "void func_800017B4(void) {\n}\n",
+  "matched": true,
+  "instruction_count": 2,
+  "has_branches": false,
+  "has_calls": false,
+  "timestamp": 1776530995.9198217,
+  "game": "glover",
+  "compiler": "gcc_2.7.2_kmc",
+  "compiler_flags": "-O2 -g2",
+  "nearby_decompiled": [],
+  "called_functions": [],
+  "referenced_data": [],
+  "segment": "kernel"
+}

@@ -1,0 +1,49 @@
+#include "common.h"
+
+extern void* func_800077DC(s32 id);
+extern void func_80006B20(void* dst, void* src, s32 n);
+extern void func_800073F8(void* hdr, s32 size, s32 flags);
+
+typedef struct {
+    char pad_00[4];
+    u8   field_04;
+    char pad_05[4];
+    u8   field_09;
+    char pad_0A[2];
+    s32  field_0C;
+    char pad_10[0x80];
+    s32  field_90;
+} RmonMsg91FC;
+
+typedef struct {
+    char pad_00[4];
+    u8   type;
+    char pad_05;
+    s16  flags;
+    char pad_08[4];
+    s32  field_0C;
+} RmonHdr16;
+
+s32 func_800091FC(RmonMsg91FC* msg) {
+    register RmonMsg91FC* p;
+    RmonHdr16 hdr;
+    s32* buf;
+    f32 dummy;
+
+    p = msg;
+    if (msg->field_09 != 0) {
+        return -2;
+    }
+    dummy = 0.0f;
+    buf = (s32*)func_800077DC(p->field_0C);
+    if (buf == 0) {
+        return -2;
+    }
+    func_80006B20((char*)buf + 0x130, (char*)p + 0x10, 0x20);
+    *(s32*)((char*)buf + 0x12C) = p->field_90;
+    hdr.field_0C = p->field_0C;
+    hdr.type = p->field_04;
+    hdr.flags = 0;
+    func_800073F8(&hdr, 0x10, 1);
+    return 0;
+}

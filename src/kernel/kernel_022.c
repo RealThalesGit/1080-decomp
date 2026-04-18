@@ -130,7 +130,7 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_80009148);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800091F0);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_800091FC);
+/* func_800091FC split out to kernel_054.c (-O1) */
 
 /* rmon execute */
 s32 func_800092B0(s32 a0) {

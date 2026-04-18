@@ -1,0 +1,28 @@
+{
+  "function_name": "func_8000890C",
+  "asm_text": "\nnonmatching func_8000890C, 0x40\n\nglabel func_8000890C\n    /* 990C 8000890C 240E0001 */  addiu      $t6, $zero, 0x1\n    /* 9910 80008910 240F0002 */  addiu      $t7, $zero, 0x2\n    /* 9914 80008914 24180002 */  addiu      $t8, $zero, 0x2\n    /* 9918 80008918 24190004 */  addiu      $t9, $zero, 0x4\n    /* 991C 8000891C 24080004 */  addiu      $t0, $zero, 0x4\n    /* 9920 80008920 2409004C */  addiu      $t1, $zero, 0x4C\n    /* 9924 80008924 AC8E000C */  sw         $t6, 0xC($a0)\n    /* 9928 80008928 A48F0010 */  sh         $t7, 0x10($a0)\n    /* 992C 8000892C A4800012 */  sh         $zero, 0x12($a0)\n    /* 9930 80008930 AC800030 */  sw         $zero, 0x30($a0)\n    /* 9934 80008934 A4980024 */  sh         $t8, 0x24($a0)\n    /* 9938 80008938 A4990026 */  sh         $t9, 0x26($a0)\n    /* 993C 8000893C A0880004 */  sb         $t0, 0x4($a0)\n    /* 9940 80008940 A4800006 */  sh         $zero, 0x6($a0)\n    /* 9944 80008944 03E00008 */  jr         $ra\n    /* 9948 80008948 AC890000 */   sw        $t1, 0x0($a0)\nendlabel func_8000890C\n",
+  "m2c_output": "void func_8000890C(void *arg0) {\n    arg0->unkC = 1;\n    arg0->unk10 = 2;\n    arg0->unk12 = 0;\n    arg0->unk30 = 0;\n    arg0->unk24 = 2;\n    arg0->unk26 = 4;\n    arg0->unk4 = 4;\n    arg0->unk6 = 0;\n    arg0->unk0 = 0x4C;\n}\n",
+  "attempts": [
+    {
+      "c_code": "typedef struct {\n    s32 field_00; s8 field_04; char pad05; s16 field_06; char pad08[4];\n    s32 field_0C; s16 field_10; s16 field_12; char pad14[0x10];\n    s16 field_24; s16 field_26; char pad28[8]; s32 field_30;\n} RmonInit;\n\nvoid func_8000890C(RmonInit* p) {\n    p->field_0C = 1;\n    p->field_10 = 2;\n    p->field_12 = 0;\n    p->field_30 = 0;\n    p->field_24 = 2;\n    p->field_26 = 4;\n    p->field_04 = 4;\n    p->field_06 = 0;\n    p->field_00 = 0x4C;\n}",
+      "matched": true,
+      "diff_count": 0,
+      "diff_details": [],
+      "compiler_flags": "",
+      "notes": "flags: -O2 -g2"
+    }
+  ],
+  "final_c": "typedef struct {\n    s32 field_00; s8 field_04; char pad05; s16 field_06; char pad08[4];\n    s32 field_0C; s16 field_10; s16 field_12; char pad14[0x10];\n    s16 field_24; s16 field_26; char pad28[8]; s32 field_30;\n} RmonInit;\n\nvoid func_8000890C(RmonInit* p) {\n    p->field_0C = 1;\n    p->field_10 = 2;\n    p->field_12 = 0;\n    p->field_30 = 0;\n    p->field_24 = 2;\n    p->field_26 = 4;\n    p->field_04 = 4;\n    p->field_06 = 0;\n    p->field_00 = 0x4C;\n}",
+  "matched": true,
+  "instruction_count": 16,
+  "has_branches": false,
+  "has_calls": false,
+  "timestamp": 1776473001.6315506,
+  "game": "glover",
+  "compiler": "gcc_2.7.2_kmc",
+  "compiler_flags": "-O2 -g2",
+  "nearby_decompiled": [],
+  "called_functions": [],
+  "referenced_data": [],
+  "segment": "kernel"
+}

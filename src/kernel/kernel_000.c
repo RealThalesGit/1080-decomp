@@ -82,7 +82,23 @@ void func_80000118(s32 a0, s32 a1) {
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80000168);
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_800001DC);
+void func_800001DC(char* dst, char* src) {
+    char* s = src;
+    unsigned char c = *src;
+    char* d = dst;
+
+    *dst = c;
+    if (c == 0) {
+        return;
+    }
+
+    do {
+        c = *(s + 1);
+        s = s + 1;
+        d = d + 1;
+        *d = c;
+    } while (c != 0);
+}
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_8000020C);
 
@@ -391,4 +407,3 @@ INCLUDE_ASM("asm/nonmatchings/kernel", func_8000487C);
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800048E8);
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_800049B8);
-

@@ -1,0 +1,28 @@
+{
+  "function_name": "func_80006754",
+  "asm_text": "\nnonmatching func_80006754, 0x3C\n\nglabel func_80006754\n    /* 7754 80006754 90A60000 */  lbu        $a2, 0x0($a1)\n    /* 7758 80006758 27BDFFF8 */  addiu      $sp, $sp, -0x8\n    /* 775C 8000675C 24840001 */  addiu      $a0, $a0, 0x1\n    /* 7760 80006760 00C03825 */  or         $a3, $a2, $zero\n    /* 7764 80006764 24A50001 */  addiu      $a1, $a1, 0x1\n    /* 7768 80006768 10E00007 */  beqz       $a3, .L80006788\n    /* 776C 8000676C A086FFFF */   sb        $a2, -0x1($a0)\n  .L80006770:\n    /* 7770 80006770 90A60000 */  lbu        $a2, 0x0($a1)\n    /* 7774 80006774 24840001 */  addiu      $a0, $a0, 0x1\n    /* 7778 80006778 24A50001 */  addiu      $a1, $a1, 0x1\n    /* 777C 8000677C 00C03825 */  or         $a3, $a2, $zero\n    /* 7780 80006780 14E0FFFB */  bnez       $a3, .L80006770\n    /* 7784 80006784 A086FFFF */   sb        $a2, -0x1($a0)\n  .L80006788:\n    /* 7788 80006788 03E00008 */  jr         $ra\n    /* 778C 8000678C 27BD0008 */   addiu     $sp, $sp, 0x8\nendlabel func_80006754\n",
+  "m2c_output": "void func_80006754(s32 arg0, u8 *arg1) {\n    u8 *var_a1;\n    u8 temp_a2;\n    u8 temp_a2_2;\n    void *var_a0;\n\n    temp_a2 = *arg1;\n    var_a0 = arg0 + 1;\n    var_a1 = arg1 + 1;\n    var_a0->unk-1 = temp_a2;\n    if (temp_a2 != 0) {\n        do {\n            temp_a2_2 = *var_a1;\n            var_a0 += 1;\n            var_a1 += 1;\n            var_a0->unk-1 = temp_a2_2;\n        } while (temp_a2_2 != 0);\n    }\n}\n",
+  "attempts": [
+    {
+      "c_code": "void func_80006754(u8* dst, u8* src) {\n    register s32 c;\n    register s32 saved;\n    c = *src;\n    dst++;\n    saved = c;\n    src++;\n    *(dst - 1) = c;\n    while (saved != 0) {\n        c = *src;\n        dst++;\n        src++;\n        saved = c;\n        *(dst - 1) = c;\n    }\n}",
+      "matched": true,
+      "diff_count": 0,
+      "diff_details": [],
+      "compiler_flags": "",
+      "notes": "flags: -O2 -g2"
+    }
+  ],
+  "final_c": "void func_80006754(u8* dst, u8* src) {\n    register s32 c;\n    register s32 saved;\n    c = *src;\n    dst++;\n    saved = c;\n    src++;\n    *(dst - 1) = c;\n    while (saved != 0) {\n        c = *src;\n        dst++;\n        src++;\n        saved = c;\n        *(dst - 1) = c;\n    }\n}",
+  "matched": true,
+  "instruction_count": 15,
+  "has_branches": true,
+  "has_calls": false,
+  "timestamp": 1776471295.4407947,
+  "game": "glover",
+  "compiler": "gcc_2.7.2_kmc",
+  "compiler_flags": "-O2 -g2",
+  "nearby_decompiled": [],
+  "called_functions": [],
+  "referenced_data": [],
+  "segment": "kernel"
+}

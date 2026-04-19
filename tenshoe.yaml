@@ -77,7 +77,19 @@ segments:
   - [0x8DC8DC, bin, bg8tex_uso]
   - [0x9209B8, bin, player_data]
   - [0xD9FDB0, bin, rom_fs]
-  - [0xD9FE28, bin, bootup_uso]
+  # bootup_uso split into three: pre-text USO metadata/data/rodata/relocs,
+  # text code (302 funcs, disassembled at VRAM=0 since LUIs are unrelocated
+  # with upper16=0x0000), and post-text padding. The text VRAM=0 is a
+  # synthetic address — this code actually gets loaded to a dynamic VRAM
+  # at runtime by the USO loader; we match pre-relocation text bytes.
+  - [0xD9FE28, bin, bootup_uso_pre]
+  - name: bootup_uso
+    type: code
+    start: 0xDD0A6C
+    vram: 0x00000000
+    subsegments:
+      - [0xDD0A6C, c, bootup_uso]
+  - [0xDE50B8, bin, bootup_uso_post]
   - [0xDE50D4, bin, game_libs]
   - [0xE5D0D4, bin, game_data]
   - [0x1000000]

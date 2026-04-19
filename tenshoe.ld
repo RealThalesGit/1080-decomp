@@ -578,19 +578,50 @@ SECTIONS
     rom_fs_ROM_END = __romPos;
     rom_fs_VRAM_END = .;
 
-    bootup_uso_ROM_START = __romPos;
-    bootup_uso_VRAM = ADDR(.bootup_uso);
-    .bootup_uso : AT(bootup_uso_ROM_START)
+    bootup_uso_pre_ROM_START = __romPos;
+    bootup_uso_pre_VRAM = ADDR(.bootup_uso_pre);
+    .bootup_uso_pre : AT(bootup_uso_pre_ROM_START)
     {
         FILL(0x00000000);
-        bootup_uso_DATA_START = .;
-        build/assets/bootup_uso.bin.o(.data);
-        bootup_uso_DATA_END = .;
-        bootup_uso_DATA_SIZE = ABSOLUTE(bootup_uso_DATA_END - bootup_uso_DATA_START);
+        bootup_uso_pre_DATA_START = .;
+        build/assets/bootup_uso_pre.bin.o(.data);
+        bootup_uso_pre_DATA_END = .;
+        bootup_uso_pre_DATA_SIZE = ABSOLUTE(bootup_uso_pre_DATA_END - bootup_uso_pre_DATA_START);
+    }
+    __romPos += SIZEOF(.bootup_uso_pre);
+    bootup_uso_pre_ROM_END = __romPos;
+    bootup_uso_pre_VRAM_END = .;
+
+    /* bootup_uso text: loaded at VRAM 0 (code is unrelocated; LUIs store
+     * upper16=0x0000 as placeholders, patched by the USO loader at runtime).
+     * Use a NOLOAD VRAM so ld doesn't conflict with kernel at 0x80000000. */
+    bootup_uso_ROM_START = __romPos;
+    .bootup_uso 0x00000000 : AT(bootup_uso_ROM_START)
+    {
+        FILL(0x00000000);
+        bootup_uso_TEXT_START = .;
+        build/src/bootup_uso/bootup_uso.c.o(.text);
+        bootup_uso_TEXT_END = .;
+        bootup_uso_TEXT_SIZE = ABSOLUTE(bootup_uso_TEXT_END - bootup_uso_TEXT_START);
     }
     __romPos += SIZEOF(.bootup_uso);
     bootup_uso_ROM_END = __romPos;
+    bootup_uso_VRAM = ADDR(.bootup_uso);
     bootup_uso_VRAM_END = .;
+
+    bootup_uso_post_ROM_START = __romPos;
+    bootup_uso_post_VRAM = ADDR(.bootup_uso_post);
+    .bootup_uso_post : AT(bootup_uso_post_ROM_START)
+    {
+        FILL(0x00000000);
+        bootup_uso_post_DATA_START = .;
+        build/assets/bootup_uso_post.bin.o(.data);
+        bootup_uso_post_DATA_END = .;
+        bootup_uso_post_DATA_SIZE = ABSOLUTE(bootup_uso_post_DATA_END - bootup_uso_post_DATA_START);
+    }
+    __romPos += SIZEOF(.bootup_uso_post);
+    bootup_uso_post_ROM_END = __romPos;
+    bootup_uso_post_VRAM_END = .;
 
     game_libs_ROM_START = __romPos;
     game_libs_VRAM = ADDR(.game_libs);

@@ -80,7 +80,30 @@ void func_80000118(s32 a0, s32 a1) {
     func_80002890(saved);
 }
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_80000168);
+s32 func_80000168(char* a0, char* a1) {
+    s32 nz;
+
+    if (*a0 != '\0') {
+        if (*a1 != '\0') {
+            do {
+                if (*a1 != *a0) {
+                    return 1;
+                }
+                a1++;
+                a0++;
+            } while (*a0 != '\0' && *a1 != '\0');
+        }
+        nz = *a0 != '\0';
+    } else {
+        nz = *a0 != '\0';
+    }
+
+    if (nz != 0) {
+        return nz;
+    }
+    nz = *a1 != '\0';
+    return nz;
+}
 
 void func_800001DC(char* dst, char* src) {
     char* s = src;

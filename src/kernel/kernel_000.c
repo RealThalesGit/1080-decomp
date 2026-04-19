@@ -100,7 +100,22 @@ void func_800001DC(char* dst, char* src) {
     } while (c != 0);
 }
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_8000020C);
+/* uso_find_slash? — scan a string for '/' and write its index to *arg1 */
+s32 func_8000020C(char* arg0, s32* arg1) {
+    s32 i;
+
+    i = 0;
+    if (*arg0 != '\0') {
+        do {
+            if (arg0[i] == '/') {
+                *arg1 = i;
+                return 1;
+            }
+            i++;
+        } while (arg0[i] != '\0');
+    }
+    return 0;
+}
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80000260);
 

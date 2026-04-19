@@ -152,7 +152,13 @@ void gl_func_00004140(Quad4 *dst) {
     *dst = scratch;
 }
 
-INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00004198);
+extern int gl_func_00000000();
+void gl_func_00004198(float *dst) {
+    int pad;
+    float scratch;
+    gl_func_00000000(gl_func_00000000, &scratch, 4);
+    *dst = scratch;
+}
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_000041D4);
 
@@ -291,7 +297,13 @@ void gl_func_00009674(int *dst) {
     *dst = scratch;
 }
 
-INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_000096B0);
+extern int gl_func_00000000();
+void gl_func_000096B0(float *dst) {
+    int pad;
+    float scratch;
+    gl_func_00000000(gl_func_00000000, &scratch, 4);
+    *dst = scratch;
+}
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_000096EC);
 
@@ -485,7 +497,13 @@ void gl_func_0000C644(int *dst) {
     *dst = scratch;
 }
 
-INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0000C680);
+extern int gl_func_00000000();
+void gl_func_0000C680(float *dst) {
+    int pad;
+    float scratch;
+    gl_func_00000000(gl_func_00000000, &scratch, 4);
+    *dst = scratch;
+}
 
 extern int gl_func_00000000();
 void gl_func_0000C6BC(Quad4 *dst) {
@@ -2729,7 +2747,13 @@ void gl_func_00063744(int *dst) {
     *dst = scratch;
 }
 
-INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00063780);
+extern int gl_func_00000000();
+void gl_func_00063780(float *dst) {
+    int pad;
+    float scratch;
+    gl_func_00000000(gl_func_00000000, &scratch, 4);
+    *dst = scratch;
+}
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_000637BC);
 

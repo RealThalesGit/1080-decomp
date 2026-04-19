@@ -455,7 +455,24 @@ s32 func_800012AC(s32 arg0) {
     return D_80013004;
 }
 
-INCLUDE_ASM("asm/nonmatchings/kernel", func_800012BC);
+extern void* (*D_80012BF4)(s32, s32);
+extern s32 func_800015D0(void*, void*);
+
+void* func_800012BC(void* arg0) {
+    void* file;
+    s32 header[3];
+
+    file = D_80012BF4(0x28, 8);
+    if (func_800015D0(arg0, file) < 0) {
+        return 0;
+    }
+    if (func_800009D8(header, 0xC, 1, file) < 0) {
+        return 0;
+    }
+    ((s32*)file)[8] = ((s32*)file)[1];
+    ((s32*)file)[7] = ((s32*)file)[1] + header[1];
+    return file;
+}
 
 INCLUDE_ASM("asm/nonmatchings/kernel", func_80001348);
 

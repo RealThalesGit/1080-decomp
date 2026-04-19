@@ -1,0 +1,32 @@
+{
+  "function_name": "func_80008030",
+  "asm_text": "\nnonmatching func_80008030, 0x24\n\nglabel func_80008030\n    /* 9030 80008030 3C08A404 */  lui        $t0, %hi(D_A4040010)\n    /* 9034 80008034 8D080010 */  lw         $t0, %lo(D_A4040010)($t0)\n    /* 9038 80008038 00001025 */  or         $v0, $zero, $zero\n    /* 903C 8000803C 31080003 */  andi       $t0, $t0, 0x3\n    /* 9040 80008040 15000002 */  bnez       $t0, .L8000804C\n    /* 9044 80008044 00000000 */   nop\n    /* 9048 80008048 34420001 */  ori        $v0, $v0, 0x1\n  .L8000804C:\n    /* 904C 8000804C 03E00008 */  jr         $ra\n    /* 9050 80008050 00000000 */   nop\nendlabel func_80008030\n",
+  "m2c_output": "extern s32 D_A4040010;\n\ns32 func_80008030(void) {\n    s32 var_v0;\n\n    var_v0 = 0;\n    if (!(D_A4040010 & 3)) {\n        var_v0 = 1;\n    }\n    return var_v0;\n}\n",
+  "attempts": [
+    {
+      "c_code": "extern s32 D_A4040010;\n\ns32 func_80008030(void) {\n    s32 ret;\n\n    ret = 0;\n    if ((D_A4040010 & 3) == 0) {\n        ret |= 1;\n    }\n    return ret;\n}\n",
+      "matched": true,
+      "diff_count": 0,
+      "diff_details": [],
+      "compiler_flags": "-O1",
+      "notes": "Verified by identical objdump output against expected/src/kernel/kernel_031.c.o. objdiff still omitted a fuzzy_match_percent entry for this function, so objdump equality was used as the authoritative check."
+    }
+  ],
+  "final_c": "extern s32 D_A4040010;\n\ns32 func_80008030(void) {\n    s32 ret;\n\n    ret = 0;\n    if ((D_A4040010 & 3) == 0) {\n        ret |= 1;\n    }\n    return ret;\n}\n",
+  "matched": true,
+  "instruction_count": 9,
+  "has_branches": true,
+  "has_calls": false,
+  "timestamp": 1776562852,
+  "game": "1080_snowboarding",
+  "compiler": "ido7.1",
+  "compiler_flags": "-O1 -mips2 -32 -G 0 -non_shared -Xcpluscomm -Wab,-r4300_mul",
+  "nearby_decompiled": [
+    "func_80007FE8"
+  ],
+  "called_functions": [],
+  "referenced_data": [
+    "D_A4040010"
+  ],
+  "segment": "kernel"
+}

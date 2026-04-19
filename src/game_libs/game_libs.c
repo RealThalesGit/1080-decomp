@@ -204,7 +204,18 @@ INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_000076F0);
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00007FF4);
 
+#ifdef NON_MATCHING
+/* NON_MATCHING: temp uses t6 not v0 */
+extern int gl_func_00000000();
+void gl_func_0000836C(int a0, int *a1) {
+    if (*a1 == 9) {
+        gl_func_00000000(a0, a1);
+    }
+    gl_func_00000000(a0, a1);
+}
+#else
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0000836C);
+#endif
 
 extern int gl_func_00000000();
 int gl_func_000083AC(char *a0) {
@@ -574,7 +585,16 @@ INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0000D7B8);
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0000D8E0);
 
+#ifdef NON_MATCHING
+/* NON_MATCHING: temp uses a1 not a3 */
+extern int gl_func_00000000();
+void gl_func_0000D9B8(int *a0) {
+    int *p = (int*)a0[0x1B];
+    if (p != 0) gl_func_00000000(p);
+}
+#else
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0000D9B8);
+#endif
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0000D9E4);
 
@@ -594,7 +614,18 @@ INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0000DE80);
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0000DED0);
 
+#ifdef NON_MATCHING
+/* NON_MATCHING: IDO spills a0/a1 defensively; expected skips those spills */
+extern int gl_func_00000000();
+void gl_func_0000DF20(int a0, int a1, float a2) {
+    int rv = gl_func_00000000();
+    if (rv != 0) {
+        *(float*)(rv + 0x10) = a2;
+    }
+}
+#else
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0000DF20);
+#endif
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0000DF4C);
 
@@ -1076,7 +1107,15 @@ INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0002DF00);
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0002DF38);
 
+#ifdef NON_MATCHING
+/* NON_MATCHING: IDO cannot emit direct mfc1 from C; stack roundtrip instead */
+extern int gl_func_00000000();
+void gl_func_0002DF68(int a0, float a2) {
+    gl_func_00000000(0x04000000 | ((a0 & 0xFF) << 8), *(int*)&a2);
+}
+#else
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0002DF68);
+#endif
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0002DF98);
 
@@ -1200,7 +1239,15 @@ INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00033338);
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_000333B4);
 
+#ifdef NON_MATCHING
+/* NON_MATCHING: sw ra scheduled wrong vs lui a0 */
+extern int gl_func_00000000();
+int gl_func_000333F4(int a0) {
+    return gl_func_00000000(gl_func_00000000, a0);
+}
+#else
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_000333F4);
+#endif
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0003341C);
 
@@ -2155,7 +2202,15 @@ INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_000478FC);
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00047B40);
 
+#ifdef NON_MATCHING
+/* NON_MATCHING: temp uses a3 not a2 */
+extern int gl_func_00000000();
+int gl_func_00047DD8(int *a0, int a1) {
+    return gl_func_00000000(a1, a0[0x38]);
+}
+#else
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00047DD8);
+#endif
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00047E00);
 
@@ -2251,7 +2306,16 @@ int gl_func_0004D02C(char *a0) {
     return gl_ref_00056C5C(a0 + 0x10);
 }
 
+#ifdef NON_MATCHING
+/* NON_MATCHING: sw ra scheduled wrong vs lui a0 */
+extern int gl_func_00000000();
+void gl_func_0004D05C(int a0) {
+    extern char gl_ref_000201B0;
+    gl_func_00000000(&gl_ref_000201B0);
+}
+#else
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0004D05C);
+#endif
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0004D084);
 
@@ -2317,7 +2381,18 @@ INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0004E00C);
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0004E150);
 
+#ifdef NON_MATCHING
+/* NON_MATCHING: a0 spill slot off by 4 bytes */
+extern int gl_func_00000000();
+void gl_func_0004E180(char *a0) {
+    char *newA0 = a0 + 0xA0;
+    *(char**)(a0 + 0xE0) = newA0;
+    gl_func_00000000(newA0);
+    *(char**)(a0 + 0xE0) = newA0;
+}
+#else
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0004E180);
+#endif
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0004E1BC);
 

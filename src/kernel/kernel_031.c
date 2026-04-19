@@ -1,6 +1,5 @@
 #include "common.h"
 
-extern s32 D_A4040010;
 extern void func_800073F8(void*, s32, s32);
 
 typedef struct { s32 pad0; u8 type; char pad5; u16 flags; s32 pad8; s32 pad12; } RmonAck;
@@ -16,12 +15,4 @@ s32 func_80007FE8(RmonMsgSmall* msg) {
     return 0;
 }
 
-s32 func_80008030(void) {
-    s32 ret;
-
-    ret = 0;
-    if ((D_A4040010 & 3) == 0) {
-        ret |= 1;
-    }
-    return ret;
-}
+INCLUDE_ASM("asm/nonmatchings/kernel", func_80008030);

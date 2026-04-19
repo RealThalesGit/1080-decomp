@@ -240,8 +240,11 @@ INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00000E68);
 
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00001A44);
 
-extern void func_00001C10();
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00001C10);
+void func_00001C10(int *dst) {
+    int buf[2];
+    func_00000000(&D_00000000, buf, 4);
+    *dst = buf[0];
+}
 
 void func_00001C4C(float *dst) {
     float buf[2];
@@ -432,11 +435,17 @@ INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00004914);
 
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00004948);
 
-extern void func_00004FF0();
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00004FF0);
+void func_00004FF0(int *dst) {
+    int buf[2];
+    func_00000000(&D_00000000, buf, 4);
+    *dst = buf[0];
+}
 
-extern void func_0000502C();
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000502C);
+void func_0000502C(int *dst) {
+    int buf[2];
+    func_00000000(&D_00000000, buf, 4);
+    *dst = buf[0];
+}
 
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00005068);
 
@@ -460,15 +469,25 @@ INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000553C);
 
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_000055A0);
 
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00005EF8);
+void func_00005EF8(int *dst) {
+    int buf[2];
+    func_00000000(&D_00000000, buf, 4);
+    *dst = buf[0];
+}
 
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00005F34);
 
-extern void func_00006100();
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00006100);
+void func_00006100(float *dst) {
+    float buf[2];
+    func_00000000(&D_00000000, buf, 4);
+    *dst = buf[0];
+}
 
-extern void func_0000613C();
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000613C);
+void func_0000613C(Quad4 *dst) {
+    Quad4 buf;
+    func_00000000(&D_00000000, &buf, 16);
+    *dst = buf;
+}
 
 extern void func_00006194();
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00006194);
@@ -577,21 +596,30 @@ INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00008920);
 
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00008980);
 
-extern void func_000089C0();
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_000089C0);
+void func_000089C0(int *dst) {
+    int buf[2];
+    func_00000000(&D_00000000, buf, 4);
+    *dst = buf[0];
+}
 
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_000089FC);
 
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00008A38);
 
-extern void func_00008A40();
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00008A40);
+void func_00008A40(float *dst) {
+    float buf[2];
+    func_00000000(&D_00000000, buf, 4);
+    *dst = buf[0];
+}
 
 extern void func_00008A7C();
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00008A7C);
 
-extern void func_00008AEC();
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00008AEC);
+void func_00008AEC(Quad4 *dst) {
+    Quad4 buf;
+    func_00000000(&D_00000000, &buf, 16);
+    *dst = buf;
+}
 
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00008B44);
 
@@ -684,17 +712,26 @@ INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000E740);
 
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000E800);
 
-extern void func_0000E8BC();
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000E8BC);
+void func_0000E8BC(int *dst) {
+    int buf[2];
+    func_00000000(&D_00000000, buf, 4);
+    *dst = buf[0];
+}
 
-extern void func_0000E8F8();
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000E8F8);
+void func_0000E8F8(float *dst) {
+    float buf[2];
+    func_00000000(&D_00000000, buf, 4);
+    *dst = buf[0];
+}
 
 extern void func_0000E934();
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000E934);
 
-extern void func_0000E9A4();
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000E9A4);
+void func_0000E9A4(Quad4 *dst) {
+    Quad4 buf;
+    func_00000000(&D_00000000, &buf, 16);
+    *dst = buf;
+}
 
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000E9FC);
 
@@ -728,17 +765,26 @@ void func_0000EBB8(char *a0) {
 
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000EBE8);
 
-extern void func_0000EC80();
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000EC80);
+void func_0000EC80(int *dst) {
+    int buf[2];
+    func_00000000(&D_00000000, buf, 4);
+    *dst = buf[0];
+}
 
-extern void func_0000ECBC();
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000ECBC);
+void func_0000ECBC(float *dst) {
+    float buf[2];
+    func_00000000(&D_00000000, buf, 4);
+    *dst = buf[0];
+}
 
 extern void func_0000ECF8();
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000ECF8);
 
-extern void func_0000ED68();
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000ED68);
+void func_0000ED68(Quad4 *dst) {
+    Quad4 buf;
+    func_00000000(&D_00000000, &buf, 16);
+    *dst = buf;
+}
 
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000EDC0);
 
@@ -768,17 +814,26 @@ void func_0000EE5C(char *a0) {
 
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000EE8C);
 
-extern void func_0000EF20();
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000EF20);
+void func_0000EF20(int *dst) {
+    int buf[2];
+    func_00000000(&D_00000000, buf, 4);
+    *dst = buf[0];
+}
 
-extern void func_0000EF5C();
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000EF5C);
+void func_0000EF5C(float *dst) {
+    float buf[2];
+    func_00000000(&D_00000000, buf, 4);
+    *dst = buf[0];
+}
 
 extern void func_0000EF98();
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000EF98);
 
-extern void func_0000F008();
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000F008);
+void func_0000F008(Quad4 *dst) {
+    Quad4 buf;
+    func_00000000(&D_00000000, &buf, 16);
+    *dst = buf;
+}
 
 void func_0000F060(char *a0) {
     int scratch;
@@ -804,9 +859,17 @@ void func_0000F0F0(char *a0) {
     func_0000EF20((int*)(a0 + 0x10));
 }
 
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000F120);
+void func_0000F120(int *dst) {
+    int buf[2];
+    func_00000000(&D_00000000, buf, 4);
+    *dst = buf[0];
+}
 
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000F15C);
+void func_0000F15C(Quad4 *dst) {
+    Quad4 buf;
+    func_00000000(&D_00000000, &buf, 16);
+    *dst = buf;
+}
 
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000F1B4);
 
@@ -1026,11 +1089,23 @@ INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_000139B0);
 
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00013B20);
 
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00013C70);
+void func_00013C70(int *dst) {
+    int buf[2];
+    func_00000000(&D_00000000, buf, 4);
+    *dst = buf[0];
+}
 
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00013CAC);
+void func_00013CAC(float *dst) {
+    float buf[2];
+    func_00000000(&D_00000000, buf, 4);
+    *dst = buf[0];
+}
 
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00013CE8);
+void func_00013CE8(Quad4 *dst) {
+    Quad4 buf;
+    func_00000000(&D_00000000, &buf, 16);
+    *dst = buf;
+}
 
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00013D40);
 

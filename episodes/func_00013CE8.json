@@ -1,0 +1,30 @@
+{
+  "function_name": "func_00013CE8",
+  "asm_text": "nonmatching func_00013CE8, 0x58\n\nglabel func_00013CE8\n    /* DE4754 00013CE8 27BDFFD8 */  addiu      $sp, $sp, -0x28\n    /* DE4758 00013CEC AFA40028 */  sw         $a0, 0x28($sp)\n    /* DE475C 00013CF0 AFBF0014 */  sw         $ra, 0x14($sp)\n    /* DE4760 00013CF4 3C040000 */  lui        $a0, (0x0 >> 16)\n    /* DE4764 00013CF8 24840000 */  addiu      $a0, $a0, 0x0\n    /* DE4768 00013CFC 27A50018 */  addiu      $a1, $sp, 0x18\n    /* DE476C 00013D00 0C000000 */  jal        func_00000000\n    /* DE4770 00013D04 24060010 */   addiu     $a2, $zero, 0x10\n    /* DE4774 00013D08 27AF0018 */  addiu      $t7, $sp, 0x18\n    /* DE4778 00013D0C 8DF90000 */  lw         $t9, 0x0($t7)\n    /* DE477C 00013D10 8FAE0028 */  lw         $t6, 0x28($sp)\n    /* DE4780 00013D14 ADD90000 */  sw         $t9, 0x0($t6)\n    /* DE4784 00013D18 8DF80004 */  lw         $t8, 0x4($t7)\n    /* DE4788 00013D1C ADD80004 */  sw         $t8, 0x4($t6)\n    /* DE478C 00013D20 8DF90008 */  lw         $t9, 0x8($t7)\n    /* DE4790 00013D24 ADD90008 */  sw         $t9, 0x8($t6)\n    /* DE4794 00013D28 8DF8000C */  lw         $t8, 0xC($t7)\n    /* DE4798 00013D2C ADD8000C */  sw         $t8, 0xC($t6)\n    /* DE479C 00013D30 8FBF0014 */  lw         $ra, 0x14($sp)\n    /* DE47A0 00013D34 27BD0028 */  addiu      $sp, $sp, 0x28\n    /* DE47A4 00013D38 03E00008 */  jr         $ra\n    /* DE47A8 00013D3C 00000000 */   nop\nendlabel func_00013CE8\n",
+  "m2c_output": "? func_00000000(?, ? *, ?);                         /* extern */\n\nvoid func_00013CE8(void *arg0) {\n    ? sp18;\n\n    func_00000000(0, &sp18, 0x10);\n    arg0->unk0 = (s32) sp18.unk0;\n    arg0->unk4 = (s32) sp18.unk4;\n    arg0->unk8 = (s32) sp18.unk8;\n    arg0->unkC = (s32) sp18.unkC;\n}\n",
+  "attempts": [
+    {
+      "c_code": "void func_00013CE8(Quad4 *dst) {\n    Quad4 buf;\n    func_00000000(&D_00000000, &buf, 16);\n    *dst = buf;\n}",
+      "matched": true,
+      "diff_count": 0,
+      "diff_details": [],
+      "compiler_flags": "",
+      "notes": "flags: -O2 -g2"
+    }
+  ],
+  "final_c": "void func_00013CE8(Quad4 *dst) {\n    Quad4 buf;\n    func_00000000(&D_00000000, &buf, 16);\n    *dst = buf;\n}",
+  "matched": true,
+  "instruction_count": 22,
+  "has_branches": false,
+  "has_calls": true,
+  "timestamp": 1776564853.4718554,
+  "game": "glover",
+  "compiler": "gcc_2.7.2_kmc",
+  "compiler_flags": "-O2 -g2",
+  "nearby_decompiled": [],
+  "called_functions": [
+    "func_00000000"
+  ],
+  "referenced_data": [],
+  "segment": "bootup_uso"
+}

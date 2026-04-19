@@ -1,0 +1,30 @@
+{
+  "function_name": "func_0000E8F8",
+  "asm_text": "nonmatching func_0000E8F8, 0x3C\n\nglabel func_0000E8F8\n    /* DDF364 0000E8F8 27BDFFE0 */  addiu      $sp, $sp, -0x20\n    /* DDF368 0000E8FC AFA40020 */  sw         $a0, 0x20($sp)\n    /* DDF36C 0000E900 AFBF0014 */  sw         $ra, 0x14($sp)\n    /* DDF370 0000E904 3C040000 */  lui        $a0, (0x0 >> 16)\n    /* DDF374 0000E908 24840000 */  addiu      $a0, $a0, 0x0\n    /* DDF378 0000E90C 27A50018 */  addiu      $a1, $sp, 0x18\n    /* DDF37C 0000E910 0C000000 */  jal        func_00000000\n    /* DDF380 0000E914 24060004 */   addiu     $a2, $zero, 0x4\n    /* DDF384 0000E918 C7A40018 */  lwc1       $f4, 0x18($sp)\n    /* DDF388 0000E91C 8FAE0020 */  lw         $t6, 0x20($sp)\n    /* DDF38C 0000E920 E5C40000 */  swc1       $f4, 0x0($t6)\n    /* DDF390 0000E924 8FBF0014 */  lw         $ra, 0x14($sp)\n    /* DDF394 0000E928 27BD0020 */  addiu      $sp, $sp, 0x20\n    /* DDF398 0000E92C 03E00008 */  jr         $ra\n    /* DDF39C 0000E930 00000000 */   nop\nendlabel func_0000E8F8\n",
+  "m2c_output": "? func_00000000(?, f32 *, ?);                       /* extern */\n\nvoid func_0000E8F8(f32 *arg0) {\n    f32 sp18;\n\n    func_00000000(0, &sp18, 4);\n    *arg0 = sp18;\n}\n",
+  "attempts": [
+    {
+      "c_code": "void func_0000E8F8(float *dst) {\n    float buf[2];\n    func_00000000(&D_00000000, buf, 4);\n    *dst = buf[0];\n}",
+      "matched": true,
+      "diff_count": 0,
+      "diff_details": [],
+      "compiler_flags": "",
+      "notes": "flags: -O2 -g2"
+    }
+  ],
+  "final_c": "void func_0000E8F8(float *dst) {\n    float buf[2];\n    func_00000000(&D_00000000, buf, 4);\n    *dst = buf[0];\n}",
+  "matched": true,
+  "instruction_count": 15,
+  "has_branches": false,
+  "has_calls": true,
+  "timestamp": 1776564851.1220713,
+  "game": "glover",
+  "compiler": "gcc_2.7.2_kmc",
+  "compiler_flags": "-O2 -g2",
+  "nearby_decompiled": [],
+  "called_functions": [
+    "func_00000000"
+  ],
+  "referenced_data": [],
+  "segment": "bootup_uso"
+}

@@ -1,0 +1,30 @@
+{
+  "function_name": "func_00006100",
+  "asm_text": "nonmatching func_00006100, 0x3C\n\nglabel func_00006100\n    /* DD6B6C 00006100 27BDFFE0 */  addiu      $sp, $sp, -0x20\n    /* DD6B70 00006104 AFA40020 */  sw         $a0, 0x20($sp)\n    /* DD6B74 00006108 AFBF0014 */  sw         $ra, 0x14($sp)\n    /* DD6B78 0000610C 3C040000 */  lui        $a0, (0x0 >> 16)\n    /* DD6B7C 00006110 24840000 */  addiu      $a0, $a0, 0x0\n    /* DD6B80 00006114 27A50018 */  addiu      $a1, $sp, 0x18\n    /* DD6B84 00006118 0C000000 */  jal        func_00000000\n    /* DD6B88 0000611C 24060004 */   addiu     $a2, $zero, 0x4\n    /* DD6B8C 00006120 C7A40018 */  lwc1       $f4, 0x18($sp)\n    /* DD6B90 00006124 8FAE0020 */  lw         $t6, 0x20($sp)\n    /* DD6B94 00006128 E5C40000 */  swc1       $f4, 0x0($t6)\n    /* DD6B98 0000612C 8FBF0014 */  lw         $ra, 0x14($sp)\n    /* DD6B9C 00006130 27BD0020 */  addiu      $sp, $sp, 0x20\n    /* DD6BA0 00006134 03E00008 */  jr         $ra\n    /* DD6BA4 00006138 00000000 */   nop\nendlabel func_00006100\n",
+  "m2c_output": "? func_00000000(?, f32 *, ?);                       /* extern */\n\nvoid func_00006100(f32 *arg0) {\n    f32 sp18;\n\n    func_00000000(0, &sp18, 4);\n    *arg0 = sp18;\n}\n",
+  "attempts": [
+    {
+      "c_code": "void func_00006100(float *dst) {\n    float buf[2];\n    func_00000000(&D_00000000, buf, 4);\n    *dst = buf[0];\n}",
+      "matched": true,
+      "diff_count": 0,
+      "diff_details": [],
+      "compiler_flags": "",
+      "notes": "flags: -O2 -g2"
+    }
+  ],
+  "final_c": "void func_00006100(float *dst) {\n    float buf[2];\n    func_00000000(&D_00000000, buf, 4);\n    *dst = buf[0];\n}",
+  "matched": true,
+  "instruction_count": 15,
+  "has_branches": false,
+  "has_calls": true,
+  "timestamp": 1776564850.670398,
+  "game": "glover",
+  "compiler": "gcc_2.7.2_kmc",
+  "compiler_flags": "-O2 -g2",
+  "nearby_decompiled": [],
+  "called_functions": [
+    "func_00000000"
+  ],
+  "referenced_data": [],
+  "segment": "bootup_uso"
+}

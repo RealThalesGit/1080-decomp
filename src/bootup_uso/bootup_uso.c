@@ -700,9 +700,13 @@ void func_0000E5B8(char *a0) {
 
 float func_0000E5E8(char *a0) { return *(float*)(a0 + 0x198); }
 
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000E5F0);
+void func_0000E5F0(char *a0) {
+    func_00000000(a0 + 0x108);
+}
 
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000E610);
+void func_0000E610(char *a0) {
+    func_00000000(a0 + 0x108);
+}
 
 void func_0000E630(char *a0) {
     int scratch;
@@ -718,7 +722,9 @@ void func_0000E660(char *a0) {
 
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000E690);
 
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000E720);
+void func_0000E720(char *a0) {
+    func_00000000(a0 + 0x2C);
+}
 
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_0000E740);
 

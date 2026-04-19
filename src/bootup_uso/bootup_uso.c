@@ -614,7 +614,13 @@ INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_000087A4);
 
 INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00008920);
 
-INCLUDE_ASM("asm/nonmatchings/bootup_uso", func_00008980);
+int func_00008980(int arg0) {
+    if (func_00000000(arg0) == 0) {
+        func_00000000(&D_00000000, arg0);
+        return 1;
+    }
+    return 0;
+}
 
 void func_000089C0(int *dst) {
     int buf[2];

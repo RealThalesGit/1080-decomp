@@ -1,0 +1,28 @@
+{
+  "function_name": "gl_func_0000C6BC",
+  "asm_text": "nonmatching gl_func_0000C6BC, 0x58\n\nglabel gl_func_0000C6BC\n    /* DF1794 0000C6BC 27BDFFD8 */  .word 0x27BDFFD8\n    /* DF1798 0000C6C0 AFA40028 */  .word 0xAFA40028\n    /* DF179C 0000C6C4 AFBF0014 */  .word 0xAFBF0014\n    /* DF17A0 0000C6C8 3C040000 */  .word 0x3C040000\n    /* DF17A4 0000C6CC 24840000 */  .word 0x24840000\n    /* DF17A8 0000C6D0 27A50018 */  .word 0x27A50018\n    /* DF17AC 0000C6D4 0C000000 */  .word 0x0C000000\n    /* DF17B0 0000C6D8 24060010 */  .word 0x24060010\n    /* DF17B4 0000C6DC 27AF0018 */  .word 0x27AF0018\n    /* DF17B8 0000C6E0 8DF90000 */  .word 0x8DF90000\n    /* DF17BC 0000C6E4 8FAE0028 */  .word 0x8FAE0028\n    /* DF17C0 0000C6E8 ADD90000 */  .word 0xADD90000\n    /* DF17C4 0000C6EC 8DF80004 */  .word 0x8DF80004\n    /* DF17C8 0000C6F0 ADD80004 */  .word 0xADD80004\n    /* DF17CC 0000C6F4 8DF90008 */  .word 0x8DF90008\n    /* DF17D0 0000C6F8 ADD90008 */  .word 0xADD90008\n    /* DF17D4 0000C6FC 8DF8000C */  .word 0x8DF8000C\n    /* DF17D8 0000C700 ADD8000C */  .word 0xADD8000C\n    /* DF17DC 0000C704 8FBF0014 */  .word 0x8FBF0014\n    /* DF17E0 0000C708 27BD0028 */  .word 0x27BD0028\n    /* DF17E4 0000C70C 03E00008 */  .word 0x03E00008\n    /* DF17E8 0000C710 00000000 */  .word 0x00000000\nendlabel gl_func_0000C6BC\n",
+  "m2c_output": "",
+  "attempts": [
+    {
+      "c_code": "extern int gl_func_00000000();\nvoid gl_func_0000C6BC(Quad4 *dst) {\n    Quad4 scratch;\n    gl_func_00000000(gl_func_00000000, &scratch, 16);\n    *dst = scratch;\n}",
+      "matched": true,
+      "diff_count": 0,
+      "diff_details": [],
+      "compiler_flags": "",
+      "notes": "flags: -O2 -g2"
+    }
+  ],
+  "final_c": "extern int gl_func_00000000();\nvoid gl_func_0000C6BC(Quad4 *dst) {\n    Quad4 scratch;\n    gl_func_00000000(gl_func_00000000, &scratch, 16);\n    *dst = scratch;\n}",
+  "matched": true,
+  "instruction_count": 22,
+  "has_branches": false,
+  "has_calls": false,
+  "timestamp": 1776571368.4719975,
+  "game": "glover",
+  "compiler": "gcc_2.7.2_kmc",
+  "compiler_flags": "-O2 -g2",
+  "nearby_decompiled": [],
+  "called_functions": [],
+  "referenced_data": [],
+  "segment": "game_libs"
+}

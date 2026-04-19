@@ -1,0 +1,30 @@
+{
+  "function_name": "func_0000EE5C",
+  "asm_text": "nonmatching func_0000EE5C, 0x30\n\nglabel func_0000EE5C\n    /* DDF8C8 0000EE5C 27BDFFE0 */  addiu      $sp, $sp, -0x20\n    /* DDF8CC 0000EE60 AFBF0014 */  sw         $ra, 0x14($sp)\n    /* DDF8D0 0000EE64 AFA40020 */  sw         $a0, 0x20($sp)\n    /* DDF8D4 0000EE68 0C003B20 */  jal        func_0000EC80\n    /* DDF8D8 0000EE6C 27A4001C */   addiu     $a0, $sp, 0x1C\n    /* DDF8DC 0000EE70 8FA40020 */  lw         $a0, 0x20($sp)\n    /* DDF8E0 0000EE74 0C003B20 */  jal        func_0000EC80\n    /* DDF8E4 0000EE78 24840010 */   addiu     $a0, $a0, 0x10\n    /* DDF8E8 0000EE7C 8FBF0014 */  lw         $ra, 0x14($sp)\n    /* DDF8EC 0000EE80 27BD0020 */  addiu      $sp, $sp, 0x20\n    /* DDF8F0 0000EE84 03E00008 */  jr         $ra\n    /* DDF8F4 0000EE88 00000000 */   nop\nendlabel func_0000EE5C\n",
+  "m2c_output": "? func_0000EC80(? *);                               /* extern */\n\nvoid func_0000EE5C(s32 arg0) {\n    ? sp1C;\n\n    func_0000EC80(&sp1C);\n    func_0000EC80(arg0 + 0x10);\n}\n",
+  "attempts": [
+    {
+      "c_code": "void func_0000EE5C(char *a0) {\n    int scratch;\n    func_0000EC80(&scratch);\n    func_0000EC80((int*)(a0 + 0x10));\n}",
+      "matched": true,
+      "diff_count": 0,
+      "diff_details": [],
+      "compiler_flags": "",
+      "notes": "flags: -O2 -g2"
+    }
+  ],
+  "final_c": "void func_0000EE5C(char *a0) {\n    int scratch;\n    func_0000EC80(&scratch);\n    func_0000EC80((int*)(a0 + 0x10));\n}",
+  "matched": true,
+  "instruction_count": 12,
+  "has_branches": false,
+  "has_calls": true,
+  "timestamp": 1776564682.8908894,
+  "game": "glover",
+  "compiler": "gcc_2.7.2_kmc",
+  "compiler_flags": "-O2 -g2",
+  "nearby_decompiled": [],
+  "called_functions": [
+    "func_0000EC80"
+  ],
+  "referenced_data": [],
+  "segment": "bootup_uso"
+}

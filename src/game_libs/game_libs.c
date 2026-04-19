@@ -40,7 +40,10 @@ INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00000FA4);
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00000FD0);
 
-INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00001114);
+extern int gl_func_00000000();
+int gl_func_00001114(char *a0) {
+    return gl_func_00000000(a0 + 0x10C);
+}
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00001134);
 
@@ -142,7 +145,10 @@ INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00007FF4);
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0000836C);
 
-INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_000083AC);
+extern int gl_func_00000000();
+int gl_func_000083AC(char *a0) {
+    return gl_func_00000000(a0 + 0x50);
+}
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_000083CC);
 
@@ -1928,9 +1934,15 @@ INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00054A14);
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00054AEC);
 
-INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00054BE4);
+extern int gl_func_00000000();
+int gl_func_00054BE4(char *a0) {
+    return gl_func_00000000(a0 + 0x10C);
+}
 
-INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00054C04);
+extern int gl_func_00000000();
+int gl_func_00054C04(char *a0) {
+    return gl_func_00000000(a0 + 0x10C);
+}
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00054C24);
 
@@ -2245,11 +2257,17 @@ INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_000625FC);
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0006264C);
 
-INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_000626EC);
+extern int gl_func_00000000();
+int gl_func_000626EC(char *a0) {
+    return gl_func_00000000(a0 + 0x40);
+}
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0006270C);
 
-INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0006273C);
+extern int gl_func_00000000();
+int gl_func_0006273C(char *a0) {
+    return gl_func_00000000(a0 + 0x40);
+}
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_0006275C);
 
@@ -2339,9 +2357,15 @@ INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00065DDC);
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00065E0C);
 
-INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00065E44);
+extern int gl_func_00000000();
+int gl_func_00065E44(char *a0) {
+    return gl_func_00000000(a0 + 0x108);
+}
 
-INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00065E64);
+extern int gl_func_00000000();
+int gl_func_00065E64(char *a0) {
+    return gl_func_00000000(a0 + 0x108);
+}
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00065E84);
 
@@ -2521,7 +2545,10 @@ INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_000697C4);
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00069B94);
 
-INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00069C38);
+extern int gl_func_00000000();
+int gl_func_00069C38(char *a0) {
+    return gl_func_00000000(a0 + 0x48);
+}
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00069C58);
 

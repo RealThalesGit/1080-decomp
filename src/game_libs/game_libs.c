@@ -4,19 +4,31 @@ INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00000000);
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_000001CC);
 
-INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00000308);
+extern int gl_func_00000000();
+int gl_func_00000308(char *a0) {
+    gl_func_00000000(a0 + 0x10C);
+    return gl_func_00000000(a0 + 0x124);
+}
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00000338);
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00000400);
 
-INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00000574);
+extern int gl_func_00000000();
+int gl_func_00000574(char *a0) {
+    gl_func_00000000(a0 + 0x10C);
+    return gl_func_00000000(a0 + 0x124);
+}
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_000005A4);
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_000005EC);
 
-INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00000760);
+extern int gl_func_00000000();
+int gl_func_00000760(char *a0) {
+    gl_func_00000000(a0 + 0x10C);
+    return gl_func_00000000(a0 + 0x124);
+}
 
 extern int gl_func_00000000();
 extern char gl_ref_0000CB58;
@@ -34,7 +46,11 @@ INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00000BAC);
 
 INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00000D5C);
 
-INCLUDE_ASM("asm/nonmatchings/game_libs/game_libs", gl_func_00000E74);
+extern int gl_func_00000000();
+int gl_func_00000E74(char *a0) {
+    gl_func_00000000(a0 + 0x10C);
+    return gl_func_00000000(a0 + 0x124);
+}
 
 extern int gl_func_00000000();
 extern char gl_ref_0000CBD8;
